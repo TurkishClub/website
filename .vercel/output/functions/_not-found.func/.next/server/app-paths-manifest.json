@@ -1,0 +1,1 @@
+{"/robots.txt/route":"app/robots.txt/route.js","/manifest.webmanifest/route":"app/manifest.webmanifest/route.js","/sitemap.xml/route":"app/sitemap.xml/route.js","/_not-found/page":"app/_not-found/page.js","/page":"app/page.js","/[locale]/[...rest]/page":"app/[locale]/[...rest]/page.js"}
