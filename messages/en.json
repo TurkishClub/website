@@ -4,11 +4,12 @@
     "title": "Something went wrong!"
   },
   "IndexPage": {
-    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-    "title": "next-intl example"
+    "description": "Turkish Club Turkish Club, Münih’teki Türk öğrencileri bir araya getirmeyi amaçlayan, üniversite temelli bağımsız bir öğrenci topluluğudur. Kültürel bağlarımızı güçlendirirken yeni gelenlere destek olur, sosyal ve akademik dayanışmayı teşvik ederiz.",
+    "title": "Turkish Club"
   },
   "LocaleLayout": {
-    "title": "next-intl example"
+    "title": "Turkish Club",
+    "description": "Turkish Club is an independent university-based student community that aims to bring together Turkish students in Munich. We strengthen our cultural bonds while supporting newcomers and promoting social and academic solidarity."
   },
   "LocaleSwitcher": {
     "label": "Change language",

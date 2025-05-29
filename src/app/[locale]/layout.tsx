@@ -20,11 +20,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata(props: Omit<Props, 'children'>) {
   const {locale} = await props.params;
-
   const t = await getTranslations({locale, namespace: 'LocaleLayout'});
 
+
   return {
-    title: t('title')
+    title: t('title'),
+    icons: {
+    icon: '/ico.png',
+    shortcut: '/ico.png',
+    apple: '/ico.png',
+  },
   };
 }
 

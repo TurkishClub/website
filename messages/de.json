@@ -4,11 +4,12 @@
     "title": "Etwas ist schief gelaufen!"
   },
   "IndexPage": {
-    "description": "Dies ist ein Beispiel, das die Verwendung von <code>next-intl</code> mit dem Next.js App Router demonstriert. Bei Ändern der Sprache rechts oben ändert sich der Inhalt dieser Seite.",
+    "description": "Turkish Club ist eine unabhängige universitätsbasierte Studentengemeinschaft, die darauf abzielt, türkische Studenten in München zusammenzubringen. Wir stärken unsere kulturellen Bindungen, während wir Neuankömmlinge unterstützen und soziale und akademische Solidarität fördern.",
     "title": "next-intl Beispiel"
   },
   "LocaleLayout": {
-    "title": "next-intl Beispiel"
+    "title": "Turkish Club",
+    "description": "Turkish Club ist eine unabhängige universitätsbasierte Studentengemeinschaft, die darauf abzielt, türkische Studenten in München zusammenzubringen. Wir stärken unsere kulturellen Bindungen, während wir Neuankömmlinge unterstützen und soziale und akademische Solidarität fördern."
   },
   "LocaleSwitcher": {
     "label": "Sprache ändern",
