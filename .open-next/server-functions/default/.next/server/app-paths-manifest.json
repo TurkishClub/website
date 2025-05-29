@@ -4,7 +4,7 @@
   "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/[locale]/[...rest]/page": "app/[locale]/[...rest]/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
   "/[locale]/pathnames/page": "app/[locale]/pathnames/page.js",
-  "/[locale]/page": "app/[locale]/page.js"
+  "/[locale]/[...rest]/page": "app/[locale]/[...rest]/page.js"
 }

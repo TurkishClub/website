@@ -4,7 +4,7 @@
   "/sitemap.xml/route": "/sitemap.xml",
   "/_not-found/page": "/_not-found",
   "/page": "/",
-  "/[locale]/[...rest]/page": "/[locale]/[...rest]",
+  "/[locale]/page": "/[locale]",
   "/[locale]/pathnames/page": "/[locale]/pathnames",
-  "/[locale]/page": "/[locale]"
+  "/[locale]/[...rest]/page": "/[locale]/[...rest]"
 }

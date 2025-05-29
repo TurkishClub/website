@@ -7,7 +7,7 @@
     "test": "pnpm run test:playwright && pnpm run test:jest",
     "test:playwright": "playwright test",
     "test:jest": "jest",
-    "build": "next build",
+    "build": "opennextjs-cloudflare build",
     "start": "next start",
 "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
 "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
