@@ -19,6 +19,16 @@ export default function Home() {
           {t('hero.joinButton')}
         </Button>
       </section>
+      <section className="bg-[#C61E1E] flex flex-col items-center justify-center text-center py-24 px-8">
+        <iframe
+          src="https://lu.ma/embed/event/evt-PUxkTGYj8APSGOV/simple"
+          width="100%"
+          height="800"
+          className="max-w-[600px] sm:max-w-[600px] max-w-[300px] rounded"
+          aria-hidden="false"
+        />
+      </section>
+
 
       <Polling />
       <FAQ />

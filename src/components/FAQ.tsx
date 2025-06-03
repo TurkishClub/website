@@ -13,7 +13,7 @@ export default function FAQ() {
     const questions = t.raw('questions') as Array<{question: string, answer: string}>;
     
     return (
-      <div className="py-16 bg-[#C61E1E]">
+      <div className="py-16 px-6 bg-[#C61E1E]">
         <h2 className="text-5xl font-bold text-center mb-12">{t('title')}</h2>
         
         <div className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden">
