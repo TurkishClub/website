@@ -31,6 +31,23 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/pathnames(?:/)?$"
     },
     {
+      "page": "/[locale]/team",
+      "regex": "^/([^/]+?)/team(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/team(?:/)?$"
+    },
+    {
+      "page": "/[locale]/[slug]",
+      "regex": "^/([^/]+?)/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/[locale]/[...rest]",
       "regex": "^/([^/]+?)/(.+?)(?:/)?$",
       "routeKeys": {

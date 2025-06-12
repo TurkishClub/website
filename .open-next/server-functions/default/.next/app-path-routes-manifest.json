@@ -2,9 +2,11 @@
   "/manifest.webmanifest/route": "/manifest.webmanifest",
   "/sitemap.xml/route": "/sitemap.xml",
   "/robots.txt/route": "/robots.txt",
-  "/page": "/",
   "/_not-found/page": "/_not-found",
+  "/page": "/",
   "/[locale]/[...rest]/page": "/[locale]/[...rest]",
+  "/[locale]/pathnames/page": "/[locale]/pathnames",
   "/[locale]/page": "/[locale]",
-  "/[locale]/pathnames/page": "/[locale]/pathnames"
+  "/[locale]/team/page": "/[locale]/team",
+  "/[locale]/[slug]/page": "/[locale]/[slug]"
 }

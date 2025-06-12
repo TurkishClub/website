@@ -49,7 +49,7 @@ function initRuntime() {
   };
   Object.assign(globalThis, {
     Request: CustomRequest,
-    __BUILD_TIMESTAMP_MS__: 1748782653313,
+    __BUILD_TIMESTAMP_MS__: 1749743325078,
     __NEXT_BASE_PATH__: "",
     // The external middleware will use the convertTo function of the `edge` converter
     // by default it will try to fetch the request, but since we are running everything in the same worker
@@ -76,6 +76,7 @@ function populateProcessEnv(url, env) {
       port: url.port
     }
   });
+  process.env.__NEXT_PRIVATE_ORIGIN = url.origin;
 }
 export {
   runWithCloudflareRequestContext

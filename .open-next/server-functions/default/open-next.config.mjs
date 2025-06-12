@@ -3,7 +3,7 @@ var cloudflareContextSymbol = Symbol.for("__cloudflare-context__");
 
 // node_modules/@opennextjs/cloudflare/dist/api/config.js
 function defineCloudflareConfig(config = {}) {
-  const { incrementalCache, tagCache, queue, cachePurge, enableCacheInterception = false } = config;
+  const { incrementalCache, tagCache, queue, cachePurge, enableCacheInterception = false, routePreloadingBehavior = "none" } = config;
   return {
     default: {
       override: {
@@ -15,7 +15,7 @@ function defineCloudflareConfig(config = {}) {
         queue: resolveQueue(queue),
         cdnInvalidation: resolveCdnInvalidation(cachePurge)
       },
-      routePreloadingBehavior: "withWaitUntil"
+      routePreloadingBehavior
     },
     // node:crypto is used to compute cache keys
     edgeExternals: ["node:crypto"],

@@ -3,6 +3,8 @@ import {setRequestLocale} from 'next-intl/server';
 import {use} from 'react';
 import HomePage from '@/components/HomePage';
 
+
+
 type Props = {
   params: Promise<{locale: Locale}>;
 };
