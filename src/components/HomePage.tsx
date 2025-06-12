@@ -19,7 +19,7 @@ export default function Home() {
           {t('hero.joinButton')}
         </Button>
       </section>
- 
+   
       <Polling />
       <FAQ />
       <Footer />
