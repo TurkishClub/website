@@ -1,5 +1,5 @@
 {
-  "name": "example-app-router",
+  "name": "turkish-club-website",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
