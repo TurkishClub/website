@@ -17,7 +17,7 @@ export default function Navbar() {
           <Link href="https://forms.gle/zvAT7iFKN8PzR5Gb7" className="text-white hover:underline">
            {t('joinTeam')}
           </Link>
-            <LocaleSwitcher />
+          <LocaleSwitcher />
         </div>
       </header>
   )

@@ -174,14 +174,10 @@ export function JobCard({
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.6 }}
                     >
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
+             
                         <Button className="bg-[#C61E1E] hover:bg-[#A01818] text-white transition-colors duration-200">
                           Apply for this position
                         </Button>
-                      </motion.div>
                     </motion.div>
                   </motion.div>
                 )}

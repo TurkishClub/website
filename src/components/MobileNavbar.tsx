@@ -18,13 +18,7 @@ const t = useTranslations('Navbar');
 
       {/* Desktop navigation (hidden on mobile) */}
       <nav className="ml-auto hidden lg:flex gap-6 items-center">
-        <Link
-          href="/team"
-          className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-          prefetch={false}
-        >
-          Team
-        </Link>
+
         <Link
           href="https://www.instagram.com/turkishclub.munich/"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -33,7 +27,7 @@ const t = useTranslations('Navbar');
           Instagram
         </Link>
         <Link
-          href="https://forms.gle/iS1KwY2zUePvcnVS8"
+          href="/team"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           prefetch={false}
         >
