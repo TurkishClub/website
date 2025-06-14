@@ -62,7 +62,7 @@
     "title": "Sıkça Sorulan Sorular",
     "questions": [
     {
-      "question": "What is Turkish Club?",
+      "question": "Turkish Club Nedir?",
       "answer": "Münih Türk Öğrenci Kulübü, Münih'te yaşayan ve öğrenim gören Türk öğrencileri bir araya getiren, öğrenci odaklı bir topluluktur. Temel amacımız; birbirimizi desteklemek, yurtdışında bir aidiyet duygusu oluşturmak ve öğrencileri sosyal, akademik ve kültürel olarak birleştiren etkinlikler düzenlemektir."
     },
     {
@@ -78,6 +78,39 @@
       "answer": "Kulübümüzün temel kuralları saygı, hoşgörü ve birlik beraberlik üzerine kuruludur. Detaylı kurallar için ekibimizle iletişime geçebilirsiniz."
     }
     ]
+  },
+  "team": {
+    "hero": {
+      "title": {
+        "prefix": "Turkish Club'da"
+      },
+      "animate": {
+        "code": "Kodla",
+        "blog": "Blog Yaz",
+        "design": "Tasarım Yap"
+      },
+      "description": "Münih'teki en güçlü Türk topluluğunu kurmamıza yardım edin. Ekibimize katılın ve becerilerinizi geliştirirken anlamlı bir etki yaratın ve harika insanlarla bağlantı kurun."
+    },
+    "positions": {
+      "subtitle": "İş ilanları",
+      "title": "Açık Pozisyonlar",
+      "description": "Ekibimize katılacak yetenekli bireyler arıyoruz. Aşağıda şu anda işe aldığımız rollerden bazıları bulunmaktadır."
+    },
+    "search": {
+      "placeholder": "Pozisyon ara..."
+    },
+    "filter": {
+      "button": "Filtrele",
+      "title": "Pozisyonları Filtrele",
+      "clearAll": "Hepsini temizle",
+      "department": "Departman",
+      "jobType": "İş Türü",
+      "location": "Lokasyon"
+    },
+    "results": {
+      "showing": "{total} pozisyondan {filtered} tanesi gösteriliyor",
+      "noResults": "Kriterlerinize uygun pozisyon bulunamadı."
+    }
   }
 }
 

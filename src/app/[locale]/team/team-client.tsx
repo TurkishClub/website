@@ -8,8 +8,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import MobileNavbar from "@/components/MobileNavbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Target, Heart, Search, X, Filter } from "lucide-react";
+import { Search, X, Filter } from "lucide-react";
 import type { SanityDocument } from "next-sanity";
+import { useTranslations } from 'next-intl';
 
 interface Position {
   _id: string;
@@ -29,10 +30,11 @@ interface TeamPageClientProps {
 }
 
 const AnimatedHero = () => {
+  const t = useTranslations('team');
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
-    () => ["Kodla", "Blog Yaz", "Tasarım Yap"],
-    []
+    () => [t('hero.animate.code'), t('hero.animate.blog'), t('hero.animate.design')],
+    [t]
   );
 
   useEffect(() => {
@@ -88,7 +90,7 @@ const AnimatedHero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-regular">
-              <span className="text-white">Turkish Club&apos;da</span>
+              <span className="text-white">{t('hero.title.prefix')}</span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
                 &nbsp;
                 {titles.map((title, index) => (
@@ -121,33 +123,8 @@ const AnimatedHero = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Help us build the strongest Turkish community in Munich. Join our team and make a meaningful impact 
-              while developing your skills and connecting with amazing people.
+              {t('hero.description')}
             </motion.p>
-          </motion.div>
-          
-          <motion.div 
-            className="flex flex-row gap-3"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button size="lg" className="gap-4 bg-white text-[#C61E1E] hover:bg-gray-100" variant="outline">
-                View Positions <Target className="w-4 h-4" />
-              </Button>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button size="lg" className="gap-4 bg-[#222222] hover:bg-[#333333] text-white">
-                Apply Now <Heart className="w-4 h-4" />
-              </Button>
-            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -156,6 +133,7 @@ const AnimatedHero = () => {
 };
 
 export default function TeamPageClient({ positions }: TeamPageClientProps) {
+  const t = useTranslations('team');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
@@ -227,7 +205,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Job openings
+              {t('positions.subtitle')}
             </motion.p>
             <motion.h2 
               className="text-3xl font-bold text-gray-900 mb-4"
@@ -235,7 +213,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Open Positions
+              {t('positions.title')}
             </motion.h2>
             <motion.p 
               className="text-gray-600 max-w-2xl"
@@ -243,7 +221,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              We are always looking for talented individuals to join our team. Below are some of the roles we are currently hiring for.
+              {t('positions.description')}
             </motion.p>
           </motion.div>
 
@@ -257,7 +235,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
-                placeholder="Search positions..."
+                placeholder={t('search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 transition-all duration-300 focus:scale-[1.02]"
@@ -272,7 +250,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
                 >
                   <Button className="flex items-center gap-2 bg-white text-black hover:bg-gray-200">
                     <Filter className="w-4 h-4" />
-                    Filter
+                    {t('filter.button')}
                     <AnimatePresence>
                       {activeFiltersCount > 0 && (
                         <motion.div
@@ -298,7 +276,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
                   transition={{ duration: 0.2 }}
                 >
                   <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-gray-900">Filter Positions</h3>
+                    <h3 className="font-semibold text-gray-900">{t('filter.title')}</h3>
                     <AnimatePresence>
                       {activeFiltersCount > 0 && (
                         <motion.div
@@ -313,7 +291,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
                             className="text-gray-600 hover:text-gray-900"
                           >
                             <X className="w-4 h-4 mr-1" />
-                            Clear all
+                            {t('filter.clearAll')}
                           </Button>
                         </motion.div>
                       )}
@@ -326,7 +304,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
                   >
-                    <h4 className="text-sm font-medium text-gray-700 mb-3">Department</h4>
+                    <h4 className="text-sm font-medium text-gray-700 mb-3">{t('filter.department')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {departments.map((dept, index) => (
                         <motion.div
@@ -359,7 +337,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.2 }}
                   >
-                    <h4 className="text-sm font-medium text-gray-700 mb-3">Job Type</h4>
+                    <h4 className="text-sm font-medium text-gray-700 mb-3">{t('filter.jobType')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {types.map((type, index) => (
                         <motion.div
@@ -392,7 +370,7 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.3 }}
                   >
-                    <h4 className="text-sm font-medium text-gray-700 mb-3">Location</h4>
+                    <h4 className="text-sm font-medium text-gray-700 mb-3">{t('filter.location')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {locations.map((location, index) => (
                         <motion.div
@@ -431,7 +409,10 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
             transition={{ duration: 0.6, delay: 0.9 }}
           >
             <p className="text-sm text-gray-600">
-              Showing {filteredPositions.length} of {typedPositions.length} positions
+              {t('results.showing', { 
+                filtered: filteredPositions.length.toString(), 
+                total: typedPositions.length.toString() 
+              })}
             </p>
           </motion.div>
 
@@ -481,13 +462,13 @@ export default function TeamPageClient({ positions }: TeamPageClientProps) {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
               >
-                <p className="text-gray-500 mb-4">No positions found matching your criteria.</p>
+                <p className="text-gray-500 mb-4">{t('results.noResults')}</p>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button variant="outline" onClick={clearAllFilters}>
-                    Clear all filters
+                    {t('filter.clearAll')}
                   </Button>
                 </motion.div>
               </motion.div>

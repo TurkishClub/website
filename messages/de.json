@@ -64,20 +64,53 @@
     "questions": [
     {
       "question": "Was ist Turkish Club?",
-      "answer": "Münih Türk Öğrenci Kulübü, Münih'te yaşayan ve öğrenim gören Türk öğrencileri bir araya getiren, öğrenci odaklı bir topluluktur. Temel amacımız; birbirimizi desteklemek, yurtdışında bir aidiyet duygusu oluşturmak ve öğrencileri sosyal, akademik ve kültürel olarak birleştiren etkinlikler düzenlemektir."
+      "answer": "Der Münchener Türkische Studentenclub ist eine studentenorientierte Gemeinschaft, die türkische Studenten, die in München leben und studieren, zusammenbringt. Unser Hauptziel ist es, uns gegenseitig zu unterstützen, ein Gefühl der Zugehörigkeit im Ausland zu schaffen und Veranstaltungen zu organisieren, die Studenten sozial, akademisch und kulturell vereinen."
     },
     {
-      "question": "Kulüp sadece üniversite öğrencileri için mi?",
-      "answer": "Hayır, kulübümüz sadece üniversite öğrencileri için değildir. Münih'te yaşayan tüm Türk gençleri ve öğrenciler aramıza katılabilir."
+      "question": "Ist der Club nur für Universitätsstudenten?",
+      "answer": "Nein, unser Club ist nicht nur für Universitätsstudenten. Alle türkischen Jugendlichen und Studenten, die in München leben, können sich uns anschließen."
     },
     {
-      "question": "Ne tür etkinlikler düzenliyorsunuz?",
-      "answer": "Kültürel etkinlikler, sosyal buluşmalar, akademik seminerler, spor aktiviteleri ve çeşitli kutlamalar düzenliyoruz."
+      "question": "Welche Art von Veranstaltungen organisieren Sie?",
+      "answer": "Wir organisieren kulturelle Veranstaltungen, soziale Treffen, akademische Seminare, Sportaktivitäten und verschiedene Feiern."
     },
     {
-      "question": "Turkish Club'ın kuralları nedir ?",
-      "answer": "Kulübümüzün temel kuralları saygı, hoşgörü ve birlik beraberlik üzerine kuruludur. Detaylı kurallar için ekibimizle iletişime geçebilirsiniz."
+      "question": "Was sind die Regeln des Turkish Club?",
+      "answer": "Die Grundregeln unseres Clubs basieren auf Respekt, Toleranz und Einheit. Für detaillierte Regeln können Sie sich an unser Team wenden."
     }
     ]
+  },
+  "team": {
+    "hero": {
+      "title": {
+        "prefix": "Bei Turkish Club"
+      },
+      "animate": {
+        "code": "Programmiere",
+        "blog": "Schreibe Blog",
+        "design": "Designe"
+      },
+      "description": "Hilf uns dabei, die stärkste türkische Gemeinschaft in München aufzubauen. Tritt unserem Team bei und schaffe einen bedeutsamen Einfluss, während du deine Fähigkeiten entwickelst und dich mit großartigen Menschen vernetzt."
+    },
+    "positions": {
+      "subtitle": "Stellenausschreibungen",
+      "title": "Offene Stellen",
+      "description": "Wir suchen immer nach talentierten Personen, die unserem Team beitreten möchten. Unten sind einige der Positionen, für die wir derzeit rekrutieren."
+    },
+    "search": {
+      "placeholder": "Positionen suchen..."
+    },
+    "filter": {
+      "button": "Filtern",
+      "title": "Positionen Filtern",
+      "clearAll": "Alle löschen",
+      "department": "Abteilung",
+      "jobType": "Stellentyp",
+      "location": "Standort"
+    },
+    "results": {
+      "showing": "{filtered} von {total} Positionen werden angezeigt",
+      "noResults": "Keine Positionen gefunden, die Ihren Kriterien entsprechen."
+    }
   }
 }

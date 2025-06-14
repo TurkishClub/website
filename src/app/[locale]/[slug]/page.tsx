@@ -2,8 +2,10 @@ import { PortableText, type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity/client";
-import { Link } from '@/i18n/navigation'; // UPDATED: Use locale-aware Link
 import { notFound } from "next/navigation";
+import MobileNavbar from "@/components/MobileNavbar";
+import Image from 'next/image';
+
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -32,32 +34,57 @@ export default async function PostPage({
     : null;
 
   return (
-    <main className="bg-[#C61E1E] text-white flex-1 py-8 md:py-12"> {/* UPDATED: Styling for main area */}
-      <div className="container mx-auto max-w-3xl px-4 md:px-6 lg:px-8 flex flex-col gap-6 md:gap-8"> {/* UPDATED: Content container */}
-        <Link href="/" className="text-gray-200 hover:text-white hover:underline self-start text-sm md:text-base">
-          ← Back to posts
-        </Link>
-        {postImageUrl && (
-          <div className="w-full">
-            <img
-              src={postImageUrl}
-              alt={post.title || 'Post image'}
-              className="aspect-video rounded-lg object-cover w-full shadow-xl" // UPDATED: Enhanced image styling
-              width="800" // Corresponds to urlFor width
-              height="450" // Corresponds to urlFor height
-            />
+    <main className="bg-[#C61E1E] text-white">
+      <MobileNavbar />
+      <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+        <div className="flex gap-8">
+          
+          <div className="flex-1">
+            {/* Read time and Date */}
+            <div className="text-center mb-8 pt-8">
+              <span className="text-gray-300 text-sm">
+                10 min read | {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                }) : 'May 18, 2025'}
+              </span>
+            </div>
+
+            {/* Title */}
+            <div className="text-center mb-8">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight max-w-4xl mx-auto">
+                {post.title}
+              </h1>
+            </div>
+            
+            {/* Description */}
+            <div className="text-center mb-12">
+              <p className="text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
+                The best blog is one that captivates readers with engaging, 
+                well-researched content presented in a clear and relatable way.
+              </p>
+            </div>
+
+            {/* Featured Image */}
+            {postImageUrl && (
+              <div className="w-full mb-12">
+                <Image
+                  src={postImageUrl}
+                  alt={post.title || 'Post image'}
+                  className="rounded-lg w-full"
+                  width={800}
+                  height={450}
+                  priority
+                />
+              </div>
+            )}
+
+            {/* Content */}
+            <div className="prose prose-invert prose-lg max-w-none mb-16">
+              {Array.isArray(post.body) && <PortableText value={post.body} />}
+            </div>
           </div>
-        )}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold !leading-tight mt-2"> {/* UPDATED: Title styling */}
-          {post.title}
-        </h1>
-        <div className="prose prose-invert max-w-none text-base md:text-lg lg:text-xl"> {/* UPDATED: Prose styling */}
-          {post.publishedAt && (
-            <p className="text-sm text-gray-300 !mt-0 !mb-4"> {/* Ensure date is styled distinctly */}
-              Published: {new Date(post.publishedAt).toLocaleDateString()}
-            </p>
-          )}
-          {Array.isArray(post.body) && <PortableText value={post.body} />}
         </div>
       </div>
     </main>
