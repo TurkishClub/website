@@ -1,29 +1,35 @@
 'use client';
 
-import clsx from 'clsx';
 import {useParams} from 'next/navigation';
 import {Locale} from 'next-intl';
-import {ChangeEvent, ReactNode, useTransition} from 'react';
+import {useTransition} from 'react';
 import {usePathname, useRouter} from '@/i18n/navigation';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type Props = {
-  children: ReactNode;
   defaultValue: string;
   label: string;
+  options: Array<{value: string; label: string}>;
 };
 
 export default function LocaleSwitcherSelect({
-  children,
   defaultValue,
-  label
+  label,
+  options
 }: Props) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const params = useParams();
 
-  function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
-    const nextLocale = event.target.value as Locale;
+  function onValueChange(value: string) {
+    const nextLocale = value as Locale;
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- TypeScript will validate that only known `params`
@@ -36,22 +42,23 @@ export default function LocaleSwitcherSelect({
   }
 
   return (
-    <label
-      className={clsx(
-        'relative text-gray-100 text-bold',
-        isPending && 'transition-opacity [&:disabled]:opacity-30'
-      )}
-    >
-      <p className="sr-only">{label}</p>
-      <select
-        className="inline-flex appearance-none bg-transparent py-3 pl-2 pr-6"
+    <div className={isPending ? 'opacity-30 transition-opacity' : ''}>
+      <Select
         defaultValue={defaultValue}
+        onValueChange={onValueChange}
         disabled={isPending}
-        onChange={onSelectChange}
       >
-        {children}
-      </select>
-      <span className="pointer-events-none absolute right-2 top-[8px]">⌄</span>
-    </label>
+        <SelectTrigger className="w-auto bg-transparent border-none text-gray-100 font-bold">
+          <SelectValue aria-label={label} />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }

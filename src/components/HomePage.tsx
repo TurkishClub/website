@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
-import Polling from "@/components/Polling";
 import MobileNavbar from "@/components/MobileNavbar";
 import { useTranslations } from 'next-intl';
 export default function Home() {
@@ -29,11 +28,8 @@ export default function Home() {
           aria-hidden="false"
         />
       </section>
-   
-      <Polling />
       <FAQ />
       <Footer />
-
     </main>
   );
 }
