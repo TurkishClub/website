@@ -31,6 +31,14 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/blog(?:/)?$"
     },
     {
+      "page": "/[locale]/ev-arama",
+      "regex": "^/([^/]+?)/ev\\-arama(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/ev\\-arama(?:/)?$"
+    },
+    {
       "page": "/[locale]/pathnames",
       "regex": "^/([^/]+?)/pathnames(?:/)?$",
       "routeKeys": {

@@ -18,9 +18,9 @@
     ]
   },
   "../node_modules/@sanity/next-loader/dist/client-components/live.js -> ../_chunks-es/PresentationComlink.js": {
-    "id": 27562,
+    "id": 10002,
     "files": [
-      "static/chunks/562.6a074b627e982ca3.js"
+      "static/chunks/2.11a082feb86ac20c.js"
     ]
   },
   "../node_modules/@sanity/next-loader/dist/client-components/live.js -> ../_chunks-es/RefreshOnFocus.js": {
@@ -54,8 +54,22 @@
       "static/chunks/c0e7568e.1d67a7258162a8c9.js",
       "static/chunks/3204862b.ca72e257086057da.js",
       "static/chunks/299-b845e32a42943e70.js",
-      "static/chunks/1.2b87f28d7d4b9c12.js",
-      "static/chunks/33.874a6d0ffeebd5c3.js"
+      "static/chunks/1.fdacd98dce134083.js",
+      "static/chunks/876.94b00e7724671b4e.js"
+    ]
+  },
+  "components/DormMapLeaflet.tsx -> react-leaflet": {
+    "id": 59712,
+    "files": [
+      "static/chunks/712.7c7bc022cbdd3faf.js"
+    ]
+  },
+  "components/DormSearchPage.tsx -> @/components/DormMapLeaflet": {
+    "id": 23343,
+    "files": [
+      "static/css/55693049b062c6a3.css",
+      "static/chunks/d0deef33.c3b215782428e498.js",
+      "static/chunks/343.c6dbef4c871807c6.js"
     ]
   }
 }

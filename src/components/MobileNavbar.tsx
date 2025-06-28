@@ -18,7 +18,13 @@ const t = useTranslations('Navbar');
 
       {/* Desktop navigation (hidden on mobile) */}
       <nav className="ml-auto hidden lg:flex gap-6 items-center">
-
+        <Link
+          href="/ev-arama"
+          className="hidden group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+          prefetch={false}
+        >
+          Yurt Arama
+        </Link>
         <Link
           href="https://www.instagram.com/turkishclub.munich/"
           className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-white focus:bg-white/10 text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -49,6 +55,9 @@ const t = useTranslations('Navbar');
         <div className="text-white font-bold text-xl">Turkish Club</div>
           </Link>
           <div className="grid gap-2 py-6">
+            <Link href="/ev-arama" className="flex w-full items-center py-2 text-lg font-semibold hover:bg-white/10 rounded-md px-2 transition-colors" prefetch={false}>
+              Yurt Arama
+            </Link>
             <Link href="/team" className="flex w-full items-center py-2 text-lg font-semibold hover:bg-white/10 rounded-md px-2 transition-colors" prefetch={false}>
               Team
             </Link>

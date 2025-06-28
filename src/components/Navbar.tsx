@@ -11,6 +11,9 @@ export default function Navbar() {
       <header className="flex justify-between items-center p-4 bg-[#C61E1E]">
         <div className="text-white font-bold text-xl">Turkish Club</div>
         <div className="flex gap-4 justify-center items-center">
+          <Link href="/ev-arama" className="text-white hover:underline">
+            {t('dormSearch')}
+          </Link>
           <Link href="https://www.instagram.com/turkishclub.munich/" className="text-white hover:underline">
             Instagram
           </Link>

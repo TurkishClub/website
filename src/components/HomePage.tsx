@@ -19,15 +19,6 @@ export default function Home() {
         </Button>
       </section>
 
-         <section className="bg-[#C61E1E] flex flex-col items-center justify-center text-center py-24 px-8">
-        <iframe
-          src="https://lu.ma/embed/event/evt-1GnWKppU6q8Y3AE/simple"
-          width="100%"
-          height="750"
-          className=" sm:max-w-[600px] max-w-[300px] rounded"
-          aria-hidden="false"
-        />
-      </section>
       <FAQ />
       <Footer />
     </main>

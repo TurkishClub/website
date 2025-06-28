@@ -1,13 +1,14 @@
 {
   "/manifest.webmanifest/route": "/manifest.webmanifest",
-  "/sitemap.xml/route": "/sitemap.xml",
   "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
   "/_not-found/page": "/_not-found",
   "/page": "/",
   "/[locale]/[...rest]/page": "/[locale]/[...rest]",
   "/[locale]/[slug]/page": "/[locale]/[slug]",
-  "/[locale]/blog/page": "/[locale]/blog",
   "/[locale]/page": "/[locale]",
-  "/[locale]/pathnames/page": "/[locale]/pathnames",
-  "/[locale]/team/page": "/[locale]/team"
+  "/[locale]/blog/page": "/[locale]/blog",
+  "/[locale]/ev-arama/page": "/[locale]/ev-arama",
+  "/[locale]/team/page": "/[locale]/team",
+  "/[locale]/pathnames/page": "/[locale]/pathnames"
 }

@@ -56,7 +56,8 @@
 }
 ,
   "Navbar": {
-    "joinTeam": "Takıma Katıl"
+    "joinTeam": "Takıma Katıl",
+    "dormSearch": "Yurt Arama"
   },
   "FAQ" : {
     "title": "Sıkça Sorulan Sorular",
@@ -78,6 +79,63 @@
       "answer": "Kulübümüzün temel kuralları saygı, hoşgörü ve birlik beraberlik üzerine kuruludur. Detaylı kurallar için ekibimizle iletişime geçebilirsiniz."
     }
     ]
+  },
+  "dormSearch": {
+    "title": "Yurt Arama",
+    "subtitle": "Münih'teki Türk öğrenciler için yurt seçenekleri",
+    "description": "Münih'te öğrenim gören Türk öğrencilerin başvurabileceği yurtları keşfedin. Fiyat, konum ve özelliklere göre filtreleyin.",
+    "search": {
+      "placeholder": "Yurt adı veya adres ara...",
+      "button": "Ara"
+    },
+    "filters": {
+      "title": "Filtreler",
+      "priceRange": "Fiyat Aralığı",
+      "maxPrice": "Maksimum Fiyat",
+      "location": "Konum",
+      "features": "Özellikler",
+      "clearAll": "Tümünü Temizle",
+      "apply": "Uygula"
+    },
+    "sort": {
+      "label": "Sıralama",
+      "price_asc": "Fiyat (Düşükten Yükseğe)",
+      "price_desc": "Fiyat (Yüksekten Düşüğe)",
+      "name": "İsim (A-Z)",
+      "distance": "Mesafe"
+    },
+    "card": {
+      "rent": "Kira",
+      "monthly": "aylık",
+      "address": "Adres",
+      "website": "Web Sitesi",
+      "visitWebsite": "Web Sitesini Ziyaret Et",
+      "viewOnMap": "Haritada Göster",
+      "applyNow": "Başvur",
+      "features": "Özellikler",
+      "requirements": "Başvuru Koşulları",
+      "waitingTime": "Bekleme Süresi",
+      "university": {
+        "gfz": "GFZ",
+        "mainCampus": "Stammgelände",
+        "minutes": "dk"
+      }
+    },
+    "map": {
+      "title": "Harita Görünümü",
+      "showList": "Liste Görünümü",
+      "showMap": "Harita Görünümü",
+      "popup": {
+        "moreInfo": "Daha Detaylı Bilgi Al",
+        "visitWebsite": "Websitesine Git",
+        "getDirections": "Yol Tarifi Al"
+      }
+    },
+    "results": {
+      "showing": "{total} yurttan {filtered} tanesi gösteriliyor",
+      "noResults": "Arama kriterlerinize uygun yurt bulunamadı.",
+      "foundResults": "{count} yurt bulundu"
+    }
   },
   "team": {
     "hero": {

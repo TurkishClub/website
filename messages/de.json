@@ -57,7 +57,8 @@
   }
   ,
     "Navbar": {
-    "joinTeam": "Team beitreten"
+    "joinTeam": "Team beitreten",
+    "dormSearch": "Wohnheimsuche"
   },
   "FAQ" : {
     "title": "FAQ",
@@ -79,6 +80,63 @@
       "answer": "Die Grundregeln unseres Clubs basieren auf Respekt, Toleranz und Einheit. Für detaillierte Regeln können Sie sich an unser Team wenden."
     }
     ]
+  },
+  "dormSearch": {
+    "title": "Wohnheimsuche",
+    "subtitle": "Wohnoptionen für türkische Studenten in München",
+    "description": "Entdecken Sie Wohnheime und Studentenwohnungen, auf die türkische Studenten in München sich bewerben können. Filtern Sie nach Preis, Lage und Ausstattung.",
+    "search": {
+      "placeholder": "Wohnheim oder Adresse suchen...",
+      "button": "Suchen"
+    },
+    "filters": {
+      "title": "Filter",
+      "priceRange": "Preisbereich",
+      "maxPrice": "Höchstpreis",
+      "location": "Standort",
+      "features": "Ausstattung",
+      "clearAll": "Alle löschen",
+      "apply": "Anwenden"
+    },
+    "sort": {
+      "label": "Sortieren nach",
+      "price_asc": "Preis (Niedrig zu Hoch)",
+      "price_desc": "Preis (Hoch zu Niedrig)",
+      "name": "Name (A-Z)",
+      "distance": "Entfernung"
+    },
+    "card": {
+      "rent": "Miete",
+      "monthly": "monatlich",
+      "address": "Adresse",
+      "website": "Website",
+      "visitWebsite": "Website besuchen",
+      "viewOnMap": "Auf Karte anzeigen",
+      "applyNow": "Jetzt bewerben",
+      "features": "Ausstattung",
+      "requirements": "Bewerbungsvoraussetzungen",
+      "waitingTime": "Wartezeit",
+      "university": {
+        "gfz": "GFZ",
+        "mainCampus": "Stammgelände",
+        "minutes": "Min"
+      }
+    },
+    "map": {
+      "title": "Kartenansicht",
+      "showList": "Listenansicht",
+      "showMap": "Kartenansicht",
+      "popup": {
+        "moreInfo": "Weitere Details",
+        "visitWebsite": "Website besuchen",
+        "getDirections": "Route anzeigen"
+      }
+    },
+    "results": {
+      "showing": "{filtered} von {total} Wohnheimen angezeigt",
+      "noResults": "Keine Wohnheime gefunden, die Ihren Suchkriterien entsprechen.",
+      "foundResults": "{count} Wohnheime gefunden"
+    }
   },
   "team": {
     "hero": {

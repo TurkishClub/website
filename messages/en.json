@@ -56,7 +56,8 @@
     }
   },
     "Navbar": {
-    "joinTeam": "Join Team"
+    "joinTeam": "Join Team",
+    "dormSearch": "Dorm Search"
   },
   
   "FAQ" : {
@@ -79,6 +80,63 @@
       "answer": "Our club's basic rules are built on respect, tolerance, and unity. For detailed rules, you can contact our team."
     }
     ]
+  },
+  "dormSearch": {
+    "title": "Dorm Search",
+    "subtitle": "Student housing options for Turkish students in Munich",
+    "description": "Discover dormitories and student housing that Turkish students in Munich can apply to. Filter by price, location, and features.",
+    "search": {
+      "placeholder": "Search dorm name or address...",
+      "button": "Search"
+    },
+    "filters": {
+      "title": "Filters",
+      "priceRange": "Price Range",
+      "maxPrice": "Maximum Price",
+      "location": "Location",
+      "features": "Features",
+      "clearAll": "Clear All",
+      "apply": "Apply"
+    },
+    "sort": {
+      "label": "Sort by",
+      "price_asc": "Price (Low to High)",
+      "price_desc": "Price (High to Low)",
+      "name": "Name (A-Z)",
+      "distance": "Distance"
+    },
+    "card": {
+      "rent": "Rent",
+      "monthly": "monthly",
+      "address": "Address",
+      "website": "Website",
+      "visitWebsite": "Visit Website",
+      "viewOnMap": "View on Map",
+      "applyNow": "Apply Now",
+      "features": "Features",
+      "requirements": "Application Requirements",
+      "waitingTime": "Waiting Time",
+      "university": {
+        "gfz": "GFZ",
+        "mainCampus": "Main Campus",
+        "minutes": "min"
+      }
+    },
+    "map": {
+      "title": "Map View",
+      "showList": "List View",
+      "showMap": "Map View",
+      "popup": {
+        "moreInfo": "More Details",
+        "visitWebsite": "Visit Website",
+        "getDirections": "Get Directions"
+      }
+    },
+    "results": {
+      "showing": "Showing {filtered} of {total} dorms",
+      "noResults": "No dorms found matching your search criteria.",
+      "foundResults": "{count} dorms found"
+    }
   },
   "team": {
     "hero": {
