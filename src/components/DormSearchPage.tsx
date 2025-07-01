@@ -51,8 +51,11 @@ export function DormSearchPage() {
       }
 
       // Price filter
-      if (filters.maxPrice && dorm.rent > filters.maxPrice) {
-        return false;
+      if (filters.maxPrice) {
+        const rentToCheck = Array.isArray(dorm.rent) ? dorm.rent[0] : dorm.rent;
+        if (rentToCheck > filters.maxPrice) {
+          return false;
+        }
       }
 
       // Location filter
@@ -80,10 +83,18 @@ export function DormSearchPage() {
     // Sort
     switch (filters.sortBy) {
       case "price_asc":
-        filtered.sort((a, b) => a.rent - b.rent);
+        filtered.sort((a, b) => {
+          const aRent = Array.isArray(a.rent) ? a.rent[0] : a.rent;
+          const bRent = Array.isArray(b.rent) ? b.rent[0] : b.rent;
+          return aRent - bRent;
+        });
         break;
       case "price_desc":
-        filtered.sort((a, b) => b.rent - a.rent);
+        filtered.sort((a, b) => {
+          const aRent = Array.isArray(a.rent) ? a.rent[0] : a.rent;
+          const bRent = Array.isArray(b.rent) ? b.rent[0] : b.rent;
+          return bRent - aRent;
+        });
         break;
       case "distance":
         filtered.sort((a, b) => a.distanceToGFZ - b.distanceToGFZ);
