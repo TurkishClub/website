@@ -71,7 +71,7 @@
     "whatsapp": "WhatsApp",
     "whatsappDesc": "Community Chat Gruppe",
     "dormSearch": "Wohnheimsuche",
-    "dormSearchDesc": "Seite, auf der wir Wohnheime für Wohnungssuchende in München organisieren (Preise sind Schätzungen)",
+    "dormSearchDesc": "Seite, auf der wir Wohnheime für Wohnungssuchende in München organisieren",
     "blog": "Blog",
     "blogDesc": "Neueste Artikel und Nachrichten",
     "team": "Team",
@@ -125,6 +125,7 @@
     "card": {
       "rent": "Miete",
       "monthly": "monatlich",
+      "monthlyPrice": "monatlich",
       "address": "Adresse",
       "website": "Website",
       "visitWebsite": "Website besuchen",

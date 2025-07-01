@@ -73,7 +73,7 @@ declare const messages: {
     "whatsapp": "WhatsApp",
     "whatsappDesc": "Community chat group",
     "dormSearch": "Dorm Search",
-    "dormSearchDesc": "Page where we organize dormitories for those seeking housing in Munich (prices are estimates)",
+    "dormSearchDesc": "Page where we organize dormitories for those seeking housing in Munich.",
     "blog": "Blog",
     "blogDesc": "Latest articles and news",
     "team": "Team",
@@ -128,6 +128,7 @@ declare const messages: {
     "card": {
       "rent": "Rent",
       "monthly": "monthly",
+      "monthlyPrice": "monthly",
       "address": "Address",
       "website": "Website",
       "visitWebsite": "Visit Website",

@@ -124,6 +124,7 @@
     "card": {
       "rent": "Kira",
       "monthly": "aylık",
+      "monthlyPrice": "aylık",
       "address": "Adres",
       "website": "Web Sitesi",
       "visitWebsite": "Web Sitesini Ziyaret Et",

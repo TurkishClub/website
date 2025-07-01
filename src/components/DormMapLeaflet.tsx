@@ -162,7 +162,10 @@ export function DormMapLeaflet({ dorms, selectedDorm, onDormSelect }: DormMapPro
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Badge className="bg-[#C61E1E] text-white">
-                    €{Math.floor(selectedDorm.rent / 100) * 100}-€{Math.ceil(selectedDorm.rent / 100) * 100} aylık tahmini
+                    {Array.isArray(selectedDorm.rent) 
+                      ? `€${selectedDorm.rent[0]}-€${selectedDorm.rent[1]}` 
+                      : `€${selectedDorm.rent}`
+                    } aylık
                   </Badge>
                 </div>
               </div>

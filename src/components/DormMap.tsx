@@ -118,7 +118,10 @@ export function DormMap({ dorms, selectedDorm, onDormSelect }: DormMapProps) {
                       ? 'bg-red-600 text-white'
                       : 'bg-white text-gray-800 border border-gray-300'
                   }`}>
-                    €{dorm.rent}
+                    {Array.isArray(dorm.rent) 
+                      ? `€${dorm.rent[0]}-${dorm.rent[1]}` 
+                      : `€${dorm.rent}`
+                    }
                   </div>
                 </div>
               );
@@ -144,7 +147,10 @@ export function DormMap({ dorms, selectedDorm, onDormSelect }: DormMapProps) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Badge className="bg-[#C61E1E] text-white">
-                    €{Math.floor(selectedDorm.rent / 100) * 100}-€{Math.ceil(selectedDorm.rent / 100) * 100} aylık tahmini
+                    {Array.isArray(selectedDorm.rent) 
+                      ? `€${selectedDorm.rent[0]}-€${selectedDorm.rent[1]}` 
+                      : `€${selectedDorm.rent}`
+                    } aylık
                   </Badge>
                 </div>
                 <Button

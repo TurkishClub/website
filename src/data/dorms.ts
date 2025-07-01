@@ -3,7 +3,7 @@ export interface Dorm {
   name: string;
   organization: string;
   address: string;
-  rent: number;
+  rent: number | [number, number]; // single price or price range [min, max]
   website: string;
   coordinates: {
     lat: number;
@@ -24,7 +24,7 @@ export const mockDorms: Dorm[] = [
     name: "Apian Aparthaus",
     organization: "Apian",
     address: "Apianstraße 7, 85774 Unterföhring",
-    rent: 1000,
+    rent: [800, 1200],
     website: "https://apian-aparthaus.de/",
     coordinates: {
       lat: 48.1886,
@@ -96,7 +96,7 @@ export const mockDorms: Dorm[] = [
     name: "Irrenhauser & Seitz Markt Schwaben",
     organization: "Irrenhauser & Seitz",
     address: "Enzensbergerstraße 8, 85570 Markt Schwaben",
-    rent: 700,
+    rent: [550,850],
     website: "https://www.irrenhauser-seitz.de/project/mietwohnung-markt-schwaben-enzensberger-strasse-8/",
     coordinates: {
       lat: 48.1944,
@@ -143,7 +143,7 @@ export const mockDorms: Dorm[] = [
     name: "Stadt Dachau Studentenwohnheim",
     organization: "Stadt Dachau",
     address: "Max-Mannheimer Platz 4, 85221 Dachau",
-    rent: 330,
+    rent: [290,370],
     website: "https://studentenwohnheim-dachau.de",
     coordinates: {
       lat: 48.2583,
@@ -167,7 +167,7 @@ export const mockDorms: Dorm[] = [
     name: "Studentenhaus Domino",
     organization: "Domino",
     address: "u. Straßäcker 21, 85748 Garching bei München",
-    rent: 602,
+    rent: [520,685],
     website: "http://www.studentenhaus-domino.de/startseite.htm",
     coordinates: {
       lat: 48.2576,
@@ -186,34 +186,11 @@ export const mockDorms: Dorm[] = [
     applicationMethod: "Posta ile başvuru"
   },
   {
-    id: "8",
-    name: "TUM Wohnungsbörse",
-    organization: "TUM",
-    address: "TUM Kampüsü, Various Locations, München",
-    rent: 600,
-    website: "https://living.tum.de/listings?viewMode=list",
-    coordinates: {
-      lat: 48.1497,
-      lng: 11.5675
-    },
-    distanceToGFZ: 30,
-    distanceToMainCampus: 10,
-    description: "TUM çalışanlarının, öğrencilerinin ve ilişkili kişilerin ilan açmasına ve ilanlara bakmasına olanak sağlayan oluşum. TUM onaylı olduğu için insanın kaygılarını azaltıyor. TUM ile ilişkiniz yoksa bile bir arkadaşınız üzerinden ilanlara bakabilirsiniz.",
-    features: [
-      "TUM onaylı",
-      "Güvenilir ilanlar",
-      "Çeşitli seçenekler",
-      "Üniversite bağlantısı"
-    ],
-    roomTypes: ["WG", "Stüdyo", "Apartman"],
-    applicationMethod: "TUM hesabı ile online"
-  },
-  {
     id: "9",
     name: "Unity Alpha",
     organization: "Wohnen-in-Bayern",
     address: "Josef-Wirth-Weg 21, 80939 München",
-    rent: 685,
+    rent: [620,750],
     website: "https://wohnen-in-bayern.com/en",
     coordinates: {
       lat: 48.2142,
@@ -237,7 +214,7 @@ export const mockDorms: Dorm[] = [
     name: "Unity Beta",
     organization: "Wohnen-in-Bayern",
     address: "Freisinger Landstraße 86-90, 80939 München",
-    rent: 676,
+    rent: [642,710],
     website: "https://wohnen-in-bayern.com/en",
     coordinates: {
       lat: 48.2158,
@@ -261,7 +238,7 @@ export const mockDorms: Dorm[] = [
     name: "UNIKUM",
     organization: "Wohnen-in-Bayern",
     address: "Lochhamer Str. 7, 82152 Planegg",
-    rent: 648,
+    rent: [633,663],
     website: "https://wohnen-in-bayern.com/en",
     coordinates: {
       lat: 48.1086,
@@ -285,7 +262,7 @@ export const mockDorms: Dorm[] = [
     name: "WOB Immobilien - Karl-Marx Ring 46 (Home Base München)",
     organization: "WOB Immobilien",
     address: "Karl-Marx-Ring 46, 81735 München",
-    rent: 600,
+    rent: [570,630],
     website: "https://projekte.wobimmo.com/home-base-muenchen/units",
     coordinates: {
       lat: 48.1125,
@@ -309,7 +286,7 @@ export const mockDorms: Dorm[] = [
     name: "Zimmerei",
     organization: "Die Zimmerei",
     address: "Resi-Huber-Platz 1, 81371 München",
-    rent: 950,
+    rent: [800, 1100],
     website: "https://zimmerei.apartments/wohnung-mieten-muenchen/",
     coordinates: {
       lat: 48.1158,

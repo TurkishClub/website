@@ -51,7 +51,10 @@ export function DormCard({ dorm, onViewOnMap }: DormCardProps) {
         <div className="flex items-center justify-between">
           <div className="text-right">
             <div className="text-lg font-bold text-[#C61E1E]">
-              €{Math.floor(dorm.rent / 100) * 100} - €{(Math.floor(dorm.rent / 100) + 1) * 100} <span className="text-sm text-gray-500 font-normal">aylık tahmini</span>
+              {Array.isArray(dorm.rent) 
+                ? `€${dorm.rent[0]} - €${dorm.rent[1]}` 
+                : `€${dorm.rent}`
+              } <span className="text-sm text-gray-500 font-normal">{t("monthlyPrice")}</span>
             </div>
           </div>
         </div>
