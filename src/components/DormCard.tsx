@@ -50,7 +50,7 @@ export function DormCard({ dorm, onViewOnMap }: DormCardProps) {
         {/* Price */}
         <div className="flex items-center justify-between">
           <div className="text-right">
-            <div className="text-lg font-bold text-[#C61E1E]">
+            <div className="text-lg font-bold text-black">
               {Array.isArray(dorm.rent) 
                 ? `€${dorm.rent[0]} - €${dorm.rent[1]}` 
                 : `€${dorm.rent}`
