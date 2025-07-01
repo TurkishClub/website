@@ -57,7 +57,24 @@
   },
     "Navbar": {
     "joinTeam": "Join Team",
-    "dormSearch": "Dorm Search"
+    "platforms": "Platforms",
+    "platformsDesc": "Our social media accounts",
+    "tools": "Tools",
+    "toolsDesc": "Useful tools and resources",
+    "pages": "Pages",
+    "pagesDesc": "About us and content",
+    "instagram": "Instagram",
+    "instagramDesc": "Latest posts and events",
+    "github": "GitHub",
+    "githubDesc": "Our open source projects",
+    "whatsapp": "WhatsApp",
+    "whatsappDesc": "Community chat group",
+    "dormSearch": "Dorm Search",
+    "dormSearchDesc": "Page where we organize dormitories for those seeking housing in Munich (prices are estimates)",
+    "blog": "Blog",
+    "blogDesc": "Latest articles and news",
+    "team": "Team",
+    "teamDesc": "Our team and open positions"
   },
   
   "FAQ" : {
@@ -112,10 +129,11 @@
       "website": "Website",
       "visitWebsite": "Visit Website",
       "viewOnMap": "View on Map",
+      "moreInfo": "More Details",
       "applyNow": "Apply Now",
       "features": "Features",
-      "requirements": "Application Requirements",
-      "waitingTime": "Waiting Time",
+      "showLess": "Show Less",
+      "readMore": "Read More",
       "university": {
         "gfz": "GFZ",
         "mainCampus": "Main Campus",
@@ -126,6 +144,7 @@
       "title": "Map View",
       "showList": "List View",
       "showMap": "Map View",
+      "showingLocations": "Showing {count} dorm locations",
       "popup": {
         "moreInfo": "More Details",
         "visitWebsite": "Visit Website",
@@ -135,7 +154,8 @@
     "results": {
       "showing": "Showing {filtered} of {total} dorms",
       "noResults": "No dorms found matching your search criteria.",
-      "foundResults": "{count} dorms found"
+      "foundResults": "{count} dorms found",
+      "adjustFilters": "Try adjusting your search criteria."
     }
   },
   "team": {
@@ -169,6 +189,35 @@
     "results": {
       "showing": "Showing {filtered} of {total} positions",
       "noResults": "No positions found matching your criteria."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Stay updated with the latest news, insights, and stories from the Turkish community.",
+    "search": {
+      "placeholder": "Search blog posts...",
+      "button": "Search"
+    },
+    "filters": {
+      "all": "All",
+      "recent": "Recent Posts",
+      "popular": "Popular"
+    },
+    "readTime": "min read",
+    "readMore": "Read More",
+    "noResults": "No blog posts found matching your search criteria.",
+    "loading": "Loading...",
+    "results": {
+      "showing": "Showing {count} articles",
+      "noArticles": "No articles found",
+      "noResultsFor": "No results for \"{searchTerm}\"",
+      "adjustFilters": "Try adjusting your search or filter criteria",
+      "clearFilters": "Clear Filters"
+    },
+    "sort": {
+      "newest": "Newest First",
+      "oldest": "Oldest First",
+      "popular": "Most Popular"
     }
   }
 }

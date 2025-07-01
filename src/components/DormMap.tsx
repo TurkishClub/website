@@ -144,10 +144,7 @@ export function DormMap({ dorms, selectedDorm, onDormSelect }: DormMapProps) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Badge className="bg-[#C61E1E] text-white">
-                    €{selectedDorm.rent}/ay
-                  </Badge>
-                  <Badge variant="outline" className="text-xs">
-                    {selectedDorm.waitingTime}
+                    €{Math.floor(selectedDorm.rent / 100) * 100}-€{Math.ceil(selectedDorm.rent / 100) * 100} aylık tahmini
                   </Badge>
                 </div>
                 <Button

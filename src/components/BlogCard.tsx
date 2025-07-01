@@ -1,19 +1,23 @@
+'use client';
+
 import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import type { SanityDocument } from "next-sanity";
+import { BlogPost } from "@/lib/blog";
 
 interface BlogCardProps {
-  post: SanityDocument & { imageUrl?: string };
+  post: BlogPost;
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
+  const t = useTranslations('blog');
   return (
     <article className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 group">
       {/* Image */}
-      {post.imageUrl && (
+      {post.image && (
         <div className="aspect-video overflow-hidden relative">
           <Image
-            src={post.imageUrl}
+            src={post.image}
             alt={post.title || 'Post image'}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -28,7 +32,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         <div className="flex items-center gap-4 text-sm text-gray-300 mb-3">
           {post.publishedAt && (
             <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString('en-US', {
+              {new Date(post.publishedAt).toLocaleDateString('tr-TR', {
                 month: 'short',
                 day: 'numeric',
                 year: 'numeric'
@@ -38,14 +42,14 @@ export default function BlogCard({ post }: BlogCardProps) {
           {post.readTime && (
             <>
               <span>•</span>
-              <span>{post.readTime} min read</span>
+              <span>{post.readTime} {t('readTime')}</span>
             </>
           )}
         </div>
 
         {/* Title */}
         <h3 className="text-xl font-bold mb-3 leading-tight group-hover:text-gray-100 transition-colors">
-          <Link href={`/${post.slug?.current}`} className="block">
+          <Link href={`/${post.slug}`} className="block">
             {post.title}
           </Link>
         </h3>
@@ -59,10 +63,10 @@ export default function BlogCard({ post }: BlogCardProps) {
 
         {/* Read More */}
         <Link
-          href={`/${post.slug?.current}`}
+          href={`/${post.slug}`}
           className="inline-flex items-center text-white font-medium hover:underline group"
         >
-          Read More
+          {t('readMore')}
           <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

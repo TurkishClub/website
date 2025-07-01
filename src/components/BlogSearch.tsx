@@ -1,11 +1,15 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface BlogSearchProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
 }
 
 export default function BlogSearch({ searchTerm, setSearchTerm }: BlogSearchProps) {
+  const t = useTranslations('blog');
+  
   return (
     <div className="relative">
       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -15,7 +19,7 @@ export default function BlogSearch({ searchTerm, setSearchTerm }: BlogSearchProp
       </div>
       <input
         type="text"
-        placeholder="Search articles..."
+        placeholder={t('search.placeholder')}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent backdrop-blur-sm"

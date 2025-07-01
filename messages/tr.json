@@ -57,7 +57,24 @@
 ,
   "Navbar": {
     "joinTeam": "Takıma Katıl",
-    "dormSearch": "Yurt Arama"
+    "platforms": "Platformlar",
+    "platformsDesc": "Sosyal medya hesaplarımız",
+    "tools": "Araçlar",
+    "toolsDesc": "Faydalı araçlar ve kaynaklar",
+    "pages": "Sayfalar",
+    "pagesDesc": "Hakkımızda ve içerikler",
+    "instagram": "Instagram",
+    "instagramDesc": "Güncel paylaşımlar ve etkinlikler",
+    "github": "GitHub",
+    "githubDesc": "Açık kaynak projelerimiz",
+    "whatsapp": "WhatsApp",
+    "whatsappDesc": "Topluluk sohbet grubu",
+    "dormSearch": "Ev Arama",
+    "dormSearchDesc": "Münih'te yurt arayanlar için başvurabilecekleri yurtları organize ettiğimiz sayfa (fiyatlar tahmini)",
+    "blog": "Blog",
+    "blogDesc": "Güncel yazılar ve haberler",
+    "team": "Takım",
+    "teamDesc": "Ekibimiz ve açık pozisyonlar"
   },
   "FAQ" : {
     "title": "Sıkça Sorulan Sorular",
@@ -111,10 +128,11 @@
       "website": "Web Sitesi",
       "visitWebsite": "Web Sitesini Ziyaret Et",
       "viewOnMap": "Haritada Göster",
+      "moreInfo": "Daha Detaylı Bilgi Al",
       "applyNow": "Başvur",
       "features": "Özellikler",
-      "requirements": "Başvuru Koşulları",
-      "waitingTime": "Bekleme Süresi",
+      "showLess": "Daha az göster",
+      "readMore": "Devamını oku",
       "university": {
         "gfz": "GFZ",
         "mainCampus": "Stammgelände",
@@ -125,6 +143,7 @@
       "title": "Harita Görünümü",
       "showList": "Liste Görünümü",
       "showMap": "Harita Görünümü",
+      "showingLocations": "{count} yurt konumu gösteriliyor",
       "popup": {
         "moreInfo": "Daha Detaylı Bilgi Al",
         "visitWebsite": "Websitesine Git",
@@ -134,7 +153,8 @@
     "results": {
       "showing": "{total} yurttan {filtered} tanesi gösteriliyor",
       "noResults": "Arama kriterlerinize uygun yurt bulunamadı.",
-      "foundResults": "{count} yurt bulundu"
+      "foundResults": "{count} yurt bulundu",
+      "adjustFilters": "Arama kriterlerinizi değiştirmeyi deneyin."
     }
   },
   "team": {
@@ -168,6 +188,35 @@
     "results": {
       "showing": "{total} pozisyondan {filtered} tanesi gösteriliyor",
       "noResults": "Kriterlerinize uygun pozisyon bulunamadı."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Türk toplumundan en son haberler, görüşler ve hikayeler ile güncel kalın.",
+    "search": {
+      "placeholder": "Blog yazılarında ara...",
+      "button": "Ara"
+    },
+    "filters": {
+      "all": "Tümü",
+      "recent": "Son Yazılar",
+      "popular": "Popüler"
+    },
+    "readTime": "dk okuma",
+    "readMore": "Devamını Oku",
+    "noResults": "Arama kriterlerinize uygun blog yazısı bulunamadı.",
+    "loading": "Yükleniyor...",
+    "results": {
+      "showing": "{count} makale gösteriliyor",
+      "noArticles": "Makale bulunamadı",
+      "noResultsFor": "{searchTerm} için sonuç bulunamadı",
+      "adjustFilters": "Arama veya filtre kriterlerinizi düzenlemeyi deneyin",
+      "clearFilters": "Filtreleri Temizle"
+    },
+    "sort": {
+      "newest": "En Yeni",
+      "oldest": "En Eski",
+      "popular": "Popüler"
     }
   }
 }

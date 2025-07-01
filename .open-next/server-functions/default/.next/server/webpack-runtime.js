@@ -11,6 +11,7 @@
        case 331: r(require("./chunks/331.js")); break;
        case 366: r(require("./chunks/366.js")); break;
        case 368: r(require("./chunks/368.js")); break;
+       case 388: r(require("./chunks/388.js")); break;
        case 447: r(require("./chunks/447.js")); break;
        case 461: r(require("./chunks/461.js")); break;
        case 516: r(require("./chunks/516.js")); break;
@@ -28,7 +29,6 @@
        case 915: r(require("./chunks/915.js")); break;
        case 929: r(require("./chunks/929.js")); break;
        case 938: r(require("./chunks/938.js")); break;
-       case 953: r(require("./chunks/953.js")); break;
        case 311: e[o] = 1; break;
        default: throw new Error(`Unknown chunk ${o}`);
     }

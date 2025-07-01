@@ -66,3 +66,50 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom Blog Prose Styles */
+@layer components {
+  .prose-blog {
+    @apply max-w-none;
+  }
+  
+  .prose-blog h2 {
+    @apply text-2xl font-bold mb-4 mt-8 text-white;
+  }
+  
+  .prose-blog h3 {
+    @apply text-xl font-semibold mb-3 mt-6 text-white;
+  }
+  
+  .prose-blog p {
+    @apply mb-4 text-gray-200 leading-relaxed;
+  }
+  
+  .prose-blog strong {
+    @apply font-bold text-white;
+  }
+  
+  .prose-blog em {
+    @apply italic text-gray-300;
+  }
+  
+  .prose-blog ul, .prose-blog ol {
+    @apply mb-4 ml-6;
+  }
+  
+  .prose-blog li {
+    @apply mb-2 text-gray-200;
+  }
+  
+  .prose-blog ul li {
+    @apply list-disc;
+  }
+  
+  .prose-blog ol li {
+    @apply list-decimal;
+  }
+  
+  .prose-blog blockquote {
+    @apply border-l-4 border-white/30 pl-4 italic text-gray-300 my-6;
+  }
+}

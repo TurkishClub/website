@@ -34,8 +34,8 @@ const Marker = dynamic(
   () => import("react-leaflet").then((mod) => mod.Marker),
   { ssr: false }
 );
-const Popup = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Popup),
+const ZoomControl = dynamic(
+  () => import("react-leaflet").then((mod) => mod.ZoomControl),
   { ssr: false }
 );
 
@@ -43,10 +43,9 @@ interface DormMapProps {
   dorms: Dorm[];
   selectedDorm?: Dorm | null;
   onDormSelect?: (dorm: Dorm) => void;
-  onScrollToDorm?: (dorm: Dorm) => void;
 }
 
-export function DormMapLeaflet({ dorms, selectedDorm, onDormSelect, onScrollToDorm }: DormMapProps) {
+export function DormMapLeaflet({ dorms, selectedDorm, onDormSelect }: DormMapProps) {
   const t = useTranslations("dormSearch");
   const [isMounted, setIsMounted] = useState(false);
 
@@ -126,11 +125,13 @@ export function DormMapLeaflet({ dorms, selectedDorm, onDormSelect, onScrollToDo
           zoom={11}
           style={{ height: "100%", width: "100%" }}
           className="z-0"
+          zoomControl={false}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <ZoomControl position="bottomright" />
           
           {dorms.map((dorm) => (
             <Marker
@@ -139,60 +140,7 @@ export function DormMapLeaflet({ dorms, selectedDorm, onDormSelect, onScrollToDo
               eventHandlers={{
                 click: () => handleDormClick(dorm),
               }}
-            >
-              <Popup>
-                <div className="p-2 min-w-[250px]">
-                  <h4 className="font-semibold text-sm mb-1">{dorm.name}</h4>
-                  <p className="text-xs text-gray-600 mb-2">{dorm.address}</p>
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge className="bg-[#C61E1E] text-white text-xs">
-                      €{dorm.rent}/ay
-                    </Badge>
-                    <span className="text-xs text-gray-500">{dorm.waitingTime}</span>
-                  </div>
-                  
-                  {/* Action buttons */}
-                  <div className="space-y-2">
-                    <div className="grid grid-cols-2 gap-2">
-                      <Button
-                        size="sm"
-                        variant="default"
-                        onClick={() => onScrollToDorm && onScrollToDorm(dorm)}
-                        className="w-full text-xs bg-[#C61E1E] hover:bg-[#A01818] text-white"
-                      >
-                        {t("map.popup.moreInfo")}
-                      </Button>
-                      
-                      {dorm.website && (
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => {
-                            if (typeof window !== 'undefined') {
-                              window.open(dorm.website, "_blank", "noopener,noreferrer");
-                            }
-                          }}
-                          className="w-full text-xs"
-                        >
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          {t("map.popup.visitWebsite")}
-                        </Button>
-                      )}
-                    </div>
-                    
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => openInGoogleMaps(dorm)}
-                      className="w-full text-xs"
-                    >
-                      <Navigation className="w-3 h-3 mr-1" />
-                      {t("map.popup.getDirections")}
-                    </Button>
-                  </div>
-                </div>
-              </Popup>
-            </Marker>
+            />
           ))}
         </MapContainer>
       </div>
@@ -206,7 +154,7 @@ export function DormMapLeaflet({ dorms, selectedDorm, onDormSelect, onScrollToDo
                 {selectedDorm.name}
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-3">
               <div className="flex items-center gap-2 text-sm">
                 <MapPin className="w-4 h-4 text-gray-500" />
                 <span className="text-gray-700">{selectedDorm.address}</span>
@@ -214,20 +162,31 @@ export function DormMapLeaflet({ dorms, selectedDorm, onDormSelect, onScrollToDo
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Badge className="bg-[#C61E1E] text-white">
-                    €{selectedDorm.rent}/ay
-                  </Badge>
-                  <Badge variant="outline" className="text-xs">
-                    {selectedDorm.waitingTime}
+                    €{Math.floor(selectedDorm.rent / 100) * 100}-€{Math.ceil(selectedDorm.rent / 100) * 100} aylık tahmini
                   </Badge>
                 </div>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="flex gap-2 pt-2">
+                {selectedDorm.website && (
+                  <Button
+                    size="sm"
+                    onClick={() => window.open(selectedDorm.website, "_blank", "noopener,noreferrer")}
+                    className="flex-1 bg-[#C61E1E] hover:bg-red-700 text-white text-xs"
+                  >
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                    {t("map.popup.visitWebsite")}
+                  </Button>
+                )}
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openInGoogleMaps(selectedDorm)}
-                  className="text-xs"
+                  className="flex-1 text-xs border-gray-300"
                 >
                   <Navigation className="w-3 h-3 mr-1" />
-                  Yol Tarifi Al
+                  {t("map.popup.getDirections")}
                 </Button>
               </div>
             </CardContent>

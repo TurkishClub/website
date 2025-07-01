@@ -1,15 +1,17 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { type SanityDocument } from "next-sanity";
+import { useTranslations } from 'next-intl';
+import { BlogPost } from "@/lib/blog";
 import BlogSearch from "@/components/BlogSearch";
 import BlogCard from "@/components/BlogCard";
 
 interface BlogContentProps {
-  posts: (SanityDocument & { imageUrl?: string })[];
+  posts: BlogPost[];
 }
 
 export default function BlogContent({ posts }: BlogContentProps) {
+  const t = useTranslations('blog');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedDate, setSelectedDate] = useState('all');
@@ -102,8 +104,8 @@ export default function BlogContent({ posts }: BlogContentProps) {
               {/* Results Info */}
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 -mt-8">
                 <p className="text-gray-200">
-                  Showing {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''}
-                  {searchTerm && ` for "${searchTerm}"`}
+                  {t('results.showing', { count: filteredPosts.length.toString() })}
+                  {searchTerm && ` "${searchTerm}" için`}
                 </p>
                 
                 {/* Sort Options */}
@@ -112,9 +114,9 @@ export default function BlogContent({ posts }: BlogContentProps) {
                   onChange={(e) => setSortBy(e.target.value)}
                   className="bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white backdrop-blur-sm"
                 >
-                  <option value="newest">Newest First</option>
-                  <option value="oldest">Oldest First</option>
-                  <option value="popular">Most Popular</option>
+                  <option value="newest">{t('sort.newest')}</option>
+                  <option value="oldest">{t('sort.oldest')}</option>
+                  <option value="popular">{t('sort.popular')}</option>
                 </select>
               </div>
 
@@ -122,7 +124,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPosts.map((post) => (
                   <BlogCard
-                    key={post._id}
+                    key={post.id}
                     post={post}
                   />
                 ))}
@@ -136,15 +138,15 @@ export default function BlogContent({ posts }: BlogContentProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4">No articles found</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('results.noArticles')}</h3>
               <p className="text-gray-200 mb-6">
-                {searchTerm ? `No results for "${searchTerm}"` : 'Try adjusting your search or filter criteria'}
+                {searchTerm ? t('results.noResultsFor', { searchTerm }) : t('results.adjustFilters')}
               </p>
               <button 
                 onClick={clearFilters}
                 className="bg-white text-[#C61E1E] px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
               >
-                Clear Filters
+                {t('results.clearFilters')}
               </button>
             </div>
           )}

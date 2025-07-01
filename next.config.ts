@@ -16,6 +16,12 @@ const config: NextConfig = {
         port: '',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.sueddeutsche.de',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

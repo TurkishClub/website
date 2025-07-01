@@ -1,37 +1,43 @@
-import { type SanityDocument } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { client } from "@/sanity/client";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import MobileNavbar from "@/components/MobileNavbar";
 import BlogContent from "@/components/BlogContent";
+import { getBlogPosts } from "@/lib/blog";
 
-const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
-  _id,
-  title,
-  slug,
-  publishedAt,
-  image,
-  body,
-  "excerpt": array::join(string::split((pt::text(body)), "")[0..255], "") + "...",
-  "readTime": round(length(pt::text(body)) / 5 / 180 )
-}`;
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: "en" | "de" | "tr" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "blog" });
 
-const { projectId, dataset } = client.config();
-const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: "blog, news, Turkish community, München, Munich, insights, stories",
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      locale: locale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+    },
+  };
+}
 
-const options = { next: { revalidate: 30 } };
-
-export default async function BlogPage() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
-
-  // Pre-process posts with image URLs
-  const processedPosts = posts.map(post => ({
-    ...post,
-    imageUrl: post.image ? urlFor(post.image)?.width(400).height(250).url() : undefined
-  }));
+export default async function BlogPage({
+  params
+}: {
+  params: Promise<{ locale: "en" | "de" | "tr" }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "blog" });
+  const posts = await getBlogPosts();
 
   return (
     <main className="bg-[#C61E1E] text-white min-h-screen">
@@ -42,17 +48,17 @@ export default async function BlogPage() {
         <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Blog
+              {t("title")}
             </h1>
             <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
-              Stay updated with the latest news, insights, and stories from the Turkish community.
+              {t("description")}
             </p>
           </div>
         </div>
       </section>
 
       {/* Blog Content with Search and Filtering */}
-      <BlogContent posts={processedPosts} />
+      <BlogContent posts={posts} />
     </main>
   );
 }

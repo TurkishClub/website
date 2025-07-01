@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, MapPin, Clock, Users, Home } from "lucide-react";
+import { ExternalLink, MapPin, Users, Home } from "lucide-react";
 import { Dorm } from "@/data/dorms";
 
 interface DormCardProps {
@@ -34,8 +34,8 @@ export function DormCard({ dorm, onViewOnMap }: DormCardProps) {
     : dorm.description;
 
   return (
-    <Card className="h-full flex flex-col transition-all duration-300 hover:shadow-lg border-l-4 border-l-[#C61E1E] bg-white">
-      <CardHeader className="pb-3">
+    <Card className="h-full flex flex-col transition-all duration-300 hover:shadow-lg bg-white">
+      <CardHeader className="pb-2">
         <div className="flex justify-between items-start gap-3">
           <div className="flex-1">
             <CardTitle className="text-lg font-bold text-gray-900 leading-tight mb-1">
@@ -43,16 +43,19 @@ export function DormCard({ dorm, onViewOnMap }: DormCardProps) {
             </CardTitle>
             <p className="text-sm text-gray-600 font-medium">{dorm.organization}</p>
           </div>
-          <div className="text-right">
-            <div className="text-2xl font-bold text-[#C61E1E]">
-              €{dorm.rent.toFixed(2)}
-            </div>
-            <div className="text-xs text-gray-500">{t("monthly")}</div>
-          </div>
         </div>
       </CardHeader>
 
-      <CardContent className="flex-1 space-y-4">
+      <CardContent className="flex-1 space-y-3 pb-2">
+        {/* Price */}
+        <div className="flex items-center justify-between">
+          <div className="text-right">
+            <div className="text-lg font-bold text-[#C61E1E]">
+              €{Math.floor(dorm.rent / 100) * 100} - €{(Math.floor(dorm.rent / 100) + 1) * 100} <span className="text-sm text-gray-500 font-normal">aylık tahmini</span>
+            </div>
+          </div>
+        </div>
+
         {/* Address */}
         <div className="flex items-start gap-2">
           <MapPin className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
@@ -75,18 +78,13 @@ export function DormCard({ dorm, onViewOnMap }: DormCardProps) {
 
         {/* Features */}
         <div>
-          <h4 className="text-sm font-semibold text-gray-800 mb-2">{t("features")}</h4>
+          <h4 className="text-sm font-semibold text-gray-800 mb-1">{t("features")}</h4>
           <div className="flex flex-wrap gap-1">
-            {dorm.features.slice(0, 4).map((feature, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
+            {dorm.features.map((feature, index) => (
+              <Badge key={index} variant="secondary" className="text-xs py-0">
                 {feature}
               </Badge>
             ))}
-            {dorm.features.length > 4 && (
-              <Badge variant="outline" className="text-xs">
-                +{dorm.features.length - 4}
-              </Badge>
-            )}
           </div>
         </div>
 
@@ -100,14 +98,6 @@ export function DormCard({ dorm, onViewOnMap }: DormCardProps) {
           </div>
         </div>
 
-        {/* Waiting Time */}
-        <div className="flex items-center gap-2">
-          <Clock className="w-4 h-4 text-orange-500" />
-          <span className="text-sm text-gray-700">
-            <span className="font-medium">{t("waitingTime")}:</span> {dorm.waitingTime}
-          </span>
-        </div>
-
         {/* Description */}
         <div>
           <p className="text-sm text-gray-600 leading-relaxed">
@@ -118,51 +108,33 @@ export function DormCard({ dorm, onViewOnMap }: DormCardProps) {
               onClick={() => setShowFullDescription(!showFullDescription)}
               className="text-[#C61E1E] hover:text-red-700 text-sm font-medium mt-1"
             >
-              {showFullDescription ? "Daha az göster" : "Devamını oku"}
+              {showFullDescription ? t("showLess") : t("readMore")}
             </button>
           )}
         </div>
-
-        {/* Requirements */}
-        <div>
-          <h4 className="text-sm font-semibold text-gray-800 mb-2">{t("requirements")}</h4>
-          <ul className="space-y-1">
-            {dorm.requirements.slice(0, 2).map((requirement, index) => (
-              <li key={index} className="text-xs text-gray-600 flex items-start gap-1">
-                <span className="text-[#C61E1E] mt-0.5">•</span>
-                <span>{requirement}</span>
-              </li>
-            ))}
-            {dorm.requirements.length > 2 && (
-              <li className="text-xs text-gray-500">
-                +{dorm.requirements.length - 2} koşul daha...
-              </li>
-            )}
-          </ul>
-        </div>
       </CardContent>
 
-      <CardFooter className="pt-4 gap-2">
-        <Button
-          onClick={handleWebsiteClick}
-          className="flex-1 bg-[#C61E1E] hover:bg-red-700 text-white"
-          size="sm"
-        >
-          <ExternalLink className="w-4 h-4 mr-2" />
-          {t("visitWebsite")}
-        </Button>
-        
-        {onViewOnMap && (
+      <CardFooter className="pt-2">
+        <div className="grid grid-cols-2 gap-2 w-full">
+          <Button
+            onClick={handleWebsiteClick}
+            className="bg-[#C61E1E] hover:bg-red-700 text-white text-xs py-1.5 h-auto"
+            size="sm"
+          >
+            <ExternalLink className="w-3 h-3 mr-1.5 flex-shrink-0" />
+            <span className="truncate">{t("visitWebsite")}</span>
+          </Button>
+          
           <Button
             onClick={handleViewOnMap}
             variant="outline"
             size="sm"
-            className="flex items-center gap-2 border-[#C61E1E] text-[#C61E1E] hover:bg-[#C61E1E] hover:text-white"
+            className="w-full border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1.5 h-auto"
           >
-            <MapPin className="w-4 h-4" />
-            {t("viewOnMap")}
+            <MapPin className="w-3 h-3 mr-1.5 flex-shrink-0" />
+            <span className="truncate">{t("viewOnMap")}</span>
           </Button>
-        )}
+        </div>
       </CardFooter>
     </Card>
   );

@@ -106,31 +106,6 @@ export function DormSearchPage() {
     setSelectedDorm(dorm);
   };
 
-  const handleScrollToDorm = (dorm: Dorm) => {
-    // Switch to grid view and scroll to the specific dorm
-    setSelectedDorm(dorm);
-    setViewMode("grid");
-    
-    // Wait for the view to change, then scroll to the dorm card
-    setTimeout(() => {
-      if (typeof window !== 'undefined') {
-        const dormElement = document.getElementById(`dorm-${dorm.id}`);
-        if (dormElement) {
-          dormElement.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-          });
-          
-          // Add a highlight effect
-          dormElement.classList.add('ring-2', 'ring-[#C61E1E]', 'ring-opacity-75');
-          setTimeout(() => {
-            dormElement.classList.remove('ring-2', 'ring-[#C61E1E]', 'ring-opacity-75');
-          }, 3000);
-        }
-      }
-    }, 100);
-  };
-
   return (
     <main className="bg-[#C61E1E] min-h-screen text-white">
       <MobileNavbar />
@@ -211,7 +186,6 @@ export function DormSearchPage() {
                 dorms={filteredAndSortedDorms}
                 selectedDorm={selectedDorm}
                 onDormSelect={handleMapDormSelect}
-                onScrollToDorm={handleScrollToDorm}
               />
             </div>
           ) : (
@@ -225,7 +199,7 @@ export function DormSearchPage() {
                     {t("results.noResults")}
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    Arama kriterlerinizi değiştirmeyi deneyin.
+                    {t("results.adjustFilters")}
                   </p>
                   <Button
                     variant="outline"
@@ -250,7 +224,10 @@ export function DormSearchPage() {
                 >
                   {filteredAndSortedDorms.map((dorm) => (
                     <div key={dorm.id} id={`dorm-${dorm.id}`} className={viewMode === "list" ? "max-w-none" : ""}>
-                      <DormCard dorm={dorm} onViewOnMap={handleViewOnMap} />
+                      <DormCard 
+                        dorm={dorm} 
+                        onViewOnMap={handleViewOnMap}
+                      />
                     </div>
                   ))}
                 </div>

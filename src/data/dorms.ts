@@ -13,8 +13,6 @@ export interface Dorm {
   distanceToMainCampus: number; // minutes
   description: string;
   features: string[];
-  requirements: string[];
-  waitingTime: string;
   roomTypes: string[];
   applicationMethod: string;
   images?: string[];
@@ -42,12 +40,6 @@ export const mockDorms: Dorm[] = [
       "Kendi banyosu",
       "Kampüs ortamı"
     ],
-    requirements: [
-      "Aile geliri Bafög sınırını aşmamalı",
-      "30 yaşını doldurmamış olma",
-      "Öğrenci statüsü"
-    ],
-    waitingTime: "3+ okul dönemi",
     roomTypes: ["Stüdyo", "WG"],
     applicationMethod: "E-posta"
   },
@@ -73,12 +65,6 @@ export const mockDorms: Dorm[] = [
       "Bisiklet park alanı",
       "Spor alanları"
     ],
-    requirements: [
-      "Münih üniversitelerinde kayıtlı olma",
-      "Online başvuru",
-      "Gelir belgesi"
-    ],
-    waitingTime: "2-4 semester",
     roomTypes: ["Tek kişilik oda", "İki kişilik oda", "WG"],
     applicationMethod: "Online portal"
   },
@@ -104,12 +90,6 @@ export const mockDorms: Dorm[] = [
       "Çalışma odaları",
       "Kütüphane"
     ],
-    requirements: [
-      "Üniversite öğrencisi olma",
-      "Mülakat",
-      "Topluluk yaşamına katılım isteği"
-    ],
-    waitingTime: "1-2 semester",
     roomTypes: ["Tek kişilik oda"],
     applicationMethod: "Başvuru formu + Mülakat"
   },
@@ -135,12 +115,6 @@ export const mockDorms: Dorm[] = [
       "Çalışma alanları",
       "WiFi"
     ],
-    requirements: [
-      "Öğrenci belgesi",
-      "Kişisel mülakat",
-      "Referans mektubu"
-    ],
-    waitingTime: "6 ay - 1 yıl",
     roomTypes: ["Tek kişilik oda", "Stüdyo"],
     applicationMethod: "Online başvuru + Mülakat"
   },
@@ -167,12 +141,6 @@ export const mockDorms: Dorm[] = [
       "Çamaşırhane",
       "Kafe ve bar"
     ],
-    requirements: [
-      "Münih üniversitelerinde kayıt",
-      "Online başvuru sistemi",
-      "Bekleme listesine kayıt"
-    ],
-    waitingTime: "3-6 semester",
     roomTypes: ["Tek kişilik oda", "WG", "Apartman"],
     applicationMethod: "Studentenwerk online portal"
   },
@@ -198,13 +166,6 @@ export const mockDorms: Dorm[] = [
       "Bahçe alanı",
       "Müzik odası"
     ],
-    requirements: [
-      "Üniversite öğrencisi",
-      "Topluluk yaşamına uyum",
-      "Başvuru mektubu",
-      "Referanslar"
-    ],
-    waitingTime: "1 semester",
     roomTypes: ["Tek kişilik oda"],
     applicationMethod: "Yazılı başvuru + Görüşme"
   },
@@ -230,12 +191,6 @@ export const mockDorms: Dorm[] = [
       "Ortak balkonlar",
       "Çalışma alanları"
     ],
-    requirements: [
-      "Münih üniversite kaydı",
-      "Online başvuru",
-      "Bekleme listesi kaydı"
-    ],
-    waitingTime: "2-3 semester",
     roomTypes: ["Tek kişilik oda", "Stüdyo"],
     applicationMethod: "Studentenwerk sistemi"
   },
@@ -262,13 +217,6 @@ export const mockDorms: Dorm[] = [
       "24/7 resepsiyon",
       "Ortak çalışma alanları"
     ],
-    requirements: [
-      "TUM öğrencisi olma",
-      "Uluslararası öğrenci statüsü",
-      "İngilizce/Almanca yeterlilik",
-      "Özel başvuru formu"
-    ],
-    waitingTime: "6 ay - 1 yıl",
     roomTypes: ["Tek kişilik oda", "WG"],
     applicationMethod: "TUM Housing Office"
   }

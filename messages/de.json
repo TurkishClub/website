@@ -58,7 +58,24 @@
   ,
     "Navbar": {
     "joinTeam": "Team beitreten",
-    "dormSearch": "Wohnheimsuche"
+    "platforms": "Plattformen",
+    "platformsDesc": "Unsere Social Media Accounts",
+    "tools": "Werkzeuge",
+    "toolsDesc": "Nützliche Tools und Ressourcen",
+    "pages": "Seiten",
+    "pagesDesc": "Über uns und Inhalte",
+    "instagram": "Instagram",
+    "instagramDesc": "Neueste Beiträge und Events",
+    "github": "GitHub",
+    "githubDesc": "Unsere Open Source Projekte",
+    "whatsapp": "WhatsApp",
+    "whatsappDesc": "Community Chat Gruppe",
+    "dormSearch": "Wohnheimsuche",
+    "dormSearchDesc": "Seite, auf der wir Wohnheime für Wohnungssuchende in München organisieren (Preise sind Schätzungen)",
+    "blog": "Blog",
+    "blogDesc": "Neueste Artikel und Nachrichten",
+    "team": "Team",
+    "teamDesc": "Unser Team und offene Stellen"
   },
   "FAQ" : {
     "title": "FAQ",
@@ -112,10 +129,11 @@
       "website": "Website",
       "visitWebsite": "Website besuchen",
       "viewOnMap": "Auf Karte anzeigen",
+      "moreInfo": "Weitere Details",
       "applyNow": "Jetzt bewerben",
       "features": "Ausstattung",
-      "requirements": "Bewerbungsvoraussetzungen",
-      "waitingTime": "Wartezeit",
+      "showLess": "Weniger anzeigen",
+      "readMore": "Mehr lesen",
       "university": {
         "gfz": "GFZ",
         "mainCampus": "Stammgelände",
@@ -135,7 +153,8 @@
     "results": {
       "showing": "{filtered} von {total} Wohnheimen angezeigt",
       "noResults": "Keine Wohnheime gefunden, die Ihren Suchkriterien entsprechen.",
-      "foundResults": "{count} Wohnheime gefunden"
+      "foundResults": "{count} Wohnheime gefunden",
+      "adjustFilters": "Versuchen Sie, Ihre Suchkriterien anzupassen."
     }
   },
   "team": {
@@ -169,6 +188,35 @@
     "results": {
       "showing": "{filtered} von {total} Positionen werden angezeigt",
       "noResults": "Keine Positionen gefunden, die Ihren Kriterien entsprechen."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Bleiben Sie auf dem Laufenden über die neuesten Nachrichten, Einblicke und Geschichten aus der türkischen Gemeinschaft.",
+    "search": {
+      "placeholder": "Blog-Beiträge durchsuchen...",
+      "button": "Suchen"
+    },
+    "filters": {
+      "all": "Alle",
+      "recent": "Neueste Beiträge",
+      "popular": "Beliebt"
+    },
+    "readTime": "Min. Lesezeit",
+    "readMore": "Weiterlesen",
+    "noResults": "Keine Blog-Beiträge gefunden, die Ihren Suchkriterien entsprechen.",
+    "loading": "Lädt...",
+    "results": {
+      "showing": "{count} Artikel werden angezeigt",
+      "noArticles": "Keine Artikel gefunden",
+      "noResultsFor": "Keine Ergebnisse für \"{searchTerm}\"",
+      "adjustFilters": "Versuchen Sie, Ihre Such- oder Filterkriterien anzupassen",
+      "clearFilters": "Filter löschen"
+    },
+    "sort": {
+      "newest": "Neueste zuerst",
+      "oldest": "Älteste zuerst",
+      "popular": "Am beliebtesten"
     }
   }
 }
