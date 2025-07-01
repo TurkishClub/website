@@ -21,10 +21,33 @@ export interface Dorm {
 export const mockDorms: Dorm[] = [
   {
     id: "1",
+    name: "Apian Aparthaus",
+    organization: "Apian",
+    address: "Apianstraße 7, 85774 Unterföhring",
+    rent: 1000,
+    website: "https://apian-aparthaus.de/",
+    coordinates: {
+      lat: 48.1886,
+      lng: 11.6541
+    },
+    distanceToGFZ: 40,
+    distanceToMainCampus: 50,
+    description: "Görece kolay yer bulunabilen ve son dakikada kalacak yer aramak zorunda kalan Türk öğrencilerin tercih ettiği bir yurt kampüsü Apian. Odalar geniş olsa da, kalanların odalarda başa çıkması zor küf sorunundan ve ilginç oda içi tasarımlarından (duş ile oda arasında pencere var) çok memnun olmadığı biliniyor. Yönetimin kira sözleşmesinden sonra ortaya çıkan sorunlarla ilgilenme konusundaki çekimserliği de bilindik. Çok dikkatli olarak, hatta önceden gidip odayı görerek taşınılmasında fayda var…",
+    features: [
+      "Geniş odalar",
+      "Kolay yer bulma",
+      "Son dakika seçeneği",
+      "Kampüs ortamı"
+    ],
+    roomTypes: ["Stüdyo", "Apartman"],
+    applicationMethod: "Online başvuru"
+  },
+  {
+    id: "2",
     name: "AWO München - Haidpark (Fröttmaning)",
     organization: "AWO Vakfı",
     address: "Admiralbogen 37, 80939 München",
-    rent: 327.50,
+    rent: 327,
     website: "https://awo-muenchen.de/spezielles/studentisches-wohnen-im-haidpark/ueber-uns",
     coordinates: {
       lat: 48.2094,
@@ -38,187 +61,272 @@ export const mockDorms: Dorm[] = [
       "WG daireleri",
       "Kendi mutfağı",
       "Kendi banyosu",
-      "Kampüs ortamı"
+      "Kampüs ortamı",
+      "Uygun fiyat"
     ],
     roomTypes: ["Stüdyo", "WG"],
-    applicationMethod: "E-posta"
-  },
-  {
-    id: "2",
-    name: "Studentenwerk München - Olympiadorf",
-    organization: "Studentenwerk München",
-    address: "Helene-Mayer-Ring 9, 80809 München",
-    rent: 295.00,
-    website: "https://www.studentenwerk-muenchen.de/wohnen/wohnheime/olympiadorf/",
-    coordinates: {
-      lat: 48.1761,
-      lng: 11.5527
-    },
-    distanceToGFZ: 25,
-    distanceToMainCampus: 30,
-    description: "1972 Olimpiyat Köyü'nde yer alan tarihi bir yurt kompleksi. Münih'in kuzeyinde, doğa ile iç içe bir kampüs atmosferi sunuyor. Çok çeşitli oda seçenekleri ve ortak alanları ile popüler bir seçenek. Başvuru için Studentenwerk'in online sistemini kullanmanız gerekiyor.",
-    features: [
-      "Tarihi olimpiyat köyü",
-      "Doğa ile iç içe",
-      "Ortak mutfak",
-      "Çamaşırhane",
-      "Bisiklet park alanı",
-      "Spor alanları"
-    ],
-    roomTypes: ["Tek kişilik oda", "İki kişilik oda", "WG"],
-    applicationMethod: "Online portal"
+    applicationMethod: "E-posta başvurusu"
   },
   {
     id: "3",
-    name: "Katholische Hochschulgemeinde - Wohnheim",
-    organization: "KHG",
-    address: "Leopoldstraße 11, 80802 München",
-    rent: 380.00,
-    website: "https://www.khg-muenchen.de/wohnen/",
+    name: "GLC (Garching Living Center)",
+    organization: "GLC",
+    address: "Einsteinstraße 3, 85748 Garching bei München",
+    rent: 1170,
+    website: "https://www.studentenwohnung-garching.de/mietanfrage/",
     coordinates: {
-      lat: 48.1486,
-      lng: 11.5804
+      lat: 48.2651,
+      lng: 11.6719
     },
-    distanceToGFZ: 35,
-    distanceToMainCampus: 15,
-    description: "Şehir merkezine yakın, Leopoldstraße üzerinde bulunan KHG yurdu. Dini bir topluluk tarafından işletilmesine rağmen, tüm öğrencilere açık. Küçük bir topluluk atmosferi ve merkezi konum avantajı sunuyor. Düzenli sosyal etkinlikler ve topluluk yaşamı öne çıkan özellikler.",
+    distanceToGFZ: 12,
+    distanceToMainCampus: 57,
+    description: "Bir zamanlar ev arama konusunda bir miktar geç kalmış öğrencilerin sığınağı olan ve her daim yer bulunabilen GLC'de, bugünlerde diğer yurtlarda da hâkim olan yoğunluk söz konusu. Garching'deki bu yer, özellikle 'Garching'deki derslere sıkça giderim' diyenler için ideal. Münih'e inmek de yurdun U6 Garching durağına yakınlığından dolayı hiç de zor değil. Odaları ve ortak kullanım alanları istediğiniz her türlü lükse sahip, ancak kirası ortalamanın gayet üzerinde.",
     features: [
-      "Merkezi konum",
-      "Küçük topluluk",
-      "Sosyal etkinlikler",
-      "Ortak mutfak",
-      "Çalışma odaları",
-      "Kütüphane"
+      "Lüks donanım",
+      "U6 durağına yakın",
+      "Garching kampüsüne ideal",
+      "Her türlü imkan",
+      "Ortak kullanım alanları"
     ],
-    roomTypes: ["Tek kişilik oda"],
-    applicationMethod: "Başvuru formu + Mülakat"
+    roomTypes: ["Lüks stüdyo", "Apartman"],
+    applicationMethod: "Selbstauskunft formu"
   },
   {
     id: "4",
-    name: "CVJM Studentenwohnheim",
-    organization: "CVJM München",
-    address: "Landwehrstraße 15, 80336 München",
-    rent: 420.00,
-    website: "https://www.cvjm-muenchen.org/wohnen/",
+    name: "Irrenhauser & Seitz Markt Schwaben",
+    organization: "Irrenhauser & Seitz",
+    address: "Enzensbergerstraße 8, 85570 Markt Schwaben",
+    rent: 700,
+    website: "https://www.irrenhauser-seitz.de/project/mietwohnung-markt-schwaben-enzensberger-strasse-8/",
     coordinates: {
-      lat: 48.1351,
-      lng: 11.5820
+      lat: 48.1944,
+      lng: 11.8708
     },
-    distanceToGFZ: 40,
-    distanceToMainCampus: 20,
-    description: "Hauptbahnhof'a yürüme mesafesinde, şehir merkezinde yer alan modern yurt. Ulaşım açısından çok avantajlı konumda. Küçük ama verimli odalar ve güçlü topluluk ruhu. Hristiyan değerler etrafında şekillenmesine rağmen tüm inançlardan öğrencilere açık.",
+    distanceToGFZ: 75,
+    distanceToMainCampus: 55,
+    description: "Markt Schwaben S2 durağının hemen yanındaki bina olan bu yurt, içi yeni ve güzel yapılmış odaları içeriyor. Eyalet bölgesi olarak Münih değil de Ebersberg'e bağlı olduğu için oturum izni konuları yıldırım hızıyla halledilebiliyor. Ancak bu yurtla ilgili söylenebilecek her türlü olumlu şey bu noktada sonlanıyor. Yurtta sadece öğrencilerin değil, aynı zamanda sosyal yardım alan aile ve fertlerin de kalması; gürültü şikayeti durumunda yurt sorumlusunun kayıtsızlığa olan eğilimi ve şehirden bir hayli uzak olması birer handikap.",
     features: [
-      "Merkezi konum",
-      "Modern olanaklar",
-      "Ulaşım kolaylığı",
-      "Topluluk etkinlikleri",
-      "Çalışma alanları",
-      "WiFi"
+      "Yeni ve güzel odalar",
+      "S2 durağına yakın",
+      "Hızlı oturum işlemleri",
+      "Karışık sakinler"
     ],
-    roomTypes: ["Tek kişilik oda", "Stüdyo"],
-    applicationMethod: "Online başvuru + Mülakat"
+    roomTypes: ["Tek kişilik oda", "Apartman"],
+    applicationMethod: "Manfred Prummer ile iletişim"
   },
   {
     id: "5",
-    name: "Studentenstadt Freimann",
-    organization: "Studentenwerk München",
-    address: "Christoph-Probst-Straße 10, 80805 München",
-    rent: 280.00,
-    website: "https://www.studentenwerk-muenchen.de/wohnen/wohnheime/studentenstadt-freimann/",
+    name: "SLC (Student Living Center)",
+    organization: "SLC",
+    address: "Freisinger Landstraße 45a, 85748 Garching bei München",
+    rent: 890,
+    website: "https://www.studentenwohnung-garching.de/mietanfrage/",
     coordinates: {
-      lat: 48.1875,
-      lng: 11.6090
+      lat: 48.2694,
+      lng: 11.6583
     },
-    distanceToGFZ: 20,
-    distanceToMainCampus: 35,
-    description: "Münih'in en büyük öğrenci komplekslerinden biri. 2500'den fazla öğrenciye ev sahipliği yapıyor. Kendi içinde bir şehir gibi, market, restoran, spor alanları mevcut. Sosyal yaşam çok aktif, çok çeşitli etkinlikler düzenleniyor. U-Bahn ile kampüslere kolay ulaşım.",
+    distanceToGFZ: 7,
+    distanceToMainCampus: 67,
+    description: "GLC'nin ikiz binası SLC de GLC'ye çok benzer bir içerik sunuyor. Odaları çok talep görüyor, bu yüzden ne kadar erken başvurursanız o kadar iyi olacaktır. Önünden geçen otobüs sizi direkt olarak Garching kampüsüne ulaştırdığı için bina, en ideal konumlardan birinde diyebiliriz.",
     features: [
-      "Büyük kompleks",
-      "Market ve restoran",
-      "Spor alanları",
-      "Aktif sosyal yaşam",
-      "U-Bahn bağlantısı",
-      "Çamaşırhane",
-      "Kafe ve bar"
+      "GLC ile benzer imkanlar",
+      "Kampüse direkt otobüs",
+      "İdeal konum",
+      "Yüksek talep",
+      "Modern donanım"
     ],
-    roomTypes: ["Tek kişilik oda", "WG", "Apartman"],
-    applicationMethod: "Studentenwerk online portal"
+    roomTypes: ["Stüdyo", "Apartman"],
+    applicationMethod: "Selbstauskunft formu"
   },
   {
     id: "6",
-    name: "Wohnheim St. Maximilian",
-    organization: "Katholische Hochschulgemeinde",
-    address: "Kaulbachstraße 31a, 80539 München",
-    rent: 350.00,
-    website: "https://www.st-maximilian.de/",
+    name: "Stadt Dachau Studentenwohnheim",
+    organization: "Stadt Dachau",
+    address: "Max-Mannheimer Platz 4, 85221 Dachau",
+    rent: 330,
+    website: "https://studentenwohnheim-dachau.de",
     coordinates: {
-      lat: 48.1520,
-      lng: 11.5890
+      lat: 48.2583,
+      lng: 11.4342
     },
-    distanceToGFZ: 30,
-    distanceToMainCampus: 12,
-    description: "Schwabing bölgesinde, üniversiteye çok yakın konumda yer alan geleneksel yurt. Küçük bir topluluk halinde yaşam, düzenli yemekler ve güçlü akademik destek sistemi. Özellikle yeni gelen öğrenciler için mentörlük programları mevcut.",
+    distanceToGFZ: 52,
+    distanceToMainCampus: 50,
+    description: "Dachau Belediyesi tarafından işletilen bu yurt sadece öğrencilere açıktır. Maalesef şu anda yalnızca bekleme listesine (Warteliste) kayıt yaptırmak mümkün. Dachau, Münih'e biraz uzak olsa da, Garching'e giden X201 otobüsüne Dachau Bahnhof'tan, ya da merkeze giden S2 trenine Dachau durağından ulaşabilirsiniz. Kiraları da oldukça uygun.",
     features: [
-      "Üniversiteye yakın",
-      "Topluluk yemekleri",
-      "Mentörlük programı",
-      "Çalışma grupları",
-      "Bahçe alanı",
-      "Müzik odası"
+      "Sadece öğrenciler",
+      "Uygun kiralar",
+      "S2 ve X201 erişimi",
+      "Belediye işletmesi",
+      "Bekleme listesi"
     ],
-    roomTypes: ["Tek kişilik oda"],
-    applicationMethod: "Yazılı başvuru + Görüşme"
+    roomTypes: ["Tek kişilik oda", "WG"],
+    applicationMethod: "Bekleme listesi kaydı"
   },
   {
     id: "7",
-    name: "Wohnanlage Biederstein",
-    organization: "Studentenwerk München",
-    address: "Biedersteiner Straße 29, 80802 München",
-    rent: 315.00,
-    website: "https://www.studentenwerk-muenchen.de/wohnen/wohnheime/biederstein/",
+    name: "Studentenhaus Domino",
+    organization: "Domino",
+    address: "u. Straßäcker 21, 85748 Garching bei München",
+    rent: 602,
+    website: "http://www.studentenhaus-domino.de/startseite.htm",
     coordinates: {
-      lat: 48.1621,
-      lng: 11.5895
+      lat: 48.2576,
+      lng: 11.6519
     },
-    distanceToGFZ: 25,
-    distanceToMainCampus: 18,
-    description: "Englischer Garten'a çok yakın, sakin bir bölgede yer alan yurt kompleksi. Doğa yürüyüşleri ve açık hava aktiviteleri için ideal konum. Modern renovasyonlarla güncellenmiş odalar ve ortak alanlar. Özellikle doğa seven öğrenciler için mükemmel seçenek.",
+    distanceToGFZ: 12,
+    distanceToMainCampus: 67,
+    description: "Garching'deki bir başka alternatif de Domino. Başvurularını posta yoluyla alıyor, bu yüzden istenen belgeleri eksiksiz doldurup A4 posta zarfı içinde internet sitesinde yazan adrese göndermeniz gerekiyor.",
     features: [
-      "Englischer Garten yakını",
-      "Sakin bölge",
-      "Renovasyonlu",
-      "Bisiklet park yeri",
-      "Ortak balkonlar",
-      "Çalışma alanları"
+      "Garching'de konum",
+      "Posta ile başvuru",
+      "Öğrenci odaklı",
+      "Kampüse yakın"
     ],
-    roomTypes: ["Tek kişilik oda", "Stüdyo"],
-    applicationMethod: "Studentenwerk sistemi"
+    roomTypes: ["Tek kişilik oda", "WG"],
+    applicationMethod: "Posta ile başvuru"
   },
   {
     id: "8",
-    name: "Internationales Wohnheim",
-    organization: "TUM International",
-    address: "Gabelsbergerstraße 35, 80333 München",
-    rent: 450.00,
-    website: "https://www.tum.de/en/studies/international-students/housing/",
+    name: "TUM Wohnungsbörse",
+    organization: "TUM",
+    address: "TUM Kampüsü, Various Locations, München",
+    rent: 600,
+    website: "https://living.tum.de/listings?viewMode=list",
     coordinates: {
-      lat: 48.1467,
-      lng: 11.5647
+      lat: 48.1497,
+      lng: 11.5675
     },
-    distanceToGFZ: 38,
-    distanceToMainCampus: 8,
-    description: "TUM tarafından özel olarak uluslararası öğrenciler için düzenlenmiş yurt. Çok kültürlü bir ortam, networking imkanları ve özel sosyal programlar. İngilizce dil desteği ve oryantasyon programları mevcut. Merkezi konumda, tüm şehir imkanlarına kolay erişim.",
+    distanceToGFZ: 30,
+    distanceToMainCampus: 10,
+    description: "TUM çalışanlarının, öğrencilerinin ve ilişkili kişilerin ilan açmasına ve ilanlara bakmasına olanak sağlayan oluşum. TUM onaylı olduğu için insanın kaygılarını azaltıyor. TUM ile ilişkiniz yoksa bile bir arkadaşınız üzerinden ilanlara bakabilirsiniz.",
     features: [
-      "Uluslararası topluluk",
-      "İngilizce destek",
-      "Networking etkinlikleri",
-      "Oryantasyon programı",
-      "Modern olanaklar",
-      "24/7 resepsiyon",
-      "Ortak çalışma alanları"
+      "TUM onaylı",
+      "Güvenilir ilanlar",
+      "Çeşitli seçenekler",
+      "Üniversite bağlantısı"
+    ],
+    roomTypes: ["WG", "Stüdyo", "Apartman"],
+    applicationMethod: "TUM hesabı ile online"
+  },
+  {
+    id: "9",
+    name: "Unity Alpha",
+    organization: "Wohnen-in-Bayern",
+    address: "Josef-Wirth-Weg 21, 80939 München",
+    rent: 685,
+    website: "https://wohnen-in-bayern.com/en",
+    coordinates: {
+      lat: 48.2142,
+      lng: 11.6089
+    },
+    distanceToGFZ: 37,
+    distanceToMainCampus: 52,
+    description: "Wohnen-in-Bayern'in kampüslerinden Unity Alpha'da üniversite öğrencileri ve Azubiler (mesleki eğitim / çıraklık eğitimi alan öğrenciler) kalıyor. Genellikle dolu olan bu binaya başvurmak için Reservation Form'u doldurabilirsiniz. İki ayda bir de Contact Form doldurup durumla ilgili bilgi almakta fayda var. Oldukça temiz, düzenli ve kaliteli bir yaşam sunan – ve iyi konumda olan bu binanın kira bedelleri de düşük olduğu için talepleri karşılamakta zorlandığını biliyoruz.",
+    features: [
+      "Temiz ve düzenli",
+      "Kaliteli yaşam",
+      "İyi konum",
+      "Düşük kira",
+      "Öğrenci ve Azubi karışık"
     ],
     roomTypes: ["Tek kişilik oda", "WG"],
-    applicationMethod: "TUM Housing Office"
+    applicationMethod: "Reservation Form"
+  },
+  {
+    id: "10",
+    name: "Unity Beta",
+    organization: "Wohnen-in-Bayern",
+    address: "Freisinger Landstraße 86-90, 80939 München",
+    rent: 676,
+    website: "https://wohnen-in-bayern.com/en",
+    coordinates: {
+      lat: 48.2158,
+      lng: 11.6125
+    },
+    distanceToGFZ: 37,
+    distanceToMainCampus: 52,
+    description: "Wohnen-in-Bayern'in kampüslerinden Unity Beta'da üniversite öğrencileri ve Azubiler (mesleki eğitim / çıraklık eğitimi alan öğrenciler) kalıyor. Genellikle dolu olan bu binaya başvurmak için Reservation Form'u doldurabilirsiniz. İki ayda bir de Contact Form doldurup durumla ilgili bilgi almakta fayda var. Oldukça temiz, düzenli ve kaliteli bir yaşam sunan – ve iyi konumda olan bu binanın kira bedelleri de düşük olduğu için talepleri karşılamakta zorlandığını biliyoruz.",
+    features: [
+      "Temiz ve düzenli",
+      "Kaliteli yaşam",
+      "İyi konum",
+      "Düşük kira",
+      "Öğrenci ve Azubi karışık"
+    ],
+    roomTypes: ["Tek kişilik oda", "WG"],
+    applicationMethod: "Reservation Form"
+  },
+  {
+    id: "11",
+    name: "UNIKUM",
+    organization: "Wohnen-in-Bayern",
+    address: "Lochhamer Str. 7, 82152 Planegg",
+    rent: 648,
+    website: "https://wohnen-in-bayern.com/en",
+    coordinates: {
+      lat: 48.1086,
+      lng: 11.4286
+    },
+    distanceToGFZ: 85,
+    distanceToMainCampus: 55,
+    description: "Wohnen-in-Bayern'in kampüslerinden UNIKUM'da üniversite öğrencileri ve Azubiler (mesleki eğitim / çıraklık eğitimi alan öğrenciler) kalıyor. Genellikle dolu olan bu binaya başvurmak için Reservation Form'u doldurabilirsiniz. İki ayda bir de Contact Form doldurup durumla ilgili bilgi almakta fayda var. Oldukça temiz, düzenli ve kaliteli bir yaşam sunan bu binanın kira bedelleri de düşük olduğu için talepleri karşılamakta zorlandığını biliyoruz. Ancak Unikum diğer Unity kampüslerinden farklı olarak merkeze daha uzak konumda.",
+    features: [
+      "Temiz ve düzenli",
+      "Kaliteli yaşam",
+      "Düşük kira",
+      "Öğrenci ve Azubi karışık",
+      "Merkeze uzak"
+    ],
+    roomTypes: ["Tek kişilik oda", "WG"],
+    applicationMethod: "Reservation Form"
+  },
+  {
+    id: "12",
+    name: "WOB Immobilien - Karl-Marx Ring 46 (Home Base München)",
+    organization: "WOB Immobilien",
+    address: "Karl-Marx-Ring 46, 81735 München",
+    rent: 600,
+    website: "https://projekte.wobimmo.com/home-base-muenchen/units",
+    coordinates: {
+      lat: 48.1125,
+      lng: 11.6542
+    },
+    distanceToGFZ: 72,
+    distanceToMainCampus: 47,
+    description: "Bina, müteahhidi tarafından öğrencilere kiralanan dairelerden oluşuyor. İçerisinde bulaşık makinesinin bulunması, ek bir avantaj. Genellikle en az bir daire için kiracı arayışı oluyor. Kira bedelleri ise bölge ortalamasının oldukça altında. Ulaşım açısından, bina yalnızca U5 hattındaki Quiddestraße durağına yakın. Bazı otobüs hatları da var ancak ulaşım genel olarak U5 harici biraz sınırlı olabiliyor, bu da kampüslere erişimi zaman zaman zorlaştırabilir. Bunun dışında bina oldukça temiz ve düzenli; genel olarak öğrenciler için uygun bir yaşam alanı sunuyor.",
+    features: [
+      "Bulaşık makinesi",
+      "Temiz ve düzenli",
+      "Uygun kira",
+      "U5 durağına yakın",
+      "Sınırlı ulaşım"
+    ],
+    roomTypes: ["Apartman", "WG"],
+    applicationMethod: "Online başvuru"
+  },
+  {
+    id: "13",
+    name: "Zimmerei",
+    organization: "Die Zimmerei",
+    address: "Resi-Huber-Platz 1, 81371 München",
+    rent: 950,
+    website: "https://zimmerei.apartments/wohnung-mieten-muenchen/",
+    coordinates: {
+      lat: 48.1158,
+      lng: 11.5475
+    },
+    distanceToGFZ: 65,
+    distanceToMainCampus: 32,
+    description: "Die Zimmerei, U3 Brudermühlstraße'ye çok yakın, yani şehirle olan toplu taşıma bağlantısı çok iyi. İstediğiniz apartman genişliğini seçip 'Jetzt Mieten' dedikten sonra, sitenin istediği adımları takip ederek başvurunuzu tamamlayabilirsiniz. Ortalama üzeri kiralarına rağmen çok rağbet gördüğünden dolayı, başvuru kabul şansını artırmak adına erken başvurmanız tavsiye edilir…",
+    features: [
+      "U3 durağına yakın",
+      "İyi toplu taşıma bağlantısı",
+      "Çeşitli apartman büyüklükleri",
+      "Yüksek talep",
+      "Modern olanaklar"
+    ],
+    roomTypes: ["Stüdyo", "Apartman", "WG"],
+    applicationMethod: "Online başvuru"
   }
 ];
 
