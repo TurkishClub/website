@@ -16,7 +16,7 @@ export default async function PostPage({
   }
 
   return (
-    <main className="bg-[#1A1A1A] text-[#E04A4A]">
+    <main className="bg-[#C61E1E] text-white">
       <MobileNavbar />
       <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="flex gap-8">

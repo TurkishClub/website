@@ -85,7 +85,7 @@ export default function MobileNavbar() {
           </button>
           <div className="absolute left-0 mt-2 w-64 rounded-md bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
             <div className="py-1">
-              <Link href="/blog" className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100">
+              <Link href="/blog" className="hidden items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100">
                 <BookOpen className="h-4 w-4 text-orange-500" />
                 <div className="flex flex-col">
                   <div className="font-medium text-sm">{t('blog')}</div>
