@@ -102,6 +102,10 @@
     "title": "Wohnheimsuche",
     "subtitle": "Wohnoptionen für türkische Studenten in München",
     "description": "Entdecken Sie Wohnheime und Studentenwohnungen, auf die türkische Studenten in München sich bewerben können. Filtern Sie nach Preis, Lage und Ausstattung.",
+    "suggestDorm": {
+      "button": "Wohnheim Vorschlagen",
+      "description": "Kennen Sie ein Wohnheim, das wir auflisten sollten? Teilen Sie Ihren Vorschlag mit uns!"
+    },
     "search": {
       "placeholder": "Wohnheim oder Adresse suchen...",
       "button": "Suchen"

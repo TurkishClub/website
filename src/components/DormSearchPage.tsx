@@ -132,6 +132,27 @@ export function DormSearchPage() {
         <p className="text-gray-200 max-w-2xl text-lg">
           {t("description")}
         </p>
+        
+        {/* Suggest Dorm Button */}
+        <div className="mt-8 text-center">
+          <p className="text-gray-200 mb-4 text-sm">
+            {t("suggestDorm.description")}
+          </p>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => {
+              const subject = encodeURIComponent("Yurt Önerisi - Turkish Club Munich");
+              const body = encodeURIComponent(
+                "Merhaba,\n\nMünih'te bulunan Turkish Club'ın yurt arama sayfası için bir yurt önerisi göndermek istiyorum.\n\nYurt Bilgileri:\n- Yurt Adı: \n- Adres: \n- Website: \n- Kira Aralığı: \n- Özellikler: \n- Başvuru Yöntemi: \n- Açıklama: \n\nTeşekkürler!"
+              );
+              window.location.href = `mailto:contact@turkishclub-munich.com?subject=${subject}&body=${body}`;
+            }}
+            className="bg-white text-[#C61E1E] hover:bg-gray-100 border-white hover:border-gray-100"
+          >
+            {t("suggestDorm.button")}
+          </Button>
+        </div>
       </section>
 
       {/* Main Content */}

@@ -102,6 +102,10 @@
     "title": "Dorm Search",
     "subtitle": "Student housing options for Turkish students in Munich",
     "description": "Discover dormitories and student housing that Turkish students in Munich can apply to. Filter by price, location, and features.",
+    "suggestDorm": {
+      "button": "Suggest a Dorm",
+      "description": "Know a dorm we should list? Share your suggestion with us!"
+    },
     "search": {
       "placeholder": "Search dorm name or address...",
       "button": "Search"

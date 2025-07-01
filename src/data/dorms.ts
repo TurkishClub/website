@@ -47,7 +47,7 @@ export const mockDorms: Dorm[] = [
     name: "AWO München - Haidpark (Fröttmaning)",
     organization: "AWO Vakfı",
     address: "Admiralbogen 37, 80939 München",
-    rent: 327,
+    rent: 327.5,
     website: "https://awo-muenchen.de/spezielles/studentisches-wohnen-im-haidpark/ueber-uns",
     coordinates: {
       lat: 48.2094,
