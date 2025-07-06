@@ -1,3 +1,16 @@
+# Turkish Club Website Documentation
+
+Welcome! This is the repository for TurkischClub-Munich website.
+Please take a look at our documentation to get started. 
+
+- [Tech Stack](./tech-stack.md)
+- [Component Overview](./components.md)
+- [Local Development](./local-development.md)
+- [Deployment to Vercel](./deployment.md)
+- [Rolling Out Updates](./updates.md)
+
+
+
 # example-app-router
 
 An example that showcases basic usage of `next-intl` with the App Router, including internationalized routing.
