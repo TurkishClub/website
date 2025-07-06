@@ -60,6 +60,8 @@ build/
 .next/
 .open-next/
 out/
+.sanity/
+messages/
 
 # Cache
 .cache/

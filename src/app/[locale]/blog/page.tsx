@@ -1,64 +1,79 @@
-import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import MobileNavbar from "@/components/MobileNavbar";
-import BlogContent from "@/components/BlogContent";
-import { getBlogPosts } from "@/lib/blog";
+import { client } from '@/sanity/lib/client'
+import { POSTS_QUERY } from '@/sanity/lib/queries'
+import { urlFor } from '@/sanity/lib/image'
+import Image from 'next/image'
+import Link from 'next/link'
 
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{ locale: "en" | "de" | "tr" }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "blog" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    keywords: "blog, news, Turkish community, München, Munich, insights, stories",
-    openGraph: {
-      title: t("title"),
-      description: t("description"),
-      type: "website",
-      locale: locale,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
-    },
-  };
+// Enhanced type definitions for our minimal queries
+interface Post {
+  _id: string
+  title: string
+  slug: { current: string }
+  image?: {
+    asset: {
+      _id: string
+      url: string
+    }
+    alt?: string
+  }
 }
 
-export default async function BlogPage({
-  params
-}: {
-  params: Promise<{ locale: "en" | "de" | "tr" }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "blog" });
-  const posts = await getBlogPosts();
+// This tells Next.js to regenerate the page periodically
+export const revalidate = 60
+
+export default async function BlogPage() {
+  // Fetch posts from Sanity using your existing query
+  const posts: Post[] = await client.fetch(POSTS_QUERY)
+
+
+  posts.forEach(post => {
+    if (post.image) {
+      console.log('Image URL:', urlFor(post.image).width(400).height(200).url())
+    }
+  })
 
   return (
-    <main className="bg-[#C61E1E] text-white min-h-screen">
-      <MobileNavbar />
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8">Blog Posts</h1>
       
-      {/* Hero Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              {t("title")}
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
-              {t("description")}
-            </p>
-          </div>
+      {posts.length === 0 ? (
+        <p className="text-gray-600">No blog posts found. Create some posts in your Sanity Studio!</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <article key={post._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              {post.image ? (
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={urlFor(post.image).width(400).height(200).url()}
+                    alt={post.image.alt || post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="h-48 w-full bg-gray-200 flex items-center justify-center">
+                  <p className="text-gray-500">No image</p>
+                </div>
+              )}
+              
+              <div className="p-6">
+                <h2 className="text-xl font-semibold mb-2">
+                  <Link 
+                    href={`/blog/${post.slug.current}`}
+                    className="text-gray-900 hover:text-blue-600 transition-colors"
+                  >
+                    {post.title}
+                  </Link>
+                </h2>
+                <p className="text-gray-600 text-sm">
+                  Click to read more about {post.title.toLowerCase()}...
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
-      </section>
-
-      {/* Blog Content with Search and Filtering */}
-      <BlogContent posts={posts} />
-    </main>
-  );
+      )}
+    </div>
+  )
 }
