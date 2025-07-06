@@ -1,12 +1,41 @@
+/**
+ * Props for the BlogFilters component.
+ * 
+ * @property selectedCategory - The currently selected blog category filter.
+ * @property setSelectedCategory - Callback to update the selected category.
+ * @property selectedDate - The currently selected date range filter.
+ * @property setSelectedDate - Callback to update the selected date range.
+ * @property onClearFilters - Callback to clear all applied filters.
+ */
+
+/**
+ * BlogFilters is a UI component that renders filter controls for blog posts.
+ * It allows users to filter blog posts by category and date range, and provides
+ * an option to clear all applied filters. The component is designed to be used
+ * in client-side rendered environments.
+ *
+ * @param selectedCategory - The currently selected category filter.
+ * @param setSelectedCategory - Function to update the selected category.
+ * @param selectedDate - The currently selected date range filter.
+ * @param setSelectedDate - Function to update the selected date range.
+ * @param onClearFilters - Function to clear all filters.
+ * @returns A set of filter controls for blog posts.
+ */
 'use client';
 
-interface BlogFiltersProps {
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
-  selectedDate: string;
+
+
+
+
+interface BlogFiltersProps { //
+  selectedCategory: string; // The currently selected category filter
+  setSelectedCategory: (category: string) => void;   // Callback to update the selected category
+  selectedDate: string; // The currently selected date range filter
   setSelectedDate: (date: string) => void;
-  onClearFilters: () => void;
+  onClearFilters: () => void; // Callback to clear all filters
 }
+
+
 
 export default function BlogFilters({ 
   selectedCategory, 
