@@ -1,4 +1,44 @@
+/**
+ * Renders a list of application tips for student dormitory applications, including
+ * visual icons, priority badges, and descriptions for each tip. Also provides a section
+ * with additional resources for further information.
+ *
+ * @component
+ *
+ * @remarks
+ * - Uses UI components such as `Card`, `Badge`, and Lucide icons for visual presentation.
+ * - Tips are displayed in a responsive grid layout.
+ * - Each tip includes an icon, title, description, and a priority badge with contextual color.
+ * - The "Ek Kaynaklar" section lists useful external resources for students.
+ */
+/**
+ * ApplicationTips Component
+ *  
+ * This component displays a series of tips for students applying for dormitories,
+ * including icons, titles, descriptions, and priority badges.
+ * 
+ * @param {Object} props - The component props.
+ * @returns {JSX.Element} The rendered component.
+ *
+ **/
+/**
+ * const getPriorityColor = (priority: string): string => { ... }
+ * Returns the CSS classes for the badge color based on the tip's priority.
+ *
+ * @param priority - The priority level of the tip ("high", "medium", or other).
+ * @returns A string of Tailwind CSS classes for badge styling.
+ **/
+/**
+ * const getPriorityText = (priority: string): string => { ... }
+ * Returns the display text for the tip's priority.
+ *
+ * @param priority - The priority level of the tip ("high", "medium", or other).
+ * @returns A string representing the priority in Turkish.
+ */
+
 "use client";
+
+
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

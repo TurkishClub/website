@@ -3,7 +3,23 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-
+/**
+ * blog.ts
+ * 
+ * This module provides utility functions for handling blog posts stored as Markdown files
+ * in the `content/blog` directory. It includes functions to read, parse, and convert Markdown
+ * blog posts to HTML, extract metadata (frontmatter), calculate read time, and generate excerpts.
+ * 
+ * Main exports:
+ * - BlogPost interface: Defines the structure of a blog post object.
+ * - getBlogPosts(): Reads all Markdown files in the blog directory, parses their content and metadata,
+ *   converts Markdown to HTML, and returns a sorted array of BlogPost objects.
+ * - getBlogPost(slug): Reads a single Markdown file by its slug, parses and converts it, and returns
+ *   a BlogPost object or null if not found.
+ * 
+ * This file is essential for integrating static Markdown-based blog content into a TypeScript/Node.js
+ * web application, enabling dynamic blog listing and detail pages.
+ */
 export interface BlogPost {
   id: string;
   title: string;

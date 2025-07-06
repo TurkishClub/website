@@ -1,3 +1,27 @@
+/**
+ * BlogContent component displays a searchable, filterable, and sortable list of blog posts.
+ *
+ * @component
+ * @param {BlogContentProps} props - The props for the component.
+ * @param {BlogPost[]} props.posts - The array of blog posts to display.
+ *
+ * @returns {JSX.Element} The rendered blog content section.
+ *
+ * @description
+ * - Provides a search bar for filtering posts by title or excerpt.
+ * - Allows filtering posts by category (placeholder for future implementation) and by date (week, month, year).
+ * - Supports sorting posts by newest, oldest, or popularity (popularity is a placeholder).
+ * - Displays the filtered and sorted posts in a responsive grid.
+ * - Shows a message and a button to clear filters when no results are found.
+ * - Utilizes `useMemo` for efficient filtering and sorting of posts.
+ * - Uses `useTranslations` for internationalized UI text.
+ *
+ * @function clearFilters
+ * Resets all filters and the search term to their default values.
+ *
+ * @constant filteredPosts
+ * Memoized value containing the filtered and sorted list of posts based on the current search term, selected category, selected date, and sort order.
+ */
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -5,6 +29,8 @@ import { useTranslations } from 'next-intl';
 import { BlogPost } from "@/lib/blog";
 import BlogSearch from "@/components/BlogSearch";
 import BlogCard from "@/components/BlogCard";
+
+
 
 interface BlogContentProps {
   posts: BlogPost[];
