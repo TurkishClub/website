@@ -27,7 +27,7 @@ export default function MobileNavbar() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div className="absolute left-0 mt-2 w-64 rounded-md bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
+          <div className="absolute left-0 mt-px w-64 rounded-md bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
             <div className="py-1">
               <a href="https://www.instagram.com/turkishclub.munich/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100">
                 <Instagram className="h-4 w-4 text-pink-500" />
@@ -62,7 +62,7 @@ export default function MobileNavbar() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div className="absolute left-0 mt-2 w-64 rounded-md bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
+          <div className="absolute left-0 mt-px w-64 rounded-md bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
             <div className="py-1">
               <Link href="/ev-arama" className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100">
                 <Search className="h-4 w-4 text-blue-500" />
@@ -83,7 +83,7 @@ export default function MobileNavbar() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div className="absolute left-0 mt-2 w-64 rounded-md bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
+          <div className="absolute left-0 mt-px w-64 rounded-md bg-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-50">
             <div className="py-1">
               <Link href="/blog" className="hidden items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100">
                 <BookOpen className="h-4 w-4 text-orange-500" />
