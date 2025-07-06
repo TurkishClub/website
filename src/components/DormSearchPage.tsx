@@ -42,16 +42,22 @@ export function DormSearchPage() {
   const [viewMode, setViewMode] = useState<"list" | "grid" | "map">("grid");
   const [selectedDorm, setSelectedDorm] = useState<Dorm | null>(null);
 
-  // Load dorms from Sanity on component mount
+  // Load dorms from API on component mount
   useEffect(() => {
     const loadDorms = async () => {
       try {
         setLoading(true);
-        // Fetch dorms from Sanity
-        const dormData = await import("@/data/dorms").then(mod => mod.getDormsFromSanity());
+        // Fetch dorms from API route
+        const response = await fetch('/api/dorms');
+        if (!response.ok) {
+          throw new Error('Failed to fetch dorms');
+        }
+        const dormData = await response.json();
         setDorms(dormData);
       } catch (error) {
         console.error('Error loading dorms:', error);
+        // Set empty array if API fails
+        setDorms([]);
       } finally {
         setLoading(false);
       }
