@@ -3,11 +3,11 @@
 Welcome! This is the repository for TurkischClub-Munich website.
 Please take a look at our documentation to get started. 
 
-- [Tech Stack](./tech-stack.md)
-- [Component Overview](./components.md)
-- [Local Development](./local-development.md)
-- [Deployment to Vercel](./deployment.md)
-- [Rolling Out Updates](./updates.md)
+- [Tech Stack](./documentation/tech-stack.md)
+- [Component Overview](./documentation/components.md)
+- [Local Development](./documentation/local-development.md)
+- [Deployment to Vercel](./documentation/deployment.md)
+- [Rolling Out Updates](./documentation/updates.md)
 
 
 
