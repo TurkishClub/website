@@ -1,9 +1,26 @@
+/**
+ * `BlogCard` is a React component that displays a summary card for a blog post.
+ * 
+ * @component
+ * @param {BlogCardProps} props - The props for the BlogCard component.
+ * @param {BlogPost} props.post - The blog post data to display.
+ * 
+ * @returns {JSX.Element} A stylized article element containing the blog post's image, meta information (publish date and read time), title, excerpt, and a "Read More" link.
+ * 
+ * @remarks
+ * - Uses `next-intl` for internationalized strings.
+ * - Uses `next/image` for optimized image rendering.
+ * - The card is interactive, with hover effects for both the image and title.
+ * - The "Read More" link navigates to the full blog post using the post's slug.
+ */
 'use client';
 
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { BlogPost } from "@/lib/blog";
+
+
 
 interface BlogCardProps {
   post: BlogPost;
