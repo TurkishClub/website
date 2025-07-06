@@ -143,7 +143,7 @@ declare const messages: {
       "showLess": "Show Less",
       "readMore": "Read More",
       "university": {
-        "gfz": "Garching Forschungszentrum",
+        "gfz": "Garching FZ",
         "mainCampus": "Main Campus",
         "minutes": "min"
       }

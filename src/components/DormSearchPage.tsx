@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Map, List, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DormCard } from "@/components/DormCard";
+import { DormCardSkeleton } from "@/components/DormCardSkeleton";
 import { DormSearchAndFilters, DormFilters } from "@/components/DormSearchAndFilters";
-import { mockDorms, Dorm } from "@/data/dorms";
+import { Dorm } from "@/data/dorms";
 import MobileNavbar from "@/components/MobileNavbar";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
@@ -27,6 +28,9 @@ const DormMapLeaflet = dynamic(
 export function DormSearchPage() {
   const t = useTranslations("dormSearch");
   
+  const [dorms, setDorms] = useState<Dorm[]>([]);
+  const [loading, setLoading] = useState(true);
+  
   const [filters, setFilters] = useState<DormFilters>({
     searchQuery: "",
     maxPrice: null,
@@ -38,9 +42,27 @@ export function DormSearchPage() {
   const [viewMode, setViewMode] = useState<"list" | "grid" | "map">("grid");
   const [selectedDorm, setSelectedDorm] = useState<Dorm | null>(null);
 
+  // Load dorms from Sanity on component mount
+  useEffect(() => {
+    const loadDorms = async () => {
+      try {
+        setLoading(true);
+        // Fetch dorms from Sanity
+        const dormData = await import("@/data/dorms").then(mod => mod.getDormsFromSanity());
+        setDorms(dormData);
+      } catch (error) {
+        console.error('Error loading dorms:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadDorms();
+  }, []);
+
   // Filter and sort dorms
   const filteredAndSortedDorms = useMemo(() => {
-    const filtered = mockDorms.filter((dorm) => {
+    const filtered = dorms.filter((dorm) => {
       // Search query filter
       if (filters.searchQuery) {
         const query = filters.searchQuery.toLowerCase();
@@ -106,7 +128,7 @@ export function DormSearchPage() {
     }
 
     return filtered;
-  }, [filters]);
+  }, [filters, dorms]);
 
   const handleViewOnMap = (dorm: Dorm) => {
     setSelectedDorm(dorm);
@@ -164,7 +186,7 @@ export function DormSearchPage() {
               filters={filters}
               onFiltersChange={setFilters}
               resultsCount={filteredAndSortedDorms.length}
-              totalCount={mockDorms.length}
+              totalCount={dorms.length}
             />
           </div>
 
@@ -212,7 +234,13 @@ export function DormSearchPage() {
           </div>
 
           {/* Content Based on View Mode */}
-          {viewMode === "map" ? (
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, index) => (
+                <DormCardSkeleton key={index} />
+              ))}
+            </div>
+          ) : viewMode === "map" ? (
             <div className="h-[600px] bg-white rounded-lg shadow-sm border">
               <DormMapLeaflet
                 dorms={filteredAndSortedDorms}
