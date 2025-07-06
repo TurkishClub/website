@@ -1,5 +1,5 @@
 import React from 'react';
-import { client } from "@/sanity/client";
+import { client } from "@/sanity/lib/client";
 import type { SanityDocument } from "next-sanity";
 import TeamPageClient from "./team-client";
 
