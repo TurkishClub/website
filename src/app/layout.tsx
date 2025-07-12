@@ -13,16 +13,14 @@ type Props = {
 export default async function RootLayout({children}: Props) {
   const { isEnabled } = await draftMode();
   return (
-    <html lang="en">
-      <body>
-        {children}
-        {isEnabled && (
-          <>
-            <VisualEditing />
-            <DisableDraftMode />
-          </>
-        )}
-      </body>
-    </html>
+    <>
+      {children}
+      {isEnabled && (
+        <>
+          <VisualEditing />
+          <DisableDraftMode />
+        </>
+      )}
+    </>
   );
 }

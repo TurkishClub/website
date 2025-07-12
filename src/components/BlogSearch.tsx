@@ -1,39 +1,58 @@
-'use client';
+"use client";
 
-import { useTranslations } from 'next-intl';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Search } from 'lucide-react';
 
-interface BlogSearchProps {
-  searchTerm: string;
-  setSearchTerm: (term: string) => void;
-}
+export function BlogSearch() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-export default function BlogSearch({ searchTerm, setSearchTerm }: BlogSearchProps) {
-  const t = useTranslations('blog');
-  
+  const handleSearch = useDebouncedCallback((term: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set('query', term);
+    } else {
+      params.delete('query');
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }, 300);
+
+  const handleSort = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('sort', value);
+    replace(`${pathname}?${params.toString()}`);
+  };
+
   return (
-    <div className="relative">
-      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-        <svg className="h-5 w-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
+    <div className="flex flex-col sm:flex-row gap-6 w-full max-w-2xl">
+      <div className="relative flex-1">
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <Input
+          placeholder="Blog yazılarında ara..."
+          className="pl-12 pr-4 py-3 w-full text-base border-gray-300 focus:border-[#C61E1E] focus:ring-[#C61E1E] rounded-lg"
+          onChange={(e) => handleSearch(e.target.value)}
+          defaultValue={searchParams.get('query')?.toString()}
+        />
       </div>
-      <input
-        type="text"
-        placeholder={t('search.placeholder')}
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent backdrop-blur-sm"
-      />
-      {searchTerm && (
-        <button
-          onClick={() => setSearchTerm('')}
-          className="absolute inset-y-0 right-0 pr-4 flex items-center text-white/60 hover:text-white"
-        >
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      )}
+      
+      <Select
+        value={searchParams.get('sort')?.toString() || 'newest'}
+        onValueChange={handleSort}
+      >
+        <SelectTrigger className="w-full sm:w-56 py-3 text-base border-gray-300 focus:border-[#C61E1E] focus:ring-[#C61E1E] rounded-lg">
+          <SelectValue placeholder="Sırala" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="newest">En Yeni</SelectItem>
+          <SelectItem value="oldest">En Eski</SelectItem>
+          <SelectItem value="popular">Popüler</SelectItem>
+          <SelectItem value="alphabetical">A-Z</SelectItem>
+        </SelectContent>
+      </Select>
     </div>
   );
 }
