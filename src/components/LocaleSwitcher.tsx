@@ -1,4 +1,3 @@
-// filepath: /Users/inanccan/turkish-club-website/website/src/components/LocaleSwitcher.tsx
 import {useLocale, useTranslations} from 'next-intl';
 import {routing} from '@/i18n/routing';
 import LocaleSwitcherSelect from './LocaleSwitcherSelect';
@@ -13,8 +12,8 @@ export default function LocaleSwitcher() {
   }));
 
   return (
-    <LocaleSwitcherSelect 
-      defaultValue={locale} 
+    <LocaleSwitcherSelect
+      defaultValue={locale}
       label={t('label')}
       options={options}
     />

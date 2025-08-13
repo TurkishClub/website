@@ -1,4 +1,7 @@
 import {ReactNode} from 'react';
+import {draftMode} from 'next/headers';
+import {VisualEditing} from 'next-sanity';
+import {DisableDraftMode} from '@/components/DisableDraftMode';
 
 type Props = {
   children: ReactNode;
@@ -7,6 +10,17 @@ type Props = {
 // This is the root layout for the application.
 // Since we have a `not-found.tsx` page on the root, a layout file
 // is required, even if it's just passing children through.
-export default function RootLayout({children}: Props) {
-  return children;
+export default async function RootLayout({children}: Props) {
+  const {isEnabled} = await draftMode();
+  return (
+    <>
+      {children}
+      {isEnabled && (
+        <>
+          <VisualEditing />
+          <DisableDraftMode />
+        </>
+      )}
+    </>
+  );
 }
