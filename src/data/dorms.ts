@@ -1,5 +1,3 @@
-import { client } from "@/sanity/client";
-
 export interface Dorm {
   id: string;
   name: string;
