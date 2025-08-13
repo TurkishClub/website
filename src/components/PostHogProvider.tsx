@@ -27,7 +27,6 @@ export function PostHogProvider({children}: {children: React.ReactNode}) {
               console.log('PostHog Provider config:', {
                 api_host: posthog.config.api_host,
                 ui_host: posthog.config.ui_host,
-                project_api_key: posthogKey.substring(0, 8) + '...',
                 distinct_id: posthog.get_distinct_id()
               });
               posthog.debug();
