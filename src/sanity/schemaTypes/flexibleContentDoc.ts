@@ -1,5 +1,4 @@
-import {defineType} from 'sanity'
-import {flexiblePostContentType} from './flexiblePostContentType'
+import {defineType} from 'sanity';
 
 export const flexibleContentDoc = defineType({
   name: 'flexibleContent',
@@ -12,4 +11,4 @@ export const flexibleContentDoc = defineType({
       type: 'flexiblePostContent'
     }
   ]
-})
+});

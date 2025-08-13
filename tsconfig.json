@@ -35,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/instrumentation-client.js", "src/instrumentation-client.js"  ],
   "exclude": [
     "node_modules"
   ]
