@@ -57,7 +57,7 @@ const FloatingActionMenu = ({options, className}: FloatingActionMenuProps) => {
     },
     {
       label: 'Instagram',
-      Icon: <Instagram className="w-4 h-4 text-conic/decreasing" />,
+      Icon: <Instagram className="w-4 h-4 text-pink-500" />,
       onClick: () => {
         setIsOpen(false);
         window.open('https://www.instagram.com/turkishclub.munich/', '_blank');
