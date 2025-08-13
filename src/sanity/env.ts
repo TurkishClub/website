@@ -30,5 +30,5 @@ export const previewOrigin = assertValue(
 
 export const viewerToken = assertValue(
   process.env.SANITY_STUDIO_VIEWER_TOKEN,
-  'Missing environment variable: SANITY_VIEWER_TOKEN'
+  'Missing environment variable: SANITY_STUDIO_VIEWER_TOKEN'
 )
