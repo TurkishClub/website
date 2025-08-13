@@ -7,7 +7,7 @@ import type {Dorm} from '@/data/dorms';
 import DormSearchClient from './dorm-search-client';
 
 // Enable ISR with 60 second revalidation
-export const revalidate = 60;
+export const revalidate = 120;
 
 export async function generateMetadata({
   params
