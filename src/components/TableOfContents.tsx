@@ -100,7 +100,7 @@ export function TableOfContents() {
                     : 'text-gray-600 hover:text-[#C61E1E] hover:bg-gray-100'
                 }`}
               >
-                {item.title}
+                <span className="block truncate">{item.title}</span>
               </Button>
             ))}
           </nav>
