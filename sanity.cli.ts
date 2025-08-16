@@ -6,5 +6,10 @@ import { defineCliConfig } from 'sanity/cli'
 
 const projectId = "qu5tnjcm"
 const dataset = "production"
+const projectId = process.env.SANITY_PROJECT_ID
+const dataset = process.env.SANITY_DATASET
 
+if (!projectId || !dataset) {
+  throw new Error("Missing required environment variables: SANITY_PROJECT_ID and/or SANITY_DATASET")
+}
 export default defineCliConfig({ api: { projectId, dataset } })
