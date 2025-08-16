@@ -1,7 +1,6 @@
 export interface Dorm {
   id: string;
   name: string;
-  organization: string;
   address: string;
   rent: {
     type: 'single' | 'range';
@@ -17,10 +16,7 @@ export interface Dorm {
   distanceToGFZ: number; // minutes
   distanceToMainCampus: number; // minutes
   description: string;
-  features: string[];
   roomTypes: string[];
-  applicationMethod: string;
-  images?: string[];
 }
 
 export const dormFeatures = [

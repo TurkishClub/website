@@ -16,6 +16,7 @@ export const POST_QUERY =
   publishedAt,
   body,
   excerpt,
+  author,
   "readTime": 5,
   "image": coalesce(mainImage, image){
     asset->{
@@ -23,10 +24,6 @@ export const POST_QUERY =
       url
     },
     alt
-  },
-  author->{
-    name,
-    image
   },
   categories[]->{
     title,
