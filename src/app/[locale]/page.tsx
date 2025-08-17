@@ -25,6 +25,16 @@ export default async function IndexPage({params}: Props) {
         <p className="md:text-2xl text-lg mb-8">{t('hero.subtitle')}</p>
         <FloatingActionMenu className="relative" />
       </section>
+      <div className="flex justify-center bg-[#C61E1E] p-4 rounded-lg">
+        <iframe
+          src="https://lu.ma/embed/event/evt-2C7ciFuk6rG8yZW/simple"
+          width="600"
+          height="800"
+          allow="fullscreen; payment"
+          aria-hidden="false"
+          tabIndex={0}
+        ></iframe>
+      </div>
       <FAQ />
       <Footer />
     </main>
