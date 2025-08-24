@@ -48,7 +48,6 @@ export default async function EvAramaPage({
     _id,
     "id": coalesce(id, _id),
     name,
-    organization,
     address,
     rent,
     website,
@@ -56,9 +55,7 @@ export default async function EvAramaPage({
     distanceToGFZ,
     distanceToMainCampus,
     description,
-    features,
-    roomTypes,
-    applicationMethod
+    roomTypes
   }`;
 
   try {

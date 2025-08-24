@@ -21,12 +21,10 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import {dormFeatures} from '@/data/dorms';
 
 export interface DormFilters {
   searchQuery: string;
   maxPrice: number | null;
-  features: string[];
   sortBy: string;
 }
 
@@ -62,17 +60,6 @@ export function DormSearchAndFilters({
 
   // Location filter removed
 
-  const handleFeatureToggle = (feature: string) => {
-    const newFeatures = filters.features.includes(feature)
-      ? filters.features.filter((f) => f !== feature)
-      : [...filters.features, feature];
-
-    onFiltersChange({
-      ...filters,
-      features: newFeatures
-    });
-  };
-
   const handleSortChange = (value: string) => {
     onFiltersChange({
       ...filters,
@@ -84,14 +71,12 @@ export function DormSearchAndFilters({
     onFiltersChange({
       searchQuery: '',
       maxPrice: null,
-      features: [],
       sortBy: 'name'
     });
   };
 
   const activeFiltersCount = [
-    filters.maxPrice !== null,
-    filters.features.length > 0
+    filters.maxPrice !== null
   ].filter(Boolean).length;
 
   return (
@@ -134,7 +119,6 @@ export function DormSearchAndFilters({
                 <MobileFilters
                   filters={filters}
                   onMaxPriceChange={handleMaxPriceChange}
-                  onFeatureToggle={handleFeatureToggle}
                   onClearAll={clearAllFilters}
                   t={t}
                 />
@@ -179,10 +163,10 @@ export function DormSearchAndFilters({
             {t('sort.label')}:
           </span>
           <Select value={filters.sortBy} onValueChange={handleSortChange}>
-            <SelectTrigger className="w-48 h-8">
+            <SelectTrigger className="w-48 h-8 bg-white border-gray-300">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white">
               <SelectItem value="name">{t('sort.name')}</SelectItem>
               <SelectItem value="price_asc">{t('sort.price_asc')}</SelectItem>
               <SelectItem value="price_desc">{t('sort.price_desc')}</SelectItem>
@@ -193,7 +177,7 @@ export function DormSearchAndFilters({
       </div>
 
       {/* Active Filters Display */}
-      {(filters.features.length > 0 || filters.maxPrice) && (
+      {filters.maxPrice && (
         <div className="flex flex-wrap gap-2">
           {filters.maxPrice && (
             <Badge variant="secondary" className="text-xs">
@@ -206,17 +190,6 @@ export function DormSearchAndFilters({
               </button>
             </Badge>
           )}
-          {filters.features.map((feature) => (
-            <Badge key={feature} variant="secondary" className="text-xs">
-              {feature}
-              <button
-                onClick={() => handleFeatureToggle(feature)}
-                className="ml-1 hover:text-red-600"
-              >
-                <X className="w-3 h-3" />
-              </button>
-            </Badge>
-          ))}
         </div>
       )}
 
@@ -237,13 +210,11 @@ export function DormSearchAndFilters({
 function MobileFilters({
   filters,
   onMaxPriceChange,
-  onFeatureToggle,
   onClearAll,
   t
 }: {
   filters: DormFilters;
   onMaxPriceChange: (value: string) => void;
-  onFeatureToggle: (feature: string) => void;
   onClearAll: () => void;
   t: any;
 }) {
@@ -260,28 +231,6 @@ function MobileFilters({
           value={filters.maxPrice || ''}
           onChange={(e) => onMaxPriceChange(e.target.value)}
         />
-      </div>
-
-      {/* Features */}
-      <div>
-        <label className="text-sm font-medium text-gray-700 mb-2 block">
-          {t('filters.features')}
-        </label>
-        <div className="flex flex-wrap gap-2">
-          {dormFeatures.map((feature) => (
-            <button
-              key={feature}
-              onClick={() => onFeatureToggle(feature)}
-              className={`px-3 py-1 rounded-full text-xs transition-colors ${
-                filters.features.includes(feature)
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {feature}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* Clear All */}

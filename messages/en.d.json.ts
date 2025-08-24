@@ -74,6 +74,8 @@ declare const messages: {
     "whatsappDesc": "Community chat group",
     "dormSearch": "Dorm Search",
     "dormSearchDesc": "Page where we organize dormitories for those seeking housing in Munich.",
+    "studyPlaceSearch": "Study Place Search",
+    "studyPlaceSearchDesc": "Find suitable places to study in Munich",
     "blog": "Blog",
     "blogDesc": "Latest articles and news",
     "team": "Team",
