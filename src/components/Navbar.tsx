@@ -1,8 +1,8 @@
 'use client';
-import {useState, useEffect, useRef} from 'react';
-import {Button} from '@/components/ui/button';
+import { useState, useEffect, useRef } from 'react';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 import {
   Instagram,
   GithubIcon,
@@ -13,10 +13,11 @@ import {
   ChevronDown,
   Calendar,
   Menu,
-  X
+  X,
+  Mail
 } from 'lucide-react';
-import {motion, AnimatePresence} from 'framer-motion';
-import {Analytics} from '@/lib/analytics';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@/lib/analytics';
 import LocaleSwitcher from './LocaleSwitcher';
 
 export default function Navbar() {
@@ -37,7 +38,7 @@ export default function Navbar() {
       menu_section: section
     });
   };
-  const dropdownRefs = useRef<{[key: string]: HTMLDivElement | null}>({});
+  const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const handleDropdownToggle = (dropdown: string) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
@@ -99,8 +100,8 @@ export default function Navbar() {
             >
               {t('platforms')}
               <motion.div
-                animate={{rotate: openDropdown === 'platforms' ? 180 : 0}}
-                transition={{duration: 0.2, ease: 'easeOut'}}
+                animate={{ rotate: openDropdown === 'platforms' ? 180 : 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
                 <ChevronDown className="w-4 h-4" />
               </motion.div>
@@ -108,10 +109,10 @@ export default function Navbar() {
             <AnimatePresence>
               {openDropdown === 'platforms' && (
                 <motion.div
-                  initial={{opacity: 0, y: -8, filter: 'blur(8px)'}}
-                  animate={{opacity: 1, y: 0, filter: 'blur(0px)'}}
-                  exit={{opacity: 0, y: -8, filter: 'blur(8px)'}}
-                  transition={{duration: 0.25, ease: 'easeOut'}}
+                  initial={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="absolute top-full right-0 mt-2 z-50"
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -149,10 +150,10 @@ export default function Navbar() {
                     ].map((opt, index) => (
                       <motion.div
                         key={opt.href}
-                        initial={{opacity: 0, x: 20}}
-                        animate={{opacity: 1, x: 0}}
-                        exit={{opacity: 0, x: 20}}
-                        transition={{duration: 0.2, delay: index * 0.05}}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.2, delay: index * 0.05 }}
                       >
                         <Link
                           href={opt.href}
@@ -195,8 +196,8 @@ export default function Navbar() {
             >
               {t('tools')}
               <motion.div
-                animate={{rotate: openDropdown === 'tools' ? 180 : 0}}
-                transition={{duration: 0.2, ease: 'easeOut'}}
+                animate={{ rotate: openDropdown === 'tools' ? 180 : 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
                 <ChevronDown className="w-4 h-4" />
               </motion.div>
@@ -204,10 +205,10 @@ export default function Navbar() {
             <AnimatePresence>
               {openDropdown === 'tools' && (
                 <motion.div
-                  initial={{opacity: 0, y: -8, filter: 'blur(8px)'}}
-                  animate={{opacity: 1, y: 0, filter: 'blur(0px)'}}
-                  exit={{opacity: 0, y: -8, filter: 'blur(8px)'}}
-                  transition={{duration: 0.25, ease: 'easeOut'}}
+                  initial={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="absolute top-full right-0 mt-2 z-50"
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -221,10 +222,10 @@ export default function Navbar() {
                     ].map((opt, index) => (
                       <motion.div
                         key={opt.href}
-                        initial={{opacity: 0, x: 20}}
-                        animate={{opacity: 1, x: 0}}
-                        exit={{opacity: 0, x: 20}}
-                        transition={{duration: 0.2, delay: index * 0.05}}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.2, delay: index * 0.05 }}
                       >
                         <Link href={opt.href}>
                           <Button className="flex items-center justify-start gap-3 w-64 h-auto text-black bg-white hover:bg-gray-50 shadow-[0_0_20px_rgba(0,0,0,0.2)] border-none rounded-xl py-4 px-5">
@@ -263,8 +264,8 @@ export default function Navbar() {
             >
               {t('pages')}
               <motion.div
-                animate={{rotate: openDropdown === 'pages' ? 180 : 0}}
-                transition={{duration: 0.2, ease: 'easeOut'}}
+                animate={{ rotate: openDropdown === 'pages' ? 180 : 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
                 <ChevronDown className="w-4 h-4" />
               </motion.div>
@@ -272,10 +273,10 @@ export default function Navbar() {
             <AnimatePresence>
               {openDropdown === 'pages' && (
                 <motion.div
-                  initial={{opacity: 0, y: -8, filter: 'blur(8px)'}}
-                  animate={{opacity: 1, y: 0, filter: 'blur(0px)'}}
-                  exit={{opacity: 0, y: -8, filter: 'blur(8px)'}}
-                  transition={{duration: 0.25, ease: 'easeOut'}}
+                  initial={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="absolute top-full right-0 mt-2 z-50"
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -291,14 +292,20 @@ export default function Navbar() {
                         label: t('team'),
                         desc: t('teamDesc'),
                         icon: <Users className="h-4 w-4 text-purple-500" />
+                      },
+                      {
+                        href: '/contact',
+                        label: t('contact'),
+                        desc: t('contactDesc'),
+                        icon: <Mail className="h-4 w-4 text-blue-500" />
                       }
                     ].map((opt, index) => (
                       <motion.div
                         key={opt.href}
-                        initial={{opacity: 0, x: 20}}
-                        animate={{opacity: 1, x: 0}}
-                        exit={{opacity: 0, x: 20}}
-                        transition={{duration: 0.2, delay: index * 0.05}}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.2, delay: index * 0.05 }}
                       >
                         <Link href={opt.href}>
                           <Button className="flex items-center justify-start gap-3 w-64 h-auto text-black bg-white hover:bg-gray-50 shadow-[0_0_20px_rgba(0,0,0,0.2)] border-none rounded-xl py-4 px-5">
@@ -330,10 +337,10 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{opacity: 0, x: '100%'}}
-            animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x: '100%'}}
-            transition={{duration: 0.3, ease: 'easeInOut'}}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="fixed inset-0 z-50 bg-white dark:bg-gray-900 lg:hidden"
           >
             <div className="flex flex-col h-full">
@@ -462,6 +469,17 @@ export default function Navbar() {
                       >
                         <Users className="h-5 w-5 text-purple-500" />
                         {t('team')}
+                      </Link>
+                      <Link
+                        href="/contact"
+                        className="flex items-center gap-3 py-3 px-3 text-base text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        onClick={() => {
+                          trackNavClick(t('contact'), '/contact', 'mobile_menu');
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <Mail className="h-5 w-5 text-purple-500" />
+                        {t('contact')}
                       </Link>
                     </div>
                   </div>
