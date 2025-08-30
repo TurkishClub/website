@@ -108,7 +108,7 @@ export function DormSearchAndFilters({
                 )}
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-80">
+            <SheetContent side="left" className="w-80 bg-white">
               <SheetHeader>
                 <SheetTitle>{t('filters.title')}</SheetTitle>
                 <SheetDescription>

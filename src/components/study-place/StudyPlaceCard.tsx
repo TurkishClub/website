@@ -66,11 +66,22 @@ function StudyPlaceCardComponent({studyPlace, onViewOnMap, isSelected, onCompare
     return categoryMap[studyPlace.category] || studyPlace.category;
   }, [studyPlace.category]);
 
-  const openingHoursToday = useMemo(() => {
-    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    const today = new Date().getDay();
-    const dayKey = days[today] as keyof typeof studyPlace.openingHours;
-    return studyPlace.openingHours[dayKey] || 'Bilinmiyor';
+  const allOpeningHours = useMemo(() => {
+    const dayLabels = {
+      monday: 'Pazartesi',
+      tuesday: 'Salı', 
+      wednesday: 'Çarşamba',
+      thursday: 'Perşembe',
+      friday: 'Cuma',
+      saturday: 'Cumartesi',
+      sunday: 'Pazar'
+    };
+
+    const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+    return days.map(day => ({
+      day: dayLabels[day as keyof typeof dayLabels],
+      hours: studyPlace.openingHours[day as keyof typeof studyPlace.openingHours] || 'Kapalı'
+    }));
   }, [studyPlace]);
 
   const handleViewOnMap = useCallback(() => {
@@ -168,7 +179,9 @@ function StudyPlaceCardComponent({studyPlace, onViewOnMap, isSelected, onCompare
                 {studyPlace.electricOutlets ? (
                   <>
                     <Zap className="h-4 w-4 mr-2 text-green-600" />
-                    <span className="text-green-600">Priz</span>
+                    <span className="text-green-600">
+                      Priz {studyPlace.electricOutletsPercentage ? `(${studyPlace.electricOutletsPercentage}%)` : ''}
+                    </span>
                   </>
                 ) : (
                   <>
@@ -193,10 +206,26 @@ function StudyPlaceCardComponent({studyPlace, onViewOnMap, isSelected, onCompare
               </div>
             </div>
 
-            {/* Açık saatler */}
-            <div className="flex items-center text-sm text-gray-600 mb-3">
-              <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
-              <span>Bugün: {openingHoursToday}</span>
+            {/* Açık saatler - Her zaman görünür */}
+            <div className="mb-4">
+              <div className="flex items-center text-sm text-gray-600 mb-2">
+                <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
+                <span className="font-medium">Açık Saatler</span>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3">
+                <div className="flex gap-4 justify-between items-center flex-nowrap overflow-x-auto px-2">
+                  {allOpeningHours.map(({day, hours}) => (
+                    <div key={day} className="text-center flex-shrink-0">
+                      <div className="text-xs font-medium text-gray-700 leading-tight">{day}</div>
+                      <div className={`text-xs leading-tight ${
+                        hours === 'Kapalı' ? 'text-red-500 font-medium' : 'text-gray-600'
+                      }`}>
+                        {hours}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Kimler kullanabilir */}

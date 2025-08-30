@@ -225,5 +225,70 @@
       "oldest": "Älteste zuerst",
       "popular": "Am beliebtesten"
     }
+  },
+  "studyPlaceSearch": {
+    "title": "Lernplatz Suche",
+    "subtitle": "Finden Sie die besten Lernplätze in München",
+    "description": "Entdecken Sie Bibliotheken, Cafés und andere Lernräume, die perfekt für türkische Studenten in München sind. Filtern Sie nach Kategorie, Ruhe und Preis.",
+    "search": {
+      "placeholder": "Name oder Ort des Lernplatzes suchen...",
+      "button": "Suchen"
+    },
+    "filters": {
+      "title": "Filter",
+      "category": "Kategorie",
+      "categories": {
+        "all": "Alle",
+        "library": "Bibliothek",
+        "cafe": "Café",
+        "university": "Universität",
+        "coworking": "Coworking",
+        "other": "Andere"
+      },
+      "quietOnly": "Nur ruhige Orte",
+      "freeOnly": "Nur kostenlose Orte",
+      "clearAll": "Alle löschen",
+      "apply": "Anwenden"
+    },
+    "sort": {
+      "label": "Sortieren nach",
+      "name": "Name (A-Z)",
+      "category": "Kategorie",
+      "distance": "Entfernung"
+    },
+    "card": {
+      "address": "Adresse",
+      "openingHours": "Öffnungszeiten",
+      "category": "Kategorie",
+      "features": "Eigenschaften",
+      "quiet": "Ruhig",
+      "free": "Kostenlos",
+      "hasWifi": "WLAN verfügbar",
+      "electricOutlets": "Steckdosen",
+      "viewOnMap": "Auf Karte anzeigen",
+      "moreInfo": "Weitere Details",
+      "getDirections": "Wegbeschreibung",
+      "restrictions": "Beschränkungen",
+      "whoCanUse": "Wer kann nutzen",
+      "foodOptions": "Verpflegungsmöglichkeiten",
+      "showLess": "Weniger anzeigen",
+      "readMore": "Weiterlesen"
+    },
+    "map": {
+      "title": "Kartenansicht",
+      "showList": "Listenansicht",
+      "showMap": "Kartenansicht",
+      "showingLocations": "{count} Lernplätze werden angezeigt",
+      "popup": {
+        "moreInfo": "Weitere Details",
+        "getDirections": "Wegbeschreibung"
+      }
+    },
+    "results": {
+      "showing": "{filtered} von {total} Lernplätzen angezeigt",
+      "noResults": "Keine Lernplätze gefunden, die Ihren Suchkriterien entsprechen.",
+      "foundResults": "{count} Lernplätze gefunden",
+      "adjustFilters": "Versuchen Sie, Ihre Suchkriterien anzupassen."
+    }
   }
 }

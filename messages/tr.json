@@ -225,6 +225,71 @@
       "oldest": "En Eski",
       "popular": "Popüler"
     }
+  },
+  "studyPlaceSearch": {
+    "title": "Ders Yeri Arama",
+    "subtitle": "Münih'te çalışmak için en iyi yerleri bulun",
+    "description": "Münih'teki Türk öğrenciler için mükemmel kütüphaneler, kafeler ve diğer çalışma alanlarını keşfedin. Kategori, sessizlik ve fiyata göre filtreleyin.",
+    "search": {
+      "placeholder": "Ders yeri adı veya konumu ara...",
+      "button": "Ara"
+    },
+    "filters": {
+      "title": "Filtreler",
+      "category": "Kategori",
+      "categories": {
+        "all": "Tümü",
+        "library": "Kütüphane",
+        "cafe": "Kafe",
+        "university": "Üniversite",
+        "coworking": "Ortak Çalışma Alanı",
+        "other": "Diğer"
+      },
+      "quietOnly": "Sadece sessiz yerler",
+      "freeOnly": "Sadece ücretsiz yerler",
+      "clearAll": "Tümünü Temizle",
+      "apply": "Uygula"
+    },
+    "sort": {
+      "label": "Sırala",
+      "name": "İsim (A-Z)",
+      "category": "Kategori",
+      "distance": "Mesafe"
+    },
+    "card": {
+      "address": "Adres",
+      "openingHours": "Açılış Saatleri",
+      "category": "Kategori",
+      "features": "Özellikler",
+      "quiet": "Sessiz",
+      "free": "Ücretsiz",
+      "hasWifi": "WiFi Mevcut",
+      "electricOutlets": "Priz",
+      "viewOnMap": "Haritada Gör",
+      "moreInfo": "Detaylar",
+      "getDirections": "Yol Tarifi Al",
+      "restrictions": "Kısıtlamalar",
+      "whoCanUse": "Kimler kullanabilir",
+      "foodOptions": "Yemek İmkanları",
+      "showLess": "Daha Az Göster",
+      "readMore": "Devamını Oku"
+    },
+    "map": {
+      "title": "Harita Görünümü",
+      "showList": "Liste Görünümü",
+      "showMap": "Harita Görünümü",
+      "showingLocations": "{count} ders yeri gösteriliyor",
+      "popup": {
+        "moreInfo": "Detaylar",
+        "getDirections": "Yol Tarifi Al"
+      }
+    },
+    "results": {
+      "showing": "{total} ders yerinden {filtered} tanesi gösteriliyor",
+      "noResults": "Arama kriterlerinize uygun ders yeri bulunamadı.",
+      "foundResults": "{count} ders yeri bulundu",
+      "adjustFilters": "Arama kriterlerinizi ayarlamayı deneyin."
+    }
   }
 }
 

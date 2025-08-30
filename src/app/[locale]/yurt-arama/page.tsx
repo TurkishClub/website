@@ -1,10 +1,8 @@
 import {Metadata} from 'next';
 import {getTranslations} from 'next-intl/server';
 import {DormSearchPage} from '@/components/dorm/DormSearchPage';
-import {client} from '@/sanity/lib/client';
-import {groq} from 'next-sanity';
-import type {Dorm} from '@/data/dorms';
 import DormSearchClient from './dorm-search-client';
+import { getAllDorms } from '@/lib/dorms';
 
 // Enable ISR with 60 second revalidation
 export const revalidate = 120;
@@ -43,23 +41,10 @@ export default async function EvAramaPage({
 }) {
   // Params await edilmeli ama locale'i kullanmıyoruz
   await params;
-  // Optimized Sanity query - fetch only essential data for faster loading
-  const query = groq`*[_type == "dorm"] | order(name asc){
-    _id,
-    "id": coalesce(id, _id),
-    name,
-    address,
-    rent,
-    website,
-    coordinates,
-    distanceToGFZ,
-    distanceToMainCampus,
-    description,
-    roomTypes
-  }`;
+
 
   try {
-    const dorms = await client.fetch<Dorm[]>(query);
+    const dorms = await getAllDorms();
     return (
       <DormSearchClient>
         <main>

@@ -438,6 +438,21 @@ export default function Navbar() {
                         <Search className="h-5 w-5 text-blue-500" />
                         {t('dormSearch')}
                       </Link>
+                      <Link
+                        href="/ders-yeri-arama"
+                        className="flex items-center gap-3 py-3 px-3 text-base text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        onClick={() => {
+                          trackNavClick(
+                            t('studyPlaceSearch'),
+                            '/ders-yeri-arama',
+                            'mobile_menu'
+                          );
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <BookOpen className="h-5 w-5 text-green-500" />
+                        {t('studyPlaceSearch')}
+                      </Link>
                     </div>
                   </div>
 

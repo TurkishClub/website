@@ -1,4 +1,3 @@
-// Sample data for development/testing
 import {StudyPlace} from './studyPlaces';
 
 export const sampleStudyPlaces: StudyPlace[] = [
@@ -19,6 +18,7 @@ export const sampleStudyPlaces: StudyPlace[] = [
     description: 'München\'ün en büyük kütüphanesi. Çok sessiz ortam, geniş masalar. Genelde sabah 9\'dan sonra dolmaya başlar, öğlen 12-14 arası çok yoğun. Ciddi ders çalışanlar için ideal.',
     restrictions: 'Üyelik gerekli (ücretsiz), kimlik ibrazı zorunlu. Çanta kontrolü var.',
     electricOutlets: true,
+    electricOutletsPercentage: 85,
     foodOptions: 'Kütüphane içinde kafe mevcut, dışarıda çok sayıda restoran',
     coordinates: {
       lat: 48.1482,
@@ -48,6 +48,7 @@ export const sampleStudyPlaces: StudyPlace[] = [
     description: 'TUM ana kampüsün merkezi kütüphanesi. Mühendislik odaklı kaynaKlar. Grup çalışma odaları mevcut. Sınav dönemlerinde çok yoğun.',
     restrictions: 'TUM kartı veya misafir kartı gerekli',
     electricOutlets: true,
+    electricOutletsPercentage: 90,
     foodOptions: 'Kampüs içinde mensa ve kafeler',
     coordinates: {
       lat: 48.1497,
@@ -77,6 +78,7 @@ export const sampleStudyPlaces: StudyPlace[] = [
     description: 'Merkezi lokasyon, rahat atmosfer. Hafta içi öğleden önce sakin, öğleden sonra daha yoğun. Laptopla çalışanlar için uygun.',
     restrictions: 'Kahve/yiyecek siparişi beklenir, uzun süre oturmak için düzenli sipariş vermek gerekir',
     electricOutlets: true,
+    electricOutletsPercentage: 60,
     foodOptions: 'Kahve, pasta, sandviç çeşitleri',
     coordinates: {
       lat: 48.1445,
@@ -106,6 +108,7 @@ export const sampleStudyPlaces: StudyPlace[] = [
     description: 'LMU merkez kütüphanesi. Çok geniş, farklı çalışma alanları. Genelde 10\'dan sonra dolmaya başlar.',
     restrictions: 'LMU kartı veya günlük misafir kartı (3€) gerekli',
     electricOutlets: true,
+    electricOutletsPercentage: 80,
     foodOptions: 'Yakınlarda çok sayıda restoran ve kafe',
     coordinates: {
       lat: 48.1500,
@@ -164,6 +167,7 @@ export const sampleStudyPlaces: StudyPlace[] = [
     description: 'Modern coworking alanı. Genç profesyoneller ve startup çalışanları. Networking imkanı var.',
     restrictions: 'Aylık üyelik (150€) veya günlük geçiş (25€) gerekli',
     electricOutlets: true,
+    electricOutletsPercentage: 95,
     foodOptions: 'Ücretsiz kahve/çay, yakınlarda restoranlar',
     coordinates: {
       lat: 48.1320,

@@ -84,6 +84,13 @@ export default defineType({
       initialValue: false
     }),
     defineField({
+      name: 'electricOutletsPercentage',
+      title: 'Electric Outlets Percentage',
+      type: 'number',
+      description: 'Percentage of seats with electric outlets available',
+      validation: (Rule) => Rule.min(0).max(100)
+    }),
+    defineField({
       name: 'foodOptions',
       title: 'Food Options',
       type: 'string',

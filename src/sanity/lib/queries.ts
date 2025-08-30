@@ -33,3 +33,91 @@ export const POST_QUERY =
     "slug": slug.current
   }
 }`);
+
+export const STUDY_PLACES_QUERY =
+  defineQuery(`*[_type == "studyPlace"]{
+  _id,
+  name,
+  address,
+  whoCanUse,
+  openingHours,
+  description,
+  restrictions,
+  electricOutlets,
+  electricOutletsPercentage,
+  foodOptions,
+  coordinates,
+  distanceToGFZ,
+  distanceToMainCampus,
+  category,
+  isQuiet,
+  hasWifi,
+  isFree,
+  "images": images[]{
+    asset->{
+      _id,
+      url
+    },
+    alt
+  }
+}`);
+
+export const STUDY_PLACE_QUERY =
+  defineQuery(`*[_type == "studyPlace" && _id == $id][0]{
+  _id,
+  name,
+  address,
+  whoCanUse,
+  openingHours,
+  description,
+  restrictions,
+  electricOutlets,
+  electricOutletsPercentage,
+  foodOptions,
+  coordinates,
+  distanceToGFZ,
+  distanceToMainCampus,
+  category,
+  isQuiet,
+  hasWifi,
+  isFree,
+  "images": images[]{
+    asset->{
+      _id,
+      url
+    },
+    alt
+  }
+}`);
+
+export const DORM_QUERY =
+  defineQuery(`*[_type == "dorm" && id == $id][0]{
+  _id,
+  "id": coalesce(id, _id),
+  name,
+  address,
+  rent,
+  website,
+  coordinates,
+  distanceToGFZ,
+  distanceToMainCampus,
+  description,
+  roomTypes,
+
+}`);
+
+export const DORMS_QUERY =
+  defineQuery(`*[_type == "dorm"]{
+  _id,
+  "id": coalesce(id, _id),
+  name,
+  address,
+  rent,
+  website,
+  coordinates,
+  distanceToGFZ,
+  distanceToMainCampus,
+  description,
+  roomTypes,
+
+}`);

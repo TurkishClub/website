@@ -29,7 +29,6 @@ function StudyPlaceComparisonComponent({
     const categoryMap = {
       library: 'Kütüphane',
       cafe: 'Kafe', 
-      university: 'Üniversite',
       coworking: 'Coworking',
       other: 'Diğer'
     };

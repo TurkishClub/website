@@ -259,9 +259,10 @@ export function StudyPlaceSearchPage({studyPlaces}: {studyPlaces: StudyPlace[]})
           {/* Search and Filters - Always visible */}
           <div className="mb-8">
             <StudyPlaceSearchAndFilters
+              filters={filters}
               onFiltersChange={handleFiltersChange}
-              totalResults={filteredAndSortedStudyPlaces.length}
-              isLoading={false}
+              resultsCount={filteredAndSortedStudyPlaces.length}
+              totalCount={studyPlaces.length}
             />
           </div>
 

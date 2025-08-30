@@ -226,6 +226,71 @@
       "oldest": "Oldest First",
       "popular": "Most Popular"
     }
+  },
+  "studyPlaceSearch": {
+    "title": "Study Place Search",
+    "subtitle": "Find the best places to study in Munich",
+    "description": "Discover libraries, cafes, and other study spaces perfect for Turkish students in Munich. Filter by category, quietness, and price.",
+    "search": {
+      "placeholder": "Search study place name or location...",
+      "button": "Search"
+    },
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "categories": {
+        "all": "All",
+        "library": "Library",
+        "cafe": "Cafe",
+        "university": "University",
+        "coworking": "Coworking",
+        "other": "Other"
+      },
+      "quietOnly": "Quiet places only",
+      "freeOnly": "Free places only",
+      "clearAll": "Clear All",
+      "apply": "Apply"
+    },
+    "sort": {
+      "label": "Sort by",
+      "name": "Name (A-Z)",
+      "category": "Category",
+      "distance": "Distance"
+    },
+    "card": {
+      "address": "Address",
+      "openingHours": "Opening Hours",
+      "category": "Category",
+      "features": "Features",
+      "quiet": "Quiet",
+      "free": "Free",
+      "hasWifi": "WiFi Available",
+      "electricOutlets": "Power Outlets",
+      "viewOnMap": "View on Map",
+      "moreInfo": "More Details",
+      "getDirections": "Get Directions",
+      "restrictions": "Restrictions",
+      "whoCanUse": "Who can use",
+      "foodOptions": "Food Options",
+      "showLess": "Show Less",
+      "readMore": "Read More"
+    },
+    "map": {
+      "title": "Map View",
+      "showList": "List View",
+      "showMap": "Map View",
+      "showingLocations": "Showing {count} study places",
+      "popup": {
+        "moreInfo": "More Details",
+        "getDirections": "Get Directions"
+      }
+    },
+    "results": {
+      "showing": "Showing {filtered} of {total} study places",
+      "noResults": "No study places found matching your search criteria.",
+      "foundResults": "{count} study places found",
+      "adjustFilters": "Try adjusting your search criteria."
+    }
   }
 }
 

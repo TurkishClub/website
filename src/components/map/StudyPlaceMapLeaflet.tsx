@@ -172,7 +172,6 @@ export function StudyPlaceMapLeaflet({
                 <Badge variant="outline" className="text-xs">
                   {selectedStudyPlace.category === 'library' && 'Kütüphane'}
                   {selectedStudyPlace.category === 'cafe' && 'Kafe'}
-                  {selectedStudyPlace.category === 'university' && 'Üniversite'}
                   {selectedStudyPlace.category === 'coworking' && 'Coworking'}
                   {selectedStudyPlace.category === 'other' && 'Diğer'}
                 </Badge>

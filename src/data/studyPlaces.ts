@@ -1,5 +1,6 @@
 export interface StudyPlace {
-  id: string;
+  id: string; // Required for consistency
+  _id?: string; // For Sanity data (optional)
   name: string;
   address: string;
   whoCanUse: string; // Kimler kullanabilir
@@ -15,6 +16,7 @@ export interface StudyPlace {
   description: string; // Giden kişi profili, düzen, ses düzeyi, masa genişliği, genelde kaçta doluyor
   restrictions: string; // Kısıtlamalar (kafe ise kahve alman lazım, üye olman lazım ücretsiz/ücretli)
   electricOutlets: boolean; // Elektrik priz durumu
+  electricOutletsPercentage?: number; // Prizli yerlerin yüzdesi (varsa)
   foodOptions: string; // Yemek imkânları
   coordinates: {
     lat: number;
@@ -26,7 +28,7 @@ export interface StudyPlace {
   isQuiet: boolean; // Sessiz mi?
   hasWifi: boolean;
   isFree: boolean; // Ücretsiz mi?
-  images?: string[];
+  images?: string[] | Array<{ asset: { _id: string; url: string }; alt?: string }>; // Support both formats
 }
 
 export const studyPlaceCategories = [
@@ -37,10 +39,10 @@ export const studyPlaceCategories = [
   'other'
 ] as const;
 
-export type StudyPlaceFilters = {
+export interface StudyPlaceFilters {
   searchQuery: string;
   category: string;
   isQuietOnly: boolean;
   isFreeOnly: boolean;
-  sortBy: 'name' | 'distance' | 'category';
-};
+  sortBy: string;
+}

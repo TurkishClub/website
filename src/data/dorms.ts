@@ -17,7 +17,6 @@ export interface Dorm {
   distanceToMainCampus: number; // minutes
   description: string;
   roomTypes: string[];
-  images?: string[];
 }
 
 export const locations = [

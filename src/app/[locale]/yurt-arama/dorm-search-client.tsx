@@ -11,7 +11,7 @@ export default function DormSearchClient({children}: DormSearchClientProps) {
   useEffect(() => {
     // Track page view
     Analytics.trackPageView({
-      page_title: 'Turkish Club - Dorm Search',
+      page_title: 'Turkish Club - Yurt Arama',
       page_type: 'dorm_search'
     });
 

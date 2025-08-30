@@ -59,7 +59,7 @@ export default function Footer() {
                 {t('dormSearch')}
               </Link>
               <Link
-                href="/ders-çalışma-yeri-arama"
+                href="/ders-yeri-arama"
                 className="flex items-center gap-2 hover:underline"
               >
                 {t('studyPlaceSearch')}
