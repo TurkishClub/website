@@ -30,7 +30,7 @@ export async function sendContactEmail(formData: {
 
     // Email content
     const mailOptions = {
-      from: 'mertilginoglu@gmail.com',
+      from: process.env.SMTP_USER,
       to: process.env.SMTP_USER,
       subject: `Contact Form Submission from ${formData.name}`,
       text: `
