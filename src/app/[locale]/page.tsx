@@ -4,6 +4,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FAQ from '@/components/FAQ';
 import FloatingActionMenu from '@/components/ui/floating-action-menu';
+import ContactForm from '@/components/ContactForm';
+import Contact from '@/components/ContactForm2';
 
 type Props = {
   params: Promise<{locale: Locale}>;
@@ -25,17 +27,8 @@ export default async function IndexPage({params}: Props) {
         <p className="md:text-2xl text-lg mb-8">{t('hero.subtitle')}</p>
         <FloatingActionMenu className="relative" />
       </section>
-      <div className="flex justify-center bg-[#C61E1E] p-4 rounded-lg">
-        <iframe
-          src="https://lu.ma/embed/event/evt-2C7ciFuk6rG8yZW/simple"
-          width="600"
-          height="800"
-          allow="fullscreen; payment"
-          aria-hidden="false"
-          tabIndex={0}
-        ></iframe>
-      </div>
       <FAQ />
+      <Contact />
       <Footer />
     </main>
   );
