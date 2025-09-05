@@ -55,7 +55,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-50">
+      <div className="bg-gray-50">
         {/* Hero Section */}
         <section className="bg-[#C61E1E] text-white py-24">
           <div className="w-[80%] mx-auto text-center">
