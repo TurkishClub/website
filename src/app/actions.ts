@@ -50,8 +50,8 @@ export async function sendContactEmail(formData: {
     await transporter.sendMail(mailOptions)
     return { success: true }
   } catch (error) {
-    console.error(process.env.SMTP_USER, process.env.SMTP_HOST)
-    console.error('Error sending email:', error)
+    console.error('Error sending email:'); // Generic error message, no sensitive info
+    console.error(error)
     return { success: false, error: 'Failed to send email' }
   }
 }
