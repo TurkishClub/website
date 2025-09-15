@@ -244,6 +244,10 @@
     "faq3Q": "Öğrenci olmam gerekir mi?",
     "faq3A": "Öğrencilere odaklanmış olsak da, Münih'teki tüm Türk gençleri topluluğumuza katılabilir.",
     "form": {
+      "subject": {
+        "label": "Konu (opsiyonel)",
+        "placeholder": "Konu nedir?"
+      },
       "name": {
         "label": "İsim",
         "placeholder": "Adınız Soyadınız",

@@ -248,6 +248,10 @@ declare const messages: {
     "faq3Q": "Do I need to be a student?",
     "faq3A": "While we focus on students, all Turkish youth in Munich are welcome to join our community.",
     "form": {
+      "subject": {
+        "label": "Subject (optional)",
+        "placeholder": "What is this about?"
+      },
       "name": {
         "label": "Name",
         "placeholder": "Your Name",

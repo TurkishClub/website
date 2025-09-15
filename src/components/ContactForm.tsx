@@ -15,22 +15,42 @@ import {
     FormField,
     FormItem,
     FormLabel,
+    FormDescription,
     FormMessage,
 } from "@/components/ui/form";
 
-const ContactSchema = z.object({
-    name: z.string().min(2, {message: "Please enter your full name."}),
-    email: z.string().email({message: "Please enter a valid email."}),
-    subject: z.string().max(120).optional().or(z.literal("")),
-    message: z.string().min(10, {message: "Please provide at least 10 characters."}),
-});
-
-type ContactValues = z.infer<typeof ContactSchema>;
+type ContactValues = {
+    name: string;
+    email: string;
+    subject?: string;
+    message: string;
+};
 
 export default function Contact() {
     const t = useTranslations('contact');
     const [serverError, setServerError] = useState<string | null>(null);
     const [serverSuccess, setServerSuccess] = useState<string | null>(null);
+
+    // Build a localized schema so error messages follow the active locale
+    const ContactSchema = z.object({
+        name: z
+            .string()
+            .min(2, {message: t('form.name.errors.tooShort')})
+            .max(50, {message: t('form.name.errors.tooLong')})
+            .trim(),
+        email: z
+            .string()
+            .email({message: t('form.email.errors.invalid')}),
+        subject: z
+            .string()
+            .max(120)
+            .optional()
+            .or(z.literal('')),
+        message: z
+            .string()
+            .min(10, {message: t('form.message.errors.tooShort')})
+            .max(500, {message: t('form.message.errors.tooLong')})
+    });
 
     const form = useForm<ContactValues>({
         resolver: zodResolver(ContactSchema),
@@ -59,12 +79,16 @@ export default function Contact() {
 
             const data = await res.json();
             if (!res.ok) {
-                throw new Error(data?.error || "Failed to send message.");
+                // Map common statuses to localized messages
+                if (res.status === 429) {
+                    throw new Error(t('form.rateLimited'));
+                }
+                throw new Error(data?.error || t('form.genericError'));
             }
-            setServerSuccess("Message sent successfully!");
+            setServerSuccess(t('form.success'));
             form.reset();
         } catch (err: any) {
-            setServerError(err.message || "Something went wrong.");
+            setServerError(err?.message || t('form.error'));
         }
     };
 
@@ -98,10 +122,11 @@ export default function Contact() {
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel>{t('form.name.label')}</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Your full name" {...field} />
+                                            <Input placeholder={t('form.name.placeholder')} {...field} />
                                         </FormControl>
+                                        <FormDescription>{t('form.name.description')}</FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -112,10 +137,11 @@ export default function Contact() {
                                 name="email"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email</FormLabel>
+                                        <FormLabel>{t('form.email.label')}</FormLabel>
                                         <FormControl>
-                                            <Input type="email" placeholder="you@example.com" {...field} />
+                                            <Input type="email" placeholder={t('form.email.placeholder')} {...field} />
                                         </FormControl>
+                                        <FormDescription>{t('form.email.description')}</FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -126,9 +152,9 @@ export default function Contact() {
                                 name="subject"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Subject (optional)</FormLabel>
+                                        <FormLabel>{t('form.subject.label')}</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="What is this about?" {...field} />
+                                            <Input placeholder={t('form.subject.placeholder')} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -140,17 +166,18 @@ export default function Contact() {
                                 name="message"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Message</FormLabel>
+                                        <FormLabel>{t('form.message.label')}</FormLabel>
                                         <FormControl>
-                                            <Textarea rows={6} placeholder="Type your message here..." {...field} />
+                                            <Textarea rows={6} placeholder={t('form.message.placeholder')} {...field} />
                                         </FormControl>
+                                        <FormDescription>{t('form.message.description')}</FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
 
                             <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                                {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+                                {form.formState.isSubmitting ? t('form.submitting') : t('form.submit')}
                             </Button>
                         </form>
                     </Form>
