@@ -5,8 +5,6 @@ import Footer from '@/components/Footer';
 import FAQ from '@/components/FAQ';
 import FloatingActionMenu from '@/components/ui/floating-action-menu';
 import ContactForm from '@/components/ContactForm';
-import Contact from '@/components/ContactForm2';
-
 type Props = {
   params: Promise<{locale: Locale}>;
 };
@@ -28,7 +26,7 @@ export default async function IndexPage({params}: Props) {
         <FloatingActionMenu className="relative" />
       </section>
       <FAQ />
-      <Contact />
+      <ContactForm />
       <Footer />
     </main>
   );
