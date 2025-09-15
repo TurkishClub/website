@@ -10,16 +10,13 @@ export async function getAllStudyPlaces(): Promise<StudyPlace[]> {
     
     // If we have data from Sanity, use it
     if (studyPlaces && studyPlaces.length >= 0) {
-      console.log(`✅ Using Sanity data: Found ${studyPlaces.length} study places`);
       return studyPlaces.map(transformSanityStudyPlace);
     }
     
-    console.log('⚠️ No data found in Sanity, using sample data');
     // Fallback to sample data
     return sampleStudyPlaces;
   } catch (error) {
     console.error('❌ Error fetching study places from Sanity:', error);
-    console.log('⚠️ Falling back to sample data');
     // Fallback to sample data on error
     return sampleStudyPlaces;
   }

@@ -66,23 +66,46 @@ function StudyPlaceCardComponent({studyPlace, onViewOnMap, isSelected, onCompare
     return categoryMap[studyPlace.category] || studyPlace.category;
   }, [studyPlace.category]);
 
-  const allOpeningHours = useMemo(() => {
-    const dayLabels = {
-      monday: 'Pazartesi',
-      tuesday: 'Salı', 
-      wednesday: 'Çarşamba',
-      thursday: 'Perşembe',
-      friday: 'Cuma',
-      saturday: 'Cumartesi',
-      sunday: 'Pazar'
+  const groupedOpeningHours = useMemo(() => {
+    const dayOrder = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'] as const;
+    const dayShort: Record<string,string> = {
+      monday: 'Pazartesi', tuesday: 'Salı', wednesday: 'Çarşamba', thursday: 'Perşembe', friday: 'Cuma', saturday: 'Cumartesi', sunday: 'Pazar'
+    };
+    const dayFull: Record<string,string> = {
+      monday: 'Pazartesi', tuesday: 'Salı', wednesday: 'Çarşamba', thursday: 'Perşembe', friday: 'Cuma', saturday: 'Cumartesi', sunday: 'Pazar'
     };
 
-    const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-    return days.map(day => ({
-      day: dayLabels[day as keyof typeof dayLabels],
-      hours: studyPlace.openingHours[day as keyof typeof studyPlace.openingHours] || 'Kapalı'
+    // Build normalized list
+    const normalized = dayOrder.map(d => ({
+      key: d,
+      label: dayFull[d],
+      short: dayShort[d],
+      hours: studyPlace.openingHours[d] || 'Kapalı'
     }));
-  }, [studyPlace]);
+
+    // Group consecutive identical hours
+    const groups: Array<{start: string; end: string; hours: string; days: string[]}> = [];
+    for (const item of normalized) {
+      const last = groups[groups.length - 1];
+      if (last && last.hours === item.hours) {
+        last.end = item.key;
+        last.days.push(item.key);
+      } else {
+        groups.push({start: item.key, end: item.key, hours: item.hours, days: [item.key]});
+      }
+    }
+
+    // Map to display strings
+    return groups.map(g => {
+      const startIdx = dayOrder.indexOf(g.start as any);
+      const endIdx = dayOrder.indexOf(g.end as any);
+      const isSingle = startIdx === endIdx;
+      const label = isSingle
+        ? dayFull[g.start]
+        : `${dayShort[g.start]}–${dayShort[g.end]}`;
+      return {label, hours: g.hours};
+    });
+  }, [studyPlace.openingHours]);
 
   const handleViewOnMap = useCallback(() => {
     Analytics.trackDormSearch({
@@ -206,22 +229,20 @@ function StudyPlaceCardComponent({studyPlace, onViewOnMap, isSelected, onCompare
               </div>
             </div>
 
-            {/* Açık saatler - Her zaman görünür */}
+            {/* Açık saatler - Gruplanmış gösterim */}
             <div className="mb-4">
               <div className="flex items-center text-sm text-gray-600 mb-2">
                 <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
                 <span className="font-medium">Açık Saatler</span>
               </div>
               <div className="bg-gray-50 rounded-lg p-3">
-                <div className="flex gap-4 justify-between items-center flex-nowrap overflow-x-auto px-2">
-                  {allOpeningHours.map(({day, hours}) => (
-                    <div key={day} className="text-center flex-shrink-0">
-                      <div className="text-xs font-medium text-gray-700 leading-tight">{day}</div>
-                      <div className={`text-xs leading-tight ${
-                        hours === 'Kapalı' ? 'text-red-500 font-medium' : 'text-gray-600'
-                      }`}>
+                <div className="flex flex-col gap-2">
+                  {groupedOpeningHours.map(({label, hours}) => (
+                    <div key={label} className="flex justify-between text-xs px-1">
+                      <span className="font-medium text-gray-700">{label}</span>
+                      <span className={hours === 'Kapalı' ? 'text-red-500 font-medium' : 'text-gray-600'}>
                         {hours}
-                      </div>
+                      </span>
                     </div>
                   ))}
                 </div>

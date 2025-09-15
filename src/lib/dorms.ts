@@ -9,16 +9,13 @@ export async function getAllDorms(): Promise<Dorm[]> {
 
         // If we have data from Sanity, use it
         if (dorms && dorms.length >= 0) {
-            console.log(`✅ Using Sanity data: Found ${dorms.length} dorms`);
             return dorms.map(transformSanityDorm);
         }
 
-        console.log('⚠️ No data found in Sanity, using sample data');
         // Fallback to sample data
         return [];
     } catch (error) {
         console.error('❌ Error fetching dorms from Sanity:', error);
-        console.log('⚠️ Falling back to sample data');
         // Fallback to sample data on error
         return [];
     }
