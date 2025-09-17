@@ -1,0 +1,19 @@
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build-and-preview:
+    name: Build and test cloudflare deployment
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 23.5
+      uses: actions/setup-node@v5
+      with:
+        node-version: '23.5.0'
+    - name: Install deps and build
+      run: |
+        npm install
+        npm run build:cloudflare
