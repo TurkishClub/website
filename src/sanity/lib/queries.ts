@@ -103,7 +103,6 @@ export const DORM_QUERY =
   distanceToMainCampus,
   description,
   roomTypes,
-
 }`);
 
 export const DORMS_QUERY =
