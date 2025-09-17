@@ -9,7 +9,7 @@ export async function getAllStudyPlaces(): Promise<StudyPlace[]> {
     const studyPlaces = await client.fetch(STUDY_PLACES_QUERY);
     
     // If we have data from Sanity, use it
-    if (studyPlaces && studyPlaces.length >= 0) {
+    if (studyPlaces && studyPlaces.length > 0) {
       return studyPlaces.map(transformSanityStudyPlace);
     }
     
