@@ -118,5 +118,4 @@ export const DORMS_QUERY =
   distanceToMainCampus,
   description,
   roomTypes,
-
 }`);
