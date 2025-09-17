@@ -146,7 +146,7 @@ function StudyPlaceCardComponent({studyPlace, onViewOnMap, isSelected, onCompare
                     <Checkbox
                       checked={isSelected}
                       onCheckedChange={handleCompareToggle}
-                      className="mt-1 "
+                      className="mt-1"
                       aria-label="Karşılaştırmak için seç"
                     />
                   )}
