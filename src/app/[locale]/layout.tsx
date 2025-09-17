@@ -10,7 +10,7 @@ import './styles.css';
 
 type Props = {
   children: ReactNode;
-  params: Promise<{locale: "en" | "de" | "tr"}>;
+  params: Promise<{locale: string}>;
 };
 
 const inter = Inter({
@@ -24,7 +24,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata(props: Omit<Props, 'children'>) {
   const {locale} = await props.params;
-  const t = await getTranslations({locale, namespace: 'LocaleLayout'});
+  const t = await getTranslations({locale: locale as "en" | "de" | "tr", namespace: 'LocaleLayout'});
 
   return {
     title: t('title'),
@@ -44,7 +44,7 @@ export default async function LocaleLayout({children, params}: Props) {
   }
 
   // Enable static rendering
-  setRequestLocale(locale);
+  setRequestLocale(locale as "en" | "de" | "tr");
 
   return (
     <html className="h-full" lang={locale}>
