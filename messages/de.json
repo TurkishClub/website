@@ -244,6 +244,10 @@
     "faq3Q": "Muss ich Student sein?",
     "faq3A": "Obwohl wir uns auf Studierende konzentrieren, sind alle türkischen Jugendlichen in München willkommen, unserer Gemeinschaft beizutreten.",
     "form": {
+      "subject": {
+        "label": "Betreff (optional)",
+        "placeholder": "Worum geht es?"
+      },
       "name": {
         "label": "Name",
         "placeholder": "Ihr Name",
