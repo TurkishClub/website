@@ -114,7 +114,8 @@ export function StudyPlaceSearchPage({studyPlaces}: {studyPlaces: StudyPlace[]})
 
   const handleAddMoreToComparison = useCallback(() => {
     setShowComparison(false);
-  }, []);  // Filter and sort study places
+  }, []);
+  // Filter and sort study places
   const filteredAndSortedStudyPlaces = useMemo(() => {
     const filtered: StudyPlace[] = studyPlaces.filter((place: StudyPlace) => {
       // Search query filter
