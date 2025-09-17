@@ -8,7 +8,7 @@ export async function getAllDorms(): Promise<Dorm[]> {
         const dorms = await client.fetch(DORMS_QUERY);
 
         // If we have data from Sanity, use it
-        if (dorms && dorms.length >= 0) {
+        if (dorms && dorms.length > 0) {
             return dorms.map(transformSanityDorm);
         }
 
