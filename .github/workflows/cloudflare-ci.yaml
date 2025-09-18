@@ -1,0 +1,29 @@
+on:
+  pull_request:
+    branches:
+    - main
+jobs:
+  build-and-preview:
+    name: Build and test cloudflare deployment
+    runs-on: ubuntu-latest
+    env:
+      SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
+      SANITY_STUDIO_DATASET: ${{ secrets.SANITY_STUDIO_DATASET }}
+      SANITY_STUDIO_URL: ${{ secrets.SANITY_STUDIO_URL }}
+      SANITY_STUDIO_PREVIEW_ORIGIN: ${{ secrets.SANITY_STUDIO_PREVIEW_ORIGIN }}
+      SANITY_STUDIO_VIEWER_TOKEN: ${{ secrets.SANITY_STUDIO_VIEWER_TOKEN }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_SECURE: ${{ secrets.SMTP_SECURE }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js version of Cloudflare
+      uses: actions/setup-node@v5
+      with:
+        node-version: '22.16.0'
+    - name: Install deps and build
+      run: |
+        npm install
+        npm run build:cloudflare
