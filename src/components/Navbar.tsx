@@ -214,7 +214,7 @@ export default function Navbar() {
                   <div className="flex flex-col items-center gap-2">
                     {[
                       {
-                        href: '/ev-arama',
+                        href: '/yurt-arama',
                         label: t('dormSearch'),
                         desc: t('dormSearchDesc'),
                         icon: <Search className="h-4 w-4 text-blue-500" />
@@ -425,12 +425,12 @@ export default function Navbar() {
                     </h3>
                     <div className="space-y-2">
                       <Link
-                        href="/ev-arama"
+                        href="/yurt-arama"
                         className="flex items-center gap-3 py-3 px-3 text-base text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
                         onClick={() => {
                           trackNavClick(
                             t('dormSearch'),
-                            '/ev-arama',
+                            '/yurt-arama',
                             'mobile_menu'
                           );
                           setIsMobileMenuOpen(false);
@@ -438,6 +438,21 @@ export default function Navbar() {
                       >
                         <Search className="h-5 w-5 text-blue-500" />
                         {t('dormSearch')}
+                      </Link>
+                      <Link
+                        href="/ders-yeri-arama"
+                        className="flex items-center gap-3 py-3 px-3 text-base text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        onClick={() => {
+                          trackNavClick(
+                            t('studyPlaceSearch'),
+                            '/ders-yeri-arama',
+                            'mobile_menu'
+                          );
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <BookOpen className="h-5 w-5 text-green-500" />
+                        {t('studyPlaceSearch')}
                       </Link>
                     </div>
                   </div>

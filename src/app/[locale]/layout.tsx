@@ -1,5 +1,5 @@
 import {notFound} from 'next/navigation';
-import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {ReactNode} from 'react';
 import {clsx} from 'clsx';
@@ -26,6 +26,7 @@ export async function generateMetadata(props: Omit<Props, 'children'>) {
   const {locale} = await props.params;
   const t = await getTranslations({locale: locale as "en" | "de" | "tr", namespace: 'LocaleLayout'});
 
+
   return {
     title: t('title'),
     icons: {
@@ -39,15 +40,18 @@ export async function generateMetadata(props: Omit<Props, 'children'>) {
 export default async function LocaleLayout({children, params}: Props) {
   // Ensure that the incoming `locale` is valid
   const {locale} = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  const validLocale = locale as 'en' | 'de' | 'tr';
+  if (!hasLocale(routing.locales, validLocale)) {
     notFound();
   }
 
   // Enable static rendering
+
   setRequestLocale(locale as "en" | "de" | "tr");
 
+
   return (
-    <html className="h-full" lang={locale}>
+    <html className="h-full" lang={validLocale}>
       <head>
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://eu.i.posthog.com" />

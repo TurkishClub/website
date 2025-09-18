@@ -6,7 +6,8 @@ import {flexibleContentDoc} from './flexibleContentDoc'
 import {categoryType} from './categoryType'
 import {postType} from './postType'
 import {dormType} from './dormType'
+import studyPlaceType from './studyPlaceType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blockContentType, flexiblePostContentType, flexibleContentDoc, categoryType, postType, dormType],
+  types: [blockContentType, flexiblePostContentType, flexibleContentDoc, categoryType, postType, dormType, studyPlaceType],
 }

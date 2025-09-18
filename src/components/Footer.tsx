@@ -53,10 +53,16 @@ export default function Footer() {
             <h3 className="mb-4 text-xl font-semibold">{t('tools')}</h3>
             <nav className="space-y-3 text-base">
               <Link
-                href="/ev-arama"
+                href="/yurt-arama"
                 className="flex items-center gap-2 hover:underline"
               >
                 {t('dormSearch')}
+              </Link>
+              <Link
+                href="/ders-yeri-arama"
+                className="flex items-center gap-2 hover:underline"
+              >
+                {t('studyPlaceSearch')}
               </Link>
             </nav>
           </div>
