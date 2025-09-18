@@ -24,8 +24,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata(props: Omit<Props, 'children'>) {
   const {locale} = await props.params;
-  const validLocale = locale as 'en' | 'de' | 'tr';
-  const t = await getTranslations({locale: validLocale, namespace: 'LocaleLayout'});
+  const t = await getTranslations({locale: locale as "en" | "de" | "tr", namespace: 'LocaleLayout'});
+
 
   return {
     title: t('title'),
@@ -46,7 +46,9 @@ export default async function LocaleLayout({children, params}: Props) {
   }
 
   // Enable static rendering
-  setRequestLocale(validLocale);
+
+  setRequestLocale(locale as "en" | "de" | "tr");
+
 
   return (
     <html className="h-full" lang={validLocale}>
