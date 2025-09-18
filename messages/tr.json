@@ -76,7 +76,9 @@
     "blog": "Blog",
     "blogDesc": "Güncel yazılar ve haberler",
     "team": "Takım",
-    "teamDesc": "Ekibimiz ve açık pozisyonlar"
+    "teamDesc": "Ekibimiz ve açık pozisyonlar",
+    "contact": "İletişim",
+    "contactDesc": "Bizimle iletişime geçin"
   },
   "FAQ" : {
     "title": "Sıkça Sorulan Sorular",
@@ -224,6 +226,63 @@
       "newest": "En Yeni",
       "oldest": "En Eski",
       "popular": "Popüler"
+    }
+  },
+  "contact": {
+    "title": "İletişim",
+    "pageTitle": "İletişime Geçin",
+    "pageSubtitle": "Münih'teki Türk topluluğuyla bağlantı kurmanızda size yardımcı olmak için buradayız. Her zaman ulaşabilirsiniz!",
+    "methodsTitle": "İletişim Yolları",
+    "methodsSubtitle": "Bize ulaşmak için tercih ettiğiniz yolu seçin",
+    "communityTitle": "Topluluğumuza Katılın",
+    "communityDescription": "Türk öğrenci arkadaşlarınızla tanışın, kültürel etkinliklere katılın ve Münih'te kalıcı dostluklar kurun.",
+    "responseTime": "Genellikle 24 saat içinde geri dönüş yapıyoruz",
+    "languages": "Türkçe, İngilizce ve Almanca olarak mevcut",
+    "faqTitle": "Sıkça Sorulan Sorular",
+    "faq1Q": "Turkish Club'a nasıl katılabilirim?",
+    "faq1A": "WhatsApp grubumuza katılarak veya etkinliklerimizden birine katılarak topluluğumuzun bir parçası olabilirsiniz.",
+    "faq2Q": "Etkinliklere katılım ücretsiz mi?",
+    "faq2A": "Topluluk etkinliklerimizin çoğu ücretsizdir, ancak bazı özel aktivitelerde masrafları karşılamak için küçük bir ücret alınabilir.",
+    "faq3Q": "Öğrenci olmam gerekir mi?",
+    "faq3A": "Öğrencilere odaklanmış olsak da, Münih'teki tüm Türk gençleri topluluğumuza katılabilir.",
+    "form": {
+      "subject": {
+        "label": "Konu (opsiyonel)",
+        "placeholder": "Konu nedir?"
+      },
+      "name": {
+        "label": "İsim",
+        "placeholder": "Adınız Soyadınız",
+        "description": "Lütfen tam adınızı giriniz.",
+        "errors": {
+          "tooShort": "İsim en az 2 karakter olmalıdır.",
+          "tooLong": "İsim 50 karakterden uzun olamaz."
+        }
+      },
+      "email": {
+        "label": "E-posta",
+        "placeholder": "ornek@email.com",
+        "description": "Size geri dönüş yapabilmemiz için e-posta adresinizi kullanacağız.",
+        "errors": {
+          "invalid": "Lütfen geçerli bir e-posta adresi giriniz."
+        }
+      },
+      "message": {
+        "label": "Mesaj",
+        "placeholder": "Size nasıl yardımcı olabileceğimizi anlatın...",
+        "description": "Lütfen talebinizi ayrıntılı olarak açıklayın.",
+        "errors": {
+          "tooShort": "Mesaj en az 10 karakter olmalıdır.",
+          "tooLong": "Mesaj 500 karakterden uzun olamaz."
+        }
+      },
+      "submit": "Mesaj Gönder",
+      "submitting": "Gönderiliyor...",
+      "success": "Teşekkür ederiz! Mesajınız başarıyla gönderildi. Size en kısa sürede geri döneceğiz!",
+      "error": "Ağ hatası. Lütfen bağlantınızı kontrol edin ve tekrar deneyin.",
+      "genericError": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+      "timeout": "İstek zaman aşımına uğradı. Lütfen tekrar deneyin.",
+      "rateLimited": "Lütfen başka bir mesaj göndermeden önce 30 saniye bekleyin."
     }
   },
   "studyPlaceSearch": {

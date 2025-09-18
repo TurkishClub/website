@@ -77,7 +77,9 @@
     "blog": "Blog",
     "blogDesc": "Neueste Artikel und Nachrichten",
     "team": "Team",
-    "teamDesc": "Unser Team und offene Stellen"
+    "teamDesc": "Unser Team und offene Stellen",
+    "contact": "Kontakt",
+    "contactDesc": "Nehmen Sie Kontakt mit uns auf"
   },
   "FAQ" : {
     "title": "FAQ",
@@ -224,6 +226,59 @@
       "newest": "Neueste zuerst",
       "oldest": "Älteste zuerst",
       "popular": "Am beliebtesten"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "pageTitle": "Kontakt aufnehmen",
+    "pageSubtitle": "Wir sind hier, um Ihnen dabei zu helfen, sich mit der türkischen Gemeinschaft in München zu verbinden. Kontaktieren Sie uns jederzeit!",
+    "methodsTitle": "Kontaktwege",
+    "methodsSubtitle": "Wählen Sie Ihren bevorzugten Weg, um uns zu erreichen",
+    "communityTitle": "Treten Sie unserer Gemeinschaft bei",
+    "communityDescription": "Verbinden Sie sich mit türkischen Studierenden, nehmen Sie an kulturellen Veranstaltungen teil und schließen Sie dauerhafte Freundschaften in München.",
+    "responseTime": "Wir antworten normalerweise innerhalb von 24 Stunden",
+    "languages": "Verfügbar in Türkisch, Englisch und Deutsch",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faq1Q": "Wie kann ich dem Turkish Club beitreten?",
+    "faq1A": "Treten Sie einfach unserer WhatsApp-Gruppe bei oder besuchen Sie eine unserer Veranstaltungen, um Teil unserer Gemeinschaft zu werden.",
+    "faq2Q": "Ist die Teilnahme an Veranstaltungen kostenlos?",
+    "faq2A": "Die meisten unserer Community-Veranstaltungen sind kostenlos, obwohl einige spezielle Aktivitäten eine kleine Gebühr zur Kostendeckung haben können.",
+    "faq3Q": "Muss ich Student sein?",
+    "faq3A": "Obwohl wir uns auf Studierende konzentrieren, sind alle türkischen Jugendlichen in München willkommen, unserer Gemeinschaft beizutreten.",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Ihr Name",
+        "description": "Bitte geben Sie Ihren vollständigen Namen ein.",
+        "errors": {
+          "tooShort": "Der Name muss mindestens 2 Zeichen lang sein.",
+          "tooLong": "Der Name darf nicht länger als 50 Zeichen sein."
+        }
+      },
+      "email": {
+        "label": "E-Mail",
+        "placeholder": "ihre.email@beispiel.com",
+        "description": "Wir verwenden diese E-Mail-Adresse, um Ihnen zu antworten.",
+        "errors": {
+          "invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+        }
+      },
+      "message": {
+        "label": "Nachricht",
+        "placeholder": "Teilen Sie uns mit, wie wir Ihnen helfen können...",
+        "description": "Bitte beschreiben Sie Ihr Anliegen detailliert.",
+        "errors": {
+          "tooShort": "Die Nachricht muss mindestens 10 Zeichen lang sein.",
+          "tooLong": "Die Nachricht darf nicht länger als 500 Zeichen sein."
+        }
+      },
+      "submit": "Nachricht senden",
+      "submitting": "Wird gesendet...",
+      "success": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns bald bei Ihnen melden!",
+      "error": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "genericError": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+      "timeout": "Zeitüberschreitung der Anfrage. Bitte versuchen Sie es erneut.",
+      "rateLimited": "Bitte warten Sie 30 Sekunden, bevor Sie eine weitere Nachricht senden."
     }
   },
   "studyPlaceSearch": {

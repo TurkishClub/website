@@ -2,8 +2,8 @@ import {client} from '@/sanity/lib/client';
 import {POST_QUERY} from '@/sanity/lib/queries';
 import {PortableText} from '@portabletext/react';
 import {urlFor} from '@/sanity/lib/image';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import {notFound} from 'next/navigation';
 import {ArrowLeft, Calendar, Clock} from 'lucide-react';
 import {BlogSidebar} from '@/components/blog/BlogSidebar';
@@ -49,6 +49,35 @@ interface BlogPostPageProps {
 
 // Custom components for PortableText rendering
 const portableTextComponents = {
+  types: {
+    // Image component using Next.js Image
+    image: ({value}: any) => {
+      if (!value?.asset?._ref) {
+        return null;
+      }
+
+      const imageUrl = urlFor(value).width(1200).height(800).url();
+
+      return (
+        <div className="my-12">
+          <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
+            <Image
+              src={imageUrl}
+              alt={value.alt || 'Blog image'}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 800px"
+            />
+          </div>
+          {value.alt && (
+            <p className="text-sm text-gray-600 mt-3 text-center italic">
+              {value.alt}
+            </p>
+          )}
+        </div>
+      );
+    }
+  },
   block: {
     // Style different heading levels with IDs for TOC
     h1: ({children}: any) => (
