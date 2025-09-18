@@ -26,4 +26,4 @@ jobs:
     - name: Install deps and build
       run: |
         npm install
-        npm run preview
+        npm run build:cloudflare
