@@ -81,7 +81,9 @@ declare const messages: {
     "team": "Team",
     "teamDesc": "Our team and open positions",
     "contact": "Contact",
-    "contactDesc": "Get in touch with us"
+    "contactDesc": "Get in touch with us",
+    "developers": "Developers",
+    "developersDesc": "Join our developer community"
   },
   
   "FAQ" : {
@@ -352,6 +354,32 @@ declare const messages: {
       "noResults": "No study places found matching your search criteria.",
       "foundResults": "{count} study places found",
       "adjustFilters": "Try adjusting your search criteria."
+    }
+  },
+  "developers": {
+    "title": "Developer Community",
+    "subtitle": "Building a strong community for Turkish developers. Let's learn, grow, and innovate together.",
+    "features": {
+      "coding": {
+        "title": "Coding",
+        "description": "Code together and develop projects"
+      },
+      "opensource": {
+        "title": "Open Source",
+        "description": "Contribute to open source projects"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Network with experienced developers"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Explore and implement new technologies"
+      }
+    },
+    "cta": {
+      "button": "Join Us",
+      "description": "Become part of our developer community"
     }
   }
 };

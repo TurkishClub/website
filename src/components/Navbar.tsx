@@ -294,6 +294,12 @@ export default function Navbar() {
                         icon: <Users className="h-4 w-4 text-purple-500" />
                       },
                       {
+                        href: '/developers',
+                        label: t('developers'),
+                        desc: t('developersDesc'),
+                        icon: <GithubIcon className="h-4 w-4 text-green-500" />
+                      },
+                      {
                         href: '/contact',
                         label: t('contact'),
                         desc: t('contactDesc'),
@@ -484,6 +490,17 @@ export default function Navbar() {
                       >
                         <Users className="h-5 w-5 text-purple-500" />
                         {t('team')}
+                      </Link>
+                      <Link
+                        href="/developers"
+                        className="flex items-center gap-3 py-3 px-3 text-base text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        onClick={() => {
+                          trackNavClick(t('developers'), '/developers', 'mobile_menu');
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <GithubIcon className="h-5 w-5 text-green-500" />
+                        {t('developers')}
                       </Link>
                       <Link
                         href="/contact"

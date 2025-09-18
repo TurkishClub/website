@@ -79,7 +79,9 @@
     "team": "Team",
     "teamDesc": "Unser Team und offene Stellen",
     "contact": "Kontakt",
-    "contactDesc": "Nehmen Sie Kontakt mit uns auf"
+    "contactDesc": "Nehmen Sie Kontakt mit uns auf",
+    "developers": "Entwickler",
+    "developersDesc": "Tritt unserer Entwickler-Community bei"
   },
   "FAQ" : {
     "title": "FAQ",
@@ -348,6 +350,32 @@
       "noResults": "Keine Lernplätze gefunden, die Ihren Suchkriterien entsprechen.",
       "foundResults": "{count} Lernplätze gefunden",
       "adjustFilters": "Versuchen Sie, Ihre Suchkriterien anzupassen."
+    }
+  },
+  "developers": {
+    "title": "Entwickler-Community",
+    "subtitle": "Wir bauen eine starke Gemeinschaft für türkische Entwickler. Lasst uns gemeinsam lernen, wachsen und innovieren.",
+    "features": {
+      "coding": {
+        "title": "Programmieren",
+        "description": "Gemeinsam programmieren und Projekte entwickeln"
+      },
+      "opensource": {
+        "title": "Open Source",
+        "description": "Zu Open Source Projekten beitragen"
+      },
+      "community": {
+        "title": "Gemeinschaft",
+        "description": "Vernetze dich mit erfahrenen Entwicklern"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Neue Technologien erforschen und umsetzen"
+      }
+    },
+    "cta": {
+      "button": "Mach mit",
+      "description": "Werde Teil unserer Entwickler-Community"
     }
   }
 }

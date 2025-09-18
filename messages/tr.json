@@ -78,7 +78,9 @@
     "team": "Takım",
     "teamDesc": "Ekibimiz ve açık pozisyonlar",
     "contact": "İletişim",
-    "contactDesc": "Bizimle iletişime geçin"
+    "contactDesc": "Bizimle iletişime geçin",
+    "developers": "Turkish Club Developers",
+    "developersDesc": "Geliştirici topluluğumuza katıl"
   },
   "FAQ" : {
     "title": "Sıkça Sorulan Sorular",
@@ -348,6 +350,32 @@
       "noResults": "Arama kriterlerinize uygun ders yeri bulunamadı.",
       "foundResults": "{count} ders yeri bulundu",
       "adjustFilters": "Arama kriterlerinizi ayarlamayı deneyin."
+    }
+  },
+  "developers": {
+    "title": "Geliştirici Topluluğu",
+    "subtitle": "Türk geliştiriciler için güçlü bir topluluk oluşturuyoruz. Birlikte öğrenelim, gelişelim ve inovasyon yapalım.",
+    "features": {
+      "coding": {
+        "title": "Kodlama",
+        "description": "Birlikte kod yazalım ve projeler geliştirelim"
+      },
+      "opensource": {
+        "title": "Açık Kaynak",
+        "description": "Açık kaynak projelere katkıda bulunalım"
+      },
+      "community": {
+        "title": "Topluluk",
+        "description": "Deneyimli geliştiricilerle network kuralım"
+      },
+      "innovation": {
+        "title": "İnovasyon",
+        "description": "Yeni teknolojileri keşfedelim ve uygulayalım"
+      }
+    },
+    "cta": {
+      "button": "Bize Katıl",
+      "description": "Geliştirici topluluğumuzun bir parçası ol"
     }
   }
 }
