@@ -5,6 +5,8 @@ import {useTranslations} from 'next-intl';
 import {Map, LayoutGrid} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {DormCard, DormCardSkeleton} from '@/components/dorm/DormCard';
+import {DormComparison} from '@/components/dorm/DormComparison';
+import {CompareFloatingButton} from '@/components/ui/compare-floating-button';
 import {
   DormSearchAndFilters,
   DormFilters
@@ -35,7 +37,6 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
   const [filters, setFilters] = useState<DormFilters>({
     searchQuery: '',
     maxPrice: null,
-    features: [],
     sortBy: 'name'
   });
 
@@ -43,6 +44,10 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
   const [selectedDorm, setSelectedDorm] = useState<Dorm | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12); // Start with 12 cards
+  
+  // Compare functionality state
+  const [comparedDorms, setComparedDorms] = useState<Dorm[]>([]);
+  const [showComparison, setShowComparison] = useState(false);
 
   // Analytics-aware filter change handler
   const handleFiltersChange = useCallback((newFilters: DormFilters) => {
@@ -54,8 +59,6 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
       search_query: newFilters.searchQuery || undefined,
       filters_applied: {
         max_price: newFilters.maxPrice || undefined,
-        features:
-          newFilters.features.length > 0 ? newFilters.features : undefined,
         sort_by: newFilters.sortBy
       }
     });
@@ -68,7 +71,7 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
       if (filters.searchQuery) {
         const query = filters.searchQuery.toLowerCase();
         const searchableText =
-          `${dorm.name} ${dorm.address} ${dorm.organization} ${dorm.description}`.toLowerCase();
+          `${dorm.name} ${dorm.address} ${dorm.description}`.toLowerCase();
         if (!searchableText.includes(query)) {
           return false;
         }
@@ -81,18 +84,6 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
             ? dorm.rent.minPrice
             : dorm.rent.singlePrice;
         if (rentToCheck > filters.maxPrice) {
-          return false;
-        }
-      }
-
-      // Features filter
-      if (filters.features.length > 0) {
-        const hasAllFeatures = filters.features.every((feature) =>
-          dorm.features.some((dormFeature) =>
-            dormFeature.toLowerCase().includes(feature.toLowerCase())
-          )
-        );
-        if (!hasAllFeatures) {
           return false;
         }
       }
@@ -148,6 +139,57 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
   const handleMapDormSelect = (dorm: Dorm) => {
     setSelectedDorm(dorm);
   };
+
+  // Compare functionality handlers
+  const handleToggleCompare = useCallback((dorm: Dorm, selected: boolean) => {
+    setComparedDorms(prev => {
+      if (selected) {
+        // Add to comparison if not already there and limit to 4 dorms
+        if (prev.length < 4 && !prev.find(d => d.id === dorm.id)) {
+          return [...prev, dorm];
+        } else if (prev.length >= 4) {
+          // Show a message or toast that maximum is reached
+          console.log('Maksimum 4 yurt seçebilirsiniz');
+          return prev;
+        }
+        return prev;
+      } else {
+        // Remove from comparison
+        return prev.filter(d => d.id !== dorm.id);
+      }
+    });
+  }, []);
+
+  const handleOpenComparison = useCallback(() => {
+    if (comparedDorms.length > 0) {
+      setShowComparison(true);
+    }
+  }, [comparedDorms.length]);
+
+  const handleCloseComparison = useCallback(() => {
+    setShowComparison(false);
+  }, []);
+
+  const handleClearComparison = useCallback(() => {
+    setComparedDorms([]);
+    setShowComparison(false);
+  }, []);
+
+  const handleRemoveFromComparison = useCallback((dormId: string) => {
+    setComparedDorms(prev => {
+      const newCompared = prev.filter(d => d.id !== dormId);
+      // If only 1 or 0 dorms left, close the comparison
+      if (newCompared.length <= 1) {
+        setShowComparison(false);
+      }
+      return newCompared;
+    });
+  }, []);
+
+  const handleAddMoreToComparison = useCallback(() => {
+    setShowComparison(false);
+    // User can now select more dorms from the main page
+  }, []);
 
   const loadMore = useCallback(() => {
     setIsLoading(true);
@@ -300,7 +342,6 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
                       setFilters({
                         searchQuery: '',
                         maxPrice: null,
-                        features: [],
                         sortBy: 'name'
                       })
                     }
@@ -313,7 +354,12 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {visibleDorms.map((dorm: Dorm) => (
                       <div key={dorm.id} id={`dorm-${dorm.id}`}>
-                        <DormCard dorm={dorm} onViewOnMap={handleViewOnMap} />
+                        <DormCard 
+                          dorm={dorm} 
+                          onViewOnMap={handleViewOnMap}
+                          isSelected={comparedDorms.some(d => d.id === dorm.id)}
+                          onToggleCompare={handleToggleCompare}
+                        />
                       </div>
                     ))}
 
@@ -348,6 +394,24 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
           )}
         </div>
       </div>
+
+      {/* Compare Floating Button */}
+      <CompareFloatingButton
+        compareCount={comparedDorms.length}
+        itemLabel="yurt"
+        onOpenComparison={handleOpenComparison}
+        onClearComparison={handleClearComparison}
+      />
+
+      {/* Comparison Modal */}
+      {showComparison && comparedDorms.length > 0 && (
+        <DormComparison
+          comparedDorms={comparedDorms}
+          onRemoveDorm={handleRemoveFromComparison}
+          onClose={handleCloseComparison}
+          onAddMore={handleAddMoreToComparison}
+        />
+      )}
 
       <Footer />
     </main>

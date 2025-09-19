@@ -10,7 +10,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import {Button} from '@/components/ui/button';
-import {Badge} from '@/components/ui/badge';
+import {Checkbox} from '@/components/ui/checkbox';
 import {ExternalLink, MapPin, Home} from 'lucide-react';
 import {Dorm} from '@/data/dorms';
 import {Analytics} from '@/lib/analytics';
@@ -18,9 +18,11 @@ import {Analytics} from '@/lib/analytics';
 interface DormCardProps {
   dorm: Dorm;
   onViewOnMap?: (dorm: Dorm) => void;
+  isSelected?: boolean;
+  onToggleCompare?: (dorm: Dorm, selected: boolean) => void;
 }
 
-function DormCardComponent({dorm, onViewOnMap}: DormCardProps) {
+function DormCardComponent({dorm, onViewOnMap, isSelected = false, onToggleCompare}: DormCardProps) {
   const t = useTranslations('dormSearch.card');
   const [showFullDescription, setShowFullDescription] = useState(false);
 
@@ -36,17 +38,6 @@ function DormCardComponent({dorm, onViewOnMap}: DormCardProps) {
     ) {
       const parts = [];
 
-      // Add application method info
-      if (dorm.applicationMethod) {
-        parts.push(`Başvuru yöntemi: ${dorm.applicationMethod}`);
-      }
-
-      // Add top features
-      if (dorm.features && dorm.features.length > 0) {
-        const topFeatures = dorm.features.slice(0, 3).join(', ');
-        parts.push(`Özellikler: ${topFeatures}`);
-      }
-
       // Add room types
       if (dorm.roomTypes && dorm.roomTypes.length > 0) {
         parts.push(`Oda tipleri: ${dorm.roomTypes.join(', ')}`);
@@ -58,7 +49,7 @@ function DormCardComponent({dorm, onViewOnMap}: DormCardProps) {
     return description.length > 200
       ? description.substring(0, 200) + '...'
       : description;
-  }, [dorm.description, dorm.applicationMethod, dorm.features, dorm.roomTypes]);
+  }, [dorm.description, dorm.roomTypes]);
 
   const priceDisplay = useMemo(() => {
     if (!dorm.rent) {
@@ -100,17 +91,37 @@ function DormCardComponent({dorm, onViewOnMap}: DormCardProps) {
     setShowFullDescription((prev) => !prev);
   }, []);
 
+  const handleCompareToggle = useCallback((checked: boolean) => {
+    if (onToggleCompare) {
+      onToggleCompare(dorm, checked);
+    }
+  }, [onToggleCompare, dorm]);
+
   return (
-    <Card className="h-full flex flex-col transition-all duration-300 hover:shadow-lg bg-white">
+    <Card
+      className={`h-full flex flex-col transition-all duration-300 hover:shadow-lg bg-white relative ring-2 ${
+        isSelected ? 'ring-gray-900' : 'ring-transparent'
+      }`}
+    >
+      {/* Compare Checkbox */}
+      {onToggleCompare && (
+        <div className="absolute top-3 right-3 z-10 w-8 h-8">
+          <div className="w-full h-full flex items-center justify-center rounded-md bg-white/80 hover:bg-gray-100">
+            <Checkbox
+              checked={isSelected}
+              onCheckedChange={handleCompareToggle}
+              className="h-4 w-4 bg-white border-2 border-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+          </div>
+        </div>
+      )}
+
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start gap-3">
-          <div className="flex-1">
+          <div className="flex-1 pr-8">
             <CardTitle className="text-lg font-bold text-gray-900 leading-tight mb-1">
               {dorm.name}
             </CardTitle>
-            <p className="text-sm text-gray-600 font-medium">
-              {dorm.organization}
-            </p>
           </div>
         </div>
       </CardHeader>
@@ -154,29 +165,7 @@ function DormCardComponent({dorm, onViewOnMap}: DormCardProps) {
           </div>
         </div>
 
-        {/* Key Features Badges */}
-        {dorm.features && dorm.features.length > 0 && (
-          <div className="flex flex-wrap gap-1">
-            {dorm.features.slice(0, 4).map((feature, index) => (
-              <Badge
-                key={index}
-                variant="secondary"
-                className="text-xs py-1 px-2 bg-gray-100 text-gray-700"
-              >
-                {feature}
-              </Badge>
-            ))}
-            {dorm.features.length > 4 && (
-              <Badge
-                variant="outline"
-                className="text-xs py-1 px-2 border-gray-300 text-gray-600"
-              >
-                +{dorm.features.length - 4} daha
-              </Badge>
-            )}
-          </div>
-        )}
-
+     
         {/* Description */}
         <div>
           <h4 className="text-sm font-semibold text-gray-800 mb-2">Açıklama</h4>

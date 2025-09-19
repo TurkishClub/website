@@ -74,10 +74,14 @@ declare const messages: {
     "whatsappDesc": "Community chat group",
     "dormSearch": "Dorm Search",
     "dormSearchDesc": "Page where we organize dormitories for those seeking housing in Munich.",
+    "studyPlaceSearch": "Study Place Search",
+    "studyPlaceSearchDesc": "Find suitable places to study in Munich",
     "blog": "Blog",
     "blogDesc": "Latest articles and news",
     "team": "Team",
-    "teamDesc": "Our team and open positions"
+    "teamDesc": "Our team and open positions",
+    "contact": "Contact",
+    "contactDesc": "Get in touch with us"
   },
   
   "FAQ" : {
@@ -226,6 +230,128 @@ declare const messages: {
       "newest": "Newest First",
       "oldest": "Oldest First",
       "popular": "Most Popular"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "pageTitle": "Get in Touch",
+    "pageSubtitle": "We're here to help you connect with the Turkish community in Munich. Reach out anytime!",
+    "methodsTitle": "Ways to Connect",
+    "methodsSubtitle": "Choose your preferred way to reach out to us",
+    "communityTitle": "Join Our Community",
+    "communityDescription": "Connect with fellow Turkish students, participate in cultural events, and build lasting friendships in Munich.",
+    "responseTime": "We typically respond within 24 hours",
+    "languages": "Available in Turkish, English, and German",
+    "faqTitle": "Frequently Asked Questions",
+    "faq1Q": "How can I join Turkish Club?",
+    "faq1A": "Simply join our WhatsApp group or attend one of our events to become part of our community.",
+    "faq2Q": "Are events free to attend?",
+    "faq2A": "Most of our community events are free, though some special activities may have a small fee to cover costs.",
+    "faq3Q": "Do I need to be a student?",
+    "faq3A": "While we focus on students, all Turkish youth in Munich are welcome to join our community.",
+    "form": {
+      "subject": {
+        "label": "Subject (optional)",
+        "placeholder": "What is this about?"
+      },
+      "name": {
+        "label": "Name",
+        "placeholder": "Your Name",
+        "description": "Please enter your full name.",
+        "errors": {
+          "tooShort": "Name must be at least 2 characters.",
+          "tooLong": "Name must not be longer than 50 characters."
+        }
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com",
+        "description": "We'll use this email to get back to you.",
+        "errors": {
+          "invalid": "Please enter a valid email address."
+        }
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us how we can help you...",
+        "description": "Please describe your inquiry in detail.",
+        "errors": {
+          "tooShort": "Message must be at least 10 characters.",
+          "tooLong": "Message must not be longer than 500 characters."
+        }
+      },
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Thank you! Your message has been sent successfully. We'll get back to you soon!",
+      "error": "Network error. Please check your connection and try again.",
+      "genericError": "Something went wrong. Please try again.",
+      "timeout": "Request timed out. Please try again.",
+      "rateLimited": "Please wait 30 seconds before sending another message."
+    }
+  },
+  "studyPlaceSearch": {
+    "title": "Study Place Search",
+    "subtitle": "Find the best places to study in Munich",
+    "description": "Discover libraries, cafes, and other study spaces perfect for Turkish students in Munich. Filter by category, quietness, and price.",
+    "search": {
+      "placeholder": "Search study place name or location...",
+      "button": "Search"
+    },
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "categories": {
+        "all": "All",
+        "library": "Library",
+        "cafe": "Cafe",
+        "university": "University",
+        "coworking": "Coworking",
+        "other": "Other"
+      },
+      "quietOnly": "Quiet places only",
+      "freeOnly": "Free places only",
+      "clearAll": "Clear All",
+      "apply": "Apply"
+    },
+    "sort": {
+      "label": "Sort by",
+      "name": "Name (A-Z)",
+      "category": "Category",
+      "distance": "Distance"
+    },
+    "card": {
+      "address": "Address",
+      "openingHours": "Opening Hours",
+      "category": "Category",
+      "features": "Features",
+      "quiet": "Quiet",
+      "free": "Free",
+      "hasWifi": "WiFi Available",
+      "electricOutlets": "Power Outlets",
+      "viewOnMap": "View on Map",
+      "moreInfo": "More Details",
+      "getDirections": "Get Directions",
+      "restrictions": "Restrictions",
+      "whoCanUse": "Who can use",
+      "foodOptions": "Food Options",
+      "showLess": "Show Less",
+      "readMore": "Read More"
+    },
+    "map": {
+      "title": "Map View",
+      "showList": "List View",
+      "showMap": "Map View",
+      "showingLocations": "Showing {count} study places",
+      "popup": {
+        "moreInfo": "More Details",
+        "getDirections": "Get Directions"
+      }
+    },
+    "results": {
+      "showing": "Showing {filtered} of {total} study places",
+      "noResults": "No study places found matching your search criteria.",
+      "foundResults": "{count} study places found",
+      "adjustFilters": "Try adjusting your search criteria."
     }
   }
 };
