@@ -9,6 +9,13 @@ Please take a look at our documentation to get started.
 - [Deployment to Vercel](./documentation/deployment.md)
 - [Rolling Out Updates](./documentation/updates.md)
 
+# Update in node depenndency 
+
+We have updated the dependency versions. If you face any version trouble best form is to rebuild using steps bellow . 
+    delete node_modules folder
+    delete package-lock.json
+    run npm cache verify
+    run npm install
 
 
 # example-app-router
