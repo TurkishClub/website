@@ -13,11 +13,10 @@ import {
   ChevronRight
 } from 'lucide-react';
 import BlogPageClient from './blog-client';
-
 import {BlogSearch} from '@/components/blog/BlogSearch';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
+import RecommendedBlogs from '@/components/blog/RecomendedBlogs';
 // Enhanced type definitions for our minimal queries
 interface Post {
   _id: string;
@@ -25,6 +24,7 @@ interface Post {
   slug: {current: string};
   publishedAt?: string;
   description?: string;
+  excerpt?: string;
   readTime?: number;
   author?: {
     name: string;
@@ -98,7 +98,27 @@ export default async function BlogPage({searchParams}: BlogPageProps) {
       "slug": slug.current
     }
   }`;
-
+  
+  // Fetch recommended blogs (newest, limit 6)
+  const recommendedGroq = `*[_type == "post" && defined(slug.current) && slug.current != $slug] | order(publishedAt desc)[0...6]{
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    readTime,
+    "image": coalesce(mainImage, image){
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    categories[]->{
+      title,
+      "slug": slug.current
+    }
+  }`;
   // Also get total count for pagination
   const countQuery = `count(*[_type == "post" && defined(slug.current) ${whereSearch}])`;
 
@@ -106,6 +126,22 @@ export default async function BlogPage({searchParams}: BlogPageProps) {
     client.fetch(groq, query ? {q: `${query}*`} : {}),
     client.fetch(countQuery, query ? {q: `${query}*`} : {})
   ]);
+  const [recomendedposts, totalRecomendedPosts, recommendedPosts]: [Post[], number, Post[]] = await Promise.all([
+    client.fetch(groq, query ? {q: `${query}*`} : {}),
+    client.fetch(countQuery, query ? {q: `${query}*`} : {}),
+    client.fetch(recommendedGroq)
+  ]);
+  const mappedRecommendedPosts = recommendedPosts.map(post => ({
+  id: post._id,
+  title: post.title,
+  slug: post.slug.current,
+  publishedAt: post.publishedAt ?? '', // always a string
+  image: post.image?.asset?.url ?? '', // always a string
+  excerpt: post.excerpt ?? '', // always a string
+  content: '', // or post.body if available
+  readTime: post.readTime ?? 5,
+  tags: [], // or post.tags if available
+}));
 
   const totalPages = Math.ceil(totalPosts / postsPerPage);
   const hasMore = currentPage < totalPages;
@@ -313,7 +349,7 @@ export default async function BlogPage({searchParams}: BlogPageProps) {
                     <ChevronRight className="w-4 h-4" />
                   </Button>
                 </Link>
-              </div>
+              </div> 
             )}
 
             {/* Results count */}
@@ -330,7 +366,10 @@ export default async function BlogPage({searchParams}: BlogPageProps) {
             </div>
           </div>
         </div>
-
+        {/* Recommended Blogs */}
+        <div className="max-w-7xl mx-auto px-4 pb-24">
+          <RecommendedBlogs recommendedPosts={mappedRecommendedPosts} />
+        </div>
         <Footer />
       </div>
     </BlogPageClient>
