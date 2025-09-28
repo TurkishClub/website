@@ -501,12 +501,16 @@ export default function Navbar() {
                 </nav>
 
                 {/* Mobile Locale Switcher */}
+                
                 <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
                     Language
                   </h3>
-                  <div className="px-3 text-black">
-                    <LocaleSwitcher />
+                  <div className="px-3">
+                    <LocaleSwitcher
+                      triggerClassName="text-gray-900 dark:text-white"
+                      contentClassName="bg-white text-gray-900 border border-gray-200 shadow-md rounded-md"
+                    />
                   </div>
                 </div>
               </div>
