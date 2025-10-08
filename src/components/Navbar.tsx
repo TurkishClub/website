@@ -228,7 +228,7 @@ export default function Navbar() {
                         transition={{ duration: 0.2, delay: index * 0.05 }}
                       >
                         <Link href={opt.href}>
-                          <Button className="flex items-center justify-start gap-3 w-64 h-auto text-black bg-white hover:bg-gray-50 shadow-[0_0_20px_rgba(0,0,0,0.2)] border-none rounded-xl py-4 px-5">
+                          <Button className="flex items-center justify-start gap-3 w-64 h-auto text-black bg-white hover:bg-gray-50 shadow-[0_0_20px_rgba(0,0,0,0.2)] border-none rounded-xl py-4 px-5 text-left whitespace-normal break-words">
                             {opt.icon}
                             <span className="flex flex-col text-left">
                               <span className="font-medium text-sm">
