@@ -24,10 +24,7 @@ export const POST_QUERY =
     },
     alt
   },
-  author->{
-    name,
-    image
-  },
+  author,
   categories[]->{
     title,
     "slug": slug.current

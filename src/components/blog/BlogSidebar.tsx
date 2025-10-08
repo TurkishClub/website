@@ -59,7 +59,7 @@ export function BlogSidebar({post}: BlogSidebarProps) {
               )}
               <div>
                 <p className="font-medium text-gray-900">{post.author.name}</p>
-                <p className="text-sm text-gray-600">Turkish Club Munich</p>
+                {/* <p className="text-sm text-gray-600">Turkish Club Munich</p> */}
               </div>
             </div>
           </div>
