@@ -9,6 +9,7 @@ import {
   MessageCircle,
   Search,
   BookOpen,
+  NotebookPen,
   Users,
   ChevronDown,
   Calendar,
@@ -218,6 +219,12 @@ export default function Navbar() {
                         label: t('dormSearch'),
                         desc: t('dormSearchDesc'),
                         icon: <Search className="h-4 w-4 text-blue-500" />
+                      },
+                      {
+                        href: '/ders-yeri-arama',
+                        label: t('studyPlaceSearch'),
+                        desc: t('studyPlaceSearchDesc'),
+                        icon: <NotebookPen className="h-4 w-4 text-green-500" />
                       }
                     ].map((opt, index) => (
                       <motion.div
