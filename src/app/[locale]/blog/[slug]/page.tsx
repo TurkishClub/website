@@ -20,10 +20,7 @@ interface BlogPost {
   title: string;
   slug: string;
   publishedAt: string;
-  author?: {
-    name: string;
-    image?: any;
-  };
+  author?: string; // Currently just the author's name, add more fields if needed
   excerpt?: string;
   readTime?: number;
   body: any[]; // PortableText array
@@ -227,10 +224,8 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     },
     author: post.author
       ? {
-          ...post.author,
-          imageUrl: post.author.image
-            ? urlFor(post.author.image).width(48).height(48).url()
-            : undefined
+          name: post.author,
+          imageUrl: undefined
         }
       : undefined
   };
