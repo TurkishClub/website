@@ -1,5 +1,6 @@
 import {client} from '@/sanity/lib/client';
 import {POST_QUERY} from '@/sanity/lib/queries';
+import {ADJACENT_POSTS_QUERY} from '@/sanity/lib/queries';
 import {PortableText} from '@portabletext/react';
 import {urlFor} from '@/sanity/lib/image';
 import Link from 'next/link';
@@ -187,8 +188,11 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
   const params = await props.params;
 
   // Fetch the specific post using your existing query
-  const post: BlogPost = await client.fetch(POST_QUERY, {slug: params.slug});
-
+  const post: BlogPost = await client.fetch(POST_QUERY, { slug: params.slug });
+  const { previousPost, nextPost } = await client.fetch(ADJACENT_POSTS_QUERY, {
+    date: post.publishedAt,
+  });
+  console.log("Prev:", previousPost, "Next:", nextPost);
   if (!post) {
     notFound();
   }
@@ -340,13 +344,21 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
                 {/* Empty space to align with TOC */}
               </div>
               <div className="flex-1 max-w-4xl">
-                <BlogSidebar post={processedPost} />
+                <BlogSidebar
+                    post={processedPost}
+                    prevPost={previousPost || null}
+                    nextPost={nextPost || null}
+                  />
               </div>
             </div>
 
             {/* Mobile/Tablet Sidebar */}
             <div className="xl:hidden mt-20">
-              <BlogSidebar post={processedPost} />
+                <BlogSidebar
+                  post={processedPost}
+                  prevPost={previousPost || null}
+                  nextPost={nextPost || null}
+                />
             </div>
           </div>
         </article>

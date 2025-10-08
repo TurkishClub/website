@@ -9,10 +9,9 @@ export const POSTS_QUERY =
   "image": coalesce(mainImage, image)
 }`);
 
-export const POST_QUERY =
-  defineQuery(`*[_type == "post" && slug.current == $slug][0]{
+export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slug][0]{
   title,
-  slug,
+  "slug": slug.current,
   publishedAt,
   body,
   excerpt,
@@ -30,6 +29,28 @@ export const POST_QUERY =
     "slug": slug.current
   }
 }`);
+
+
+export const ADJACENT_POSTS_QUERY = defineQuery(`{
+  "previousPost": *[
+    _type == "post" &&
+    defined(slug.current) &&
+    publishedAt < $date
+  ] | order(publishedAt desc)[0]{
+    title,
+    "slug": slug.current
+  },
+
+  "nextPost": *[
+    _type == "post" &&
+    defined(slug.current) &&
+    publishedAt > $date
+  ] | order(publishedAt asc)[0]{
+    title,
+    "slug": slug.current
+  }
+}`);
+
 
 export const STUDY_PLACES_QUERY =
   defineQuery(`*[_type == "studyPlace"]{

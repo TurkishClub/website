@@ -2,10 +2,13 @@
 
 import {User} from 'lucide-react';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 interface BlogSidebarProps {
   post: {
     title: string;
+    slug: string | { current: string }; 
     categories?: Array<{
       title: string;
       slug: string;
@@ -15,9 +18,14 @@ interface BlogSidebarProps {
       imageUrl?: string; // Pre-processed image URL
     };
   };
+  prevPost?: { title: string; slug: string } | null;
+  nextPost?: { title: string; slug: string } | null;
 }
 
-export function BlogSidebar({post}: BlogSidebarProps) {
+export function BlogSidebar({post, prevPost, nextPost}: BlogSidebarProps) {
+    const slug =
+    typeof post.slug === 'string' ? post.slug : post.slug?.current || '';
+    const params = useParams();
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -59,12 +67,35 @@ export function BlogSidebar({post}: BlogSidebarProps) {
               )}
               <div>
                 <p className="font-medium text-gray-900">{post.author.name}</p>
-                {/* <p className="text-sm text-gray-600">Turkish Club Munich</p> */}
               </div>
             </div>
           </div>
         )}
       </div>
+
+      {/* Navigation buttons */}
+      {(prevPost || nextPost) && (
+        <div className="flex justify-between mt-8">
+          {prevPost ? (
+            <Link
+              href={`/${params.locale}/blog/${prevPost.slug}`}   // ✅ include locale and /blog
+              className="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
+            >
+              ← {prevPost.title}
+            </Link>
+          ) : (
+            <div />
+          )}
+          {nextPost && (
+            <Link
+              href={`/${params.locale}/blog/${nextPost.slug}`}   // ✅ same here
+              className="bg-[#C61E1E] text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+            >
+              {nextPost.title} →
+            </Link>
+          )}
+        </div>
+      )}
     </div>
   );
 }
