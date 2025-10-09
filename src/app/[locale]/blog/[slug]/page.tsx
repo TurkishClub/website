@@ -166,6 +166,9 @@ const portableTextComponents = {
     em: ({children}: any) => (
       <em className="italic text-gray-800">{children}</em>
     ),
+    underline: ({children}: any) => (
+      <u className="underline decoration-2 underline-offset-2">{children}</u>
+    ),
     code: ({children}: any) => (
       <code className="bg-gray-100 text-[#C61E1E] px-2 py-1 rounded text-base font-mono border">
         {children}
