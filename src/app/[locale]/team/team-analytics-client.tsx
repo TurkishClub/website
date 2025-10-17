@@ -10,7 +10,6 @@ interface TeamAnalyticsClientProps {
 
 export default function TeamAnalyticsClient({
   children,
-  totalPositions
 }: TeamAnalyticsClientProps) {
   useEffect(() => {
     // Track page view
@@ -35,7 +34,7 @@ export default function TeamAnalyticsClient({
       if (cleanupScroll) cleanupScroll();
       if (cleanupSession) cleanupSession();
     };
-  }, [totalPositions]);
+  }, []);
 
   return <>{children}</>;
 }

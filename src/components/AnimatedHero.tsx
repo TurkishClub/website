@@ -1,36 +1,45 @@
 'use client';
-import React, {useState, useEffect, useMemo} from 'react';
-import {Button} from '@/components/ui/button';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import {Feature} from '@/components/ui/feature-section-with-bento-grid';
+import React, {useState, useEffect} from 'react';
 import {motion} from 'framer-motion';
-import {useTranslations} from 'next-intl';
+import {Button} from '@/components/ui/button';
 
+interface AnimatedHeroProps {
+  titlePrefix: string;
+  animatedTitles: string[];
+  description: string;
+  buttonText?: string;
+  buttonLink?: string;
+  onButtonClick?: () => void;
+}
 
-
-const AnimatedHero = () => {
-  const t = useTranslations('team');
+export default function AnimatedHero({
+  titlePrefix,
+  animatedTitles,
+  description,
+  buttonText,
+  buttonLink,
+  onButtonClick
+}: AnimatedHeroProps) {
   const [titleNumber, setTitleNumber] = useState(0);
-  const titles = useMemo(
-    () => [
-      t('hero.animate.code'),
-      t('hero.animate.blog'),
-      t('hero.animate.design')
-    ],
-    [t]
-  );
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (titleNumber === titles.length - 1) {
+      if (titleNumber === animatedTitles.length - 1) {
         setTitleNumber(0);
       } else {
         setTitleNumber(titleNumber + 1);
       }
     }, 2000);
     return () => clearTimeout(timeoutId);
-  }, [titleNumber, titles]);
+  }, [titleNumber, animatedTitles.length]);
+
+  const handleButtonClick = () => {
+    if (onButtonClick) {
+      onButtonClick();
+    } else if (buttonLink) {
+      window.location.href = buttonLink;
+    }
+  };
 
   return (
     <motion.div
@@ -74,10 +83,10 @@ const AnimatedHero = () => {
             transition={{duration: 0.8, delay: 0.2}}
           >
             <h1 className="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-regular">
-              <span className="text-white">{t('hero.title.prefix')}</span>
+              <span className="text-white">{titlePrefix}</span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
                 &nbsp;
-                {titles.map((title, index) => (
+                {animatedTitles.map((title, index) => (
                   <motion.span
                     key={index}
                     className="absolute font-semibold text-white"
@@ -107,37 +116,22 @@ const AnimatedHero = () => {
               animate={{y: 0, opacity: 1}}
               transition={{duration: 0.8, delay: 0.4}}
             >
-              {t('hero.description')}
+              {description}
             </motion.p>
           </motion.div>
-          <Button
-            variant="outline"
-            size="lg"
-            className="bg-white text-[#C61E1E] hover:bg-gray-100 border-white hover:border-gray-100"
-            onClick={() =>
-              (window.location.href = 'mailto:contact@turkishclub-munich.com')
-            }
-          >
-            Bize Katıl
-          </Button>
+
+          {buttonText && (
+            <Button
+              variant="outline"
+              size="lg"
+              className="bg-white text-[#C61E1E] hover:bg-gray-100 border-white hover:border-gray-100"
+              onClick={handleButtonClick}
+            >
+              {buttonText}
+            </Button>
+          )}
         </div>
       </div>
     </motion.div>
-  );
-};
-
-export default function TeamPageClient() {
-
-
-
-  return (
-    <div className="bg-[#C61E1E] min-h-screen text-white">
-      <Navbar />
-
-      {/* Animated Hero Section */}
-      <AnimatedHero />
-      <Feature theme="red" />
-      <Footer />
-    </div>
   );
 }
