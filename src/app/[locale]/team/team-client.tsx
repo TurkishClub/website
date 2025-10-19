@@ -113,12 +113,11 @@ const AnimatedHero = () => {
           <Button
             variant="outline"
             size="lg"
+            onClick={() => window.open('https://forms.gle/yKSR7oey5Ju8d75j6', '_blank', 'noopener,noreferrer')}
             className="bg-white text-[#C61E1E] hover:bg-gray-100 border-white hover:border-gray-100"
-            onClick={() =>
-              (window.location.href = 'mailto:contact@turkishclub-munich.com')
-            }
           >
-            Bize Katıl
+              Bize Katıl
+     
           </Button>
         </div>
       </div>
@@ -127,16 +126,11 @@ const AnimatedHero = () => {
 };
 
 export default function TeamPageClient() {
-
-
-
   return (
     <div className="bg-[#C61E1E] min-h-screen text-white">
       <Navbar />
-
-      {/* Animated Hero Section */}
       <AnimatedHero />
-      <Feature theme="white" />
+      <Feature />
       <Footer />
     </div>
   );
