@@ -95,23 +95,29 @@ function Feature() {
           >
             {/* Software Team */}
             <div 
-              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 hover:bg-[#C61E1E] hover:border-[#C61E1E] ${hoverScaleFor(0)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 0 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
+              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 lg:hover:bg-[#C61E1E] lg:hover:border-[#C61E1E] ${hoverScaleFor(0)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 0 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
               onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 0 ? null : 0); }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActiveCard(activeCard === 0 ? null : 0);
+                }
+              }}
             >
               <div className="flex flex-col gap-2">
-                <Code className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black group-hover:text-white transition-all duration-700 group-hover:scale-110 ${activeCard === 0 ? 'scale-110 text-white' : ''}`} />
+                <Code className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black lg:group-hover:text-white transition-all duration-700 lg:group-hover:scale-110 ${activeCard === 0 ? 'scale-110 text-white' : ''}`} />
               </div>
 
               <div className="flex flex-col gap-1 lg:gap-2 flex-1 justify-center">
-                <h3 className={`text-lg lg:text-xl tracking-tight text-black group-hover:text-white transition-all duration-700 ${activeCard === 0 ? 'hidden' : 'group-hover:hidden'}`}>Yazılım Ekibi</h3>
-                <p className={`text-black/80 group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 0 ? 'hidden' : 'group-hover:hidden'}`}>
+                <h3 className={`text-lg lg:text-xl tracking-tight text-black lg:group-hover:text-white transition-all duration-700 ${activeCard === 0 ? 'hidden' : 'lg:group-hover:hidden'}`}>Yazılım Ekibi</h3>
+                <p className={`text-black/80 lg:group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 0 ? 'hidden' : 'lg:group-hover:hidden'}`}>
                   Yenilikçi dijital çözümler geliştiriyor ve platformlarımızı en son teknoloji ile sürdürüyoruz.
                 </p>
-                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 0 ? 'block' : 'hidden group-hover:block'}`}>
-                  <li>Web & Mobil Geliştirme</li>
-                  <li>Platform Bakım & Destek</li>
-                  <li>Veritabanı Yönetimi</li>
-                  <li>API Entegrasyon & Geliştirme</li>
+                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 0 ? 'block' : 'hidden lg:group-hover:block'}`}>
+                  <li>Web Sitesini Geliştirme</li>
+                  <li>İçerik Alt Yapısı</li>
                 </ul>
               </div>
 
@@ -133,23 +139,22 @@ function Feature() {
 
             {/* Content Team */}
             <div 
-              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 hover:bg-[#C61E1E] hover:border-[#C61E1E] ${hoverScaleFor(1)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 1 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
+              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 lg:hover:bg-[#C61E1E] lg:hover:border-[#C61E1E] ${hoverScaleFor(1)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 1 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
               onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 1 ? null : 1); }}
             >
               <div className="flex flex-col gap-2">
-                <PenTool className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black group-hover:text-white transition-all duration-700 group-hover:scale-110 ${activeCard === 1 ? 'scale-110 text-white' : ''}`} />
+                <PenTool className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black lg:group-hover:text-white transition-all duration-700 lg:group-hover:scale-110 ${activeCard === 1 ? 'scale-110 text-white' : ''}`} />
               </div>
 
               <div className="flex flex-col gap-1 lg:gap-2 flex-1 justify-center">
-                <h3 className={`text-lg lg:text-xl tracking-tight text-black group-hover:text-white transition-all duration-700 ${activeCard === 1 ? 'hidden' : 'group-hover:hidden'}`}>İçerik Ekibi</h3>
-                <p className={`text-black/80 group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 1 ? 'hidden' : 'group-hover:hidden'}`}>
+                <h3 className={`text-lg lg:text-xl tracking-tight text-black lg:group-hover:text-white transition-all duration-700 ${activeCard === 1 ? 'hidden' : 'lg:group-hover:hidden'}`}>İçerik Ekibi</h3>
+                <p className={`text-black/80 lg:group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 1 ? 'hidden' : 'lg:group-hover:hidden'}`}>
                   Türk topluluğumuzu birbirine bağlayan ilgi çekici hikayeler, makaleler ve blog yazıları oluşturuyoruz.
                 </p>
-                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 1 ? 'block' : 'hidden group-hover:block'}`}>
-                  <li>Blog Yazarlığı & Makaleler</li>
-                  <li>Sosyal Medya İçerik Üretimi</li>
-                  <li>Bülten & E-posta Kampanyaları</li>
-                  <li>Topluluk Hikayeleri & Röportajlar</li>
+                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 1 ? 'block' : 'hidden lg:group-hover:block'}`}>
+                  <li>Blog Yazarlığı ve Editörlük</li>
+                  <li>Konu Araştırması</li>
+                  <li>İçerik Planlama</li>
                 </ul>
               </div>
 
@@ -171,23 +176,22 @@ function Feature() {
 
             {/* Social Media Team */}
             <div 
-              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 hover:bg-[#C61E1E] hover:border-[#C61E1E] ${hoverScaleFor(2)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 2 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
+              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 lg:hover:bg-[#C61E1E] lg:hover:border-[#C61E1E] ${hoverScaleFor(2)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 2 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
               onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 2 ? null : 2); }}
             >
               <div className="flex flex-col gap-2">
-                <Users className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black group-hover:text-white transition-all duration-700 group-hover:scale-110 ${activeCard === 2 ? 'scale-110 text-white' : ''}`} />
+                <Users className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black lg:group-hover:text-white transition-all duration-700 lg:group-hover:scale-110 ${activeCard === 2 ? 'scale-110 text-white' : ''}`} />
               </div>
 
               <div className="flex flex-col gap-1 lg:gap-2 flex-1 justify-center">
-                <h3 className={`text-lg lg:text-xl tracking-tight text-black group-hover:text-white transition-all duration-700 ${activeCard === 2 ? 'hidden' : 'group-hover:hidden'}`}>Sosyal Medya & Tasarım Ekibi</h3>
-                <p className={`text-black/80 group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 2 ? 'hidden' : 'group-hover:hidden'}`}>
+                <h3 className={`text-lg lg:text-xl tracking-tight text-black lg:group-hover:text-white transition-all duration-700 ${activeCard === 2 ? 'hidden' : 'lg:group-hover:hidden'}`}>Sosyal Medya & Tasarım Ekibi</h3>
+                <p className={`text-black/80 lg:group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 2 ? 'hidden' : 'lg:group-hover:hidden'}`}>
                   Online varlığımızı yönetiyor ve markamızı temsil eden muhteşem görsel içerikler yaratıyoruz.
                 </p>
-                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 2 ? 'block' : 'hidden group-hover:block'}`}>
+                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 2 ? 'block' : 'hidden lg:group-hover:block'}`}>
                   <li>Grafik Tasarım & Marka Kimliği</li>
                   <li>Sosyal Medya Yönetimi</li>
                   <li>Video & Fotoğraf Düzenleme</li>
-                  <li>Pazarlama Kampanya Tasarımı</li>
                 </ul>
               </div>
 
@@ -209,23 +213,22 @@ function Feature() {
 
             {/* Events Team */}
             <div 
-              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 hover:bg-[#C61E1E] hover:border-[#C61E1E] ${hoverScaleFor(3)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 3 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
+              className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 lg:hover:bg-[#C61E1E] lg:hover:border-[#C61E1E] ${hoverScaleFor(3)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 3 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
               onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 3 ? null : 3); }}
             >
               <div className="flex flex-col gap-2">
-                <Calendar className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black group-hover:text-white transition-all duration-700 group-hover:scale-110 ${activeCard === 3 ? 'scale-110 text-white' : ''}`} />
+                <Calendar className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black lg:group-hover:text-white transition-all duration-700 lg:group-hover:scale-110 ${activeCard === 3 ? 'scale-110 text-white' : ''}`} />
               </div>
 
               <div className="flex flex-col gap-1 lg:gap-2 flex-1 justify-center">
-                <h3 className={`text-lg lg:text-xl tracking-tight text-black group-hover:text-white transition-all duration-700 ${activeCard === 3 ? 'hidden' : 'group-hover:hidden'}`}>Etkinlik Ekibi</h3>
-                <p className={`text-black/80 group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 3 ? 'hidden' : 'group-hover:hidden'}`}>
+                <h3 className={`text-lg lg:text-xl tracking-tight text-black lg:group-hover:text-white transition-all duration-700 ${activeCard === 3 ? 'hidden' : 'lg:group-hover:hidden'}`}>Etkinlik Ekibi</h3>
+                <p className={`text-black/80 lg:group-hover:text-white text-xs lg:text-sm transition-all duration-700 ${activeCard === 3 ? 'hidden' : 'lg:group-hover:hidden'}`}>
                   Bizi bir araya getiren unutulmaz buluşmalar, kültürel kutlamalar ve topluluk etkinlikleri düzenliyoruz.
                 </p>
-                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 3 ? 'block' : 'hidden group-hover:block'}`}>
+                <ul className={`text-white text-xs lg:text-base list-disc list-inside space-y-2 transition-all duration-700 ${activeCard === 3 ? 'block' : 'hidden lg:group-hover:block'}`}>
                   <li>Etkinlik Planlama & Koordinasyon</li>
-                  <li>Kültürel Kutlamalar & Festivaller</li>
                   <li>Mekan & Lojistik Yönetimi</li>
-                  <li>Topluluk Buluşmaları & Networkİng</li>
+                  <li>Topluluk Buluşmaları & Networking</li>
                 </ul>
               </div>
 
