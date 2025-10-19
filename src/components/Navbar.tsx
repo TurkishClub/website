@@ -299,12 +299,6 @@ export default function Navbar() {
                         label: t('team'),
                         desc: t('teamDesc'),
                         icon: <Users className="h-4 w-4 text-purple-500" />
-                      },
-                      {
-                        href: '/contact',
-                        label: t('contact'),
-                        desc: t('contactDesc'),
-                        icon: <Mail className="h-4 w-4 text-blue-500" />
                       }
                     ].map((opt, index) => (
                       <motion.div
