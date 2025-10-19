@@ -97,6 +97,14 @@ function Feature() {
             <div 
               className={`group bg-white border border-gray-200 rounded-lg p-4 lg:p-6 flex flex-col justify-between min-h-[200px] lg:min-h-[250px] transition-all duration-700 lg:hover:bg-[#C61E1E] lg:hover:border-[#C61E1E] ${hoverScaleFor(0)} transform-gpu cursor-pointer overflow-hidden relative ${activeCard === 0 ? 'bg-[#C61E1E] border-[#C61E1E] scale-105 z-10' : 'z-0'}`}
               onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 0 ? null : 0); }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActiveCard(activeCard === 0 ? null : 0);
+                }
+              }}
             >
               <div className="flex flex-col gap-2">
                 <Code className={`w-6 h-6 lg:w-8 lg:h-8 stroke-1 text-black lg:group-hover:text-white transition-all duration-700 lg:group-hover:scale-110 ${activeCard === 0 ? 'scale-110 text-white' : ''}`} />
