@@ -27,6 +27,12 @@ const config: NextConfig = {
         hostname: 'images.pexels.com',
         port: '',
         pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.tum.de',
+        port: '',
+        pathname: '/**'
       }
     ]
   },
