@@ -136,7 +136,7 @@ export default function TeamPageClient() {
 
       {/* Animated Hero Section */}
       <AnimatedHero />
-      <Feature theme="red" />
+      <Feature theme="white" />
       <Footer />
     </div>
   );
