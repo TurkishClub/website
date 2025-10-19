@@ -77,7 +77,7 @@ export default function EventSection() {
               src="https://luma.com/embed/event/evt-pRpOYXNIkZs70My/simple"
               className="w-full max-w-[600px] min-h-[750px] rounded-lg"
               allow="fullscreen; payment"
-              aria-hidden="false"
+              title="Upcoming event"
             ></iframe>
           </div>
         </div>
