@@ -137,3 +137,12 @@ export const DORMS_QUERY =
   description,
   roomTypes,
 }`);
+
+export const NEXT_EVENT_QUERY =
+  defineQuery(`*[_type == "event" && time > now()] | order(time asc)[0]{
+  _id,
+  name,
+  embedUrl,
+  time,
+  location
+}`);
