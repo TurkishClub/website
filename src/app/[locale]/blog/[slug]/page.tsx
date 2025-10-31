@@ -12,6 +12,7 @@ import {TableOfContents} from '@/components/TableOfContents';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BlogPostClient from './blog-post-client';
+import {getImageDimensions} from '@sanity/asset-utils';
 
 // Enable ISR with 60 second revalidation for faster loading
 export const revalidate = 60;
@@ -48,31 +49,30 @@ interface BlogPostPageProps {
 // Custom components for PortableText rendering
 const portableTextComponents = {
   types: {
-    // Image component using Next.js Image
     image: ({value}: any) => {
-      if (!value?.asset?._ref) {
-        return null;
-      }
+      if (!value?.asset) return null;
+      const {width, height} = getImageDimensions(value);
 
-      const imageUrl = urlFor(value).width(1200).height(800).url();
+      // Build the Sanity CDN URL (no forced height → no crop)
+      const src = urlFor(value).fit('max').url();
 
       return (
-        <div className="my-12">
-          <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src={imageUrl}
-              alt={value.alt || 'Blog image'}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 800px"
-            />
-          </div>
+        <figure className="my-12">
+          <Image
+            src={src}
+            alt={value.alt || 'Blog image'}
+            width={Math.round(width)}
+            height={Math.round(height)}
+            className="rounded-xl shadow-lg w-full h-auto"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 800px"
+            priority={false}
+          />
           {value.alt && (
-            <p className="text-sm text-gray-600 mt-3 text-center italic">
+            <figcaption className="text-sm text-gray-600 mt-3 text-center italic">
               {value.alt}
-            </p>
+            </figcaption>
           )}
-        </div>
+        </figure>
       );
     }
   },
