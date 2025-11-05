@@ -6,6 +6,7 @@ import FAQ from '@/components/FAQ';
 import FloatingActionMenu from '@/components/ui/floating-action-menu';
 import ContactForm from '@/components/ContactForm';
 import EventSection from '@/components/EventSection';
+import Highlights from '@/components/Highlights';
 type Props = {
   params: Promise<{locale: Locale}>;
 };
@@ -26,7 +27,7 @@ export default async function IndexPage({params}: Props) {
         <p className="md:text-2xl text-lg mb-8">{t('hero.subtitle')}</p>
         <FloatingActionMenu className="relative" />
       </section>
-
+      <Highlights />
       <EventSection />
       <FAQ />
       <ContactForm />

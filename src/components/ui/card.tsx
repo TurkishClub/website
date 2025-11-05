@@ -1,75 +1,82 @@
-import * as React from "react"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+// Define the props for the TravelCard component
+interface Card extends React.HTMLAttributes<HTMLDivElement> {
+  imageUrl: string;
+  imageAlt: string;
+  title: string;
+  overview: string;
+  contentType: string;
+  onBookNow: () => void;
+}
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
-      className
-    )}
-    {...props}
-  />
-))
-Card.displayName = "Card"
+const Card = React.forwardRef<HTMLDivElement, Card>(
+  (
+    {
+      className,
+      imageUrl,
+      imageAlt,
+      title,
+      overview,
+      contentType,
+      onBookNow,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "group relative w-full max-w-sm overflow-hidden rounded-xl bg-card shadow-lg",
+          "transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2",
+          className
+        )}
+        {...props}
+      >
+        {/* Background Image with Zoom Effect on Hover */}
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+        />
 
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
-))
-CardHeader.displayName = "CardHeader"
+        {/* Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
-      className
-    )}
-    {...props}
-  />
-))
-CardTitle.displayName = "CardTitle"
+        {/* Content Container */}
+        <div className="relative flex h-full flex-col justify-end p-6 text-card-foreground">     
+          {/* Bottom Section: Details (slides up on hover) */}
+          <div className="space-y-4 transition-transform duration-500 ease-in-out group-hover:-translate-y-16">
+            <div>
+              <h3 className="text-3xl font-bold text-white">{title}</h3>
+            </div>
+            <div>
+              <p className="text-sm text-white/70 leading-relaxed">
+                {overview}
+              </p>
+            </div>
+          </div>
 
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-CardDescription.displayName = "CardDescription"
+          {/* Bottom Section: Price and Button (revealed on hover) */}
+          <div className="absolute -bottom-20 left-0 w-full p-6 opacity-0 transition-all duration-500 ease-in-out group-hover:bottom-0 group-hover:opacity-100">
+            <div className="flex items-end justify-between">
+              <div>
+                <span className="text-2xl font-bold text-white">{contentType}</span>
+              </div>
+              <Button onClick={onBookNow} size="sm" className="bg-white text-black hover:bg-white/90">
+                Discover <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+);
+Card.displayName = "Card";
 
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
-CardContent.displayName = "CardContent"
-
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
-    {...props}
-  />
-))
-CardFooter.displayName = "CardFooter"
-
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card };
