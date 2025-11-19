@@ -93,17 +93,17 @@ export default function Contact() {
     };
 
     return (
-        <section className="py-32 bg-[#C61E1E] text-white">
-            <div className="mx-auto flex flex-col justify-between gap-10 lg:gap-20">
+        <section className="py-32 bg-white">
+            <div className="mx-auto flex flex-col justify-between gap-10 lg:gap-20 px-6">
                 <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">
                     <div className="text-center lg:text-left">
-                        <h1 className="mb-2 text-5xl font-bold lg:mb-1 lg:text-6xl">
+                        <h1 className="mb-2 text-5xl font-bold lg:mb-1 lg:text-6xl text-gray-900">
                             {t('title')}
                         </h1>
                     </div>
                 </div>
 
-                <div className="mx-auto w-full max-w-3xl flex flex-col gap-6 rounded-lg border p-8 md:p-10 bg-white text-gray-900 shadow-lg">
+                <div className="mx-auto w-full max-w-3xl flex flex-col gap-6 rounded-lg border border-gray-200 p-8 md:p-10 bg-gray-50 text-gray-900 shadow-lg">
                     {serverError && (
                         <div className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
                             {serverError}

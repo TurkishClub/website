@@ -47,7 +47,6 @@ declare const messages: {
     "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
     "title": "Pathnames"
   },
-
   "HomePage": {
     "hero": {
       "title": "Turkish Club",
@@ -58,7 +57,7 @@ declare const messages: {
       "question": "What would you like to see in the Turkish Club?"
     }
   },
-    "Navbar": {
+  "Navbar": {
     "joinTeam": "Join Team",
     "platforms": "Platforms",
     "platformsDesc": "Our social media accounts",
@@ -83,26 +82,25 @@ declare const messages: {
     "contact": "Contact",
     "contactDesc": "Get in touch with us"
   },
-  
-  "FAQ" : {
+  "FAQ": {
     "title": "FAQ",
     "questions": [
-    {
-      "question": "What is Turkish Club?",
-      "answer": "Munich Turkish Student Club is a student-focused community that brings together Turkish students living and studying in Munich. Our main goal is to support each other, create a sense of belonging abroad, and organize activities that unite students socially, academically, and culturally."
-    },
-    {
-      "question": "Is the club only for university students?",
-      "answer": "No, our club is not only for university students. All Turkish youth and students living in Munich can join us."
-    },
-    {
-      "question": "What kind of events do you organize?",
-      "answer": "We organize cultural events, social gatherings, academic seminars, sports activities, and various celebrations."
-    },
-    {
-      "question": "What are the rules of Turkish Club?",
-      "answer": "Our club's basic rules are built on respect, tolerance, and unity. For detailed rules, you can contact our team."
-    }
+      {
+        "question": "What is Turkish Club?",
+        "answer": "Munich Turkish Student Club is a student-focused community that brings together Turkish students living and studying in Munich. Our main goal is to support each other, create a sense of belonging abroad, and organize activities that unite students socially, academically, and culturally."
+      },
+      {
+        "question": "Is the club only for university students?",
+        "answer": "No, our club is not only for university students. All Turkish youth and students living in Munich can join us."
+      },
+      {
+        "question": "What kind of events do you organize?",
+        "answer": "We organize cultural events, social gatherings, academic seminars, sports activities, and various celebrations."
+      },
+      {
+        "question": "What are the rules of Turkish Club?",
+        "answer": "Our club's basic rules are built on respect, tolerance, and unity. For detailed rules, you can contact our team."
+      }
     ]
   },
   "dormSearch": {
@@ -161,13 +159,17 @@ declare const messages: {
         "moreInfo": "More Details",
         "visitWebsite": "Visit Website",
         "getDirections": "Get Directions"
-      }
+      },
+      "loading": "Loading map..."
     },
     "results": {
       "showing": "Showing {filtered} of {total} dorms",
       "noResults": "No dorms found matching your search criteria.",
       "foundResults": "{count} dorms found",
       "adjustFilters": "Try adjusting your search criteria."
+    },
+    "comparison": {
+      "maxLimit": "You can select a maximum of 4 dorms"
     }
   },
   "team": {

@@ -1,10 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Card } from "@/components/ui/card";
+import { HighlightCard } from "@/components/HighlightCard";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SEMANTIC_COLORS } from "@/config/colors";
 
 // Sample highlights data
 const highlights = [
@@ -57,7 +58,7 @@ export default function Highlights() {
   // Calculate how many cards to show based on screen size
   const getCardsToShow = () => {
     if (typeof window === "undefined") return 1;
-    if (window.innerWidth >= 1280) return 4; // xl
+    if (window.innerWidth >= 1280) return 5; // xl
     if (window.innerWidth >= 768) return 2; // md
     return 1; // mobile
   };
@@ -95,11 +96,11 @@ export default function Highlights() {
   };
 
   return (
-    <section className="w-full bg-[#C61E1E]">
+    <section className={cn("w-full", SEMANTIC_COLORS.background.white, SEMANTIC_COLORS.text.secondary)}>
       <div className="mx-auto px-12">
         {/* Header */}
-        <div className="mb-12 text-left">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="text-left">
+          <h2 className={cn("text-4xl md:text-5xl font-bold mb-4", SEMANTIC_COLORS.text.secondary)}>
             Highlights
           </h2>
         </div>
@@ -140,7 +141,7 @@ export default function Highlights() {
                     minHeight: "500px",
                   }}
                 >
-                  <Card
+                  <HighlightCard
                     imageUrl={highlight.imageUrl}
                     imageAlt={highlight.imageAlt}
                     title={highlight.title}
