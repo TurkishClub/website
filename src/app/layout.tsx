@@ -1,6 +1,7 @@
 import {ReactNode} from 'react';
 import {draftMode} from 'next/headers';
-import {VisualEditing} from 'next-sanity';
+import {VisualEditing} from 'next-sanity/visual-editing';
+import {SanityLive} from '@/sanity/lib/live';
 import {DisableDraftMode} from '@/components/DisableDraftMode';
 import { PostHogProvider } from '@/components/PostHogProvider'
 import SocialClickTracker from '@/components/SocialClickTracker';
@@ -19,6 +20,7 @@ export default async function RootLayout({children}: Props) {
       <body>
         <PostHogProvider>
           <SocialClickTracker />
+          <SanityLive />
           {children}
           {isEnabled && (
             <>
