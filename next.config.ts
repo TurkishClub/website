@@ -52,7 +52,18 @@ const config: NextConfig = {
     };
   },
   // This is required to support PostHog trailing slash API requests
-  skipTrailingSlashRedirect: true
+  skipTrailingSlashRedirect: true,
+  outputFileTracingExcludes: {
+    '*': [
+      // Exclude @vercel/og and its WASM files (not used)
+      'node_modules/@vercel/og/**/*',
+      // Exclude Sanity Studio packages (not used in production app)
+      'node_modules/@sanity/vision/**/*',
+      'node_modules/@sanity/code-input/**/*',
+      'node_modules/@sanity/ui/**/*',
+      'node_modules/styled-components/**/*',
+    ],
+  },
 };
 
 export default withNextIntl(config);
