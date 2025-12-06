@@ -43,8 +43,7 @@
   "PathnamesPage": {
     "description": "<p>Auch die Pfadnamen sind internationalisiert.</p><p>Wenn du die Standardsprache Englisch verwendest, siehst du <code>/en/pathnames</code> in der Adressleiste des Browsers auf dieser Seite.</p><p>Wenn du die Sprache auf Deutsch änderst, wird die URL entsprechend lokalisiert (<code>/de/pfadnamen</code>).</p>",
     "title": "Pfadnamen"
-  }
-  ,
+  },
   "HomePage": {
     "hero": {
       "title": "Turkish Club",
@@ -54,9 +53,8 @@
     "poll": {
       "question": "Was möchten Sie im Türkischen Verein sehen?"
     }
-  }
-  ,
-    "Navbar": {
+  },
+  "Navbar": {
     "joinTeam": "Team beitreten",
     "platforms": "Plattformen",
     "platformsDesc": "Unsere Social Media Accounts",
@@ -81,25 +79,25 @@
     "contact": "Kontakt",
     "contactDesc": "Nehmen Sie Kontakt mit uns auf"
   },
-  "FAQ" : {
+  "FAQ": {
     "title": "FAQ",
     "questions": [
-    {
-      "question": "Was ist Turkish Club?",
-      "answer": "Der Münchener Türkische Studentenclub ist eine studentenorientierte Gemeinschaft, die türkische Studenten, die in München leben und studieren, zusammenbringt. Unser Hauptziel ist es, uns gegenseitig zu unterstützen, ein Gefühl der Zugehörigkeit im Ausland zu schaffen und Veranstaltungen zu organisieren, die Studenten sozial, akademisch und kulturell vereinen."
-    },
-    {
-      "question": "Ist der Club nur für Universitätsstudenten?",
-      "answer": "Nein, unser Club ist nicht nur für Universitätsstudenten. Alle türkischen Jugendlichen und Studenten, die in München leben, können sich uns anschließen."
-    },
-    {
-      "question": "Welche Art von Veranstaltungen organisieren Sie?",
-      "answer": "Wir organisieren kulturelle Veranstaltungen, soziale Treffen, akademische Seminare, Sportaktivitäten und verschiedene Feiern."
-    },
-    {
-      "question": "Was sind die Regeln des Turkish Club?",
-      "answer": "Die Grundregeln unseres Clubs basieren auf Respekt, Toleranz und Einheit. Für detaillierte Regeln können Sie sich an unser Team wenden."
-    }
+      {
+        "question": "Was ist Turkish Club?",
+        "answer": "Der Münchener Türkische Studentenclub ist eine studentenorientierte Gemeinschaft, die türkische Studenten, die in München leben und studieren, zusammenbringt. Unser Hauptziel ist es, uns gegenseitig zu unterstützen, ein Gefühl der Zugehörigkeit im Ausland zu schaffen und Veranstaltungen zu organisieren, die Studenten sozial, akademisch und kulturell vereinen."
+      },
+      {
+        "question": "Ist der Club nur für Universitätsstudenten?",
+        "answer": "Nein, unser Club ist nicht nur für Universitätsstudenten. Alle türkischen Jugendlichen und Studenten, die in München leben, können sich uns anschließen."
+      },
+      {
+        "question": "Welche Art von Veranstaltungen organisieren Sie?",
+        "answer": "Wir organisieren kulturelle Veranstaltungen, soziale Treffen, akademische Seminare, Sportaktivitäten und verschiedene Feiern."
+      },
+      {
+        "question": "Was sind die Regeln des Turkish Club?",
+        "answer": "Die Grundregeln unseres Clubs basieren auf Respekt, Toleranz und Einheit. Für detaillierte Regeln können Sie sich an unser Team wenden."
+      }
     ]
   },
   "dormSearch": {
@@ -248,7 +246,11 @@
     "form": {
       "subject": {
         "label": "Betreff (optional)",
-        "placeholder": "Worum geht es?"
+        "placeholder": "Worum geht es?",
+        "errors": {
+          "tooShort": "Der Betreff muss mindestens 3 Zeichen lang sein.",
+          "tooLong": "Der Betreff darf nicht länger als 120 Zeichen sein."
+        }
       },
       "name": {
         "label": "Name",

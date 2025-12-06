@@ -27,3 +27,34 @@ jobs:
       run: |
         npm install
         npm run build:cloudflare
+    - name: Check bundle size
+      run: |
+        # Run wrangler deploy --dry-run and capture output
+        OUTPUT=$(npx wrangler deploy --dry-run 2>&1)
+        echo "$OUTPUT"
+        
+        # Extract gzipped size in KiB
+        GZIP_SIZE=$(echo "$OUTPUT" | grep "Total Upload:" | grep -oP 'gzip: \K[0-9.]+')
+        
+        if [ -z "$GZIP_SIZE" ]; then
+          echo "❌ Error: Could not extract gzip size from wrangler output"
+          exit 1
+        fi
+        
+        echo "📦 Gzipped bundle size: ${GZIP_SIZE} KiB"
+        
+        # Convert to MB for better readability
+        GZIP_SIZE_MB=$(awk "BEGIN {printf \"%.2f\", $GZIP_SIZE / 1024}")
+        echo "📦 Gzipped bundle size: ${GZIP_SIZE_MB} MB"
+        
+        # Check if size exceeds 3MB (3072 KiB)
+        LIMIT_KIB=3072
+        EXCEEDS=$(awk "BEGIN {print ($GZIP_SIZE > $LIMIT_KIB) ? 1 : 0}")
+        
+        if [ "$EXCEEDS" -eq 1 ]; then
+          echo "❌ Bundle size ${GZIP_SIZE} KiB (${GZIP_SIZE_MB} MB) exceeds the 3MB limit (${LIMIT_KIB} KiB)"
+          exit 1
+        else
+          REMAINING=$(awk "BEGIN {printf \"%.2f\", ($LIMIT_KIB - $GZIP_SIZE) / 1024}")
+          echo "✅ Bundle size is within limits. ${REMAINING} MB remaining."
+        fi

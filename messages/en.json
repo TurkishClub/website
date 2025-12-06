@@ -251,7 +251,11 @@
     "form": {
       "subject": {
         "label": "Subject (optional)",
-        "placeholder": "What is this about?"
+        "placeholder": "What is this about?",
+        "errors": {
+          "tooShort": "Subject must be at least 3 characters.",
+          "tooLong": "Subject must not be longer than 120 characters."
+        }
       },
       "name": {
         "label": "Name",

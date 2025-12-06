@@ -1,18 +1,20 @@
-import {Locale} from 'next-intl';
-import {setRequestLocale} from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import FAQ from '@/components/FAQ';
-import ContactForm from '@/components/ContactForm';
-import EventSection from '@/components/EventSection';
-import Highlights from '@/components/Highlights';
 import Hero from '@/components/Hero';
+import EventSection from '@/components/EventSection';
+import Footer from '@/components/Footer';
+import dynamic from 'next/dynamic';
+
+const FAQ = dynamic(() => import('@/components/FAQ'));
+const ContactForm = dynamic(() => import('@/components/ContactForm'));
+const Highlights = dynamic(() => import('@/components/Highlights'));
 type Props = {
-  params: Promise<{locale: Locale}>;
+  params: Promise<{ locale: Locale }>;
 };
 
-export default async function IndexPage({params}: Props) {
-  const {locale} = await params;
+export default async function IndexPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
   return (

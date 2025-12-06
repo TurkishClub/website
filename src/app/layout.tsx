@@ -1,8 +1,4 @@
-import {ReactNode} from 'react';
-import {draftMode} from 'next/headers';
-import {VisualEditing} from 'next-sanity/visual-editing';
-import {SanityLive} from '@/sanity/lib/live';
-import {DisableDraftMode} from '@/components/DisableDraftMode';
+import { ReactNode } from 'react';
 import { PostHogProvider } from '@/components/PostHogProvider'
 import SocialClickTracker from '@/components/SocialClickTracker';
 
@@ -13,21 +9,13 @@ type Props = {
 // This is the root layout for the application.
 // Since we have a `not-found.tsx` page on the root, a layout file
 // is required, even if it's just passing children through.
-export default async function RootLayout({children}: Props) {
-  const {isEnabled} = await draftMode();
+export default async function RootLayout({ children }: Props) {
   return (
     <html lang="tr">
       <body>
         <PostHogProvider>
           <SocialClickTracker />
-          <SanityLive />
           {children}
-          {isEnabled && (
-            <>
-              <VisualEditing />
-              <DisableDraftMode />
-            </>
-          )}
         </PostHogProvider>
       </body>
     </html>

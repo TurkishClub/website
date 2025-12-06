@@ -1,10 +1,10 @@
 "use client";
 
-import React, {useState} from "react";
-import {useTranslations} from 'next-intl';
-import {useForm} from "react-hook-form";
-import {z} from "zod";
-import {zodResolver} from "@hookform/resolvers/zod";
+import React, { useState } from "react";
+import { useTranslations } from 'next-intl';
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,7 +22,7 @@ import {
 type ContactValues = {
     name: string;
     email: string;
-    subject?: string;
+    subject: string;
     message: string;
 };
 
@@ -35,21 +35,20 @@ export default function Contact() {
     const ContactSchema = z.object({
         name: z
             .string()
-            .min(2, {message: t('form.name.errors.tooShort')})
-            .max(50, {message: t('form.name.errors.tooLong')})
+            .min(2, { message: t('form.name.errors.tooShort') })
+            .max(50, { message: t('form.name.errors.tooLong') })
             .trim(),
         email: z
-            .string()
-            .email({message: t('form.email.errors.invalid')}),
+            .email({ message: t('form.email.errors.invalid') }),
         subject: z
             .string()
-            .max(120)
-            .optional()
-            .or(z.literal('')),
+            .min(3, { message: t('form.subject.errors.tooShort') })
+            .max(120, { message: t('form.subject.errors.tooLong') })
+            .trim(),
         message: z
             .string()
-            .min(10, {message: t('form.message.errors.tooShort')})
-            .max(500, {message: t('form.message.errors.tooLong')})
+            .min(10, { message: t('form.message.errors.tooShort') })
+            .max(500, { message: t('form.message.errors.tooLong') })
     });
 
     const form = useForm<ContactValues>({
@@ -69,7 +68,7 @@ export default function Contact() {
         try {
             const res = await fetch("/api/contact", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     name: values.name,
                     email: values.email,

@@ -251,7 +251,11 @@
     "form": {
       "subject": {
         "label": "Konu (opsiyonel)",
-        "placeholder": "Konu nedir?"
+        "placeholder": "Konu nedir?",
+        "errors": {
+          "tooShort": "Konu en az 3 karakter olmalıdır.",
+          "tooLong": "Konu 120 karakterden uzun olamaz."
+        }
       },
       "name": {
         "label": "İsim",

@@ -61,7 +61,8 @@ build/
 .open-next/
 out/
 .sanity/
-messages/
+# next-intl auto-generated TypeScript declarations (regenerated from .json files)
+messages/*.d.json.ts
 
 # Cache
 .cache/
