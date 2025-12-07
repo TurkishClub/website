@@ -2,6 +2,8 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 // Define the props for the TravelCard component
 interface HighlightCard extends React.HTMLAttributes<HTMLDivElement> {
@@ -10,7 +12,7 @@ interface HighlightCard extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   overview: string;
   contentType: string;
-  onBookNow: () => void;
+  url?: string; // Optional URL for the discover button
 }
 
 const HighlightCard = React.forwardRef<HTMLDivElement, HighlightCard>(
@@ -22,7 +24,7 @@ const HighlightCard = React.forwardRef<HTMLDivElement, HighlightCard>(
       title,
       overview,
       contentType,
-      onBookNow,
+      url,
       ...props
     },
     ref
@@ -38,17 +40,19 @@ const HighlightCard = React.forwardRef<HTMLDivElement, HighlightCard>(
         {...props}
       >
         {/* Background Image with Zoom Effect on Hover */}
-        <img
+        <Image
           src={imageUrl}
           alt={imageAlt}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+          fill
+          className="absolute inset-0 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw"
         />
 
         {/* Gradient Overlay for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
         {/* Content Container */}
-        <div className="relative flex h-full flex-col justify-end p-6 text-card-foreground">     
+        <div className="relative flex h-full flex-col justify-end p-6 text-card-foreground">
           {/* Bottom Section: Details (slides up on hover) */}
           <div className="space-y-4 transition-transform duration-500 ease-in-out group-hover:-translate-y-16">
             <div>
@@ -67,9 +71,17 @@ const HighlightCard = React.forwardRef<HTMLDivElement, HighlightCard>(
               <div>
                 <span className="text-2xl font-bold text-white">{contentType}</span>
               </div>
-              <Button onClick={onBookNow} size="sm" className="bg-white text-black hover:bg-white/90">
-                Discover <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              {url ? (
+                <Link href={url} target="_blank" rel="noopener noreferrer">
+                  <Button size="sm" className="bg-white text-black hover:bg-white/90">
+                    Discover <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              ) : (
+                <Button size="sm" className="bg-white text-black hover:bg-white/90" disabled>
+                  Discover <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              )}
             </div>
           </div>
         </div>

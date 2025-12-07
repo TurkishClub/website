@@ -7,51 +7,34 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SEMANTIC_COLORS } from "@/config/colors";
 
-// Sample highlights data
-const highlights = [
-  {
-    id: 1,
-    imageUrl: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&h=600&fit=crop",
-    imageAlt: "Istanbul Skyline",
-    title: "Istanbul",
-    overview: "Explore the vibrant culture and rich history of Turkey's largest city, where East meets West.",
-    contentType: "Cultural",
-  },
-  {
-    id: 2,
-    imageUrl: "https://images.unsplash.com/photo-1605880461008-97d3cc1e8ffe?w=800&h=600&fit=crop",
-    imageAlt: "Cappadocia Hot Air Balloons",
-    title: "Cappadocia",
-    overview: "Experience breathtaking hot air balloon rides and explore ancient cave dwellings in this magical landscape.",
-    contentType: "Natural",
-  },
-  {
-    id: 3,
-    imageUrl: "https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=800&h=600&fit=crop",
-    imageAlt: "Antalya Beach",
-    title: "Antalya",
-    overview: "Relax on pristine beaches and discover ancient ruins along the stunning Turkish Riviera.",
-    contentType: "Natural",
-  },
-  {
-    id: 4,
-    imageUrl: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=600&fit=crop",
-    imageAlt: "Pamukkale Terraces",
-    title: "Pamukkale",
-    overview: "Visit the stunning white calcium terraces and ancient thermal pools in this natural wonder.",
-    contentType: "Natural",
-  },
-  {
-    id: 5,
-    imageUrl: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=800&h=600&fit=crop",
-    imageAlt: "Ephesus Ruins",
-    title: "Ephesus",
-    overview: "Walk through one of the best-preserved ancient cities and experience history come alive.",
-    contentType: "Cultural",
-  },
-];
+interface Highlight {
+  _id: string;
+  title: string;
+  type: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+  link?: string;
+}
 
-export default function Highlights() {
+interface HighlightsProps {
+  highlights?: Highlight[];
+}
+
+export default function Highlights({ highlights = [] }: HighlightsProps) {
+  // Fallback to sample data if no highlights provided
+  const displayHighlights = highlights.length > 0 ? highlights : [
+    {
+      _id: '1',
+      imageUrl: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&h=600&fit=crop",
+      imageAlt: "Istanbul Skyline",
+      title: "Istanbul",
+      description: "Explore the vibrant culture and rich history of Turkey's largest city, where East meets West.",
+      type: "Cultural",
+      link: undefined,
+    },
+  ];
+
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
 
@@ -74,7 +57,7 @@ export default function Highlights() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const maxIndex = Math.max(0, highlights.length - cardsToShow);
+  const maxIndex = Math.max(0, displayHighlights.length - cardsToShow);
 
   const handlePrevious = () => {
     if (isTransitioning) return;
@@ -88,11 +71,6 @@ export default function Highlights() {
     setIsTransitioning(true);
     setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
     setTimeout(() => setIsTransitioning(false), 300);
-  };
-
-  const handleBookNow = (title: string) => {
-    console.log(`Booking ${title}`);
-    // Add your booking logic here
   };
 
   return (
@@ -132,9 +110,9 @@ export default function Highlights() {
                 transform: `translateX(-${currentIndex * (100 / cardsToShow)}%)`,
               }}
             >
-              {highlights.map((highlight) => (
+              {displayHighlights.map((highlight) => (
                 <div
-                  key={highlight.id}
+                  key={highlight._id}
                   className="flex-shrink-0"
                   style={{
                     width: `calc(${100 / cardsToShow}% - ${(cardsToShow - 1) * 24 / cardsToShow}px)`,
@@ -145,9 +123,9 @@ export default function Highlights() {
                     imageUrl={highlight.imageUrl}
                     imageAlt={highlight.imageAlt}
                     title={highlight.title}
-                    overview={highlight.overview}
-                    contentType={highlight.contentType}
-                    onBookNow={() => handleBookNow(highlight.title)}
+                    overview={highlight.description}
+                    contentType={highlight.type}
+                    url={highlight.link}
                     className="h-full"
                   />
                 </div>

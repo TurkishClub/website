@@ -1,4 +1,4 @@
-import {defineQuery} from 'next-sanity';
+import { defineQuery } from 'next-sanity';
 
 export const POSTS_QUERY =
   defineQuery(`*[_type == "post" && defined(slug.current)][0...12]{
@@ -136,6 +136,68 @@ export const DORMS_QUERY =
   distanceToMainCampus,
   description,
   roomTypes,
+}`);
+
+export const HIGHLIGHT_CARDS_QUERY =
+  defineQuery(`*[_type == "highlightCard"]{
+  _id,
+  title,
+  type,
+  description,
+  link,
+  "image": image{
+    asset->{
+      _id,
+      url
+    },
+    alt,
+    hotspot
+  }
+}`);
+
+export const HIGHLIGHT_CARD_QUERY =
+  defineQuery(`*[_type == "highlightCard" && _id == $id][0]{
+  _id,
+  title,
+  type,
+  description,
+  link,
+  "image": image{
+    asset->{
+      _id,
+      url
+    },
+    alt,
+    hotspot
+  }
+}`);
+
+export const GALLERIES_QUERY =
+  defineQuery(`*[_type == "gallery"]{
+  _id,
+  title,
+  "image": image{
+    asset->{
+      _id,
+      url
+    },
+    alt,
+    hotspot
+  }
+}`);
+
+export const GALLERY_QUERY =
+  defineQuery(`*[_type == "gallery" && _id == $id][0]{
+  _id,
+  title,
+  "image": image{
+    asset->{
+      _id,
+      url
+    },
+    alt,
+    hotspot
+  }
 }`);
 
 export const NEXT_EVENT_QUERY =

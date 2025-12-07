@@ -4,45 +4,29 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
-// Photo roll media items - mix of images and videos
-const mediaItems = [
-    {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=1200&fit=crop',
-        alt: 'Istanbul street view'
-    },
-    {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=1200&fit=crop',
-        alt: 'Galata Tower'
-    },
-    {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=1200&fit=crop',
-        alt: 'Cappadocia balloons'
-    },
-    {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=800&h=1200&fit=crop',
-        alt: 'Ancient ruins'
-    },
-    {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=1200&fit=crop',
-        alt: 'Turkish mosque'
-    },
-    {
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=1200&fit=crop',
-        alt: 'Turkish culture'
-    },
-];
+interface MediaItem {
+    type: 'image';
+    url: string;
+    alt: string;
+}
 
-export default function Hero() {
+interface HeroProps {
+    galleryImages?: MediaItem[];
+}
+
+export default function Hero({ galleryImages = [] }: HeroProps) {
+    // Fallback to empty array if no gallery images provided
+    const mediaItems = galleryImages.length > 0 ? galleryImages : [
+        {
+            type: 'image' as const,
+            url: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&h=1200&fit=crop',
+            alt: 'Turkish culture'
+        },
+    ];
     const containerRef = useRef<HTMLDivElement>(null);
     const [autoScrollY, setAutoScrollY] = useState(0);
     const [autoScrollY2, setAutoScrollY2] = useState(0);
-    
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
@@ -59,28 +43,28 @@ export default function Hero() {
     useEffect(() => {
         let animationFrame: number;
         const startTime = Date.now();
-        
+
         // Calculate total height of one set of items
         // Each item is 320px (h-80) + 16px gap = 336px
         // 6 items = 2016px
         const itemHeight = 336;
         const totalHeight = mediaItems.length * itemHeight;
-        
+
         const animate = () => {
             const elapsed = Date.now() - startTime;
             // Scroll speed: 30 pixels per second
             const scrollAmount = (elapsed / 1000) * 30;
             setAutoScrollY(scrollAmount % totalHeight); // Left carousel - scrolls down
-            
+
             // Right carousel scrolls in opposite direction (up)
             // Start from totalHeight and subtract to create upward movement
             setAutoScrollY2(totalHeight - (scrollAmount % totalHeight));
-            
+
             animationFrame = requestAnimationFrame(animate);
         };
-        
+
         animationFrame = requestAnimationFrame(animate);
-        
+
         return () => {
             if (animationFrame) {
                 cancelAnimationFrame(animationFrame);
@@ -95,30 +79,30 @@ export default function Hero() {
                 {/* Sticky container for the animated content */}
                 <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-between px-8 lg:px-16">
                     {/* White background that fades in */}
-                    <motion.div 
+                    <motion.div
                         className="absolute inset-0 bg-white z-0"
                         style={{ opacity: bgOpacity }}
                     />
-                    
+
                     {/* Left Side - Turkish Club Text */}
-                    <motion.div 
+                    <motion.div
                         className="flex flex-col items-start justify-start text-left relative z-10 flex-1"
                         style={{ opacity }}
                     >
                         {/* "Turkish Club" that scales up */}
                         <motion.div
-                            style={{ 
+                            style={{
                                 scale,
                                 opacity: beraberOpacity
                             }}
                             className="origin-left mb-6"
                         >
                             <h1 className="bg-white text-red-700 px-6 py-3 rounded-2xl font-bold inline-block md:text-8xl text-6xl tracking-tight">
-                                Turkish 
+                                Turkish
                                 <span className='block'> Club</span>
                             </h1>
                         </motion.div>
-                        
+
                         {/* Description and CTA buttons */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -127,23 +111,23 @@ export default function Hero() {
                             className="max-w-xl"
                         >
                             <p className="text-white text-lg md:text-xl mb-6 leading-relaxed">
-                                Join our vibrant community of Turkish students and friends. 
+                                Join our vibrant community of Turkish students and friends.
                                 Experience rich culture, make lasting connections, and create unforgettable memories together.
                             </p>
-                            
+
                         </motion.div>
                     </motion.div>
-                    
+
                     {/* Right Side - Photo Roll Carousels */}
-                    <motion.div 
+                    <motion.div
                         className="relative gap-4 h-full items-center z-10 hidden lg:flex"
                         style={{ opacity: carouselOpacity }}
                     >
                         {/* Photo Roll - First Column */}
-                        <motion.div 
+                        <motion.div
                             className="relative w-64 h-full overflow-hidden"
                         >
-                            <motion.div 
+                            <motion.div
                                 className="flex flex-col gap-4 py-8"
                                 style={{ y: -autoScrollY }}
                             >
@@ -180,12 +164,12 @@ export default function Hero() {
                                 ))}
                             </motion.div>
                         </motion.div>
-                        
+
                         {/* Photo Roll - Second Column */}
-                        <motion.div 
+                        <motion.div
                             className="relative w-64 h-full overflow-hidden"
                         >
-                            <motion.div 
+                            <motion.div
                                 className="flex flex-col gap-4 py-8"
                                 style={{ y: -autoScrollY2 }}
                             >

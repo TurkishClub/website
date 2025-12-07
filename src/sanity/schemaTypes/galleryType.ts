@@ -11,16 +11,6 @@ export const galleryType = defineType({
             title: 'Title',
         }),
         defineField({
-            name: 'type',
-            type: 'string',
-            title: 'Type',
-        }),
-        defineField({
-            name: 'description',
-            type: 'text',
-            title: 'Description',
-        }),
-        defineField({
             name: 'image',
             type: 'image',
             title: 'Image',

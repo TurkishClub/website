@@ -31,7 +31,7 @@ yarn-error.log*
 .env
 
 # vercel
-.vercel
+.vercel/
 
 # typescript
 *.tsbuildinfo
@@ -61,6 +61,7 @@ build/
 .open-next/
 out/
 .sanity/
+.wrangler/
 # next-intl auto-generated TypeScript declarations (regenerated from .json files)
 messages/*.d.json.ts
 
