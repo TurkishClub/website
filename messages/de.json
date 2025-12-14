@@ -337,17 +337,36 @@
       "title": "Kartenansicht",
       "showList": "Listenansicht",
       "showMap": "Kartenansicht",
-      "showingLocations": "{count} Lernplätze werden angezeigt",
+      "showingLocations": "{count} Lernorte werden angezeigt",
       "popup": {
-        "moreInfo": "Weitere Details",
-        "getDirections": "Wegbeschreibung"
+        "moreInfo": "Mehr Details",
+        "getDirections": "Route planen"
       }
     },
     "results": {
-      "showing": "{filtered} von {total} Lernplätzen angezeigt",
-      "noResults": "Keine Lernplätze gefunden, die Ihren Suchkriterien entsprechen.",
-      "foundResults": "{count} Lernplätze gefunden",
+      "showing": "{filtered} von {total} Lernorten angezeigt",
+      "noResults": "Keine Lernorte gefunden, die Ihren Suchkriterien entsprechen.",
+      "foundResults": "{count} Lernorte gefunden",
       "adjustFilters": "Versuchen Sie, Ihre Suchkriterien anzupassen."
     }
+  },
+  "EventsPage": {
+    "title": "Veranstaltungen",
+    "description": "Bleiben Sie über alle unsere Community-Events, Treffen und Aktivitäten auf dem Laufenden.",
+    "searchPlaceholder": "Nach Veranstaltung oder Ort suchen...",
+    "sortBy": "Sortieren nach",
+    "sort": {
+      "newest": "Neueste zuerst",
+      "oldest": "Älteste zuerst",
+      "nameAsc": "Name (A-Z)",
+      "nameDesc": "Name (Z-A)"
+    },
+    "showingEvents": "{count} von {total} Veranstaltungen werden angezeigt",
+    "upcoming": "Bevorstehend",
+    "past": "Vergangen",
+    "viewDetails": "Details anzeigen",
+    "noEvents": "Keine Veranstaltungen gefunden",
+    "noEventsSearch": "Keine Veranstaltungen entsprechen Ihrer Suche. Versuchen Sie andere Suchbegriffe.",
+    "noEventsDescription": "Schauen Sie bald wieder vorbei für neue Events und Aktivitäten!"
   }
 }

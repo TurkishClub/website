@@ -350,6 +350,25 @@
       "foundResults": "{count} study places found",
       "adjustFilters": "Try adjusting your search criteria."
     }
+  },
+  "EventsPage": {
+    "title": "Events",
+    "description": "Stay updated with all our community events, meetups, and activities.",
+    "searchPlaceholder": "Search events by name or location...",
+    "sortBy": "Sort by",
+    "sort": {
+      "newest": "Newest First",
+      "oldest": "Oldest First",
+      "nameAsc": "Name (A-Z)",
+      "nameDesc": "Name (Z-A)"
+    },
+    "showingEvents": "Showing {count} of {total} events",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "viewDetails": "View Details",
+    "noEvents": "No Events Found",
+    "noEventsSearch": "No events match your search. Try different keywords.",
+    "noEventsDescription": "Check back soon for new events and activities!"
   }
 }
 

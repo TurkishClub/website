@@ -146,3 +146,30 @@ export const NEXT_EVENT_QUERY =
   time,
   location
 }`);
+
+export const ALL_EVENTS_QUERY =
+  defineQuery(`*[_type == "event"] | order(time desc){
+  _id,
+  name,
+  embedUrl,
+  time,
+  location
+}`);
+
+export const UPCOMING_EVENTS_QUERY =
+  defineQuery(`*[_type == "event" && time > now()] | order(time asc){
+  _id,
+  name,
+  embedUrl,
+  time,
+  location
+}`);
+
+export const PAST_EVENTS_QUERY =
+  defineQuery(`*[_type == "event" && time <= now()] | order(time desc){
+  _id,
+  name,
+  embedUrl,
+  time,
+  location
+}`);

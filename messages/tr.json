@@ -339,7 +339,7 @@
       "showMap": "Harita Görünümü",
       "showingLocations": "{count} ders yeri gösteriliyor",
       "popup": {
-        "moreInfo": "Detaylar",
+        "moreInfo": "Daha Fazla Detay",
         "getDirections": "Yol Tarifi Al"
       }
     },
@@ -349,6 +349,25 @@
       "foundResults": "{count} ders yeri bulundu",
       "adjustFilters": "Arama kriterlerinizi ayarlamayı deneyin."
     }
+  },
+  "EventsPage": {
+    "title": "Etkinlikler",
+    "description": "Tüm topluluk etkinliklerimiz, buluşmalarımız ve aktivitelerimizden haberdar olun.",
+    "searchPlaceholder": "Etkinlik adı veya konuma göre ara...",
+    "sortBy": "Sıralama",
+    "sort": {
+      "newest": "Önce En Yeni",
+      "oldest": "Önce En Eski",
+      "nameAsc": "İsim (A-Z)",
+      "nameDesc": "İsim (Z-A)"
+    },
+    "showingEvents": "{total} etkinlikten {count} tanesi gösteriliyor",
+    "upcoming": "Yaklaşan",
+    "past": "Geçmiş",
+    "viewDetails": "Detayları Görüntüle",
+    "noEvents": "Etkinlik Bulunamadı",
+    "noEventsSearch": "Aramanıza uygun etkinlik bulunamadı. Farklı anahtar kelimeler deneyin.",
+    "noEventsDescription": "Yeni etkinlikler ve aktiviteler için yakında tekrar kontrol edin!"
   }
 }
 
