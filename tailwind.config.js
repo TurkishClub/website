@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
+      serif: ['var(--font-playfair)', 'Playfair Display', 'serif'],
       mono: [
         'Monaco',
         'ui-monospace',
@@ -27,6 +28,37 @@ module.exports = {
         slate: {
           850: 'hsl(222deg 47% 16%)'
         },
+        // Turkish Club Brand Colors
+        'turkish-red': {
+          DEFAULT: 'hsl(var(--turkish-red))',
+          dark: 'hsl(var(--turkish-red-dark))',
+          light: 'hsl(var(--turkish-red-light))',
+          50: '#fee2e2',
+          100: '#fecaca',
+          200: '#fca5a5',
+          300: '#f87171',
+          400: '#ef4444',
+          500: '#C61E1E', // Main brand color
+          600: '#a31818',
+          700: '#7f1414',
+          800: '#5c0f0f',
+          900: '#3a0a0a',
+        },
+        'turkish-gold': {
+          DEFAULT: 'hsl(var(--turkish-gold))',
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
+        },
+        'turkish-cream': 'hsl(var(--turkish-cream))',
+        'turkish-white': 'hsl(var(--turkish-white))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'

@@ -63,7 +63,7 @@ export default function Navbar() {
   }, [openDropdown]);
 
   return (
-    <header className="flex bg-inherit text-current transition-colors duration-300 h-20 w-full shrink-0 items-center justify-between px-4 md:px-6">
+    <header className="flex transition-colors duration-300 h-20 w-full shrink-0 items-center justify-between px-4 md:px-6">
       {/* Logo - Left Side */}
       <Link href="/" className="flex items-center" prefetch={false}>
         <div className="font-bold text-xl ">Turkish Club</div>

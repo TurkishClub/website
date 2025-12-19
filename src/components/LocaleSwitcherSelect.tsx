@@ -19,7 +19,6 @@ type Props = {
 
 export default function LocaleSwitcherSelect({
   defaultValue,
-  label,
   options,
   triggerClassName,
   contentClassName,

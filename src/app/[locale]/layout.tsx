@@ -3,7 +3,7 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {ReactNode} from 'react';
 import {clsx} from 'clsx';
-import {Inter} from 'next/font/google';
+import {Inter, Playfair_Display} from 'next/font/google';
 import {routing} from '@/i18n/routing';
 import {PostHogProvider} from '@/components/PostHogProvider';
 import './styles.css';
@@ -15,7 +15,14 @@ type Props = {
 
 const inter = Inter({
   subsets: ['latin'],
-  display: 'swap' // Add this line
+  display: 'swap',
+  variable: '--font-inter'
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair'
 });
 
 export function generateStaticParams() {
@@ -57,7 +64,7 @@ export default async function LocaleLayout({children, params}: Props) {
         <link rel="preconnect" href="https://eu.i.posthog.com" />
         <link rel="preconnect" href="https://eu-assets.i.posthog.com" />
       </head>
-      <body className={clsx(inter.className, 'flex h-full flex-col')}>
+      <body className={clsx(inter.className, playfair.variable, 'flex h-full flex-col')}>
         <PostHogProvider>
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </PostHogProvider>

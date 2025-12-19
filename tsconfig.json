@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "allowArbitraryExtensions": true,
-    "target": "es2017",
+    "target": "ES2022",
     "lib": [
       "dom",
       "dom.iterable",
@@ -34,8 +34,11 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "src/instrumentation-client.js", "src/instrumentation-client.js"  ],
+    ".next/types/**/*.ts",
+    "src/instrumentation-client.js",
+    "src/instrumentation-client.js",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

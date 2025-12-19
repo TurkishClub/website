@@ -1,32 +1,56 @@
-import {Locale} from 'next-intl';
-import {setRequestLocale, getTranslations} from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import FAQ from '@/components/FAQ';
-import FloatingActionMenu from '@/components/ui/floating-action-menu';
-import ContactForm from '@/components/ContactForm';
+import Hero from '@/components/Hero';
 import EventSection from '@/components/EventSection';
+import Footer from '@/components/Footer';
+import dynamic from 'next/dynamic';
+import { client } from '@/sanity/lib/client';
+import { GALLERIES_QUERY, HIGHLIGHT_CARDS_QUERY } from '@/sanity/lib/queries';
+import { urlFor } from '@/sanity/lib/image';
+
+const FAQ = dynamic(() => import('@/components/FAQ'));
+const ContactForm = dynamic(() => import('@/components/ContactForm'));
+const Highlights = dynamic(() => import('@/components/Highlights'));
 type Props = {
-  params: Promise<{locale: Locale}>;
+  params: Promise<{ locale: Locale }>;
 };
 
-export default async function IndexPage({params}: Props) {
-  const {locale} = await params;
+export default async function IndexPage({ params }: Props) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({locale, namespace: 'HomePage'});
+
+  // Fetch gallery images and highlight cards from Sanity
+  const [galleries, highlightCards] = await Promise.all([
+    client.fetch(GALLERIES_QUERY),
+    client.fetch(HIGHLIGHT_CARDS_QUERY),
+  ]);
+
+  const galleryImages = galleries
+    .filter((gallery: any) => gallery.image?.asset)
+    .map((gallery: any) => ({
+      type: 'image' as const,
+      url: urlFor(gallery.image).width(800).height(1200).url(),
+      alt: gallery.title || gallery.image.alt || 'Gallery image',
+    }));
+
+  const highlights = highlightCards
+    .filter((card: any) => card.image?.asset)
+    .map((card: any) => ({
+      _id: card._id,
+      title: card.title,
+      type: card.type,
+      description: card.description,
+      imageUrl: urlFor(card.image).width(800).height(600).url(),
+      imageAlt: card.image.alt || card.title || 'Highlight image',
+      link: card.link,
+    }));
 
   return (
-    <main className="bg-[#C61E1E] min-h-screen text-white">
+    <main className="bg-red-700 min-h-screen text-white">
       <Navbar />
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-24">
-        <h1 className="md:text-6xl text-5xl font-bold mb-4">
-          {t('hero.title')}
-        </h1>
-        <p className="md:text-2xl text-lg mb-8">{t('hero.subtitle')}</p>
-        <FloatingActionMenu className="relative" />
-      </section>
-
+      <Hero galleryImages={galleryImages} />
+      <Highlights highlights={highlights} />
       <EventSection />
       <FAQ />
       <ContactForm />

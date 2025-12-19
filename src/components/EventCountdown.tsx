@@ -42,36 +42,36 @@ export default function EventCountdown({ eventTime, eventName, embedUrl }: Event
   }, [eventTime]);
 
   return (
-    <section className="bg-[#C61E1E] py-12 lg:py-20">
+    <section className="bg-white py-12 lg:py-20">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Left side - Text */}
           <div className="flex flex-col gap-4 lg:gap-6 items-start flex-1">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight text-left">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight text-left">
               Bir Sonraki Etkinliğimize Göz Atın
             </h2>
 
-            <p className="text-base md:text-lg lg:text-xl text-white/90 text-left">
+            <p className="text-base md:text-lg lg:text-xl text-gray-700 text-left">
               Topluluğumuzla bir araya gelin ve unutulmaz anlar yaşayın
             </p>
 
             {/* Countdown Timer */}
             <div className="flex gap-4 mt-4">
-              <div className="flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-lg p-3 min-w-[70px]">
+              <div className="flex flex-col items-center bg-turkish-red-500 rounded-lg p-3 min-w-[70px] shadow-md">
                 <span className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.days}</span>
-                <span className="text-xs lg:text-sm text-white/80">Gün</span>
+                <span className="text-xs lg:text-sm text-white/90">Gün</span>
               </div>
-              <div className="flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-lg p-3 min-w-[70px]">
+              <div className="flex flex-col items-center bg-turkish-red-500 rounded-lg p-3 min-w-[70px] shadow-md">
                 <span className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.hours}</span>
-                <span className="text-xs lg:text-sm text-white/80">Saat</span>
+                <span className="text-xs lg:text-sm text-white/90">Saat</span>
               </div>
-              <div className="flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-lg p-3 min-w-[70px]">
+              <div className="flex flex-col items-center bg-turkish-red-500 rounded-lg p-3 min-w-[70px] shadow-md">
                 <span className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.minutes}</span>
-                <span className="text-xs lg:text-sm text-white/80">Dakika</span>
+                <span className="text-xs lg:text-sm text-white/90">Dakika</span>
               </div>
-              <div className="flex flex-col items-center bg-white/10 backdrop-blur-sm rounded-lg p-3 min-w-[70px]">
+              <div className="flex flex-col items-center bg-turkish-red-500 rounded-lg p-3 min-w-[70px] shadow-md">
                 <span className="text-3xl lg:text-4xl font-bold text-white">{timeLeft.seconds}</span>
-                <span className="text-xs lg:text-sm text-white/80">Saniye</span>
+                <span className="text-xs lg:text-sm text-white/90">Saniye</span>
               </div>
             </div>
           </div>

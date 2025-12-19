@@ -1,6 +1,6 @@
 'use client';
 
-import {User} from 'lucide-react';
+import { User } from 'lucide-react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import Link from 'next/link';
 interface BlogSidebarProps {
   post: {
     title: string;
-    slug: string | { current: string }; 
+    slug: string | { current: string };
     categories?: Array<{
       title: string;
       slug: string;
@@ -22,10 +22,9 @@ interface BlogSidebarProps {
   nextPost?: { title: string; slug: string } | null;
 }
 
-export function BlogSidebar({post, prevPost, nextPost}: BlogSidebarProps) {
-    const slug =
-    typeof post.slug === 'string' ? post.slug : post.slug?.current || '';
-    const params = useParams();
+export function BlogSidebar({ post, prevPost, nextPost }: BlogSidebarProps) {
+  typeof post.slug === 'string' ? post.slug : post.slug?.current || '';
+  const params = useParams();
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -53,8 +53,7 @@
     "poll": {
       "question": "Türk Kulübü'nde ne görmek istersiniz?"
     }
-}
-,
+  },
   "Navbar": {
     "joinTeam": "Takıma Katıl",
     "platforms": "Platformlar",
@@ -80,25 +79,25 @@
     "contact": "İletişim",
     "contactDesc": "Bizimle iletişime geçin"
   },
-  "FAQ" : {
+  "FAQ": {
     "title": "Sıkça Sorulan Sorular",
     "questions": [
-    {
-      "question": "Turkish Club Nedir?",
-      "answer": "Münih Türk Öğrenci Kulübü, Münih'te yaşayan ve öğrenim gören Türk öğrencileri bir araya getiren, öğrenci odaklı bir topluluktur. Temel amacımız; birbirimizi desteklemek, yurtdışında bir aidiyet duygusu oluşturmak ve öğrencileri sosyal, akademik ve kültürel olarak birleştiren etkinlikler düzenlemektir."
-    },
-    {
-      "question": "Kulüp sadece üniversite öğrencileri için mi?",
-      "answer": "Hayır, kulübümüz sadece üniversite öğrencileri için değildir. Münih'te yaşayan tüm Türk gençleri ve öğrenciler aramıza katılabilir."
-    },
-    {
-      "question": "Ne tür etkinlikler düzenliyorsunuz?",
-      "answer": "Kültürel etkinlikler, sosyal buluşmalar, akademik seminerler, spor aktiviteleri ve çeşitli kutlamalar düzenliyoruz."
-    },
-    {
-      "question": "Turkish Club'ın kuralları nedir ?",
-      "answer": "Kulübümüzün temel kuralları saygı, hoşgörü ve birlik beraberlik üzerine kuruludur. Detaylı kurallar için ekibimizle iletişime geçebilirsiniz."
-    }
+      {
+        "question": "Turkish Club Nedir?",
+        "answer": "Münih Türk Öğrenci Kulübü, Münih'te yaşayan ve öğrenim gören Türk öğrencileri bir araya getiren, öğrenci odaklı bir topluluktur. Temel amacımız; birbirimizi desteklemek, yurtdışında bir aidiyet duygusu oluşturmak ve öğrencileri sosyal, akademik ve kültürel olarak birleştiren etkinlikler düzenlemektir."
+      },
+      {
+        "question": "Kulüp sadece üniversite öğrencileri için mi?",
+        "answer": "Hayır, kulübümüz sadece üniversite öğrencileri için değildir. Münih'te yaşayan tüm Türk gençleri ve öğrenciler aramıza katılabilir."
+      },
+      {
+        "question": "Ne tür etkinlikler düzenliyorsunuz?",
+        "answer": "Kültürel etkinlikler, sosyal buluşmalar, akademik seminerler, spor aktiviteleri ve çeşitli kutlamalar düzenliyoruz."
+      },
+      {
+        "question": "Turkish Club'ın kuralları nedir ?",
+        "answer": "Kulübümüzün temel kuralları saygı, hoşgörü ve birlik beraberlik üzerine kuruludur. Detaylı kurallar için ekibimizle iletişime geçebilirsiniz."
+      }
     ]
   },
   "dormSearch": {
@@ -157,13 +156,17 @@
         "moreInfo": "Daha Detaylı Bilgi Al",
         "visitWebsite": "Websitesine Git",
         "getDirections": "Yol Tarifi Al"
-      }
+      },
+      "loading": "Harita yükleniyor..."
     },
     "results": {
       "showing": "{total} yurttan {filtered} tanesi gösteriliyor",
       "noResults": "Arama kriterlerinize uygun yurt bulunamadı.",
       "foundResults": "{count} yurt bulundu",
       "adjustFilters": "Arama kriterlerinizi değiştirmeyi deneyin."
+    },
+    "comparison": {
+      "maxLimit": "Maksimum 4 yurt seçebilirsiniz"
     }
   },
   "team": {
@@ -248,7 +251,11 @@
     "form": {
       "subject": {
         "label": "Konu (opsiyonel)",
-        "placeholder": "Konu nedir?"
+        "placeholder": "Konu nedir?",
+        "errors": {
+          "tooShort": "Konu en az 3 karakter olmalıdır.",
+          "tooLong": "Konu 120 karakterden uzun olamaz."
+        }
       },
       "name": {
         "label": "İsim",
@@ -351,4 +358,3 @@
     }
   }
 }
-

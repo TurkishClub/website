@@ -1,6 +1,8 @@
 import { client } from '@/sanity/lib/client';
 import { NEXT_EVENT_QUERY } from '@/sanity/lib/queries';
-import EventCountdown from './EventCountdown';
+import dynamic from 'next/dynamic';
+
+const EventCountdown = dynamic(() => import('./EventCountdown'));
 
 interface Event {
   _id: string;
@@ -19,7 +21,7 @@ export default async function EventSection() {
   }
 
   return (
-    <EventCountdown 
+    <EventCountdown
       eventTime={event.time}
       eventName={event.name}
       embedUrl={event.embedUrl}

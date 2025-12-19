@@ -18,10 +18,10 @@ export default function FAQ() {
   }>;
 
   return (
-    <div className="py-16 px-6 bg-[#C61E1E]">
-      <h2 className="text-5xl font-bold text-center mb-12">{t('title')}</h2>
+    <div className="py-16 px-6 bg-white">
+      <h2 className="text-5xl font-bold text-center mb-12 text-gray-900">{t('title')}</h2>
 
-      <div className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm">
         {questions.map((item, index) => (
           <div
             key={index}

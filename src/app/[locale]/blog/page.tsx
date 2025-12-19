@@ -129,10 +129,10 @@ export default async function BlogPage({searchParams}: BlogPageProps) {
       currentPage={currentPage}
       totalPosts={totalPosts}
     >
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-white">
         <Navbar />
         {/* Blog Content */}
-        <div className="w-full max-w-none px-4 py-16">
+        <div className="w-full max-w-none">
           <div className="w-[80%] mx-auto">
             {/* Header with Search and Filters */}
             <div className="mb-12">

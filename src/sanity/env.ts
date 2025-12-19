@@ -22,13 +22,3 @@ export const studioUrl = assertValue(
   process.env.SANITY_STUDIO_URL,
   'Missing environment variable: SANITY_STUDIO_URL'
 )
-
-export const previewOrigin = assertValue(
-  process.env.SANITY_STUDIO_PREVIEW_ORIGIN,
-  'Missing environment variable: SANITY_STUDIO_PREVIEW_ORIGIN'
-)
-
-export const viewerToken = assertValue(
-  process.env.SANITY_STUDIO_VIEWER_TOKEN,
-  'Missing environment variable: SANITY_STUDIO_VIEWER_TOKEN'
-)
