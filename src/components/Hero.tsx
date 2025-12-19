@@ -75,7 +75,7 @@ export default function Hero({ galleryImages = [] }: HeroProps) {
     return (
         <div ref={containerRef} className="relative bg-red-700 text-white">
             {/* Scrollable spacer to enable scroll animation */}
-            <div className="h-[300vh]">
+            <div className="h-[150vh]">
                 {/* Sticky container for the animated content */}
                 <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-between px-8 lg:px-16">
                     {/* White background that fades in */}
