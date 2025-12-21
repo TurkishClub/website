@@ -1,5 +1,6 @@
 'use client';
 
+import { SEMANTIC_COLORS } from '@/config/colors';
 import { useEffect, useState } from 'react';
 
 interface EventCountdownProps {
@@ -58,19 +59,19 @@ export default function EventCountdown({ eventTime, eventName, embedUrl }: Event
             {/* Countdown Timer */}
             <div className="flex gap-4 mt-4">
               <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
-                <span className="text-3xl lg:text-4xl font-bold text-black">{timeLeft.days}</span>
+                <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.days}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Gün</span>
               </div>
               <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
-                <span className="text-3xl lg:text-4xl font-bold text-black">{timeLeft.hours}</span>
+                <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.hours}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Saat</span>
               </div>
               <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
-                <span className="text-3xl lg:text-4xl font-bold text-black">{timeLeft.minutes}</span>
+                <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.minutes}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Dakika</span>
               </div>
               <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
-                <span className="text-3xl lg:text-4xl font-bold text-black">{timeLeft.seconds}</span>
+                <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.seconds}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Saniye</span>
               </div>
             </div>
