@@ -33,6 +33,7 @@ export const BRAND_COLORS = {
   // Neutral Colors
   white: 'turkish-white',
   cream: 'turkish-cream',
+  black: 'black',
 } as const;
 
 // Semantic Color Classes (Tailwind class strings)
@@ -51,6 +52,7 @@ export const SEMANTIC_COLORS = {
     secondary: 'text-turkish-red-700',
     muted: 'text-muted-foreground',
     white: 'text-turkish-white',
+    black: 'text-black',
     foreground: 'text-foreground',
   },
   // Borders
