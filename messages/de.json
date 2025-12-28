@@ -77,7 +77,9 @@
     "team": "Team",
     "teamDesc": "Unser Team und offene Stellen",
     "contact": "Kontakt",
-    "contactDesc": "Nehmen Sie Kontakt mit uns auf"
+    "contactDesc": "Nehmen Sie Kontakt mit uns auf",
+    "pastEvents": "Vergangene Veranstaltungen",
+    "pastEventsDesc": "Durchsuchen Sie unsere früheren Veranstaltungen"
   },
   "FAQ": {
     "title": "FAQ",
@@ -351,5 +353,12 @@
       "foundResults": "{count} Lernplätze gefunden",
       "adjustFilters": "Versuchen Sie, Ihre Suchkriterien anzupassen."
     }
+  },
+  "PastEvents": {
+    "title": "Vergangene Veranstaltungen",
+    "description": "Hier finden Sie Informationen zu unseren vergangenen Veranstaltungen.",
+    "noEvents": "Keine vergangenen Veranstaltungen gefunden.",
+    "location": "Ort: {location}",
+    "date": "Datum: {date}"
   }
 }
