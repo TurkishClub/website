@@ -5,6 +5,8 @@ function assertValue<T>(v: T | undefined, errorMessage: string): T {
   return v
 }
 
+console.log(process.env.SANITY_STUDIO_PROJECT_ID)
+
 export const apiVersion =
   process.env.SANITY_STUDIO_API_VERSION || '2025-07-06'
 
