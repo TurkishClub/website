@@ -17,7 +17,11 @@ interface Event {
     embedUrl: string;
     time: string;
     location: string;
-    description?: string;
+    description?: {
+        tr?: string;
+        en?: string;
+        de?: string;
+    };
     image?: {
         asset: {
             _id: string;
@@ -103,7 +107,7 @@ export default async function EventsPage({ params }: Props) {
                                 </CardHeader>
                                 <CardContent>
                                     <p className="text-gray-600 whitespace-pre-wrap">
-                                        {event.description || ''}
+                                        {event.description?.[locale as keyof typeof event.description] || event.description?.en || ''}
                                     </p>
                                 </CardContent>
                             </Card>
