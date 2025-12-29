@@ -9,7 +9,16 @@ export default defineType({
     defineField({ name: 'embedUrl', title: 'Embed URL', type: 'url', validation: r => r.required().uri({ allowRelative: false }) }),
     defineField({ name: 'time', title: 'Time', type: 'datetime', validation: r => r.required() }),
     defineField({ name: 'location', title: 'Location', type: 'string', validation: r => r.required() }),
-    defineField({ name: 'description', title: 'Description', type: 'text', rows: 3 }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'object',
+      fields: [
+        defineField({ name: 'tr', title: 'Türkçe', type: 'text', rows: 3 }),
+        defineField({ name: 'en', title: 'English', type: 'text', rows: 3 }),
+        defineField({ name: 'de', title: 'Deutsch', type: 'text', rows: 3 }),
+      ]
+    }),
     defineField({ name: 'image', title: 'Event Image', type: 'image', options: { hotspot: true } }),
   ],
   preview: { select: { title: 'name', subtitle: 'time' } },
