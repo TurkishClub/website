@@ -1,10 +1,10 @@
 'use client';
 
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import posthog from 'posthog-js';
-import {PostHogProvider as PHProvider} from 'posthog-js/react';
+import { PostHogProvider as PHProvider } from 'posthog-js/react';
 
-export function PostHogProvider({children}: {children: React.ReactNode}) {
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Only initialize PostHog if the API key is available
     const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
@@ -24,11 +24,7 @@ export function PostHogProvider({children}: {children: React.ReactNode}) {
           loaded: (posthog) => {
             if (process.env.NODE_ENV === 'development') {
               console.log('PostHog Provider loaded successfully');
-              console.log('PostHog Provider config:', {
-                api_host: posthog.config.api_host,
-                ui_host: posthog.config.ui_host,
-                distinct_id: posthog.get_distinct_id()
-              });
+              console.log('PostHog distinct_id:', posthog.get_distinct_id());
               posthog.debug();
             }
 

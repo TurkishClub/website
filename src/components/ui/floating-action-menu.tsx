@@ -1,11 +1,11 @@
 'use client';
 
-import React, {useState} from 'react';
-import {motion, AnimatePresence} from 'framer-motion';
-import {Button} from '@/components/ui/button';
-import {cn} from '@/lib/utils';
-import {Users, Instagram, Calendar, MessageCircle} from 'lucide-react';
-import {Analytics} from '@/lib/analytics';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { Users, Instagram, Calendar, MessageCircle } from 'lucide-react';
+import { Analytics } from '@/lib/analytics';
 
 type FloatingActionMenuOption = {
   label: string;
@@ -18,7 +18,7 @@ type FloatingActionMenuProps = {
   className?: string;
 };
 
-const FloatingActionMenu = ({options, className}: FloatingActionMenuProps) => {
+const FloatingActionMenu = ({ options, className }: FloatingActionMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [buttonLabel, setButtonLabel] = useState<string>('Bize Katıl!');
 
@@ -44,17 +44,17 @@ const FloatingActionMenu = ({options, className}: FloatingActionMenuProps) => {
         window.location.href = '/team';
       }
     },
-    {
-      label: 'WhatsApp',
-      Icon: <MessageCircle className="w-4 h-4 text-green-500" />,
-      onClick: () => {
-        setIsOpen(false);
-        window.open(
-          'https://chat.whatsapp.com/LHzs06mN7iCG2cXlZHpZs9',
-          '_blank'
-        );
-      }
-    },
+    // {
+    //   label: 'WhatsApp',
+    //   Icon: <MessageCircle className="w-4 h-4 text-green-500" />,
+    //   onClick: () => {
+    //     setIsOpen(false);
+    //     window.open(
+    //       'link_placeholder',
+    //       '_blank'
+    //     );
+    //   }
+    // },
     {
       label: 'Instagram',
       Icon: <Instagram className="w-4 h-4 text-pink-500" />,
@@ -94,10 +94,10 @@ const FloatingActionMenu = ({options, className}: FloatingActionMenuProps) => {
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
             key={buttonLabel}
-            initial={{opacity: 0, y: 6}}
-            animate={{opacity: 1, y: 0}}
-            exit={{opacity: 0, y: -6}}
-            transition={{duration: 0.2, ease: 'easeOut'}}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
             className="inline-block"
           >
             {buttonLabel}
@@ -108,9 +108,9 @@ const FloatingActionMenu = ({options, className}: FloatingActionMenuProps) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{opacity: 0, y: -8, filter: 'blur(8px)'}}
-            animate={{opacity: 1, y: 0, filter: 'blur(0px)'}}
-            exit={{opacity: 0, y: -8, filter: 'blur(8px)'}}
+            initial={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
             transition={{
               duration: 0.6,
               type: 'spring',
@@ -124,9 +124,9 @@ const FloatingActionMenu = ({options, className}: FloatingActionMenuProps) => {
               {usedOptions.map((option, index) => (
                 <motion.div
                   key={index}
-                  initial={{opacity: 0, x: 20}}
-                  animate={{opacity: 1, x: 0}}
-                  exit={{opacity: 0, x: 20}}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
                   transition={{
                     duration: 0.3,
                     delay: index * 0.05

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
   const t = useTranslations('Navbar');
@@ -29,14 +29,14 @@ export default function Footer() {
               >
                 {t('github')}
               </Link>
-              <Link
-                href="https://chat.whatsapp.com/LHzs06mN7iCG2cXlZHpZs9"
+              {/* <Link
+                href="link_placeholder"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2  hover:underline transition-colors"
               >
                 {t('whatsapp')}
-              </Link>
+              </Link> */}
               <Link
                 href="https://lu.ma/user/turkishclub"
                 target="_blank"
