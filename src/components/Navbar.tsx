@@ -132,15 +132,15 @@ export default function Navbar() {
                         icon: <GithubIcon className="h-4 w-4 text-gray-800" />,
                         target: '_blank' as const
                       },
-                      {
-                        href: 'https://chat.whatsapp.com/LHzs06mN7iCG2cXlZHpZs9',
-                        label: t('whatsapp'),
-                        desc: t('whatsappDesc'),
-                        icon: (
-                          <MessageCircle className="h-4 w-4 text-green-500" />
-                        ),
-                        target: '_blank' as const
-                      },
+                      // {
+                      //   href: 'link_placeholder',
+                      //   label: t('whatsapp'),
+                      //   desc: t('whatsappDesc'),
+                      //   icon: (
+                      //     <MessageCircle className="h-4 w-4 text-green-500" />
+                      //   ),
+                      //   target: '_blank' as const
+                      // },
                       {
                         href: 'https://lu.ma/user/turkishclub',
                         label: 'Etkinlikler',
@@ -396,8 +396,8 @@ export default function Navbar() {
                         <GithubIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                         {t('github')}
                       </Link>
-                      <Link
-                        href="https://chat.whatsapp.com/LHzs06mN7iCG2cXlZHpZs9"
+                      {/* <Link
+                        href="link_placeholder"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 py-3 px-3 text-base text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
@@ -405,7 +405,7 @@ export default function Navbar() {
                       >
                         <MessageCircle className="h-5 w-5 text-green-500" />
                         {t('whatsapp')}
-                      </Link>
+                      </Link> */}
                       <Link
                         href="https://lu.ma/user/turkishclub"
                         target="_blank"
@@ -502,7 +502,7 @@ export default function Navbar() {
                 </nav>
 
                 {/* Mobile Locale Switcher */}
-                
+
                 <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
                     Language
