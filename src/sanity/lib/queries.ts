@@ -208,3 +208,21 @@ export const NEXT_EVENT_QUERY =
   time,
   location
 }`);
+
+export const PAST_EVENTS_QUERY =
+  defineQuery(`*[_type == "event" && time < now()] | order(time desc){
+  _id,
+  name,
+  embedUrl,
+  time,
+  location,
+  description,
+  "image": image{
+    asset->{
+      _id,
+      url
+    },
+    alt,
+    hotspot
+  }
+}`);

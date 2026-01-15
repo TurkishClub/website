@@ -77,7 +77,9 @@
     "team": "Team",
     "teamDesc": "Our team and open positions",
     "contact": "Contact",
-    "contactDesc": "Get in touch with us"
+    "contactDesc": "Get in touch with us",
+    "pastEvents": "Past Events",
+    "pastEventsDesc": "Browse our previous events"
   },
   "FAQ": {
     "title": "FAQ",
@@ -356,5 +358,12 @@
       "foundResults": "{count} study places found",
       "adjustFilters": "Try adjusting your search criteria."
     }
+  },
+  "PastEvents": {
+    "title": "Past Events",
+    "description": "Here you can find information about our past events.",
+    "noEvents": "No past events found.",
+    "location": "Location: {location}",
+    "date": "Date: {date}"
   }
 }
