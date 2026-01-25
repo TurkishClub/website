@@ -3,11 +3,9 @@ import { PAST_EVENTS_QUERY } from '@/sanity/lib/queries';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calendar, MapPin } from 'lucide-react';
-
 import { urlFor } from '@/sanity/lib/image';
-import Image from 'next/image';
+
+import EventCard from '@/components/EventCard';
 
 export const revalidate = 60; // ISR
 
@@ -29,6 +27,13 @@ interface Event {
         };
         alt?: string;
     };
+    images?: Array<{
+        asset: {
+            _id: string;
+            url: string;
+        };
+        alt?: string;
+    }>;
 }
 
 type Props = {
@@ -71,47 +76,38 @@ export default async function EventsPage({ params }: Props) {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {events.map((event) => (
-                            <Card key={event._id} className="h-full hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col group border-0 shadow-md">
-                                {event.image && (
-                                    <div className="relative w-full aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800">
-                                        {/* Blurred background for aesthetic fill */}
-                                        <Image
-                                            src={urlFor(event.image).width(400).blur(50).url()}
-                                            alt=""
-                                            fill
-                                            className="object-cover opacity-50 scale-110 blur-xl"
-                                            aria-hidden="true"
-                                        />
-                                        {/* Main image - fully visible */}
-                                        <Image
-                                            src={urlFor(event.image).width(800).url()}
-                                            alt={event.image.alt || event.name}
-                                            fill
-                                            className="object-contain z-10 transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                    </div>
-                                )}
-                                <CardHeader>
-                                    <CardTitle className="text-xl mb-2">{event.name}</CardTitle>
-                                    <div className="flex flex-col gap-2 text-sm text-gray-500">
-                                        <div className="flex items-center gap-2">
-                                            <Calendar className="w-4 h-4" />
-                                            <span>{formatDate(event.time)}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <MapPin className="w-4 h-4" />
-                                            <span>{event.location}</span>
-                                        </div>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-gray-600 whitespace-pre-wrap">
-                                        {event.description?.[locale as keyof typeof event.description] || event.description?.en || ''}
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        ))}
+                        {events.map((event) => {
+                            // Logic to prepare images for the client component
+                            const rawGalleryImages = event.images?.length
+                                ? event.images
+                                : event.image
+                                    ? [event.image]
+                                    : [];
+
+                            const mainRawImage = rawGalleryImages[0];
+
+                            const mainImage = mainRawImage ? {
+                                blurredUrl: urlFor(mainRawImage).width(400).blur(50).url(),
+                                fullUrl: urlFor(mainRawImage).width(800).url(),
+                                alt: mainRawImage.alt || event.name
+                            } : undefined;
+
+                            const galleryImages = rawGalleryImages.map(img => ({
+                                url: urlFor(img).width(1200).url(),
+                                alt: img.alt || event.name
+                            }));
+
+                            return (
+                                <EventCard
+                                    key={event._id}
+                                    event={event}
+                                    locale={locale}
+                                    dateString={formatDate(event.time)}
+                                    mainImage={mainImage}
+                                    galleryImages={galleryImages}
+                                />
+                            );
+                        })}
                     </div>
                 )}
             </main>

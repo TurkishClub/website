@@ -224,5 +224,13 @@ export const PAST_EVENTS_QUERY =
     },
     alt,
     hotspot
+  },
+  "images": images[]{
+    asset->{
+      _id,
+      url
+    },
+    alt,
+    hotspot
   }
 }`);

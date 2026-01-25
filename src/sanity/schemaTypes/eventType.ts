@@ -20,6 +20,15 @@ export default defineType({
       ]
     }),
     defineField({ name: 'image', title: 'Event Image', type: 'image', options: { hotspot: true } }),
+    defineField({
+      name: 'images',
+      title: 'Event Gallery',
+      type: 'array',
+      of: [{ type: 'image', options: { hotspot: true } }],
+      options: {
+        layout: 'grid',
+      },
+    }),
   ],
   preview: { select: { title: 'name', subtitle: 'time' } },
 })
