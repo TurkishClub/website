@@ -15,7 +15,8 @@ import {
   Calendar,
   Menu,
   X,
-  Mail
+  Mail,
+  History
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Analytics } from '@/lib/analytics';
@@ -299,6 +300,12 @@ export default function Navbar() {
                         label: t('team'),
                         desc: t('teamDesc'),
                         icon: <Users className="h-4 w-4 text-purple-500" />
+                      },
+                      {
+                        href: '/events',
+                        label: t('pastEvents'),
+                        desc: t('pastEventsDesc'),
+                        icon: <History className="h-4 w-4 text-blue-500" />
                       }
                     ].map((opt, index) => (
                       <motion.div
@@ -485,6 +492,17 @@ export default function Navbar() {
                       >
                         <Users className="h-5 w-5 text-purple-500" />
                         {t('team')}
+                      </Link>
+                      <Link
+                        href="/events"
+                        className="flex items-center gap-3 py-3 px-3 text-base text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                        onClick={() => {
+                          trackNavClick(t('pastEvents'), '/events', 'mobile_menu');
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        <History className="h-5 w-5 text-blue-500" />
+                        {t('pastEvents')}
                       </Link>
                       <Link
                         href="/contact"

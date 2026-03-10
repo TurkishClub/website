@@ -77,7 +77,9 @@
     "team": "Takım",
     "teamDesc": "Ekibimiz ve açık pozisyonlar",
     "contact": "İletişim",
-    "contactDesc": "Bizimle iletişime geçin"
+    "contactDesc": "Bizimle iletişime geçin",
+    "pastEvents": "Geçmiş Etkinlikler",
+    "pastEventsDesc": "Geçmiş etkinliklerimize göz atın"
   },
   "FAQ": {
     "title": "Sıkça Sorulan Sorular",
@@ -356,5 +358,12 @@
       "foundResults": "{count} ders yeri bulundu",
       "adjustFilters": "Arama kriterlerinizi ayarlamayı deneyin."
     }
+  },
+  "PastEvents": {
+    "title": "Geçmiş Etkinlikler",
+    "description": "Burada geçmiş etkinliklerimiz hakkında bilgi bulabilirsiniz.",
+    "noEvents": "Geçmiş etkinlik bulunamadı.",
+    "location": "Konum: {location}",
+    "date": "Tarih: {date}"
   }
 }
