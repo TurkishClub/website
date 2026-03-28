@@ -231,6 +231,28 @@
       "newest": "Newest First",
       "oldest": "Oldest First",
       "popular": "Most Popular"
+    },
+    "comments": {
+      "title": "Comments",
+      "count": "{count} comments",
+      "loading": "Loading comments...",
+      "empty": "No comments yet. Be the first one to write.",
+      "loadError": "Could not load comments right now.",
+      "submitError": "Could not submit your comment.",
+      "success": "Your comment has been published.",
+      "reply": "Reply",
+      "replyingTo": "Replying to this comment.",
+      "cancelReply": "Cancel reply",
+      "captchaNotConfigured": "Captcha is not configured yet. Comments are temporarily unprotected.",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "message": "Comment",
+        "replyLabel": "Reply",
+        "messagePlaceholder": "Write your comment...",
+        "submit": "Publish comment",
+        "submitting": "Publishing..."
+      }
     }
   },
   "contact": {

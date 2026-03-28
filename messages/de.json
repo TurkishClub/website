@@ -226,6 +226,28 @@
       "newest": "Neueste zuerst",
       "oldest": "Älteste zuerst",
       "popular": "Am beliebtesten"
+    },
+    "comments": {
+      "title": "Kommentare",
+      "count": "{count} Kommentare",
+      "loading": "Kommentare werden geladen...",
+      "empty": "Noch keine Kommentare. Schreibe den ersten Kommentar.",
+      "loadError": "Kommentare konnten aktuell nicht geladen werden.",
+      "submitError": "Dein Kommentar konnte nicht gesendet werden.",
+      "success": "Dein Kommentar wurde veröffentlicht.",
+      "reply": "Antworten",
+      "replyingTo": "Du antwortest auf diesen Kommentar.",
+      "cancelReply": "Antwort abbrechen",
+      "captchaNotConfigured": "Captcha ist noch nicht konfiguriert. Kommentare sind vorübergehend ungeschützt.",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Dein Name",
+        "message": "Kommentar",
+        "replyLabel": "Antwort",
+        "messagePlaceholder": "Schreibe deinen Kommentar...",
+        "submit": "Kommentar veröffentlichen",
+        "submitting": "Wird veröffentlicht..."
+      }
     }
   },
   "contact": {
