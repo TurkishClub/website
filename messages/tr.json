@@ -231,6 +231,28 @@
       "newest": "En Yeni",
       "oldest": "En Eski",
       "popular": "Popüler"
+    },
+    "comments": {
+      "title": "Yorumlar",
+      "count": "{count} yorum",
+      "loading": "Yorumlar yükleniyor...",
+      "empty": "Henüz yorum yok. İlk yorumu siz yazın.",
+      "loadError": "Yorumlar şu anda yüklenemedi.",
+      "submitError": "Yorumunuz gönderilemedi.",
+      "success": "Yorumunuz yayınlandı.",
+      "reply": "Yanıtla",
+      "replyingTo": "Bu yoruma yanıt yazıyorsunuz.",
+      "cancelReply": "Yanıtı iptal et",
+      "captchaNotConfigured": "Captcha henüz yapılandırılmadı. Yorumlar geçici olarak korunmuyor.",
+      "form": {
+        "name": "İsim",
+        "namePlaceholder": "Adınız",
+        "message": "Yorum",
+        "replyLabel": "Yanıt",
+        "messagePlaceholder": "Yorumunuzu yazın...",
+        "submit": "Yorumu yayınla",
+        "submitting": "Yayınlanıyor..."
+      }
     }
   },
   "contact": {

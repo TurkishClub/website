@@ -11,6 +11,7 @@ import {BlogSidebar} from '@/components/blog/BlogSidebar';
 import {TableOfContents} from '@/components/TableOfContents';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BlogCommentsSection from '@/components/blog/BlogCommentsSection';
 import BlogPostClient from './blog-post-client';
 import {getImageDimensions} from '@sanity/asset-utils';
 
@@ -195,7 +196,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
   const { previousPost, nextPost } = await client.fetch(ADJACENT_POSTS_QUERY, {
     date: post.publishedAt,
   });
-  console.log("Prev:", previousPost, "Next:", nextPost);
+
   if (!post) {
     notFound();
   }
@@ -288,7 +289,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
         </div>
 
         {/* Article Content */}
-        <article className="bg-white">
+        <article className="bg-white text-gray-900">
           {/* Featured Image */}
           {post.image ? (
             <div className="relative mt-16 mb-16">
@@ -341,9 +342,11 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
               </div>
             </div>
 
+            <BlogCommentsSection postSlug={params.slug} locale={params.locale} />
+
             {/* Sidebar - Below Content */}
             <div className="hidden xl:flex gap-8 items-start mt-20">
-              <div className="w-64 flex-shrink-0">
+              <div className="w-64 shrink-0">
                 {/* Empty space to align with TOC */}
               </div>
               <div className="flex-1 max-w-4xl">
