@@ -27,6 +27,7 @@ type BlogCommentsSectionProps = {
   locale: string;
 };
 
+const MAX_VISIBLE_REPLIES = 2;
 const MAX_RENDER_DEPTH = 8;
 
 export default function BlogCommentsSection({
@@ -140,9 +141,13 @@ export default function BlogCommentsSection({
       }
       turnstileWidgetIdRef.current = null;
     };
-  }, [siteKey, replyTo]);
+  }, [replyTo, siteKey]);
 
   const totalComments = useMemo(() => countComments(comments), [comments]);
+
+  const retryLoadingComments = () => {
+    void loadComments();
+  };
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
@@ -292,42 +297,60 @@ export default function BlogCommentsSection({
   }
 
   return (
-    <section className="mt-20 border-t border-gray-200 pt-12 text-gray-900">
-      <div className="flex items-center justify-between gap-4 mb-8">
-        <h2 className="text-3xl font-semibold text-gray-900">{t('title')}</h2>
-        <span className="text-sm text-gray-500">
-          {t('count', {count: totalComments.toString()})}
-        </span>
+    <section className="mt-20 rounded-2xl border border-gray-200 bg-white shadow-sm text-gray-900">
+      <div className="border-b border-gray-200 px-5 py-5">
+        <h2 className="text-2xl font-semibold text-gray-900">{t('title')}</h2>
+        <p className="mt-1 text-sm text-gray-500">
+          {t('count', {count: totalComments.toString()})} {t('scrollHint')}
+        </p>
       </div>
 
-      {!replyTo ? renderForm(false) : null}
+      <div className="max-h-168 overflow-y-auto px-5 py-6">
+        <div className="space-y-10">
+          {!replyTo ? renderForm(false) : null}
 
-      <div className="mt-10">
-        {loading ? <p className="text-sm text-gray-500">{t('loading')}</p> : null}
+          <div className="space-y-4">
+            {loading ? <p className="text-sm text-gray-500">{t('loading')}</p> : null}
 
-        {!loading && comments.length === 0 ? (
-          <p className="text-sm text-gray-500">{t('empty')}</p>
-        ) : null}
+            {!loading && error ? (
+              <div className="space-y-3 rounded-lg border border-red-200 bg-red-50 p-4">
+                <p className="text-sm text-red-700">{error}</p>
+                <button
+                  type="button"
+                  onClick={retryLoadingComments}
+                  className="text-sm font-medium text-[#C61E1E] hover:underline"
+                >
+                  {t('retry')}
+                </button>
+              </div>
+            ) : null}
 
-        {!loading && comments.length > 0 ? (
-          <ul className="space-y-5">
-            {comments.map((comment) => (
-              <CommentNode
-                key={comment.id}
-                comment={comment}
-                localeTag={localeTag}
-                depth={0}
-                onReply={(commentId) => setReplyTo(commentId)}
-                replyLabel={t('reply')}
-                renderReplyForm={(commentId) =>
-                  replyTo === commentId ? (
-                    <div className="mt-3">{renderForm(true)}</div>
-                  ) : null
-                }
-              />
-            ))}
-          </ul>
-        ) : null}
+            {!loading && !error && comments.length === 0 ? (
+              <p className="text-sm text-gray-500">{t('empty')}</p>
+            ) : null}
+
+            {!loading && comments.length > 0 ? (
+              <ul className="space-y-5">
+                {comments.map((comment) => (
+                  <CommentNode
+                    key={comment.id}
+                    comment={comment}
+                    localeTag={localeTag}
+                    depth={0}
+                    onReply={(commentId) => setReplyTo(commentId)}
+                    replyLabel={t('reply')}
+                    viewMoreLabel={t('viewMore')}
+                    renderReplyForm={(commentId) =>
+                      replyTo === commentId ? (
+                        <div className="mt-3">{renderForm(true)}</div>
+                      ) : null
+                    }
+                  />
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -339,6 +362,7 @@ type CommentNodeProps = {
   depth: number;
   onReply: (commentId: string) => void;
   replyLabel: string;
+  viewMoreLabel: string;
   renderReplyForm: (commentId: string) => ReactNode;
 };
 
@@ -348,8 +372,11 @@ function CommentNode({
   depth,
   onReply,
   replyLabel,
+  viewMoreLabel,
   renderReplyForm
 }: CommentNodeProps) {
+  const [showAllReplies, setShowAllReplies] = useState(false);
+  const replyCount = countComments(comment.children);
   const formattedDate = new Date(comment.createdAt).toLocaleString(localeTag, {
     year: 'numeric',
     month: 'short',
@@ -383,19 +410,32 @@ function CommentNode({
       </article>
 
       {comment.children.length > 0 && depth < MAX_RENDER_DEPTH ? (
-        <ul className="mt-3 ml-4 border-l border-gray-200 pl-4 space-y-3">
-          {comment.children.map((child) => (
-            <CommentNode
-              key={child.id}
-              comment={child}
-              localeTag={localeTag}
-              depth={depth + 1}
-              onReply={onReply}
-              replyLabel={replyLabel}
-              renderReplyForm={renderReplyForm}
-            />
-          ))}
-        </ul>
+        showAllReplies || replyCount <= MAX_VISIBLE_REPLIES ? (
+          <ul className="mt-3 ml-4 border-l border-gray-200 pl-4 space-y-3">
+            {comment.children.map((child) => (
+              <CommentNode
+                key={child.id}
+                comment={child}
+                localeTag={localeTag}
+                depth={depth + 1}
+                onReply={onReply}
+                replyLabel={replyLabel}
+                viewMoreLabel={viewMoreLabel}
+                renderReplyForm={renderReplyForm}
+              />
+            ))}
+          </ul>
+        ) : (
+          <div className="mt-3 ml-4 border-l border-gray-200 pl-4">
+            <button
+              type="button"
+              className="text-sm font-medium text-[#C61E1E] hover:underline"
+              onClick={() => setShowAllReplies(true)}
+            >
+              {viewMoreLabel}
+            </button>
+          </div>
+        )
       ) : null}
     </li>
   );

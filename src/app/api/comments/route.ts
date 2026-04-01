@@ -24,8 +24,7 @@ export async function GET(req: NextRequest) {
     }
 
     const comments = await listCommentsByPost(
-      validated.data.postSlug,
-      validated.data.locale
+      validated.data.postSlug
     );
 
     return NextResponse.json({comments}, {status: 200});

@@ -14,9 +14,11 @@ export function TableOfContents() {
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
-    // Add a small delay to ensure content is fully rendered
-    const timer = setTimeout(() => {
-      // Generate TOC from h2 elements only
+    let observer: IntersectionObserver | null = null;
+
+    // Add a small delay to ensure content is fully rendered.
+    const timer = window.setTimeout(() => {
+      // Generate TOC from h2 elements only.
       const headings = document.querySelectorAll('h2');
       const tocItems: TocItem[] = [];
       const seenIds = new Set<string>();
@@ -27,7 +29,7 @@ export function TableOfContents() {
           heading.textContent || heading.innerText || `Section ${index + 1}`;
         const trimmedText = text.trim();
 
-        // Only process headings that have IDs and haven't been seen before
+        // Only process headings that have IDs and haven't been seen before.
         if (
           heading.id &&
           !seenIds.has(heading.id) &&
@@ -46,13 +48,13 @@ export function TableOfContents() {
 
       setToc(tocItems);
 
-      // Intersection Observer for active section
+      // Intersection Observer for active section.
       const observerOptions = {
         rootMargin: '-80px 0px -80px 0px',
         threshold: 0.1
       };
 
-      const observer = new IntersectionObserver((entries) => {
+      observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
@@ -60,12 +62,13 @@ export function TableOfContents() {
         });
       }, observerOptions);
 
-      headings.forEach((heading) => observer.observe(heading));
+      headings.forEach((heading) => observer?.observe(heading));
+    }, 200);
 
-      return () => observer.disconnect();
-    }, 200); // Increased delay to ensure content is ready
-
-    return () => clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      observer?.disconnect();
+    };
   }, []);
 
   const scrollToSection = (id: string) => {

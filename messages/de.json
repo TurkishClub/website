@@ -238,6 +238,9 @@
       "reply": "Antworten",
       "replyingTo": "Du antwortest auf diesen Kommentar.",
       "cancelReply": "Antwort abbrechen",
+      "scrollHint": "Zum Lesen des gesamten Threads nach unten scrollen.",
+      "retry": "Erneut versuchen",
+      "viewMore": "Mehr anzeigen",
       "captchaNotConfigured": "Captcha ist noch nicht konfiguriert. Kommentare sind vorübergehend ungeschützt.",
       "form": {
         "name": "Name",

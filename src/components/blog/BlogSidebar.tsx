@@ -23,7 +23,6 @@ interface BlogSidebarProps {
 }
 
 export function BlogSidebar({ post, prevPost, nextPost }: BlogSidebarProps) {
-  typeof post.slug === 'string' ? post.slug : post.slug?.current || '';
   const params = useParams();
   return (
     <div className="w-full">

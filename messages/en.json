@@ -243,6 +243,9 @@
       "reply": "Reply",
       "replyingTo": "Replying to this comment.",
       "cancelReply": "Cancel reply",
+      "scrollHint": "Scroll to read the full thread.",
+      "retry": "Retry",
+      "viewMore": "View More",
       "captchaNotConfigured": "Captcha is not configured yet. Comments are temporarily unprotected.",
       "form": {
         "name": "Name",

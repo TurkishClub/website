@@ -243,6 +243,9 @@
       "reply": "Yanıtla",
       "replyingTo": "Bu yoruma yanıt yazıyorsunuz.",
       "cancelReply": "Yanıtı iptal et",
+      "scrollHint": "Tüm yorumları okumak için aşağı kaydırın.",
+      "retry": "Tekrar dene",
+      "viewMore": "Daha Fazla Göster",
       "captchaNotConfigured": "Captcha henüz yapılandırılmadı. Yorumlar geçici olarak korunmuyor.",
       "form": {
         "name": "İsim",

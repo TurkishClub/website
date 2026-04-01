@@ -28,8 +28,7 @@ type CommentRow = {
 const MAX_THREAD_DEPTH = 8;
 
 export async function listCommentsByPost(
-  postSlug: string,
-  locale: string
+  postSlug: string
 ): Promise<BlogComment[]> {
   const db = getCommentsDb();
   if (!db) {
@@ -41,10 +40,9 @@ export async function listCommentsByPost(
       SELECT id, post_slug, locale, parent_id, author_name, body, created_at, depth
       FROM blog_comments
       WHERE post_slug = $1
-        AND locale = $2
       ORDER BY created_at ASC
     `,
-    [postSlug, locale]
+    [postSlug]
   );
 
   return buildCommentTree(rows);
@@ -62,9 +60,9 @@ export async function createComment(args: CreateCommentArgs): Promise<BlogCommen
   let depth = 0;
 
   if (args.parentId) {
-    const parentResult = await db.query<{depth: number; post_slug: string; locale: string}>(
+    const parentResult = await db.query<{depth: number; post_slug: string}>(
       `
-        SELECT depth, post_slug, locale
+        SELECT depth, post_slug
         FROM blog_comments
         WHERE id = $1
         LIMIT 1
@@ -77,7 +75,7 @@ export async function createComment(args: CreateCommentArgs): Promise<BlogCommen
     }
 
     const parent = parentResult.rows[0];
-    if (parent.post_slug !== args.postSlug || parent.locale !== args.locale) {
+    if (parent.post_slug !== args.postSlug) {
       throw new Error('Parent comment does not belong to this post');
     }
 
