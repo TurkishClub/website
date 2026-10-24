@@ -13,7 +13,13 @@ interface Event {
 }
 
 export default async function EventSection() {
-  const event: Event | null = await client.fetch(NEXT_EVENT_QUERY);
+  // Preview an unpublished event locally without changing the Sanity dataset.
+  const previewEvent = process.env.NODE_ENV === 'development'
+    ? process.env.LOCAL_EVENT_PREVIEW_JSON
+    : undefined;
+  const event: Event | null = previewEvent
+    ? JSON.parse(previewEvent)
+    : await client.fetch(NEXT_EVENT_QUERY);
 
   // If no upcoming event, don't render the section
   if (!event) {

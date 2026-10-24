@@ -43,7 +43,7 @@ export default function EventCountdown({ eventTime, eventName, embedUrl }: Event
   }, [eventTime]);
 
   return (
-    <section className="bg-white py-12 lg:py-20">
+    <section id="upcoming-event" className="bg-white py-12 lg:py-20">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Left side - Text */}
@@ -57,20 +57,20 @@ export default function EventCountdown({ eventTime, eventName, embedUrl }: Event
             </p>
 
             {/* Countdown Timer */}
-            <div className="flex gap-4 mt-4">
-              <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
+            <div className="flex gap-2 sm:gap-4 mt-4">
+              <div className="flex flex-col items-center bg-white rounded-lg p-2 sm:p-3 min-w-[60px] sm:min-w-[70px] shadow-md border border-gray-200">
                 <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.days}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Gün</span>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
+              <div className="flex flex-col items-center bg-white rounded-lg p-2 sm:p-3 min-w-[60px] sm:min-w-[70px] shadow-md border border-gray-200">
                 <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.hours}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Saat</span>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
+              <div className="flex flex-col items-center bg-white rounded-lg p-2 sm:p-3 min-w-[60px] sm:min-w-[70px] shadow-md border border-gray-200">
                 <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.minutes}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Dakika</span>
               </div>
-              <div className="flex flex-col items-center bg-white rounded-lg p-3 min-w-[70px] shadow-md border border-gray-200">
+              <div className="flex flex-col items-center bg-white rounded-lg p-2 sm:p-3 min-w-[60px] sm:min-w-[70px] shadow-md border border-gray-200">
                 <span className={`text-3xl lg:text-4xl font-bold ${SEMANTIC_COLORS.text.black}`}>{timeLeft.seconds}</span>
                 <span className="text-xs lg:text-sm text-gray-500">Saniye</span>
               </div>
