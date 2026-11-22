@@ -46,13 +46,84 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Turkish Club",
-      "subtitle": "Münchener Türkische Studenten Gemeinschaft",
-      "joinButton": "Mach mit!"
+      "ctaEvent": "Nächstes Event",
+      "before": "Ein Stück",
+      "after": "in München."
     },
     "poll": {
       "question": "Was möchten Sie im Türkischen Verein sehen?"
+    },
+    "statement": {
+      "label": "Wer wir sind",
+      "text": "Von Studierenden für Studierende: verschiedene Fächer, Städte und Akzente, mit einem gemeinsamen Wunsch, dass sich München ein bisschen mehr wie Zuhause anfühlt.",
+      "cta": "Unser Team"
+    },
+    "banner": {
+      "text": "Ein Neuanfang in einem anderen Land ist gemeinsam leichter. Wir organisieren Events, teilen, was wir gelernt haben, und halten die Tür für alle offen, die mitmachen wollen.",
+      "cta": "Auf Instagram folgen"
+    },
+    "featured": {
+      "label": "Highlights",
+      "all": "Alle Events",
+      "previous": "Vorheriges Highlight",
+      "next": "Nächstes Highlight",
+      "open": "Öffnen"
+    },
+    "event": {
+      "label": "Nächstes Event",
+      "days": "Tage",
+      "hours": "Std",
+      "minutes": "Min",
+      "seconds": "Sek",
+      "calendar": "Ganzer Kalender"
+    },
+    "faq": {
+      "label": "Fragen"
+    },
+    "join": {
+      "giant": "Mach mit.",
+      "text": "Fragen, Ideen, Kooperationen oder du möchtest einfach mithelfen. Schreib uns, wir lesen jede Nachricht."
+    },
+    "footer": {
+      "tagline": "Ein Zuhause in München für alle.",
+      "city": "München, Deutschland",
+      "involved": "Mitmachen",
+      "touch": "In Kontakt bleiben",
+      "rights": "Alle Rechte vorbehalten."
+    },
+    "explore": {
+      "label": "Entdecken"
     }
+  },
+  "HomeLists": {
+    "entry": [
+      {
+        "title": "Events",
+        "description": "Treffen, Kulturabende und Ausflüge, die die Community das ganze Jahr verbinden.",
+        "href": "/events"
+      },
+      {
+        "title": "Wohnheimsuche",
+        "description": "Vergleiche Studentenwohnheime in München nach Preis, Entfernung und Hochschule.",
+        "href": "/yurt-arama"
+      },
+      {
+        "title": "Lernorte",
+        "description": "Bibliotheken und ruhige Ecken zum Lernen, gefiltert nach deinen Bedürfnissen.",
+        "href": "/ders-yeri-arama"
+      },
+      {
+        "title": "Blog",
+        "description": "Geschichten und praktische Guides von Leuten, die es schon hinter sich haben.",
+        "href": "/blog"
+      }
+    ],
+    "heroWords": [
+      "Zuhause",
+      "Heimat",
+      "Türkei",
+      "Kultur"
+    ]
   },
   "Navbar": {
     "joinTeam": "Team beitreten",
@@ -79,7 +150,12 @@
     "contact": "Kontakt",
     "contactDesc": "Nehmen Sie Kontakt mit uns auf",
     "pastEvents": "Vergangene Veranstaltungen",
-    "pastEventsDesc": "Durchsuchen Sie unsere früheren Veranstaltungen"
+    "pastEventsDesc": "Durchsuchen Sie unsere früheren Veranstaltungen",
+    "eventCalendar": "Eventkalender",
+    "eventCalendarDesc": "Unsere kommenden Events auf Luma",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "language": "Sprache"
   },
   "FAQ": {
     "title": "FAQ",

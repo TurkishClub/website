@@ -46,13 +46,84 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Turkish Club",
-      "subtitle": "Münih Türk Öğrenci Topluluğu",
-      "joinButton": "Bize Katıl!"
+      "ctaEvent": "Sıradaki etkinlik",
+      "before": "Münih'te",
+      "after": "bir parça."
     },
     "poll": {
       "question": "Türk Kulübü'nde ne görmek istersiniz?"
+    },
+    "statement": {
+      "label": "Biz kimiz",
+      "text": "Öğrenciler tarafından, öğrenciler için: farklı bölümler, şehirler ve şiveler; ortak tek bir dilek, Münih'i biraz daha ev gibi hissettirmek.",
+      "cta": "Ekibimizle tanış"
+    },
+    "banner": {
+      "text": "Yeni bir ülkede başlamak birlikte daha kolay. Etkinlikleri düzenliyor, öğrendiklerimizi paylaşıyor ve katılmak isteyen herkese kapımızı açık tutuyoruz.",
+      "cta": "Instagram'da takip et"
+    },
+    "featured": {
+      "label": "Öne çıkanlar",
+      "all": "Tüm etkinlikler",
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "open": "Aç"
+    },
+    "event": {
+      "label": "Sıradaki etkinlik",
+      "days": "Gün",
+      "hours": "Saat",
+      "minutes": "Dk",
+      "seconds": "Sn",
+      "calendar": "Tüm takvim"
+    },
+    "faq": {
+      "label": "Sorular"
+    },
+    "join": {
+      "giant": "Bize katıl.",
+      "text": "Soruların, fikirlerin, iş birliği teklifin varsa ya da sadece yardım etmek istiyorsan bize yaz. Her mesajı okuyoruz."
+    },
+    "footer": {
+      "tagline": "Münih'te herkes için bir yuva.",
+      "city": "München, Almanya",
+      "involved": "Katıl",
+      "touch": "İletişimde kal",
+      "rights": "Tüm hakları saklıdır."
+    },
+    "explore": {
+      "label": "Keşfet"
     }
+  },
+  "HomeLists": {
+    "entry": [
+      {
+        "title": "Etkinlikler",
+        "description": "Topluluğu yıl boyu bir arada tutan buluşmalar, kültür geceleri ve geziler.",
+        "href": "/events"
+      },
+      {
+        "title": "Yurt arama",
+        "description": "Münih'teki öğrenci yurtlarını fiyat, mesafe ve üniversiteye göre karşılaştır.",
+        "href": "/yurt-arama"
+      },
+      {
+        "title": "Ders yerleri",
+        "description": "İhtiyacına göre filtrelenmiş kütüphaneler ve sessiz çalışma köşeleri.",
+        "href": "/ders-yeri-arama"
+      },
+      {
+        "title": "Blog",
+        "description": "Bu yollardan daha önce geçmiş insanlardan hikâyeler ve pratik rehberler.",
+        "href": "/blog"
+      }
+    ],
+    "heroWords": [
+      "evden",
+      "memleketten",
+      "dostluktan",
+      "kültürden"
+    ]
   },
   "Navbar": {
     "joinTeam": "Takıma Katıl",
@@ -79,7 +150,12 @@
     "contact": "İletişim",
     "contactDesc": "Bizimle iletişime geçin",
     "pastEvents": "Geçmiş Etkinlikler",
-    "pastEventsDesc": "Geçmiş etkinliklerimize göz atın"
+    "pastEventsDesc": "Geçmiş etkinliklerimize göz atın",
+    "eventCalendar": "Etkinlik takvimi",
+    "eventCalendarDesc": "Luma'daki yaklaşan etkinliklerimiz",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "language": "Dil"
   },
   "FAQ": {
     "title": "Sıkça Sorulan Sorular",

@@ -1,23 +1,13 @@
 import { ReactNode } from 'react';
-import { PostHogProvider } from '@/components/PostHogProvider'
-import SocialClickTracker from '@/components/SocialClickTracker';
 
 type Props = {
   children: ReactNode;
 };
 
-// This is the root layout for the application.
-// Since we have a `not-found.tsx` page on the root, a layout file
-// is required, even if it's just passing children through.
-export default async function RootLayout({ children }: Props) {
-  return (
-    <html lang="tr">
-      <body>
-        <PostHogProvider>
-          <SocialClickTracker />
-          {children}
-        </PostHogProvider>
-      </body>
-    </html>
-  );
+// Root layout. `<html>` and `<body>` are rendered by `app/[locale]/layout.tsx`
+// (with the correct `lang`) and by `app/not-found.tsx`, so this layout only
+// passes children through. Rendering `<html>` here as well produced nested
+// documents and a hydration mismatch.
+export default function RootLayout({ children }: Props) {
+  return children;
 }

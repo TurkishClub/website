@@ -1,93 +1,87 @@
-import * as React from 'react';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
+const SOCIALS = [
+  { href: 'https://www.instagram.com/turkishclub.munich/', label: 'Instagram' },
+  { href: 'https://lu.ma/user/turkishclub', label: 'Luma' },
+  { href: 'https://github.com/TurkishClub', label: 'GitHub' }
+];
+
+/** Two-tone footer: maroon block with the wordmark and links, ink strip with socials. */
 export default function Footer() {
   const t = useTranslations('Navbar');
+  const tf = useTranslations('HomePage.footer');
+  const year = new Date().getFullYear();
+
+  const involved = [
+    { href: '/events', label: t('pastEvents') },
+    { href: '/team', label: t('team') },
+    { href: '/blog', label: t('blog') },
+    { href: '/#contact', label: t('contact') }
+  ];
+  const tools = [
+    { href: '/yurt-arama', label: t('dormSearch') },
+    { href: '/ders-yeri-arama', label: t('studyPlaceSearch') }
+  ];
+
+  const linkClass = 'group inline-flex items-center gap-1.5 text-base hover:underline underline-offset-4';
 
   return (
-    <footer className="bg-white text-black transition-colors duration-300">
-      <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-          {/* Platformlar Section */}
-          <div>
-            <h3 className="mb-4 text-xl font-semibold text-red-700">{t('platforms')}</h3>
-            <nav className="space-y-3 text-base">
-              <Link
-                href="https://www.instagram.com/turkishclub.munich/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2  hover:underline transition-colors"
-              >
-                {t('instagram')}
-              </Link>
-              <Link
-                href="https://github.com/TurkishClub"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:underline transition-colors"
-              >
-                {t('github')}
-              </Link>
-              {/* <Link
-                href="link_placeholder"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2  hover:underline transition-colors"
-              >
-                {t('whatsapp')}
-              </Link> */}
-              <Link
-                href="https://lu.ma/user/turkishclub"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2  hover:underline transition-colors"
-              >
-                Etkinlikler
-              </Link>
-            </nav>
+    <footer className="text-white">
+      <div className="bg-maroon-950">
+        <div className="mx-auto grid max-w-[90rem] gap-12 px-4 py-14 md:grid-cols-12 md:gap-6 md:px-6 md:py-16">
+          <div className="md:col-span-6">
+            <p className="text-[1.6rem] font-medium leading-[0.92] tracking-[-0.04em]">
+              Turkish
+              <br />
+              Club
+              <br />
+              <span className="text-white/60">München</span>
+            </p>
+            <p className="mt-8 max-w-sm font-serif text-2xl leading-snug">{tf('tagline')}</p>
+            <p className="mt-4 text-sm text-white/70">{tf('city')}</p>
           </div>
-
-          {/* Araçlar Section */}
-          <div>
-            <h3 className="mb-4 text-xl font-semibold text-red-700">{t('tools')}</h3>
-            <nav className="space-y-3 text-base">
-              <Link
-                href="/yurt-arama"
-                className="flex items-center gap-2 hover:underline transition-colors"
-              >
-                {t('dormSearch')}
-              </Link>
-              <Link
-                href="/ders-yeri-arama"
-                className="flex items-center gap-2 hover:underline transition-colors"
-              >
-                {t('studyPlaceSearch')}
-              </Link>
-            </nav>
+          <div className="md:col-span-3">
+            <p className="label-caps mb-4 text-white/60">{tf('involved')}</p>
+            <ul className="flex flex-col gap-2.5">
+              {involved.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className={linkClass}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          {/* Sayfalar Section */}
-          <div>
-            <h3 className="mb-4 text-xl font-semibold text-red-700">{t('pages')}</h3>
-            <nav className="space-y-3 text-base">
-              <Link
-                href="/blog"
-                className="flex items-center gap-2 hover:underline transition-colors"
-              >
-                {t('blog')}
-              </Link>
-              <Link
-                href="/team"
-                className="flex items-center gap-2 hover:underline transition-colors"
-              >
-                {t('team')}
-              </Link>
-            </nav>
+          <div className="md:col-span-3">
+            <p className="label-caps mb-4 text-white/60">{t('tools')}</p>
+            <ul className="flex flex-col gap-2.5">
+              {tools.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className={linkClass}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-700 pt-8 text-center md:flex-row">
-          <p className="text-base">© 2025 Turkish Club</p>
+      </div>
+
+      <div className="bg-ink-950">
+        <div className="mx-auto flex max-w-[90rem] flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between md:px-6">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2" aria-label={tf('touch')}>
+            {SOCIALS.map((s) => (
+              <li key={s.href}>
+                <a href={s.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  {s.label} <span aria-hidden>→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-white/60">
+            © {year} Turkish Club München. {tf('rights')}
+          </p>
         </div>
       </div>
     </footer>

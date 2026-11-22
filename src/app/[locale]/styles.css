@@ -1,5 +1,78 @@
 @import 'tailwindcss';
 
+/*
+ * Turkish Club München design system.
+ * Warm stone surfaces, white cards, deep cardinal reds for contrast bands.
+ * Type roles: Inter Light for display, Playfair Display for headings and quotes,
+ * small tracked Inter for labels. Generates utilities like bg-stone-100,
+ * text-cardinal-700, font-display, font-serif.
+ */
+@theme {
+  --color-stone-50: #f8f5f1;
+  --color-stone-100: #f2eee9;
+  --color-stone-200: #e5ded5;
+  --color-stone-300: #cfc5b8;
+  --color-sand-400: #b9a895;
+  --color-ink-950: #141111;
+  --color-ink-700: #3d3735;
+  --color-ink-500: #6b6360;
+  --color-cardinal-500: #b3261e;
+  --color-cardinal-700: #8b1a1a;
+  --color-cardinal-800: #6e1515;
+  --color-maroon-900: #4a181b;
+  --color-maroon-950: #3a1214;
+
+  /* Strong custom curves: built-in easings are too weak to feel intentional */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/*
+ * Font tokens are `inline` because next/font defines --font-inter and
+ * --font-playfair on <body>, not :root. Inlining resolves them where used.
+ */
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background-color: var(--color-cardinal-700);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-cardinal-500);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Small tracked label: captions, meta lines, pill buttons */
+@utility label-caps {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
 @layer base {
   :root {
     /* Turkish Club Brand Colors */

@@ -1,17 +1,19 @@
 import { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import EventSection from '@/components/EventSection';
 import Footer from '@/components/Footer';
-import dynamic from 'next/dynamic';
+import Hero from '@/components/home/Hero';
+import Explore from '@/components/home/Explore';
+import Statement from '@/components/home/Statement';
+import RedBand from '@/components/home/RedBand';
+import Featured from '@/components/home/Featured';
+import UpcomingEvent from '@/components/home/UpcomingEvent';
+import Faq from '@/components/home/Faq';
+import JoinPanel from '@/components/home/JoinPanel';
+import type { Highlight } from '@/components/home/types';
 import { client } from '@/sanity/lib/client';
-import { GALLERIES_QUERY, HIGHLIGHT_CARDS_QUERY } from '@/sanity/lib/queries';
-import { urlFor } from '@/sanity/lib/image';
+import { HIGHLIGHT_CARDS_QUERY } from '@/sanity/lib/queries';
 
-const FAQ = dynamic(() => import('@/components/FAQ'));
-const ContactForm = dynamic(() => import('@/components/ContactForm'));
-const Highlights = dynamic(() => import('@/components/Highlights'));
 type Props = {
   params: Promise<{ locale: Locale }>;
 };
@@ -20,40 +22,29 @@ export default async function IndexPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Fetch gallery images and highlight cards from Sanity
-  const [galleries, highlightCards] = await Promise.all([
-    client.fetch(GALLERIES_QUERY),
-    client.fetch(HIGHLIGHT_CARDS_QUERY),
-  ]);
-
-  const galleryImages = galleries
-    .filter((gallery: any) => gallery.image?.asset)
-    .map((gallery: any) => ({
-      type: 'image' as const,
-      url: urlFor(gallery.image).width(800).height(1200).url(),
-      alt: gallery.title || gallery.image.alt || 'Gallery image',
-    }));
-
-  const highlights = highlightCards
-    .filter((card: any) => card.image?.asset)
+  // Highlights are used as text only: the home page does not depend on Sanity images.
+  const highlightCards = await client.fetch(HIGHLIGHT_CARDS_QUERY);
+  const highlights: Highlight[] = (highlightCards ?? [])
+    .filter((card: any) => card.title)
     .map((card: any) => ({
       _id: card._id,
       title: card.title,
-      type: card.type,
-      description: card.description,
-      imageUrl: urlFor(card.image).width(800).height(600).url(),
-      imageAlt: card.image.alt || card.title || 'Highlight image',
-      link: card.link,
+      type: card.type || undefined,
+      description: card.description || undefined,
+      link: card.link || undefined
     }));
 
   return (
-    <main className="bg-red-700 min-h-screen text-white">
-      <Navbar />
-      <Hero galleryImages={galleryImages} />
-      <Highlights highlights={highlights} />
-      <EventSection />
-      <FAQ />
-      <ContactForm />
+    <main className="min-h-screen bg-stone-100">
+      <Navbar tone="dark" />
+      <Hero />
+      <Explore />
+      <Statement />
+      <RedBand />
+      <Featured highlights={highlights} />
+      <UpcomingEvent />
+      <Faq />
+      <JoinPanel />
       <Footer />
     </main>
   );

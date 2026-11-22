@@ -58,36 +58,36 @@ export default function LocaleSwitcherSelect({
         onClick={() => setIsOpen(!isOpen)}
         disabled={isPending}
         className={cn(
-          "bg-transparent hover:bg-white/10 rounded-md px-4 py-2 flex items-center gap-1",
+          "bg-transparent hover:bg-white/10 rounded-md px-4 py-2 flex items-center gap-1 transition-[background-color,color,transform] duration-160 ease-out-strong active:scale-[0.97]",
           triggerClassName
         )}
       >
         {selectedOption?.label}
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-        >
-          <ChevronDown className="w-4 h-4" />
-        </motion.div>
+        <ChevronDown
+          className={cn('w-4 h-4 transition-transform duration-200 ease-out-strong', isOpen && 'rotate-180')}
+        />
       </Button>
       <AnimatePresence>
         {isOpen && (
+          // One piece, scaling from the trigger corner. Full transform strings keep it
+          // off the main thread on framer-motion < 14.2.
           <motion.div
-            initial={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, y: -8, filter: 'blur(8px)' }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className={cn("absolute top-full right-0 mt-2 z-50", contentClassName)}
+            initial={{ opacity: 0, transform: 'translateY(-4px) scale(0.97)' }}
+            animate={{
+              opacity: 1,
+              transform: 'translateY(0px) scale(1)',
+              transition: { duration: 0.18, ease: [0.23, 1, 0.32, 1] }
+            }}
+            exit={{
+              opacity: 0,
+              transform: 'translateY(-4px) scale(0.97)',
+              transition: { duration: 0.12, ease: [0.23, 1, 0.32, 1] }
+            }}
+            className={cn("absolute top-full right-0 mt-2 z-50 origin-top-right", contentClassName)}
           >
             <div className="flex flex-col items-center gap-2">
-              {options.map((option, index) => (
-                <motion.div
-                  key={option.value}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.2, delay: index * 0.05 }}
-                >
+              {options.map((option) => (
+                <div key={option.value}>
                   <button
                     onClick={() => onValueChange(option.value)}
                     className={cn(
@@ -99,7 +99,7 @@ export default function LocaleSwitcherSelect({
                     <span className="font-medium text-sm">{option.label}</span>
                     {defaultValue === option.value && <Check className="h-4 w-4 ml-auto" />}
                   </button>
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.div>
