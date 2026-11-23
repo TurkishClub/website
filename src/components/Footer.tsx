@@ -16,6 +16,7 @@ export default function Footer() {
   const involved = [
     { href: '/events', label: t('pastEvents') },
     { href: '/team', label: t('team') },
+    { href: '/application', label: t('application') },
     { href: '/blog', label: t('blog') },
     { href: '/#contact', label: t('contact') }
   ];

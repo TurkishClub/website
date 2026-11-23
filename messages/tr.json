@@ -155,7 +155,9 @@
     "eventCalendarDesc": "Luma'daki yaklaşan etkinliklerimiz",
     "openMenu": "Menüyü aç",
     "closeMenu": "Menüyü kapat",
-    "language": "Dil"
+    "language": "Dil",
+    "application": "Başvur",
+    "applicationDesc": "Üye ol"
   },
   "FAQ": {
     "title": "Sıkça Sorulan Sorular",
@@ -441,5 +443,98 @@
     "noEvents": "Geçmiş etkinlik bulunamadı.",
     "location": "Konum: {location}",
     "date": "Tarih: {date}"
+  },
+  "application": {
+    "meta": {
+      "title": "Üyelik başvurusu",
+      "description": "Turkish Club München’e üye olmak için başvur. Bize kendinden bahset, sana geri dönelim."
+    },
+    "form": {
+      "label": "Başvuru",
+      "title": "Bize kendinden bahset.",
+      "intro": "Yıldızlı alanlar zorunludur.",
+      "sections": {
+        "about": "Senin hakkında",
+        "study": "Eğitimin",
+        "club": "Neden kulüp"
+      },
+      "name": {
+        "label": "Ad soyad *",
+        "placeholder": "Adın",
+        "tooShort": "İsim en az 2 karakter olmalıdır.",
+        "tooLong": "İsim 80 karakterden uzun olamaz."
+      },
+      "email": {
+        "label": "E-posta *",
+        "placeholder": "ornek@email.com",
+        "invalid": "Lütfen geçerli bir e-posta adresi gir."
+      },
+      "phone": {
+        "label": "Telefon (opsiyonel)",
+        "placeholder": "+49 ...",
+        "invalid": "Lütfen geçerli bir telefon numarası gir."
+      },
+      "university": {
+        "label": "Üniversite *",
+        "placeholder": "Üniversiteni seç",
+        "required": "Lütfen üniversiteni seç.",
+        "other": "Diğer"
+      },
+      "program": {
+        "label": "Bölüm *",
+        "placeholder": "örn. Bilgisayar Bilimleri, M.Sc.",
+        "tooShort": "Lütfen bölümünü gir.",
+        "tooLong": "100 karakterden uzun olamaz."
+      },
+      "semester": {
+        "label": "Dönem",
+        "placeholder": "örn. 3"
+      },
+      "interests": {
+        "label": "Hangi alanlarda yer almak istersin?",
+        "hint": "İstediğin kadarını seç."
+      },
+      "motivation": {
+        "label": "Neden katılmak istiyorsun? *",
+        "placeholder": "Seni kulübe neyin getirdiğini ve ne beklediğini anlat.",
+        "tooShort": "Lütfen en az 30 karakter yaz.",
+        "tooLong": "Lütfen 1000 karakterin altında tut."
+      },
+      "source": {
+        "label": "Bizi nereden duydun?",
+        "placeholder": "Instagram, bir arkadaş, bir etkinlik ..."
+      },
+      "consent": {
+        "label": "Turkish Club München’in bu başvuruyu işlemek ve benimle iletişime geçmek için bilgilerimi saklamasını kabul ediyorum. *",
+        "required": "Devam etmek için lütfen onayla."
+      },
+      "submit": "Başvuruyu gönder",
+      "submitting": "Gönderiliyor ...",
+      "success": "Teşekkürler! Başvurun bize ulaştı. Yakında dönüş yapacağız.",
+      "rateLimited": "Çok fazla deneme. Lütfen daha sonra tekrar dene.",
+      "error": "Bir şeyler ters gitti. Lütfen tekrar dene."
+    },
+    "options": {
+      "universities": [
+        "LMU München",
+        "TU München",
+        "Hochschule München (HM)",
+        "Diğer üniversite",
+        "Henüz öğrenci değilim"
+      ],
+      "interests": {
+        "events": "Etkinlikler ve buluşmalar",
+        "community": "Topluluk ve karşılama",
+        "media": "Sosyal medya ve içerik",
+        "design": "Tasarım",
+        "tech": "Web sitesi ve teknoloji",
+        "partnerships": "Ortaklıklar ve sponsorlar"
+      }
+    },
+    "aside": {
+      "label": "Sorun mu var?",
+      "text": "Henüz emin değil misin? Önce bir etkinliğe gel ya da bize yaz, yardımcı olmaktan memnun oluruz.",
+      "cta": "Bize ulaş"
+    }
   }
 }

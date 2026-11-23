@@ -91,6 +91,7 @@ export default function Navbar({ tone = 'light' }: NavbarProps) {
       items: [
         { href: '/blog', label: t('blog'), desc: t('blogDesc') },
         { href: '/team', label: t('team'), desc: t('teamDesc') },
+        { href: '/application', label: t('application'), desc: t('applicationDesc') },
         { href: '/events', label: t('pastEvents'), desc: t('pastEventsDesc') },
         { href: '/#contact', label: t('contact'), desc: t('contactDesc') }
       ]

@@ -155,7 +155,9 @@
     "eventCalendarDesc": "Unsere kommenden Events auf Luma",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
-    "language": "Sprache"
+    "language": "Sprache",
+    "application": "Bewerben",
+    "applicationDesc": "Mitglied werden"
   },
   "FAQ": {
     "title": "FAQ",
@@ -436,5 +438,98 @@
     "noEvents": "Keine vergangenen Veranstaltungen gefunden.",
     "location": "Ort: {location}",
     "date": "Datum: {date}"
+  },
+  "application": {
+    "meta": {
+      "title": "Mitglied werden",
+      "description": "Bewirb dich als Mitglied beim Turkish Club München. Erzähl uns von dir und wir melden uns bei dir."
+    },
+    "form": {
+      "label": "Bewerbung",
+      "title": "Erzähl uns von dir.",
+      "intro": "Mit * markierte Felder sind Pflichtfelder.",
+      "sections": {
+        "about": "Über dich",
+        "study": "Dein Studium",
+        "club": "Warum der Club"
+      },
+      "name": {
+        "label": "Vollständiger Name *",
+        "placeholder": "Dein Name",
+        "tooShort": "Der Name muss mindestens 2 Zeichen lang sein.",
+        "tooLong": "Der Name darf nicht länger als 80 Zeichen sein."
+      },
+      "email": {
+        "label": "E-Mail *",
+        "placeholder": "deine.email@beispiel.com",
+        "invalid": "Bitte gib eine gültige E-Mail-Adresse ein."
+      },
+      "phone": {
+        "label": "Telefon (optional)",
+        "placeholder": "+49 ...",
+        "invalid": "Bitte gib eine gültige Telefonnummer ein."
+      },
+      "university": {
+        "label": "Universität *",
+        "placeholder": "Universität auswählen",
+        "required": "Bitte wähle deine Universität aus.",
+        "other": "Andere"
+      },
+      "program": {
+        "label": "Studiengang *",
+        "placeholder": "z. B. Informatik, M.Sc.",
+        "tooShort": "Bitte gib deinen Studiengang an.",
+        "tooLong": "Darf nicht länger als 100 Zeichen sein."
+      },
+      "semester": {
+        "label": "Semester",
+        "placeholder": "z. B. 3"
+      },
+      "interests": {
+        "label": "Wobei möchtest du mitmachen?",
+        "hint": "Wähle so viele aus, wie du möchtest."
+      },
+      "motivation": {
+        "label": "Warum möchtest du mitmachen? *",
+        "placeholder": "Erzähl uns, was dich zum Club bringt und was du dir davon erhoffst.",
+        "tooShort": "Bitte schreibe mindestens 30 Zeichen.",
+        "tooLong": "Bitte fasse dich auf unter 1000 Zeichen."
+      },
+      "source": {
+        "label": "Wie hast du von uns erfahren?",
+        "placeholder": "Instagram, Freunde, ein Event ..."
+      },
+      "consent": {
+        "label": "Ich bin einverstanden, dass der Turkish Club München meine Angaben zur Bearbeitung dieser Bewerbung speichert und mich kontaktiert. *",
+        "required": "Bitte bestätige, um fortzufahren."
+      },
+      "submit": "Bewerbung senden",
+      "submitting": "Wird gesendet ...",
+      "success": "Danke! Deine Bewerbung ist angekommen. Wir melden uns bald.",
+      "rateLimited": "Zu viele Versuche. Bitte versuche es später erneut.",
+      "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    },
+    "options": {
+      "universities": [
+        "LMU München",
+        "TU München",
+        "Hochschule München (HM)",
+        "Andere Universität",
+        "Noch nicht Student:in"
+      ],
+      "interests": {
+        "events": "Events und Treffen",
+        "community": "Community und Willkommen",
+        "media": "Social Media und Content",
+        "design": "Design",
+        "tech": "Website und Technik",
+        "partnerships": "Partnerschaften und Sponsoren"
+      }
+    },
+    "aside": {
+      "label": "Fragen?",
+      "text": "Noch unsicher? Komm erst zu einem Event oder schreib uns, wir helfen gerne.",
+      "cta": "Kontakt aufnehmen"
+    }
   }
 }
