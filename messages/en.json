@@ -64,7 +64,6 @@
     },
     "featured": {
       "label": "Highlights",
-      "all": "All events",
       "previous": "Previous highlight",
       "next": "Next highlight",
       "open": "Open"
@@ -98,19 +97,9 @@
   "HomeLists": {
     "entry": [
       {
-        "title": "Events",
-        "description": "Socials, cultural nights and trips that keep the community close all year.",
-        "href": "/events"
-      },
-      {
         "title": "Dorm search",
         "description": "Compare student dorms across Munich by price, distance and university.",
         "href": "/yurt-arama"
-      },
-      {
-        "title": "Study places",
-        "description": "Libraries and quiet corners to study, filtered by what you need.",
-        "href": "/ders-yeri-arama"
       },
       {
         "title": "Blog",
@@ -141,21 +130,19 @@
     "whatsappDesc": "Community chat group",
     "dormSearch": "Dorm Search",
     "dormSearchDesc": "Page where we organize dormitories for those seeking housing in Munich.",
-    "studyPlaceSearch": "Study Place Search",
-    "studyPlaceSearchDesc": "Find suitable places to study in Munich",
     "blog": "Blog",
     "blogDesc": "Latest articles and news",
     "team": "Team",
     "teamDesc": "Our team and open positions",
     "contact": "Contact",
     "contactDesc": "Get in touch with us",
-    "pastEvents": "Past Events",
-    "pastEventsDesc": "Browse our previous events",
     "eventCalendar": "Event calendar",
     "eventCalendarDesc": "Our upcoming events on Luma",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "language": "Language"
+    "language": "Language",
+    "application": "Apply",
+    "applicationDesc": "Become a member"
   },
   "FAQ": {
     "title": "FAQ",
@@ -370,76 +357,97 @@
       "rateLimited": "Please wait 30 seconds before sending another message."
     }
   },
-  "studyPlaceSearch": {
-    "title": "Study Place Search",
-    "subtitle": "Find the best places to study in Munich",
-    "description": "Discover libraries, cafes, and other study spaces perfect for Turkish students in Munich. Filter by category, quietness, and price.",
-    "search": {
-      "placeholder": "Search study place name or location...",
-      "button": "Search"
+  "application": {
+    "meta": {
+      "title": "Apply to join",
+      "description": "Apply to become a member of Turkish Club München. Tell us about yourself and we will get back to you."
     },
-    "filters": {
-      "title": "Filters",
-      "category": "Category",
-      "categories": {
-        "all": "All",
-        "library": "Library",
-        "cafe": "Cafe",
-        "university": "University",
-        "coworking": "Coworking",
+    "form": {
+      "label": "Application",
+      "title": "Tell us about you.",
+      "intro": "Fields marked with an asterisk are required.",
+      "sections": {
+        "about": "About you",
+        "study": "Your studies",
+        "club": "Why the club"
+      },
+      "name": {
+        "label": "Full name *",
+        "placeholder": "Your name",
+        "tooShort": "Name must be at least 2 characters.",
+        "tooLong": "Name must not be longer than 80 characters."
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "your.email@example.com",
+        "invalid": "Please enter a valid email address."
+      },
+      "phone": {
+        "label": "Phone (optional)",
+        "placeholder": "+49 ...",
+        "invalid": "Please enter a valid phone number."
+      },
+      "university": {
+        "label": "University *",
+        "placeholder": "Select your university",
+        "required": "Please select your university.",
         "other": "Other"
       },
-      "quietOnly": "Quiet places only",
-      "freeOnly": "Free places only",
-      "clearAll": "Clear All",
-      "apply": "Apply"
+      "program": {
+        "label": "Degree programme *",
+        "placeholder": "e.g. Computer Science, M.Sc.",
+        "tooShort": "Please enter your degree programme.",
+        "tooLong": "Must not be longer than 100 characters."
+      },
+      "semester": {
+        "label": "Semester",
+        "placeholder": "e.g. 3"
+      },
+      "interests": {
+        "label": "What would you like to be part of?",
+        "hint": "Pick as many as you like."
+      },
+      "motivation": {
+        "label": "Why do you want to join? *",
+        "placeholder": "Tell us what brings you to the club and what you hope to get out of it.",
+        "tooShort": "Please write at least 30 characters.",
+        "tooLong": "Please keep it under 1000 characters."
+      },
+      "source": {
+        "label": "How did you hear about us?",
+        "placeholder": "Instagram, a friend, an event ..."
+      },
+      "consent": {
+        "label": "I agree that Turkish Club München may store my details to process this application and contact me. *",
+        "required": "Please confirm to continue."
+      },
+      "submit": "Send application",
+      "submitting": "Sending ...",
+      "success": "Thank you! Your application is in. We will be in touch soon.",
+      "rateLimited": "Too many attempts. Please try again later.",
+      "error": "Something went wrong. Please try again."
     },
-    "sort": {
-      "label": "Sort by",
-      "name": "Name (A-Z)",
-      "category": "Category",
-      "distance": "Distance"
-    },
-    "card": {
-      "address": "Address",
-      "openingHours": "Opening Hours",
-      "category": "Category",
-      "features": "Features",
-      "quiet": "Quiet",
-      "free": "Free",
-      "hasWifi": "WiFi Available",
-      "electricOutlets": "Power Outlets",
-      "viewOnMap": "View on Map",
-      "moreInfo": "More Details",
-      "getDirections": "Get Directions",
-      "restrictions": "Restrictions",
-      "whoCanUse": "Who can use",
-      "foodOptions": "Food Options",
-      "showLess": "Show Less",
-      "readMore": "Read More"
-    },
-    "map": {
-      "title": "Map View",
-      "showList": "List View",
-      "showMap": "Map View",
-      "showingLocations": "Showing {count} study places",
-      "popup": {
-        "moreInfo": "More Details",
-        "getDirections": "Get Directions"
+    "options": {
+      "universities": [
+        "LMU Munich",
+        "TU Munich",
+        "Munich University of Applied Sciences (HM)",
+        "Another university",
+        "Not a student (yet)"
+      ],
+      "interests": {
+        "events": "Events and gatherings",
+        "community": "Community and welcome",
+        "media": "Social media and content",
+        "design": "Design",
+        "tech": "Website and tech",
+        "partnerships": "Partnerships and sponsors"
       }
     },
-    "results": {
-      "showing": "Showing {filtered} of {total} study places",
-      "noResults": "No study places found matching your search criteria.",
-      "foundResults": "{count} study places found",
-      "adjustFilters": "Try adjusting your search criteria."
+    "aside": {
+      "label": "Questions?",
+      "text": "Not sure yet? Come to an event first or write to us, we are happy to help.",
+      "cta": "Contact us"
     }
-  },
-  "PastEvents": {
-    "title": "Past Events",
-    "description": "Here you can find information about our past events.",
-    "noEvents": "No past events found.",
-    "location": "Location: {location}",
-    "date": "Date: {date}"
   }
 }

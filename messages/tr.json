@@ -64,7 +64,6 @@
     },
     "featured": {
       "label": "Öne çıkanlar",
-      "all": "Tüm etkinlikler",
       "previous": "Önceki",
       "next": "Sonraki",
       "open": "Aç"
@@ -98,19 +97,9 @@
   "HomeLists": {
     "entry": [
       {
-        "title": "Etkinlikler",
-        "description": "Topluluğu yıl boyu bir arada tutan buluşmalar, kültür geceleri ve geziler.",
-        "href": "/events"
-      },
-      {
         "title": "Yurt arama",
         "description": "Münih'teki öğrenci yurtlarını fiyat, mesafe ve üniversiteye göre karşılaştır.",
         "href": "/yurt-arama"
-      },
-      {
-        "title": "Ders yerleri",
-        "description": "İhtiyacına göre filtrelenmiş kütüphaneler ve sessiz çalışma köşeleri.",
-        "href": "/ders-yeri-arama"
       },
       {
         "title": "Blog",
@@ -141,21 +130,19 @@
     "whatsappDesc": "Topluluk sohbet grubu",
     "dormSearch": "Yurt Arama",
     "dormSearchDesc": "Münih'te yurt arama platformu",
-    "studyPlaceSearch": "Ders Çalışma Yeri Arama",
-    "studyPlaceSearchDesc": "Ders çalışmak için uygun yerler",
     "blog": "Blog",
     "blogDesc": "Güncel yazılar ve haberler",
     "team": "Takım",
     "teamDesc": "Ekibimiz ve açık pozisyonlar",
     "contact": "İletişim",
     "contactDesc": "Bizimle iletişime geçin",
-    "pastEvents": "Geçmiş Etkinlikler",
-    "pastEventsDesc": "Geçmiş etkinliklerimize göz atın",
     "eventCalendar": "Etkinlik takvimi",
     "eventCalendarDesc": "Luma'daki yaklaşan etkinliklerimiz",
     "openMenu": "Menüyü aç",
     "closeMenu": "Menüyü kapat",
-    "language": "Dil"
+    "language": "Dil",
+    "application": "Başvur",
+    "applicationDesc": "Üye ol"
   },
   "FAQ": {
     "title": "Sıkça Sorulan Sorular",
@@ -370,76 +357,97 @@
       "rateLimited": "Lütfen başka bir mesaj göndermeden önce 30 saniye bekleyin."
     }
   },
-  "studyPlaceSearch": {
-    "title": "Ders Yeri Arama",
-    "subtitle": "Münih'te çalışmak için en iyi yerleri bulun",
-    "description": "Münih'teki Türk öğrenciler için mükemmel kütüphaneler, kafeler ve diğer çalışma alanlarını keşfedin. Kategori, sessizlik ve fiyata göre filtreleyin.",
-    "search": {
-      "placeholder": "Ders yeri adı veya konumu ara...",
-      "button": "Ara"
+  "application": {
+    "meta": {
+      "title": "Üyelik başvurusu",
+      "description": "Turkish Club München’e üye olmak için başvur. Bize kendinden bahset, sana geri dönelim."
     },
-    "filters": {
-      "title": "Filtreler",
-      "category": "Kategori",
-      "categories": {
-        "all": "Tümü",
-        "library": "Kütüphane",
-        "cafe": "Kafe",
-        "university": "Üniversite",
-        "coworking": "Ortak Çalışma Alanı",
+    "form": {
+      "label": "Başvuru",
+      "title": "Bize kendinden bahset.",
+      "intro": "Yıldızlı alanlar zorunludur.",
+      "sections": {
+        "about": "Senin hakkında",
+        "study": "Eğitimin",
+        "club": "Neden kulüp"
+      },
+      "name": {
+        "label": "Ad soyad *",
+        "placeholder": "Adın",
+        "tooShort": "İsim en az 2 karakter olmalıdır.",
+        "tooLong": "İsim 80 karakterden uzun olamaz."
+      },
+      "email": {
+        "label": "E-posta *",
+        "placeholder": "ornek@email.com",
+        "invalid": "Lütfen geçerli bir e-posta adresi gir."
+      },
+      "phone": {
+        "label": "Telefon (opsiyonel)",
+        "placeholder": "+49 ...",
+        "invalid": "Lütfen geçerli bir telefon numarası gir."
+      },
+      "university": {
+        "label": "Üniversite *",
+        "placeholder": "Üniversiteni seç",
+        "required": "Lütfen üniversiteni seç.",
         "other": "Diğer"
       },
-      "quietOnly": "Sadece sessiz yerler",
-      "freeOnly": "Sadece ücretsiz yerler",
-      "clearAll": "Tümünü Temizle",
-      "apply": "Uygula"
+      "program": {
+        "label": "Bölüm *",
+        "placeholder": "örn. Bilgisayar Bilimleri, M.Sc.",
+        "tooShort": "Lütfen bölümünü gir.",
+        "tooLong": "100 karakterden uzun olamaz."
+      },
+      "semester": {
+        "label": "Dönem",
+        "placeholder": "örn. 3"
+      },
+      "interests": {
+        "label": "Hangi alanlarda yer almak istersin?",
+        "hint": "İstediğin kadarını seç."
+      },
+      "motivation": {
+        "label": "Neden katılmak istiyorsun? *",
+        "placeholder": "Seni kulübe neyin getirdiğini ve ne beklediğini anlat.",
+        "tooShort": "Lütfen en az 30 karakter yaz.",
+        "tooLong": "Lütfen 1000 karakterin altında tut."
+      },
+      "source": {
+        "label": "Bizi nereden duydun?",
+        "placeholder": "Instagram, bir arkadaş, bir etkinlik ..."
+      },
+      "consent": {
+        "label": "Turkish Club München’in bu başvuruyu işlemek ve benimle iletişime geçmek için bilgilerimi saklamasını kabul ediyorum. *",
+        "required": "Devam etmek için lütfen onayla."
+      },
+      "submit": "Başvuruyu gönder",
+      "submitting": "Gönderiliyor ...",
+      "success": "Teşekkürler! Başvurun bize ulaştı. Yakında dönüş yapacağız.",
+      "rateLimited": "Çok fazla deneme. Lütfen daha sonra tekrar dene.",
+      "error": "Bir şeyler ters gitti. Lütfen tekrar dene."
     },
-    "sort": {
-      "label": "Sırala",
-      "name": "İsim (A-Z)",
-      "category": "Kategori",
-      "distance": "Mesafe"
-    },
-    "card": {
-      "address": "Adres",
-      "openingHours": "Açılış Saatleri",
-      "category": "Kategori",
-      "features": "Özellikler",
-      "quiet": "Sessiz",
-      "free": "Ücretsiz",
-      "hasWifi": "WiFi Mevcut",
-      "electricOutlets": "Priz",
-      "viewOnMap": "Haritada Gör",
-      "moreInfo": "Detaylar",
-      "getDirections": "Yol Tarifi Al",
-      "restrictions": "Kısıtlamalar",
-      "whoCanUse": "Kimler kullanabilir",
-      "foodOptions": "Yemek İmkanları",
-      "showLess": "Daha Az Göster",
-      "readMore": "Devamını Oku"
-    },
-    "map": {
-      "title": "Harita Görünümü",
-      "showList": "Liste Görünümü",
-      "showMap": "Harita Görünümü",
-      "showingLocations": "{count} ders yeri gösteriliyor",
-      "popup": {
-        "moreInfo": "Detaylar",
-        "getDirections": "Yol Tarifi Al"
+    "options": {
+      "universities": [
+        "LMU München",
+        "TU München",
+        "Hochschule München (HM)",
+        "Diğer üniversite",
+        "Henüz öğrenci değilim"
+      ],
+      "interests": {
+        "events": "Etkinlikler ve buluşmalar",
+        "community": "Topluluk ve karşılama",
+        "media": "Sosyal medya ve içerik",
+        "design": "Tasarım",
+        "tech": "Web sitesi ve teknoloji",
+        "partnerships": "Ortaklıklar ve sponsorlar"
       }
     },
-    "results": {
-      "showing": "{total} ders yerinden {filtered} tanesi gösteriliyor",
-      "noResults": "Arama kriterlerinize uygun ders yeri bulunamadı.",
-      "foundResults": "{count} ders yeri bulundu",
-      "adjustFilters": "Arama kriterlerinizi ayarlamayı deneyin."
+    "aside": {
+      "label": "Sorun mu var?",
+      "text": "Henüz emin değil misin? Önce bir etkinliğe gel ya da bize yaz, yardımcı olmaktan memnun oluruz.",
+      "cta": "Bize ulaş"
     }
-  },
-  "PastEvents": {
-    "title": "Geçmiş Etkinlikler",
-    "description": "Burada geçmiş etkinliklerimiz hakkında bilgi bulabilirsiniz.",
-    "noEvents": "Geçmiş etkinlik bulunamadı.",
-    "location": "Konum: {location}",
-    "date": "Tarih: {date}"
   }
 }
