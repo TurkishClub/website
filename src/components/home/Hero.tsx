@@ -2,10 +2,7 @@ import { useTranslations } from 'next-intl';
 import RotatingWord from './RotatingWord';
 import { Pill } from './Pill';
 
-/**
- * Poster hero: a three-line serif statement on maroon whose middle word cycles
- * (e.g. "A piece of / home / in Munich."), with two calls to action underneath.
- */
+/** Home page hero. */
 export default function Hero() {
   const t = useTranslations('HomePage.hero');
   const words = useTranslations('HomeLists').raw('heroWords') as string[];

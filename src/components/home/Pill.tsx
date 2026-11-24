@@ -12,13 +12,21 @@ const VARIANTS: Record<Variant, string> = {
   outline: 'border border-ink-950/25 text-ink-950 hover:border-ink-950 hover:bg-ink-950 hover:text-white'
 };
 
-/** Rounded pill link with a trailing arrow: the site's one button shape. */
+const BASE =
+  'group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-[color,background-color,border-color,transform] duration-160 ease-out-strong active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60';
+
+/** Pill classes for elements that are not links (e.g. a <button>). */
+export function pillClass(variant: Variant = 'ink', className?: string) {
+  return cn(BASE, VARIANTS[variant], className);
+}
+
+/** Rounded button-style link. External links get a ↗. */
 export function Pill({
   href,
   children,
   variant = 'ink',
   external = false,
-  arrow = '→',
+  arrow,
   className
 }: {
   href: string;
@@ -28,23 +36,20 @@ export function Pill({
   arrow?: string | null;
   className?: string;
 }) {
-  const classes = cn(
-    'group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-[color,background-color,border-color,transform] duration-160 ease-out-strong active:scale-[0.97]',
-    VARIANTS[variant],
-    className
-  );
+  const classes = pillClass(variant, className);
+  const glyph = arrow === undefined ? (external ? '↗' : null) : arrow;
   const content = (
     <>
       {children}
-      {arrow && (
+      {glyph && (
         <span aria-hidden className="transition-transform duration-200 ease-out-strong group-hover:translate-x-0.5">
-          {arrow}
+          {glyph}
         </span>
       )}
     </>
   );
 
-  if (external || href.startsWith('#')) {
+  if (external || href.startsWith('#') || href.startsWith('mailto:')) {
     return (
       <a
         href={href}

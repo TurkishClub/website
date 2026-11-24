@@ -5,12 +5,10 @@ import { useTranslations } from 'next-intl';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Analytics } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
-import { Label } from './Pill';
 
-/** Accessible accordion on stone, questions in serif between hairline rules. */
+/** FAQ accordion. */
 export default function Faq() {
   const t = useTranslations('FAQ');
-  const tHome = useTranslations('HomePage.faq');
   const [open, setOpen] = useState<number | null>(null);
   const id = useId();
   const questions = t.raw('questions') as Array<{ question: string; answer: string }>;
@@ -25,8 +23,7 @@ export default function Faq() {
     <section className="bg-stone-100 text-ink-950">
       <div className="mx-auto grid max-w-[90rem] gap-10 px-4 py-24 md:grid-cols-12 md:gap-6 md:px-6 md:py-32">
         <div className="md:col-span-4">
-          <Label className="text-ink-700">{tHome('label')}</Label>
-          <h2 className="mt-6 font-serif text-[clamp(2.25rem,4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.015em]">
+          <h2 className="font-serif text-[clamp(2.25rem,4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.015em]">
             {t('title')}
           </h2>
         </div>

@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Highlight } from './types';
 
-/** Featured highlights as large typographic cards; one at a time with the next peeking in. */
+/** Past highlights in a horizontal scroller. */
 export default function Featured({ highlights }: { highlights: Highlight[] }) {
   const t = useTranslations('HomePage.featured');
   const trackRef = useRef<HTMLUListElement>(null);
@@ -40,17 +40,13 @@ export default function Featured({ highlights }: { highlights: Highlight[] }) {
 
   const arrow =
     'absolute top-1/2 z-10 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-ink-950 text-white transition-[opacity,background-color,transform] duration-160 ease-out-strong hover:bg-cardinal-700 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-0 md:flex';
-  const total = String(highlights.length).padStart(2, '0');
 
   return (
     <section className="bg-white text-ink-950">
       <div className="mx-auto flex max-w-[90rem] items-baseline justify-between px-4 pb-8 pt-24 md:px-6 md:pt-32">
         <h2 className="text-lg font-normal">{t('label')}</h2>
-        <a href="https://lu.ma/user/turkishclub" target="_blank" rel="noopener noreferrer" className="group text-sm font-medium">
-          {t('all')}{' '}
-          <span aria-hidden className="inline-block transition-transform duration-200 ease-out-strong group-hover:translate-x-0.5">
-            ↗
-          </span>
+        <a href="https://lu.ma/user/turkishclub" target="_blank" rel="noopener noreferrer" className="text-sm font-medium underline-offset-4 hover:underline">
+          {t('all')}
         </a>
       </div>
 
@@ -67,19 +63,11 @@ export default function Featured({ highlights }: { highlights: Highlight[] }) {
           onScroll={update}
           className="flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 [scrollbar-width:none] md:scroll-px-6 md:px-6 [&::-webkit-scrollbar]:hidden"
         >
-          {highlights.map((item, i) => {
+          {highlights.map((item) => {
             const body = (
-              <div className="grid h-full overflow-hidden md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-                {/* Typographic panel: index and category on cardinal */}
-                <div className="flex min-h-[12rem] flex-col justify-between bg-cardinal-700 p-6 text-white md:min-h-[30rem] md:p-10">
-                  <span className="label-caps text-white/80">{item.type ?? t('label')}</span>
-                  <span className="font-display text-[clamp(5rem,11vw,10rem)] font-light leading-[0.85] tracking-[-0.05em]">
-                    {String(i + 1).padStart(2, '0')}
-                    <span className="text-white/40">/{total}</span>
-                  </span>
-                </div>
-                <div className="flex flex-col justify-between gap-10 bg-stone-100 p-6 md:p-10">
+              <div className="flex h-full min-h-[22rem] flex-col justify-between gap-10 bg-stone-100 p-6 md:min-h-[26rem] md:p-10">
                   <div className="flex flex-col gap-5">
+                    {item.type && <span className="text-sm font-medium text-cardinal-700">{item.type}</span>}
                     <h3 className="font-serif text-[clamp(2rem,3.4vw,3.25rem)] font-normal leading-[1.05] tracking-[-0.01em]">
                       {item.title}
                     </h3>
@@ -88,15 +76,14 @@ export default function Featured({ highlights }: { highlights: Highlight[] }) {
                     )}
                   </div>
                   {item.link && (
-                    <span className="label-caps self-start rounded-full bg-ink-950 px-4 py-2 text-white">
-                      {t('open')} ↗
+                    <span className="self-start text-sm font-medium underline underline-offset-4">
+                      {t('open')}
                     </span>
                   )}
-                </div>
               </div>
             );
             return (
-              <li key={item._id} className="w-[88%] shrink-0 snap-start md:w-[78%] lg:w-[72%]">
+              <li key={item._id} className="w-[85%] shrink-0 snap-start md:w-[48%] lg:w-[38%]">
                 {item.link ? (
                   <a href={item.link} target="_blank" rel="noopener noreferrer" className="block h-full">
                     {body}

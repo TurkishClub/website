@@ -4,22 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 const EASE_IN_OUT_STRONG = [0.77, 0, 0.175, 1] as const;
-/** Full loops before the word settles, so auto-playing motion doesn't run indefinitely. */
+/** Stop after two loops so the motion doesn't run forever. */
 const LOOPS = 2;
 
-/**
- * Cycles through words in place, then settles back on the first word.
- * - Server render and first client render show the first word (no hydration mismatch).
- * - Pauses while off-screen or while the tab is hidden.
- * - Reduced motion: no movement, a slower opacity-only crossfade.
- * - Full transform strings keep the roll off the main thread on framer-motion < 14.2.
- * Decorative: the parent provides the full sentence to screen readers.
- */
+/** Cycles through words, then settles on the first. Hidden from screen readers; the h1 has the full text. */
 export default function RotatingWord({ words, interval = 2600 }: { words: string[]; interval?: number }) {
   const [step, setStep] = useState(0);
   const [tabVisible, setTabVisible] = useState(true);
   const ref = useRef<HTMLSpanElement>(null);
-  // Rotate by default; pause only once an observer has reported the word off-screen.
   const [offscreen, setOffscreen] = useState(false);
   const reduce = useReducedMotion();
 
@@ -70,7 +62,6 @@ export default function RotatingWord({ words, interval = 2600 }: { words: string
           {word}
         </span>
       ))}
-      {/* Both words share one grid cell: the new one rolls up as the old one leaves */}
       <AnimatePresence initial={false}>
         <motion.span key={`${words[index]}-${step}`} className="col-start-1 row-start-1" {...motionProps}>
           {words[index]}

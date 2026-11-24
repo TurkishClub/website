@@ -66,7 +66,7 @@ export default async function LocaleLayout({children, params}: Props) {
         <link rel="preconnect" href="https://eu.i.posthog.com" />
         <link rel="preconnect" href="https://eu-assets.i.posthog.com" />
       </head>
-      <body className={clsx(inter.className, inter.variable, playfair.variable, 'flex h-full flex-col')}>
+      <body className={clsx(inter.className, inter.variable, playfair.variable, 'flex min-h-full flex-col')}>
         <PostHogProvider>
           <SocialClickTracker />
           <NextIntlClientProvider>{children}</NextIntlClientProvider>

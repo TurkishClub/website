@@ -54,13 +54,8 @@
       "question": "Was möchten Sie im Türkischen Verein sehen?"
     },
     "statement": {
-      "label": "Wer wir sind",
       "text": "Von Studierenden für Studierende: verschiedene Fächer, Städte und Akzente, mit einem gemeinsamen Wunsch, dass sich München ein bisschen mehr wie Zuhause anfühlt.",
       "cta": "Unser Team"
-    },
-    "banner": {
-      "text": "Ein Neuanfang in einem anderen Land ist gemeinsam leichter. Wir organisieren Events, teilen, was wir gelernt haben, und halten die Tür für alle offen, die mitmachen wollen.",
-      "cta": "Auf Instagram folgen"
     },
     "featured": {
       "label": "Highlights",
@@ -77,11 +72,8 @@
       "seconds": "Sek",
       "calendar": "Ganzer Kalender"
     },
-    "faq": {
-      "label": "Fragen"
-    },
     "join": {
-      "giant": "Mach mit.",
+      "giant": "Kontakt aufnehmen.",
       "text": "Fragen, Ideen, Kooperationen oder du möchtest einfach mithelfen. Schreib uns, wir lesen jede Nachricht."
     },
     "footer": {
@@ -90,9 +82,6 @@
       "involved": "Mitmachen",
       "touch": "In Kontakt bleiben",
       "rights": "Alle Rechte vorbehalten."
-    },
-    "explore": {
-      "label": "Entdecken"
     }
   },
   "HomeLists": {
@@ -229,7 +218,9 @@
       "showing": "{filtered} von {total} Wohnheimen angezeigt",
       "noResults": "Keine Wohnheime gefunden, die Ihren Suchkriterien entsprechen.",
       "foundResults": "{count} Wohnheime gefunden",
-      "adjustFilters": "Versuchen Sie, Ihre Suchkriterien anzupassen."
+      "adjustFilters": "Versuchen Sie, Ihre Suchkriterien anzupassen.",
+      "loadMore": "Mehr anzeigen (noch {count})",
+      "loading": "Wird geladen…"
     }
   },
   "team": {

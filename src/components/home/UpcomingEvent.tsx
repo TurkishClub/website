@@ -1,7 +1,7 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import { client } from '@/sanity/lib/client';
 import { NEXT_EVENT_QUERY } from '@/sanity/lib/queries';
-import { Label, Pill } from './Pill';
+import { Pill } from './Pill';
 import Countdown from './Countdown';
 import type { UpcomingEventData } from './types';
 
@@ -12,7 +12,7 @@ async function loadEvent(): Promise<UpcomingEventData | null> {
   return client.fetch(NEXT_EVENT_QUERY);
 }
 
-/** Next published event: date line, serif title, countdown and the Luma registration embed. */
+/** Next published event with its Luma registration embed. */
 export default async function UpcomingEvent() {
   const event = await loadEvent();
   if (!event) return null;
@@ -26,16 +26,11 @@ export default async function UpcomingEvent() {
   return (
     <section id="upcoming-event" className="scroll-mt-6 bg-white text-ink-950">
       <div className="mx-auto max-w-[90rem] px-4 pb-24 md:px-6 md:pb-32">
-        {/*
-         * Details on the left, Luma on the right. The embed is capped at 760px, about the
-         * width of Luma's own card, so it has no empty side margins. Luma lays out side
-         * by side (~530px tall) from ~660px wide and stacks (~830px) below that; the
-         * heights below match each layout.
-         */}
+        {/* Luma's embed is ~530px tall side by side (≥660px wide) and ~830px stacked. */}
         <div className="grid gap-10 border-t border-ink-950/30 pt-10 xl:grid-cols-[minmax(0,1fr)_760px] xl:gap-12">
           <div className="flex flex-col justify-between gap-10">
             <div className="flex flex-col gap-8">
-              <Label className="text-ink-700">{t('label')}</Label>
+              <p className="text-sm font-medium text-cardinal-700">{t('label')}</p>
               <div className="flex flex-col gap-4">
                 <p className="text-sm text-ink-700">
                   {day} <span className="px-1.5 text-ink-500">/</span> {hour}

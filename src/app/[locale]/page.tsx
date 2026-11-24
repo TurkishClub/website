@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import Hero from '@/components/home/Hero';
 import Explore from '@/components/home/Explore';
 import Statement from '@/components/home/Statement';
-import RedBand from '@/components/home/RedBand';
 import Featured from '@/components/home/Featured';
 import UpcomingEvent from '@/components/home/UpcomingEvent';
 import Faq from '@/components/home/Faq';
@@ -40,7 +39,7 @@ export default async function IndexPage({ params }: Props) {
       <Hero />
       <Explore />
       <Statement />
-      <RedBand />
+      
       <Featured highlights={highlights} />
       <UpcomingEvent />
       <Faq />

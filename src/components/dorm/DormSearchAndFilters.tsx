@@ -1,9 +1,9 @@
 'use client';
 
-import {useState} from 'react';
+import {useState, type ReactNode} from 'react';
 import {useTranslations} from 'next-intl';
 import {Search, Filter, X} from 'lucide-react';
-import {Button} from '@/components/ui/button';
+import {pillClass} from '@/components/home/Pill';
 import {Input} from '@/components/ui/input';
 import {
   Select,
@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import {Badge} from '@/components/ui/badge';
 import {
   Sheet,
   SheetContent,
@@ -33,13 +32,15 @@ interface DormSearchAndFiltersProps {
   onFiltersChange: (filters: DormFilters) => void;
   resultsCount: number;
   totalCount: number;
+  viewToggle?: ReactNode;
 }
 
 export function DormSearchAndFilters({
   filters,
   onFiltersChange,
   resultsCount,
-  totalCount
+  totalCount,
+  viewToggle
 }: DormSearchAndFiltersProps) {
   const t = useTranslations('dormSearch');
   const [isFilterSheetOpen, setIsFilterSheetOpen] = useState(false);
@@ -79,43 +80,40 @@ export function DormSearchAndFilters({
     filters.maxPrice !== null
   ].filter(Boolean).length;
 
+  const fieldInput =
+    'h-auto rounded-none border-0 border-b border-ink-950/30 bg-transparent px-0 shadow-none focus-visible:border-cardinal-700 focus-visible:ring-0';
+
   return (
-    <div className="space-y-4">
-      {/* Search Bar */}
+    <div className="flex flex-col gap-8">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <Search aria-hidden className="absolute left-0 top-1/2 h-6 w-6 -translate-y-1/2 text-ink-500" />
         <Input
+          aria-label={t('search.placeholder')}
           placeholder={t('search.placeholder')}
           value={filters.searchQuery}
           onChange={(e) => handleSearchChange(e.target.value)}
-          className="pl-10 h-12 text-base"
+          className={`${fieldInput} py-4 pl-10 font-serif text-[clamp(1.4rem,2.4vw,2rem)] placeholder:text-ink-500/60 md:text-[clamp(1.4rem,2.4vw,2rem)]`}
         />
       </div>
 
-      {/* Filters Row */}
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          {/* Mobile Filter Button */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-3">
           <Sheet open={isFilterSheetOpen} onOpenChange={setIsFilterSheetOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" className="lg:hidden">
-                <Filter className="w-4 h-4 mr-2" />
+              <button type="button" className={`${pillClass('outline')} px-5 py-2 lg:hidden`}>
+                <Filter className="h-4 w-4" />
                 {t('filters.title')}
                 {activeFiltersCount > 0 && (
-                  <Badge className="ml-2 bg-blue-600 text-white">
-                    {activeFiltersCount}
-                  </Badge>
+                  <span className="ml-1 rounded-full bg-cardinal-700 px-2 text-xs text-white">{activeFiltersCount}</span>
                 )}
-              </Button>
+              </button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-80 bg-white">
+            <SheetContent side="left" className="w-80 bg-stone-100">
               <SheetHeader>
-                <SheetTitle>{t('filters.title')}</SheetTitle>
-                <SheetDescription>
-                  Arama kriterlerinizi ayarlayın
-                </SheetDescription>
+                <SheetTitle className="font-serif text-2xl font-normal">{t('filters.title')}</SheetTitle>
+                <SheetDescription className="sr-only">{t('filters.title')}</SheetDescription>
               </SheetHeader>
-              <div className="mt-6">
+              <div className="mt-6 px-4">
                 <MobileFilters
                   filters={filters}
                   onMaxPriceChange={handleMaxPriceChange}
@@ -126,82 +124,54 @@ export function DormSearchAndFilters({
             </SheetContent>
           </Sheet>
 
-          {/* Desktop Filters */}
-          <div className="hidden lg:flex items-center gap-3">
-            {/* Max Price Filter */}
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-gray-700">
-                {t('filters.maxPrice')}:
-              </span>
-              <Input
-                type="number"
-                placeholder="€500"
-                value={filters.maxPrice || ''}
-                onChange={(e) => handleMaxPriceChange(e.target.value)}
-                className="w-20 h-8"
-              />
-            </div>
+          <label className="hidden items-center gap-3 lg:flex">
+            <span className="text-sm text-ink-700">{t('filters.maxPrice')}</span>
+            <Input
+              type="number"
+              placeholder="€500"
+              value={filters.maxPrice || ''}
+              onChange={(e) => handleMaxPriceChange(e.target.value)}
+              className={`${fieldInput} w-24 py-1.5 text-base`}
+            />
+          </label>
 
-            {/* Clear Filters */}
-            {activeFiltersCount > 0 && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={clearAllFilters}
-                className="h-8 text-gray-600 hover:text-gray-800"
-              >
-                <X className="w-4 h-4 mr-1" />
-                {t('filters.clearAll')}
-              </Button>
-            )}
-          </div>
+          {activeFiltersCount > 0 && (
+            <button
+              type="button"
+              onClick={clearAllFilters}
+              className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-medium text-ink-700 transition-colors hover:bg-stone-200 hover:text-ink-950"
+            >
+              <X className="h-4 w-4" />
+              {t('filters.clearAll')}
+            </button>
+          )}
         </div>
 
-        {/* Sort */}
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-700 hidden sm:block">
-            {t('sort.label')}:
-          </span>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="hidden text-sm text-ink-700 sm:block">{t('sort.label')}</span>
           <Select value={filters.sortBy} onValueChange={handleSortChange}>
-            <SelectTrigger className="w-48 h-8 bg-white border-gray-300">
+            <SelectTrigger className="h-auto w-56 rounded-full border-ink-950/20 bg-transparent px-4 py-2.5 text-sm font-medium shadow-none">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white">
+            <SelectContent className="rounded-2xl border-0 bg-white p-1 shadow-[0_24px_60px_-20px_rgb(20_17_17/0.35)]">
               <SelectItem value="name">{t('sort.name')}</SelectItem>
               <SelectItem value="price_asc">{t('sort.price_asc')}</SelectItem>
               <SelectItem value="price_desc">{t('sort.price_desc')}</SelectItem>
               <SelectItem value="distance">{t('sort.distance')}</SelectItem>
             </SelectContent>
           </Select>
+          {viewToggle}
         </div>
       </div>
 
-      {/* Active Filters Display */}
-      {filters.maxPrice && (
-        <div className="flex flex-wrap gap-2">
-          {filters.maxPrice && (
-            <Badge variant="secondary" className="text-xs">
-              Max €{filters.maxPrice}
-              <button
-                onClick={() => handleMaxPriceChange('')}
-                className="ml-1 hover:text-red-600"
-              >
-                <X className="w-3 h-3" />
-              </button>
-            </Badge>
-          )}
-        </div>
-      )}
-
-      {/* Results Count */}
-      <div className="text-sm text-gray-600">
+      <p className="text-sm text-ink-500" aria-live="polite">
         {resultsCount === totalCount
           ? t('results.foundResults', {count: totalCount.toString()})
           : t('results.showing', {
               filtered: resultsCount.toString(),
               total: totalCount.toString()
             })}
-      </div>
+      </p>
     </div>
   );
 }
@@ -220,9 +190,8 @@ function MobileFilters({
 }) {
   return (
     <div className="space-y-6">
-      {/* Max Price */}
       <div>
-        <label className="text-sm font-medium text-gray-700 mb-2 block">
+        <label className="mb-2 block text-sm text-ink-700">
           {t('filters.maxPrice')}
         </label>
         <Input
@@ -233,10 +202,9 @@ function MobileFilters({
         />
       </div>
 
-      {/* Clear All */}
-      <Button variant="outline" onClick={onClearAll} className="w-full">
+      <button type="button" onClick={onClearAll} className={pillClass('outline', 'w-full')}>
         {t('filters.clearAll')}
-      </Button>
+      </button>
     </div>
   );
 }

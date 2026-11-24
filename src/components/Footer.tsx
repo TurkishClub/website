@@ -34,7 +34,7 @@ export default function Footer() {
               <br />
               Club
               <br />
-              <span className="text-white/60">München</span>
+              <span className="text-white/60">Munich</span>
             </p>
             <p className="mt-8 max-w-sm font-serif text-2xl leading-snug">{tf('tagline')}</p>
             <p className="mt-4 text-sm text-white/70">{tf('city')}</p>
@@ -72,13 +72,13 @@ export default function Footer() {
             {SOCIALS.map((s) => (
               <li key={s.href}>
                 <a href={s.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  {s.label} <span aria-hidden>→</span>
+                  {s.label}
                 </a>
               </li>
             ))}
           </ul>
           <p className="text-sm text-white/60">
-            © {year} Turkish Club München. {tf('rights')}
+            © {year} Turkish Club Munich. {tf('rights')}
           </p>
         </div>
       </div>

@@ -1,12 +1,11 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import {useMap} from 'react-leaflet';
 import {useTranslations} from 'next-intl';
 import dynamic from 'next/dynamic';
-import {Button} from '@/components/ui/button';
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
-import {Badge} from '@/components/ui/badge';
-import {MapPin, Navigation, ExternalLink} from 'lucide-react';
+import {MapPin, Navigation} from 'lucide-react';
+import {pillClass} from '@/components/home/Pill';
 import {Dorm} from '@/data/dorms';
 import L from 'leaflet';
 
@@ -41,6 +40,26 @@ const ZoomControl = dynamic(
   () => import('react-leaflet').then((mod) => mod.ZoomControl),
   {ssr: false}
 );
+
+const defaultIcon = new L.Icon.Default();
+
+// The selected dorm gets a cardinal pin.
+const selectedIcon = L.divIcon({
+  className: '',
+  html: '<svg width="30" height="42" viewBox="0 0 30 42" xmlns="http://www.w3.org/2000/svg"><path d="M15 0C6.7 0 0 6.7 0 15c0 11.2 15 27 15 27s15-15.8 15-27C30 6.7 23.3 0 15 0z" fill="#8b1a1a"/><circle cx="15" cy="15" r="5.5" fill="#fff"/></svg>',
+  iconSize: [30, 42],
+  iconAnchor: [15, 42]
+});
+
+/** Pans and zooms to the selected dorm whenever it changes. */
+function FocusSelected({dorm}: {dorm?: Dorm | null}) {
+  const map = useMap();
+  useEffect(() => {
+    if (!dorm) return;
+    map.flyTo([dorm.coordinates.lat, dorm.coordinates.lng], Math.max(map.getZoom(), 14), {duration: 0.6});
+  }, [dorm, map]);
+  return null;
+}
 
 interface DormMapProps {
   dorms: Dorm[];
@@ -86,45 +105,38 @@ export function DormMapLeaflet({
   // Don't render the map on the server
   if (!isMounted) {
     return (
-      <div className="h-full flex flex-col bg-white rounded-lg overflow-hidden">
-        <div className="p-4 bg-white border-b">
-          <h3 className="text-lg font-semibold text-gray-900">
+      <div className="flex flex-col overflow-hidden bg-white">
+        <div className="border-b border-ink-950/15 p-5">
+          <h3 className="font-serif text-2xl font-normal">
             {t('map.title')}
           </h3>
-          <p className="text-sm text-gray-600 mt-1">Harita yükleniyor...</p>
+          <p className="mt-1 text-sm text-ink-500">{t('map.loading')}</p>
         </div>
-        <div className="flex-1 bg-gray-100 flex items-center justify-center">
-          <div className="text-gray-500">Harita yükleniyor...</div>
+        <div className="flex h-[360px] items-center justify-center bg-stone-200">
+          <div className="text-ink-500">{t('map.loading')}</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="h-full flex flex-col bg-white rounded-lg overflow-hidden">
-      {/* Map Header */}
-      <div className="p-4 bg-white border-b flex items-center justify-between">
+    <div className="flex flex-col overflow-hidden bg-white">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ink-950/15 p-5">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">
+          <h3 className="font-serif text-2xl font-normal">
             {t('map.title')}
           </h3>
-          <p className="text-sm text-gray-600 mt-1">
-            {dorms.length} yurt konumu gösteriliyor
+          <p className="mt-1 text-sm text-ink-500">
+            {t('map.showingLocations', {count: String(dorms.length)})}
           </p>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={openAllInGoogleMaps}
-          className="flex items-center gap-2"
-        >
-          <ExternalLink className="w-4 h-4" />
+        <button type="button" onClick={openAllInGoogleMaps} className={pillClass('outline', 'whitespace-nowrap px-5 py-2.5')}>
           Google Maps&apos;te Aç
-        </Button>
+          <span aria-hidden>↗</span>
+        </button>
       </div>
 
-      {/* Leaflet Map */}
-      <div className="flex-1 relative">
+      <div className="relative h-[60svh] min-h-[360px] md:h-[560px]">
         <MapContainer
           center={[48.1351, 11.582]} // Munich center
           zoom={11}
@@ -137,11 +149,14 @@ export function DormMapLeaflet({
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <ZoomControl position="bottomright" />
+          <FocusSelected dorm={selectedDorm} />
 
           {dorms.map((dorm) => (
             <Marker
               key={dorm.id}
               position={[dorm.coordinates.lat, dorm.coordinates.lng]}
+              icon={selectedDorm?.id === dorm.id ? selectedIcon : defaultIcon}
+              zIndexOffset={selectedDorm?.id === dorm.id ? 1000 : 0}
               eventHandlers={{
                 click: () => handleDormClick(dorm)
               }}
@@ -150,35 +165,25 @@ export function DormMapLeaflet({
         </MapContainer>
       </div>
 
-      {/* Selected Dorm Info */}
       {selectedDorm && (
-        <div className="p-4 bg-white border-t">
-          <Card className="border-l-4 border-l-[#C61E1E]">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-semibold text-gray-900">
-                {selectedDorm.name}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center gap-2 text-sm">
-                <MapPin className="w-4 h-4 text-gray-500" />
-                <span className="text-gray-700">{selectedDorm.address}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Badge className="bg-[#C61E1E] text-white">
-                    {selectedDorm.rent.type === 'range'
-                      ? `€${selectedDorm.rent.minPrice} - €${selectedDorm.rent.maxPrice}`
-                      : `€${selectedDorm.rent.singlePrice}`}{' '}
-                  </Badge>
-                </div>
-              </div>
+        <div className="flex flex-col gap-4 border-t border-ink-950/15 p-5 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="font-serif text-2xl leading-tight">{selectedDorm.name}</p>
+              <p className="mt-1 font-serif text-xl text-cardinal-700">
+                {selectedDorm.rent.type === 'range'
+                  ? `€${selectedDorm.rent.minPrice} - €${selectedDorm.rent.maxPrice}`
+                  : `€${selectedDorm.rent.singlePrice}`}
+              </p>
+              <p className="mt-2 flex items-center gap-2 text-sm text-ink-700">
+                <MapPin aria-hidden className="h-4 w-4 text-ink-500" />
+                {selectedDorm.address}
+              </p>
+            </div>
 
-              {/* Action Buttons */}
-              <div className="flex gap-2 pt-2">
+              <div className="flex flex-wrap gap-2">
                 {selectedDorm.website && (
-                  <Button
-                    size="sm"
+                  <button
+                    type="button"
                     onClick={() =>
                       window.open(
                         selectedDorm.website,
@@ -186,44 +191,36 @@ export function DormMapLeaflet({
                         'noopener,noreferrer'
                       )
                     }
-                    className="flex-1 bg-[#C61E1E] hover:bg-red-700 text-white text-xs"
+                    className={pillClass('ink', 'px-5 py-2.5')}
                   >
-                    <ExternalLink className="w-3 h-3 mr-1" />
                     {t('map.popup.visitWebsite')}
-                  </Button>
+                    <span aria-hidden>↗</span>
+                  </button>
                 )}
-                <Button
-                  size="sm"
-                  variant="outline"
+                <button
+                  type="button"
                   onClick={() => openInGoogleMaps(selectedDorm)}
-                  className="flex-1 text-xs border-gray-300"
+                  className={pillClass('outline', 'px-5 py-2.5')}
                 >
-                  <Navigation className="w-3 h-3 mr-1" />
+                  <Navigation aria-hidden className="h-4 w-4" />
                   {t('map.popup.getDirections')}
-                </Button>
+                </button>
               </div>
-            </CardContent>
-          </Card>
         </div>
       )}
 
-      {/* Map Legend */}
-      <div className="p-3 bg-gray-50 border-t">
+      <div className="border-t border-ink-950/15 bg-stone-50 px-5 py-3">
         <div className="flex items-center justify-between text-xs">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-blue-600 rounded-full"></div>
-              <span className="text-gray-600">Öğrenci Yurdu</span>
+              <div className="h-3 w-3 rounded-full bg-blue-600"></div>
+              <span className="text-ink-700">Öğrenci Yurdu</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-red-600 rounded-full"></div>
-              <span className="text-gray-600">Seçili Yurt</span>
+              <div className="h-3 w-3 rounded-full bg-cardinal-700"></div>
+              <span className="text-ink-700">Seçili Yurt</span>
             </div>
           </div>
-          <p className="text-gray-500">
-            🗺️ Interaktif Münih haritası - Pin&apos;lere tıklayarak detayları
-            görün
-          </p>
         </div>
       </div>
     </div>

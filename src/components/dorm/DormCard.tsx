@@ -2,16 +2,10 @@
 
 import {useState, memo, useCallback, useMemo} from 'react';
 import {useTranslations} from 'next-intl';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
-import {Button} from '@/components/ui/button';
+import {cn} from '@/lib/utils';
+import {pillClass} from '@/components/home/Pill';
 import {Checkbox} from '@/components/ui/checkbox';
-import {ExternalLink, MapPin, Home} from 'lucide-react';
+import {MapPin} from 'lucide-react';
 import {Dorm} from '@/data/dorms';
 import {Analytics} from '@/lib/analytics';
 
@@ -97,124 +91,87 @@ function DormCardComponent({dorm, onViewOnMap, isSelected = false, onToggleCompa
     }
   }, [onToggleCompare, dorm]);
 
+  const hasLongDescription =
+    (dorm.description && dorm.description.length > 200) ||
+    (!dorm.description && truncatedDescription.length > 200);
+
   return (
-    <Card
-      className={`h-full flex flex-col transition-all duration-300 hover:shadow-lg bg-white relative ring-2 ${
-        isSelected ? 'ring-gray-900' : 'ring-transparent'
-      }`}
+    <article
+      className={cn(
+        'relative flex h-full flex-col bg-white p-6 ring-2 ring-inset transition-shadow duration-200 ease-out-strong md:p-7',
+        isSelected ? 'ring-cardinal-700' : 'ring-transparent'
+      )}
     >
-      {/* Compare Checkbox */}
-      {onToggleCompare && (
-        <div className="absolute top-3 right-3 z-10 w-8 h-8">
-          <div className="w-full h-full flex items-center justify-center rounded-md bg-white/80 hover:bg-gray-100">
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="font-serif text-[1.75rem] font-normal leading-[1.1] tracking-[-0.01em]">{dorm.name}</h3>
+        {onToggleCompare && (
+          <label className="flex shrink-0 cursor-pointer items-center gap-2 rounded-full border border-ink-950/20 px-3 py-1.5 text-xs font-medium text-ink-700 transition-colors hover:border-ink-950">
             <Checkbox
               checked={isSelected}
               onCheckedChange={handleCompareToggle}
-              className="h-4 w-4 bg-white border-2 border-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="h-4 w-4 border-ink-950/40 data-[state=checked]:border-cardinal-700 data-[state=checked]:bg-cardinal-700 data-[state=checked]:text-white"
             />
-          </div>
-        </div>
+            Karşılaştır
+          </label>
+        )}
+      </div>
+
+      <p className="mt-5 font-serif text-[2rem] leading-none tracking-[-0.01em] text-cardinal-700">
+        {priceDisplay} <span className="font-sans text-sm text-ink-500">{t('monthlyPrice')}</span>
+      </p>
+
+      {dorm.address && (
+        <p className="mt-4 flex items-start gap-2 text-sm text-ink-700">
+          <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-ink-500" />
+          {dorm.address}
+        </p>
       )}
 
-      <CardHeader className="pb-2">
-        <div className="flex justify-between items-start gap-3">
-          <div className="flex-1 pr-8">
-            <CardTitle className="text-lg font-bold text-gray-900 leading-tight mb-1">
-              {dorm.name}
-            </CardTitle>
-          </div>
-        </div>
-      </CardHeader>
-
-      <CardContent className="flex-1 space-y-3 pb-2">
-        {/* Price */}
-        <div className="flex items-center justify-between">
-          <div className="text-right">
-            <div className="text-lg font-bold text-black">
-              {priceDisplay}{' '}
-              <span className="text-sm text-gray-500 font-normal">
-                {t('monthlyPrice')}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Address */}
-        {dorm.address && (
-          <div className="flex items-start gap-2">
-            <MapPin className="w-4 h-4 text-gray-500 mt-0.5 flex-shrink-0" />
-            <span className="text-sm text-gray-700">{dorm.address}</span>
-          </div>
-        )}
-
-        {/* University Distances */}
-        <div className="flex gap-4 text-xs">
-          <div className="flex items-center gap-1">
-            <Home className="w-3 h-3 text-[#C61E1E]" />
-            <span className="font-medium">{t('university.gfz')}:</span>
-            <span>
-              {dorm.distanceToGFZ} {t('university.minutes')}
-            </span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Home className="w-3 h-3 text-green-500" />
-            <span className="font-medium">{t('university.mainCampus')}:</span>
-            <span>
-              {dorm.distanceToMainCampus} {t('university.minutes')}
-            </span>
-          </div>
-        </div>
-
-     
-        {/* Description */}
+      <dl className="mt-5 grid grid-cols-2 border-y border-ink-950/15 py-3 text-sm">
         <div>
-          <h4 className="text-sm font-semibold text-gray-800 mb-2">Açıklama</h4>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            {showFullDescription
-              ? dorm.description && dorm.description.trim() !== ''
-                ? dorm.description
-                : truncatedDescription
-              : truncatedDescription}
-          </p>
-          {((dorm.description && dorm.description.length > 200) ||
-            (!dorm.description && truncatedDescription.length > 200)) && (
-            <button
-              onClick={toggleDescription}
-              className="text-[#C61E1E] hover:text-red-700 text-sm font-medium mt-1"
-            >
-              {showFullDescription ? t('showLess') : t('readMore')}
-            </button>
-          )}
+          <dt className="text-xs text-ink-500">{t('university.gfz')}</dt>
+          <dd className="mt-1 font-medium">
+            {dorm.distanceToGFZ} {t('university.minutes')}
+          </dd>
         </div>
-      </CardContent>
+        <div className="border-l border-ink-950/15 pl-4">
+          <dt className="text-xs text-ink-500">{t('university.mainCampus')}</dt>
+          <dd className="mt-1 font-medium">
+            {dorm.distanceToMainCampus} {t('university.minutes')}
+          </dd>
+        </div>
+      </dl>
 
-      <CardFooter className="pt-2">
-        <div
-          className={`grid gap-2 w-full ${dorm.website ? 'grid-cols-2' : 'grid-cols-1'}`}
-        >
-          {dorm.website && (
-            <Button
-              onClick={handleWebsiteClick}
-              className="bg-[#C61E1E] hover:bg-red-700 text-white text-xs py-1.5 h-auto"
-              size="sm"
-            >
-              <ExternalLink className="w-3 h-3 mr-1.5 flex-shrink-0" />
-              <span className="truncate">{t('visitWebsite')}</span>
-            </Button>
-          )}
-
-          <Button
-            onClick={handleViewOnMap}
-            variant="outline"
-            size="sm"
-            className="w-full border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1.5 h-auto"
+      <div className="mt-5 flex-1">
+        <p className="leading-relaxed text-ink-700">
+          {showFullDescription && dorm.description && dorm.description.trim() !== ''
+            ? dorm.description
+            : truncatedDescription}
+        </p>
+        {hasLongDescription && (
+          <button
+            type="button"
+            onClick={toggleDescription}
+            className="mt-2 text-sm font-medium text-cardinal-700 underline-offset-4 hover:underline"
           >
-            <MapPin className="w-3 h-3 mr-1.5 flex-shrink-0" />
-            <span className="truncate">{t('viewOnMap')}</span>
-          </Button>
-        </div>
-      </CardFooter>
-    </Card>
+            {showFullDescription ? t('showLess') : t('readMore')}
+          </button>
+        )}
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        {dorm.website && (
+          <button type="button" onClick={handleWebsiteClick} className={pillClass('ink', 'px-5 py-2.5')}>
+            {t('visitWebsite')}
+            <span aria-hidden>↗</span>
+          </button>
+        )}
+        <button type="button" onClick={handleViewOnMap} className={pillClass('outline', 'px-5 py-2.5')}>
+          <MapPin aria-hidden className="h-4 w-4" />
+          {t('viewOnMap')}
+        </button>
+      </div>
+    </article>
   );
 }
 
@@ -224,34 +181,16 @@ export const DormCard = memo(DormCardComponent);
 // Loading skeleton component
 export function DormCardSkeleton() {
   return (
-    <Card className="h-full flex flex-col bg-white">
-      <CardHeader className="pb-2">
-        <div className="flex justify-between items-start gap-3">
-          <div className="flex-1">
-            <div className="h-5 bg-gray-200 rounded animate-pulse mb-2" />
-            <div className="h-4 bg-gray-100 rounded animate-pulse w-2/3" />
-          </div>
-        </div>
-      </CardHeader>
-
-      <CardContent className="flex-1 space-y-3 pb-2">
-        <div className="h-6 bg-gray-200 rounded animate-pulse w-1/2" />
-        <div className="h-4 bg-gray-100 rounded animate-pulse" />
-        <div className="h-4 bg-gray-100 rounded animate-pulse w-3/4" />
-        <div className="flex gap-2">
-          <div className="h-6 bg-gray-100 rounded animate-pulse w-16" />
-          <div className="h-6 bg-gray-100 rounded animate-pulse w-20" />
-          <div className="h-6 bg-gray-100 rounded animate-pulse w-18" />
-        </div>
-        <div className="h-16 bg-gray-100 rounded animate-pulse" />
-      </CardContent>
-
-      <CardFooter className="pt-2">
-        <div className="grid grid-cols-2 gap-2 w-full">
-          <div className="h-8 bg-gray-200 rounded animate-pulse" />
-          <div className="h-8 bg-gray-100 rounded animate-pulse" />
-        </div>
-      </CardFooter>
-    </Card>
+    <div className="flex h-full flex-col gap-4 bg-white p-6 md:p-7" aria-hidden>
+      <div className="h-7 w-3/4 animate-pulse bg-stone-200" />
+      <div className="h-8 w-1/2 animate-pulse bg-stone-200" />
+      <div className="h-4 w-2/3 animate-pulse bg-stone-100" />
+      <div className="h-14 animate-pulse bg-stone-100" />
+      <div className="h-16 animate-pulse bg-stone-100" />
+      <div className="flex gap-2">
+        <div className="h-10 w-36 animate-pulse rounded-full bg-stone-200" />
+        <div className="h-10 w-32 animate-pulse rounded-full bg-stone-100" />
+      </div>
+    </div>
   );
 }

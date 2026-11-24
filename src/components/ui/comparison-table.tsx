@@ -24,18 +24,18 @@ export function ComparisonTable<T extends ComparisonItem>({
   onRemoveItem
 }: ComparisonTableProps<T>) {
   return (
-    <div className="p-6">
+    <div className="p-6 md:p-8">
       <div className="overflow-x-auto">
-        <table className="w-full bg-white">
+        <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-200">
-              <th className="text-left py-3 px-4 font-medium text-gray-900 bg-gray-50">Özellik</th>
+            <tr className="border-b border-ink-950/30">
+              <th className="px-4 py-4 text-left text-sm font-normal text-ink-500">Özellik</th>
               {items.map(item => (
-                <th key={item.id} className="text-left py-3 px-4 min-w-[200px] bg-gray-50">
+                <th key={item.id} className="min-w-[200px] px-4 py-4 text-left">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="font-bold text-gray-900">{item.name}</div>
-                      <div className="text-xs text-gray-600 font-normal mt-1">
+                      <div className="font-serif text-xl font-normal leading-tight">{item.name}</div>
+                      <div className="mt-1 text-xs font-normal text-ink-500">
                         {item.address?.split(',')[0]}
                       </div>
                     </div>
@@ -43,7 +43,7 @@ export function ComparisonTable<T extends ComparisonItem>({
                       onClick={() => onRemoveItem(item.id)}
                       variant="ghost"
                       size="sm"
-                      className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                      className="rounded-full text-ink-500 hover:bg-stone-200 hover:text-cardinal-700"
                     >
                       <X className="w-4 h-4" />
                     </Button>
@@ -52,15 +52,15 @@ export function ComparisonTable<T extends ComparisonItem>({
               ))}
             </tr>
           </thead>
-          <tbody className="bg-white">
+          <tbody>
             {rows.map((row, index) => (
-              <tr key={row.key} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
-                <td className="py-4 px-4 font-medium text-gray-800 bg-gray-100">{row.label}</td>
+              <tr key={row.key} className={`border-b border-ink-950/15 ${index % 2 === 0 ? 'bg-white' : ''}`}>
+                <td className="px-4 py-5 text-sm font-medium text-ink-700">{row.label}</td>
                 {items.map(item => {
                   const isHighlighted = row.highlight ? row.highlight(items)(item) : false;
                   return (
-                    <td key={item.id} className="py-4 px-4">
-                      <div className={isHighlighted ? 'text-green-600 font-medium' : 'text-gray-900'}>
+                    <td key={item.id} className="px-4 py-5">
+                      <div className={isHighlighted ? 'font-medium text-cardinal-700' : 'text-ink-950'}>
                         {row.render(item)}
                       </div>
                     </td>

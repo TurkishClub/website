@@ -54,13 +54,8 @@
       "question": "Türk Kulübü'nde ne görmek istersiniz?"
     },
     "statement": {
-      "label": "Biz kimiz",
       "text": "Öğrenciler tarafından, öğrenciler için: farklı bölümler, şehirler ve şiveler; ortak tek bir dilek, Münih'i biraz daha ev gibi hissettirmek.",
       "cta": "Ekibimizle tanış"
-    },
-    "banner": {
-      "text": "Yeni bir ülkede başlamak birlikte daha kolay. Etkinlikleri düzenliyor, öğrendiklerimizi paylaşıyor ve katılmak isteyen herkese kapımızı açık tutuyoruz.",
-      "cta": "Instagram'da takip et"
     },
     "featured": {
       "label": "Öne çıkanlar",
@@ -77,22 +72,16 @@
       "seconds": "Sn",
       "calendar": "Tüm takvim"
     },
-    "faq": {
-      "label": "Sorular"
-    },
     "join": {
-      "giant": "Bize katıl.",
+      "giant": "İletişime geç.",
       "text": "Soruların, fikirlerin, iş birliği teklifin varsa ya da sadece yardım etmek istiyorsan bize yaz. Her mesajı okuyoruz."
     },
     "footer": {
       "tagline": "Münih'te herkes için bir yuva.",
-      "city": "München, Almanya",
+      "city": "Münih, Almanya",
       "involved": "Katıl",
       "touch": "İletişimde kal",
       "rights": "Tüm hakları saklıdır."
-    },
-    "explore": {
-      "label": "Keşfet"
     }
   },
   "HomeLists": {
@@ -231,7 +220,9 @@
       "showing": "{total} yurttan {filtered} tanesi gösteriliyor",
       "noResults": "Arama kriterlerinize uygun yurt bulunamadı.",
       "foundResults": "{count} yurt bulundu",
-      "adjustFilters": "Arama kriterlerinizi değiştirmeyi deneyin."
+      "adjustFilters": "Arama kriterlerinizi değiştirmeyi deneyin.",
+      "loadMore": "Daha fazla göster ({count} kaldı)",
+      "loading": "Yükleniyor…"
     },
     "comparison": {
       "maxLimit": "Maksimum 4 yurt seçebilirsiniz"

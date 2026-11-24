@@ -54,13 +54,8 @@
       "question": "What would you like to see in the Turkish Club?"
     },
     "statement": {
-      "label": "Who we are",
       "text": "We are run by students, for students: different disciplines, cities and accents, sharing one wish, to make Munich feel a little more like home.",
       "cta": "Meet our team"
-    },
-    "banner": {
-      "text": "Moving to a new country is easier together. We organise the events, share what we have learned and keep the door open for anyone who wants to join.",
-      "cta": "Follow us on Instagram"
     },
     "featured": {
       "label": "Highlights",
@@ -77,22 +72,16 @@
       "seconds": "Sec",
       "calendar": "Full calendar"
     },
-    "faq": {
-      "label": "Questions"
-    },
     "join": {
-      "giant": "Join us.",
+      "giant": "Get in touch.",
       "text": "Questions, ideas, partnerships, or you simply want to help out. Write to us, we read every message."
     },
     "footer": {
       "tagline": "A home in Munich for everyone.",
-      "city": "München, Germany",
+      "city": "Munich, Germany",
       "involved": "Get involved",
       "touch": "Stay in touch",
       "rights": "All rights reserved."
-    },
-    "explore": {
-      "label": "Explore"
     }
   },
   "HomeLists": {
@@ -231,7 +220,9 @@
       "showing": "Showing {filtered} of {total} dorms",
       "noResults": "No dorms found matching your search criteria.",
       "foundResults": "{count} dorms found",
-      "adjustFilters": "Try adjusting your search criteria."
+      "adjustFilters": "Try adjusting your search criteria.",
+      "loadMore": "Load more ({count} left)",
+      "loading": "Loading…"
     },
     "comparison": {
       "maxLimit": "You can select a maximum of 4 dorms"

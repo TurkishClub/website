@@ -55,15 +55,14 @@ function ComparisonModalComponent<T extends ComparisonItem>({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={handleBackdropClick}>
-      <div className="bg-white rounded-lg max-w-7xl w-full max-h-[95vh] overflow-hidden flex flex-col">
-        {/* Header */}
-        <div className="bg-white border-b p-6 flex items-center justify-between flex-shrink-0">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/60 p-4" onClick={handleBackdropClick}>
+      <div className="flex max-h-[95vh] w-full max-w-7xl flex-col overflow-hidden bg-stone-50 text-ink-950">
+        <div className="flex flex-shrink-0 items-center justify-between gap-4 bg-maroon-950 p-6 text-white md:px-8">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal leading-tight">
               {title}
             </h2>
-            <p className="text-gray-600 text-sm mt-1">
+            <p className="mt-2 text-sm text-white/60">
               {items.length} {itemLabel} karşılaştırılıyor
             </p>
           </div>
@@ -73,29 +72,28 @@ function ComparisonModalComponent<T extends ComparisonItem>({
                 onClick={onAddMore}
                 variant="outline"
                 size="sm"
-                className="flex items-center gap-2 text-gray-700 border-gray-300 hover:bg-gray-50"
+                className="flex items-center gap-2 rounded-full border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
                 <Plus className="w-4 h-4" />
                 {itemLabel.charAt(0).toUpperCase() + itemLabel.slice(1)} Ekle
               </Button>
             )}
-            <Button onClick={onClose} variant="ghost" size="sm" className="text-gray-500 hover:text-gray-700">
+            <Button onClick={onClose} variant="ghost" size="sm" className="rounded-full text-white/70 hover:bg-white/10 hover:text-white">
               <X className="w-5 h-5" />
             </Button>
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="bg-gray-50 px-6 py-3 border-b flex-shrink-0">
+        <div className="flex-shrink-0 border-b border-ink-950/15 px-6 py-3 md:px-8">
           <div className="flex gap-1">
             {tabs.map(tab => (
               <button
                 key={tab.key}
                 onClick={() => setSelectedTab(tab.key)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-[background-color,color,transform] duration-160 ease-out-strong active:scale-[0.97] ${
                   selectedTab === tab.key
-                    ? 'bg-[#C61E1E] text-white'
-                    : 'text-gray-700 hover:text-gray-900 hover:bg-white'
+                    ? 'bg-ink-950 text-white'
+                    : 'text-ink-700 hover:bg-stone-200'
                 }`}
               >
                 {tab.label}
@@ -104,7 +102,6 @@ function ComparisonModalComponent<T extends ComparisonItem>({
           </div>
         </div>
 
-        {/* Content */}
         <div className="flex-1 overflow-y-auto">
           {currentTab?.content}
         </div>

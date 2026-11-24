@@ -1,9 +1,10 @@
 'use client';
 
-import {useState, useMemo, useEffect, useCallback} from 'react';
+import {useState, useMemo, useEffect, useCallback, useRef} from 'react';
 import {useTranslations} from 'next-intl';
 import {Map, LayoutGrid} from 'lucide-react';
-import {Button} from '@/components/ui/button';
+import {cn} from '@/lib/utils';
+import {Pill, pillClass} from '@/components/home/Pill';
 import {DormCard, DormCardSkeleton} from '@/components/dorm/DormCard';
 import {DormComparison} from '@/components/dorm/DormComparison';
 import {CompareFloatingButton} from '@/components/ui/compare-floating-button';
@@ -24,8 +25,8 @@ const DormMapLeaflet = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-full flex items-center justify-center bg-gray-100">
-        <div className="text-gray-500">Harita yükleniyor...</div>
+      <div className="flex h-[360px] items-center justify-center bg-stone-200">
+        <div className="text-ink-500">…</div>
       </div>
     )
   }
@@ -123,9 +124,13 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
     return filtered;
   }, [dorms, filters]);
 
+  const resultsRef = useRef<HTMLDivElement>(null);
+
   const handleViewOnMap = useCallback((dorm: Dorm) => {
     setSelectedDorm(dorm);
     setViewMode('map');
+    // The grid collapses when the map replaces it, so bring the map into view.
+    requestAnimationFrame(() => resultsRef.current?.scrollIntoView({block: 'start'}));
 
     // Track view on map action
     Analytics.trackDormSearch({
@@ -218,184 +223,123 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
   const visibleDorms = filteredAndSortedDorms.slice(0, visibleCount);
   const hasMore = visibleCount < filteredAndSortedDorms.length;
 
+  const suggestHref = `mailto:contact@turkishclub-munich.com?subject=${encodeURIComponent(
+    'Yurt Önerisi - Turkish Club Munich'
+  )}&body=${encodeURIComponent(
+    "Merhaba,\n\nMünih'te bulunan Turkish Club'ın yurt arama sayfası için bir yurt önerisi göndermek istiyorum.\n\nYurt Bilgileri:\n- Yurt Adı: \n- Adres: \n- Website: \n- Kira Aralığı: \n- Özellikler: \n- Başvuru Yöntemi: \n- Açıklama: \n\nTeşekkürler!"
+  )}`;
+
+  const setView = (mode: 'grid' | 'map') => {
+    setViewMode(mode);
+    Analytics.trackDormSearch({action: 'view_mode_change', view_mode: mode});
+  };
+
+  const viewButton = (active: boolean) =>
+    cn(
+      'flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-[background-color,color,transform] duration-160 ease-out-strong active:scale-[0.97]',
+      active ? 'bg-ink-950 text-white' : 'text-ink-700 hover:bg-stone-200'
+    );
+
   return (
-    <main className="bg-[#C61E1E] min-h-screen text-white">
-      <Navbar />
-
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-16 px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">{t('title')}</h1>
-        {/* Suggest Dorm Button */}
-        <div className="text-center">
-          <p className="text-gray-200 mb-4 text-lg">
-            {t('suggestDorm.description')}
-          </p>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => {
-              const subject = encodeURIComponent(
-                'Yurt Önerisi - Turkish Club Munich'
-              );
-              const body = encodeURIComponent(
-                "Merhaba,\n\nMünih'te bulunan Turkish Club'ın yurt arama sayfası için bir yurt önerisi göndermek istiyorum.\n\nYurt Bilgileri:\n- Yurt Adı: \n- Adres: \n- Website: \n- Kira Aralığı: \n- Özellikler: \n- Başvuru Yöntemi: \n- Açıklama: \n\nTeşekkürler!"
-              );
-              window.location.href = `mailto:contact@turkishclub-munich.com?subject=${subject}&body=${body}`;
-            }}
-            className="bg-white text-[#C61E1E] hover:bg-gray-100 border-white hover:border-gray-100"
-          >
-            {t('suggestDorm.button')}
-          </Button>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <div className="bg-gray-50 min-h-screen text-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Search and Filters */}
-          <div className="mb-8">
-            <DormSearchAndFilters
-              filters={filters}
-              onFiltersChange={handleFiltersChange}
-              resultsCount={filteredAndSortedDorms.length}
-              totalCount={dorms.length}
-            />
-          </div>
-
-          {/* View Toggle */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-2 bg-white rounded-lg p-1 border shadow-sm">
-              <Button
-                variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => {
-                  setViewMode('grid');
-                  Analytics.trackDormSearch({
-                    action: 'view_mode_change',
-                    view_mode: 'grid'
-                  });
-                }}
-                className="flex items-center gap-2"
-              >
-                <LayoutGrid className="w-4 h-4" />
-                <span className="hidden sm:inline">Grid</span>
-              </Button>
-              <Button
-                variant={viewMode === 'map' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => {
-                  setViewMode('map');
-                  Analytics.trackDormSearch({
-                    action: 'view_mode_change',
-                    view_mode: 'map'
-                  });
-                }}
-                className="flex items-center gap-2"
-              >
-                <Map className="w-4 h-4" />
-                <span className="hidden sm:inline">{t('map.showMap')}</span>
-              </Button>
+    <main className="min-h-screen bg-stone-100 text-ink-950">
+      <div className="bg-maroon-950">
+        <Navbar tone="dark" />
+        <section className="text-white">
+          <div className="mx-auto flex max-w-[90rem] flex-col gap-10 px-4 pb-12 pt-14 md:px-6 md:pb-14 md:pt-20 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <h1 className="font-serif text-[clamp(3rem,7.5vw,7rem)] font-normal leading-[0.96] tracking-[-0.03em]">
+                {t('title')}
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">{t('description')}</p>
             </div>
-
-            {viewMode === 'map' && (
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setViewMode('grid');
-                  Analytics.trackDormSearch({
-                    action: 'view_mode_change',
-                    view_mode: 'grid'
-                  });
-                }}
-                className="text-sm"
-              >
-                {t('map.showList')}
-              </Button>
-            )}
+            <div className="flex max-w-sm flex-col items-start gap-4 lg:items-end lg:text-right">
+              <p className="text-white/70">{t('suggestDorm.description')}</p>
+              <Pill href={suggestHref} variant="light" arrow="↗">
+                {t('suggestDorm.button')}
+              </Pill>
+            </div>
           </div>
+        </section>
+      </div>
 
-          {/* Content Based on View Mode */}
+      <section className="mx-auto max-w-[90rem] px-4 pb-24 pt-12 md:px-6 md:pb-32 md:pt-16">
+        <DormSearchAndFilters
+          filters={filters}
+          onFiltersChange={handleFiltersChange}
+          resultsCount={filteredAndSortedDorms.length}
+          totalCount={dorms.length}
+          viewToggle={
+            <div className="flex items-center gap-1 rounded-full border border-ink-950/20 p-1">
+              <button type="button" aria-pressed={viewMode === 'grid'} onClick={() => setView('grid')} className={viewButton(viewMode === 'grid')}>
+                <LayoutGrid className="h-4 w-4" />
+                <span className="hidden sm:inline">{t('map.showList')}</span>
+              </button>
+              <button type="button" aria-pressed={viewMode === 'map'} onClick={() => setView('map')} className={viewButton(viewMode === 'map')}>
+                <Map className="h-4 w-4" />
+                <span className="hidden sm:inline">{t('map.showMap')}</span>
+              </button>
+            </div>
+          }
+        />
+
+        <div ref={resultsRef} className="mt-8 scroll-mt-4 border-t border-ink-950/30 pt-8">
           {viewMode === 'map' ? (
-            <div className="h-[600px] bg-white rounded-lg shadow-sm border">
+            <div className="overflow-hidden border border-ink-950/15 bg-white">
               <DormMapLeaflet
                 dorms={filteredAndSortedDorms}
                 selectedDorm={selectedDorm}
                 onDormSelect={handleMapDormSelect}
               />
             </div>
+          ) : filteredAndSortedDorms.length === 0 ? (
+            <div className="flex flex-col items-center bg-white px-6 py-20 text-center">
+              <h2 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] font-normal leading-tight">
+                {t('results.noResults')}
+              </h2>
+              <p className="mt-3 text-lg text-ink-700">{t('results.adjustFilters')}</p>
+              <button
+                type="button"
+                onClick={() => setFilters({searchQuery: '', maxPrice: null, sortBy: 'name'})}
+                className={pillClass('outline', 'mt-8')}
+              >
+                {t('filters.clearAll')}
+              </button>
+            </div>
           ) : (
-            <div className="space-y-6">
-              {filteredAndSortedDorms.length === 0 ? (
-                <div className="text-center py-12 bg-white rounded-lg border shadow-sm">
-                  <div className="text-gray-500 mb-4">
-                    <Map className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {t('results.noResults')}
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    {t('results.adjustFilters')}
-                  </p>
-                  <Button
-                    variant="outline"
-                    onClick={() =>
-                      setFilters({
-                        searchQuery: '',
-                        maxPrice: null,
-                        sortBy: 'name'
-                      })
-                    }
-                  >
-                    {t('filters.clearAll')}
-                  </Button>
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {visibleDorms.map((dorm: Dorm) => (
-                      <div key={dorm.id} id={`dorm-${dorm.id}`}>
-                        <DormCard 
-                          dorm={dorm} 
-                          onViewOnMap={handleViewOnMap}
-                          isSelected={comparedDorms.some(d => d.id === dorm.id)}
-                          onToggleCompare={handleToggleCompare}
-                        />
-                      </div>
-                    ))}
+            <>
+              <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {visibleDorms.map((dorm: Dorm) => (
+                  <li key={dorm.id} id={`dorm-${dorm.id}`}>
+                    <DormCard
+                      dorm={dorm}
+                      onViewOnMap={handleViewOnMap}
+                      isSelected={comparedDorms.some((d) => d.id === dorm.id)}
+                      onToggleCompare={handleToggleCompare}
+                    />
+                  </li>
+                ))}
+                {isLoading &&
+                  Array.from({length: 3}).map((_, index) => (
+                    <li key={`skeleton-${index}`}>
+                      <DormCardSkeleton />
+                    </li>
+                  ))}
+              </ul>
 
-                    {/* Loading skeletons */}
-                    {isLoading &&
-                      Array.from({length: 6}).map((_, index) => (
-                        <div key={`skeleton-${index}`}>
-                          <DormCardSkeleton />
-                        </div>
-                      ))}
-                  </div>
-
-                  {/* Load More Button */}
-                  {hasMore && (
-                    <div className="flex justify-center pt-6">
-                      <Button
-                        onClick={loadMore}
-                        disabled={isLoading}
-                        variant="outline"
-                        size="lg"
-                        className="bg-white text-gray-900 hover:bg-gray-50"
-                      >
-                        {isLoading
-                          ? 'Loading...'
-                          : `Load More (${filteredAndSortedDorms.length - visibleCount} remaining)`}
-                      </Button>
-                    </div>
-                  )}
+              {hasMore && (
+                <div className="flex justify-center pt-12">
+                  <button type="button" onClick={loadMore} disabled={isLoading} className={pillClass('outline')}>
+                    {isLoading
+                      ? t('results.loading')
+                      : t('results.loadMore', {count: String(filteredAndSortedDorms.length - visibleCount)})}
+                  </button>
                 </div>
               )}
-            </div>
+            </>
           )}
         </div>
-      </div>
+      </section>
 
-      {/* Compare Floating Button */}
       <CompareFloatingButton
         compareCount={comparedDorms.length}
         itemLabel="yurt"
@@ -403,7 +347,6 @@ export function DormSearchPage({dorms}: {dorms: Dorm[]}) {
         onClearComparison={handleClearComparison}
       />
 
-      {/* Comparison Modal */}
       {showComparison && comparedDorms.length > 0 && (
         <DormComparison
           comparedDorms={comparedDorms}

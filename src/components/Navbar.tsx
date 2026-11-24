@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Analytics } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
@@ -49,7 +49,7 @@ export function Wordmark({ className, accent = 'text-cardinal-700' }: { classNam
       <br />
       Club
       <br />
-      <span className={accent}>München</span>
+      <span className={accent}>Munich</span>
     </span>
   );
 }
@@ -126,7 +126,7 @@ export default function Navbar({ tone = 'light' }: NavbarProps) {
   return (
     <header className={cn('relative z-40 w-full', dark ? 'bg-maroon-950 text-white' : 'bg-stone-100 text-ink-950')}>
       <div className="mx-auto flex max-w-[90rem] items-start justify-between gap-6 px-4 py-6 md:px-6 md:py-7">
-        <Link href="/" aria-label="Turkish Club München" className="rounded-sm">
+        <Link href="/" aria-label="Turkish Club Munich" className="rounded-sm">
           <Wordmark accent={dark ? 'text-white/55' : 'text-cardinal-700'} />
         </Link>
 
@@ -141,7 +141,7 @@ export default function Navbar({ tone = 'light' }: NavbarProps) {
                   aria-controls={`nav-${group.id}`}
                   onClick={() => setOpenGroup(open ? null : group.id)}
                   className={cn(
-                    'flex items-center gap-1.5 rounded-full px-4 py-1.5 text-lg transition-[background-color,color,transform] duration-160 ease-out-strong active:scale-[0.97]',
+                    'flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.95rem] font-medium transition-[background-color,color,transform] duration-160 ease-out-strong active:scale-[0.97]',
                     open
                       ? dark
                         ? 'bg-white text-maroon-950'
@@ -152,9 +152,10 @@ export default function Navbar({ tone = 'light' }: NavbarProps) {
                   )}
                 >
                   {group.label}
-                  <span aria-hidden className={cn('text-xs transition-transform duration-200 ease-out-strong', open && 'rotate-180')}>
-                    ▾
-                  </span>
+                  <ChevronDown
+                    aria-hidden
+                    className={cn('h-4 w-4 transition-transform duration-200 ease-out-strong', open && 'rotate-180')}
+                  />
                 </button>
                 <AnimatePresence>
                   {open && (
@@ -201,7 +202,7 @@ export default function Navbar({ tone = 'light' }: NavbarProps) {
           })}
           <LocaleSwitcher
             triggerClassName={cn(
-              'rounded-full text-lg font-normal',
+              'h-auto gap-1.5 rounded-full px-4 py-2 text-[0.95rem] font-medium',
               dark ? 'text-white hover:bg-white/10 hover:text-white' : 'text-ink-950 hover:bg-stone-200 hover:text-ink-950'
             )}
             itemClassName="bg-white text-ink-950 hover:bg-stone-100 shadow-none"

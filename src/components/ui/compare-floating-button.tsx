@@ -1,8 +1,7 @@
 'use client';
 
 import {memo} from 'react';
-import {Eye} from 'lucide-react';
-import {Button} from '@/components/ui/button';
+import {pillClass} from '@/components/home/Pill';
 
 interface CompareFloatingButtonProps {
   compareCount: number;
@@ -25,35 +24,32 @@ function CompareFloatingButtonComponent({
 
   return (
     <div className="fixed bottom-6 right-6 z-40">
-      <div className="bg-white rounded-xl shadow-xl border border-gray-200 p-4 flex items-center gap-4 max-w-sm">
+      <div className="flex max-w-md items-center gap-3 rounded-full bg-ink-950 py-2 pl-6 pr-2 text-white shadow-[0_24px_60px_-20px_rgb(20_17_17/0.5)]">
         <div className="flex items-center gap-3">
           <div>
-            <div className="text-sm font-semibold text-gray-900">
+            <div className="whitespace-nowrap text-sm font-medium">
               {compareCount} {itemLabel} seçildi
             </div>
           </div>
         </div>
         
         <div className="flex items-center gap-2">
-          <Button
-            onClick={onOpenComparison}
-            size="sm"
-            className="bg-[#C61E1E] hover:bg-red-700 text-white text-sm font-medium px-4"
-            disabled={compareCount === 0}
-            >
-            <Eye className="w-4 h-4 mr-2" />
-            Karşılaştır
-          </Button>
-          
-          <Button
+          <button
+            type="button"
             onClick={onClearComparison}
-            size="sm"
-            variant="ghost"
-            className="text-gray-500 hover:text-red-600 hover:bg-red-50"
-            title="Tümünü temizle"
+            className="rounded-full px-3 py-2 text-sm text-white/70 transition-colors hover:text-white"
           >
             Tümünü temizle
-          </Button>
+          </button>
+          <button
+            type="button"
+            onClick={onOpenComparison}
+            disabled={compareCount === 0}
+            className={pillClass('light', 'px-5 py-2.5')}
+          >
+            Karşılaştır
+            <span aria-hidden>→</span>
+          </button>
         </div>
       </div>
     </div>

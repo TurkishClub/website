@@ -47,9 +47,7 @@ export default async function EvAramaPage({
     const dorms = await getAllDorms();
     return (
       <DormSearchClient>
-        <main>
-          <DormSearchPage dorms={dorms} />
-        </main>
+        <DormSearchPage dorms={dorms} />
       </DormSearchClient>
     );
   } catch (error) {
@@ -57,9 +55,7 @@ export default async function EvAramaPage({
     // Return empty array if fetch fails to prevent page crash
     return (
       <DormSearchClient>
-        <main>
-          <DormSearchPage dorms={[]} />
-        </main>
+        <DormSearchPage dorms={[]} />
       </DormSearchClient>
     );
   }
