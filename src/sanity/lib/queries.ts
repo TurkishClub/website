@@ -52,62 +52,6 @@ export const ADJACENT_POSTS_QUERY = defineQuery(`{
 }`);
 
 
-export const STUDY_PLACES_QUERY =
-  defineQuery(`*[_type == "studyPlace"]{
-  _id,
-  name,
-  address,
-  whoCanUse,
-  openingHours,
-  description,
-  restrictions,
-  electricOutlets,
-  electricOutletsPercentage,
-  foodOptions,
-  coordinates,
-  distanceToGFZ,
-  distanceToMainCampus,
-  category,
-  isQuiet,
-  hasWifi,
-  isFree,
-  "images": images[]{
-    asset->{
-      _id,
-      url
-    },
-    alt
-  }
-}`);
-
-export const STUDY_PLACE_QUERY =
-  defineQuery(`*[_type == "studyPlace" && _id == $id][0]{
-  _id,
-  name,
-  address,
-  whoCanUse,
-  openingHours,
-  description,
-  restrictions,
-  electricOutlets,
-  electricOutletsPercentage,
-  foodOptions,
-  coordinates,
-  distanceToGFZ,
-  distanceToMainCampus,
-  category,
-  isQuiet,
-  hasWifi,
-  isFree,
-  "images": images[]{
-    asset->{
-      _id,
-      url
-    },
-    alt
-  }
-}`);
-
 export const DORM_QUERY =
   defineQuery(`*[_type == "dorm" && id == $id][0]{
   _id,
@@ -207,30 +151,4 @@ export const NEXT_EVENT_QUERY =
   embedUrl,
   time,
   location
-}`);
-
-export const PAST_EVENTS_QUERY =
-  defineQuery(`*[_type == "event" && time < now()] | order(time desc){
-  _id,
-  name,
-  embedUrl,
-  time,
-  location,
-  description,
-  "image": image{
-    asset->{
-      _id,
-      url
-    },
-    alt,
-    hotspot
-  },
-  "images": images[]{
-    asset->{
-      _id,
-      url
-    },
-    alt,
-    hotspot
-  }
 }`);

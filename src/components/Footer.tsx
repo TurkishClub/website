@@ -14,14 +14,12 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   const involved = [
-    { href: '/events', label: t('pastEvents') },
     { href: '/team', label: t('team') },
     { href: '/blog', label: t('blog') },
     { href: '/#contact', label: t('contact') }
   ];
   const tools = [
-    { href: '/yurt-arama', label: t('dormSearch') },
-    { href: '/ders-yeri-arama', label: t('studyPlaceSearch') }
+    { href: '/yurt-arama', label: t('dormSearch') }
   ];
 
   const linkClass = 'group inline-flex items-center gap-1.5 text-base hover:underline underline-offset-4';

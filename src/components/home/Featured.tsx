@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useReducedMotion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import type { Highlight } from './types';
 
@@ -47,12 +46,12 @@ export default function Featured({ highlights }: { highlights: Highlight[] }) {
     <section className="bg-white text-ink-950">
       <div className="mx-auto flex max-w-[90rem] items-baseline justify-between px-4 pb-8 pt-24 md:px-6 md:pt-32">
         <h2 className="text-lg font-normal">{t('label')}</h2>
-        <Link href="/events" className="group text-sm font-medium">
+        <a href="https://lu.ma/user/turkishclub" target="_blank" rel="noopener noreferrer" className="group text-sm font-medium">
           {t('all')}{' '}
           <span aria-hidden className="inline-block transition-transform duration-200 ease-out-strong group-hover:translate-x-0.5">
-            →
+            ↗
           </span>
-        </Link>
+        </a>
       </div>
 
       <div className="relative mx-auto max-w-[90rem] pb-24 md:pb-32">

@@ -36,6 +36,16 @@ const config: NextConfig = {
       }
     ]
   },
+  async redirects() {
+    // The past-events page was removed; send old links to the Luma calendar.
+    return [
+      { source: '/events', destination: 'https://lu.ma/user/turkishclub', permanent: false },
+      { source: '/:locale(en|de|tr)/events', destination: 'https://lu.ma/user/turkishclub', permanent: false },
+      // The study-place search was removed; send old links to the home page.
+      { source: '/ders-yeri-arama/:path*', destination: '/', permanent: false },
+      { source: '/:locale(en|de|tr)/ders-yeri-arama/:path*', destination: '/:locale', permanent: false }
+    ];
+  },
   async rewrites() {
     return {
       beforeFiles: [

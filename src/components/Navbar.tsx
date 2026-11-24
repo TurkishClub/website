@@ -81,8 +81,7 @@ export default function Navbar({ tone = 'light' }: NavbarProps) {
       id: 'tools',
       label: t('tools'),
       items: [
-        { href: '/yurt-arama', label: t('dormSearch'), desc: t('dormSearchDesc') },
-        { href: '/ders-yeri-arama', label: t('studyPlaceSearch'), desc: t('studyPlaceSearchDesc') }
+        { href: '/yurt-arama', label: t('dormSearch'), desc: t('dormSearchDesc') }
       ]
     },
     {
@@ -90,9 +89,7 @@ export default function Navbar({ tone = 'light' }: NavbarProps) {
       label: t('pages'),
       items: [
         { href: '/blog', label: t('blog'), desc: t('blogDesc') },
-        { href: '/team', label: t('team'), desc: t('teamDesc') },
-        { href: '/events', label: t('pastEvents'), desc: t('pastEventsDesc') },
-        { href: '/#contact', label: t('contact'), desc: t('contactDesc') }
+        { href: '/team', label: t('team'), desc: t('teamDesc') }
       ]
     }
   ];
