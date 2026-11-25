@@ -23,8 +23,26 @@
     "pathnames": "Pathnames"
   },
   "NotFoundPage": {
-    "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
-    "title": "Page not found"
+    "title": "Bu sayfa burada değil.",
+    "description": "Adres yanlış yazılmış ya da sayfa taşınmış olabilir. Aşağıdaki sayfalardan biriyle devam edebilirsin.",
+    "home": "Ana sayfaya dön",
+    "links": [
+      {
+        "title": "Yurt Arama",
+        "description": "Münih'teki öğrenci yurtlarını karşılaştır.",
+        "href": "/yurt-arama"
+      },
+      {
+        "title": "Blog",
+        "description": "Münih'te yaşam üzerine yazılar ve rehberler.",
+        "href": "/blog"
+      },
+      {
+        "title": "Ekip",
+        "description": "Kulübü kimin yürüttüğünü gör, ekibe katıl.",
+        "href": "/team"
+      }
+    ]
   },
   "PageLayout": {
     "links": {

@@ -23,8 +23,26 @@
     "pathnames": "Pathnames"
   },
   "NotFoundPage": {
-    "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
-    "title": "Page not found"
+    "title": "This page isn't here.",
+    "description": "The address may be mistyped or the page may have moved. You can carry on from one of these pages.",
+    "home": "Back to home",
+    "links": [
+      {
+        "title": "Dorm search",
+        "description": "Compare student dorms in Munich.",
+        "href": "/yurt-arama"
+      },
+      {
+        "title": "Blog",
+        "description": "Articles and guides on life in Munich.",
+        "href": "/blog"
+      },
+      {
+        "title": "Team",
+        "description": "See who runs the club and join the team.",
+        "href": "/team"
+      }
+    ]
   },
   "PageLayout": {
     "links": {

@@ -23,8 +23,26 @@
     "pathnames": "Pfadnamen"
   },
   "NotFoundPage": {
-    "description": "Bitte überprüfe die Addressleiste deines Browsers oder verwende die Navigation um zu einer bekannten Seite zu wechseln.",
-    "title": "Seite nicht gefunden"
+    "title": "Diese Seite gibt es hier nicht.",
+    "description": "Vielleicht ist die Adresse falsch geschrieben oder die Seite wurde verschoben. Mach mit einer dieser Seiten weiter.",
+    "home": "Zur Startseite",
+    "links": [
+      {
+        "title": "Wohnheimsuche",
+        "description": "Studentenwohnheime in München vergleichen.",
+        "href": "/yurt-arama"
+      },
+      {
+        "title": "Blog",
+        "description": "Artikel und Guides zum Leben in München.",
+        "href": "/blog"
+      },
+      {
+        "title": "Team",
+        "description": "Sieh, wer den Club organisiert, und mach mit.",
+        "href": "/team"
+      }
+    ]
   },
   "PageLayout": {
     "links": {
