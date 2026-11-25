@@ -225,35 +225,77 @@
   },
   "team": {
     "hero": {
-      "title": {
-        "prefix": "Bei Turkish Club"
-      },
-      "animate": {
-        "code": "Programmiere",
-        "blog": "Schreibe Blog",
-        "design": "Designe"
-      },
-      "description": "Hilf uns dabei, die stärkste türkische Gemeinschaft in München aufzubauen. Tritt unserem Team bei und schaffe einen bedeutsamen Einfluss, während du deine Fähigkeiten entwickelst und dich mit großartigen Menschen vernetzt."
+      "title": "Komm ins Team.",
+      "description": "Gemeinsam bauen wir die türkische Community in München aus. Programmiere, schreibe, organisiere Events – und lerne dabei neue Leute kennen.",
+      "cta": "Bewerben"
     },
-    "positions": {
-      "subtitle": "Stellenausschreibungen",
-      "title": "Offene Stellen",
-      "description": "Wir suchen immer nach talentierten Personen, die unserem Team beitreten möchten. Unten sind einige der Positionen, für die wir derzeit rekrutieren."
+    "values": {
+      "title": "Unsere Werte",
+      "intro": "Vier Dinge, die uns zusammenhalten und unsere Arbeit prägen.",
+      "items": [
+        {
+          "title": "Haltung zuerst",
+          "description": "Bei neuen Mitgliedern achten wir vor allem auf Charakter und Haltung."
+        },
+        {
+          "title": "Verantwortung und Vertrauen",
+          "description": "Wir suchen verlässliche Teammitglieder, die Verantwortung für ihre Aufgaben übernehmen."
+        },
+        {
+          "title": "Mach den ersten Schritt",
+          "description": "Wir suchen Leute, die die Initiative ergreifen, um ein Projekt umzusetzen, das sie begeistert."
+        },
+        {
+          "title": "Ziel: besser werden",
+          "description": "Wir suchen Menschen, die sich und ihre Arbeit verbessern wollen und offen für Feedback und Zusammenarbeit sind."
+        }
+      ]
     },
-    "search": {
-      "placeholder": "Positionen suchen..."
+    "teams": {
+      "title": "Unsere Teams",
+      "intro": "Jedes Team organisiert seine Arbeit selbst. Bewirb dich bei dem, das zu dir passt.",
+      "apply": "Bewerben",
+      "items": [
+        {
+          "title": "Software",
+          "description": "Wir entwickeln und betreuen die Website und unsere digitalen Tools.",
+          "tasks": [
+            "Website-Entwicklung",
+            "Content-Infrastruktur"
+          ]
+        },
+        {
+          "title": "Content",
+          "description": "Wir schreiben Artikel, Guides und Blogposts, die die Community verbinden.",
+          "tasks": [
+            "Blog schreiben und redigieren",
+            "Themenrecherche",
+            "Content-Planung"
+          ]
+        },
+        {
+          "title": "Social Media und Design",
+          "description": "Wir betreuen unseren Online-Auftritt und gestalten die Visuals der Marke.",
+          "tasks": [
+            "Grafikdesign und Markenidentität",
+            "Social-Media-Management",
+            "Video- und Fotobearbeitung"
+          ]
+        },
+        {
+          "title": "Events",
+          "description": "Wir organisieren Treffen, kulturelle Feiern und Community-Events.",
+          "tasks": [
+            "Eventplanung und Koordination",
+            "Locations und Logistik",
+            "Community-Treffen und Networking"
+          ]
+        }
+      ]
     },
-    "filter": {
-      "button": "Filtern",
-      "title": "Positionen Filtern",
-      "clearAll": "Alle löschen",
-      "department": "Abteilung",
-      "jobType": "Stellentyp",
-      "location": "Standort"
-    },
-    "results": {
-      "showing": "{filtered} von {total} Positionen werden angezeigt",
-      "noResults": "Keine Positionen gefunden, die Ihren Kriterien entsprechen."
+    "closing": {
+      "text": "Nicht sicher, welches Team zu dir passt? Füll das Formular aus, dann finden wir es gemeinsam heraus.",
+      "cta": "Zum Formular"
     }
   },
   "blog": {

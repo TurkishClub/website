@@ -230,35 +230,77 @@
   },
   "team": {
     "hero": {
-      "title": {
-        "prefix": "Turkish Club'da"
-      },
-      "animate": {
-        "code": "Kodla",
-        "blog": "Blog Yaz",
-        "design": "Tasarım Yap"
-      },
-      "description": "Münih'teki en güçlü Türk topluluğunu kurmamıza yardım edin. Ekibimize katılın ve becerilerinizi geliştirirken anlamlı bir etki yaratın ve harika insanlarla bağlantı kurun."
+      "title": "Ekibe katıl.",
+      "description": "Münih'teki Türk topluluğunu birlikte büyütüyoruz. Kod yaz, içerik üret, etkinlik düzenle; bunu yaparken yeni insanlarla tanış ve kendini geliştir.",
+      "cta": "Başvur"
     },
-    "positions": {
-      "subtitle": "İş ilanları",
-      "title": "Açık Pozisyonlar",
-      "description": "Ekibimize katılacak yetenekli bireyler arıyoruz. Aşağıda şu anda işe aldığımız rollerden bazıları bulunmaktadır."
+    "values": {
+      "title": "Değerlerimiz",
+      "intro": "Bizi bir arada tutan ve çalışmalarımıza yön veren dört şey.",
+      "items": [
+        {
+          "title": "Önce tavır",
+          "description": "Ekibimize katılırken karakter ve tutumu her şeyden önce değerlendiririz."
+        },
+        {
+          "title": "Sorumluluk ve güven",
+          "description": "Görevlerinin sahipliğini alan, güvenilir ekip arkadaşları arıyoruz."
+        },
+        {
+          "title": "İlk adımı sen at",
+          "description": "İlham aldığı bir projeyi hayata geçirmek için inisiyatif alan kişiler istiyoruz."
+        },
+        {
+          "title": "Daha iyisini hedefle",
+          "description": "Kendini ve işinin kalitesini geliştirmek isteyen, geri bildirime ve işbirliğine açık kişiler bekliyoruz."
+        }
+      ]
     },
-    "search": {
-      "placeholder": "Pozisyon ara..."
+    "teams": {
+      "title": "Ekiplerimiz",
+      "intro": "Her ekip kendi işini yürütüyor; hangisi sana uyuyorsa oradan başvur.",
+      "apply": "Başvur",
+      "items": [
+        {
+          "title": "Yazılım",
+          "description": "Web sitesini ve dijital araçlarımızı geliştirip ayakta tutuyoruz.",
+          "tasks": [
+            "Web sitesini geliştirme",
+            "İçerik altyapısı"
+          ]
+        },
+        {
+          "title": "İçerik",
+          "description": "Topluluğu birbirine bağlayan yazılar, rehberler ve blog içerikleri hazırlıyoruz.",
+          "tasks": [
+            "Blog yazarlığı ve editörlük",
+            "Konu araştırması",
+            "İçerik planlama"
+          ]
+        },
+        {
+          "title": "Sosyal medya ve tasarım",
+          "description": "Online varlığımızı yönetiyor, markamızın görsellerini üretiyoruz.",
+          "tasks": [
+            "Grafik tasarım ve marka kimliği",
+            "Sosyal medya yönetimi",
+            "Video ve fotoğraf düzenleme"
+          ]
+        },
+        {
+          "title": "Etkinlik",
+          "description": "Buluşmaları, kültürel kutlamaları ve topluluk etkinliklerini düzenliyoruz.",
+          "tasks": [
+            "Etkinlik planlama ve koordinasyon",
+            "Mekan ve lojistik",
+            "Topluluk buluşmaları ve networking"
+          ]
+        }
+      ]
     },
-    "filter": {
-      "button": "Filtrele",
-      "title": "Pozisyonları Filtrele",
-      "clearAll": "Hepsini temizle",
-      "department": "Departman",
-      "jobType": "İş Türü",
-      "location": "Lokasyon"
-    },
-    "results": {
-      "showing": "{total} pozisyondan {filtered} tanesi gösteriliyor",
-      "noResults": "Kriterlerinize uygun pozisyon bulunamadı."
+    "closing": {
+      "text": "Hangi ekibin sana uyduğundan emin değil misin? Formu doldur, birlikte karar verelim.",
+      "cta": "Başvuru formu"
     }
   },
   "blog": {

@@ -1,137 +1,118 @@
-'use client';
-import React, {useState, useEffect, useMemo} from 'react';
-import {Button} from '@/components/ui/button';
+import {useTranslations} from 'next-intl';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import {Feature} from '@/components/ui/feature-section-with-bento-grid';
-import {motion} from 'framer-motion';
-import {useTranslations} from 'next-intl';
+import {Pill} from '@/components/home/Pill';
 
+const APPLY_URL = 'https://forms.gle/yKSR7oey5Ju8d75j6';
 
-
-const AnimatedHero = () => {
-  const t = useTranslations('team');
-  const [titleNumber, setTitleNumber] = useState(0);
-  const titles = useMemo(
-    () => [
-      t('hero.animate.code'),
-      t('hero.animate.blog'),
-      t('hero.animate.design')
-    ],
-    [t]
-  );
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      if (titleNumber === titles.length - 1) {
-        setTitleNumber(0);
-      } else {
-        setTitleNumber(titleNumber + 1);
-      }
-    }, 2000);
-    return () => clearTimeout(timeoutId);
-  }, [titleNumber, titles]);
-
-  return (
-    <motion.div
-      className="w-full bg-gradient-to-br bg-[#C61E1E] text-white"
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      transition={{duration: 0.8}}
-    >
-      <div className="container mx-auto">
-        <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col relative overflow-hidden">
-          {/* Animated background elements */}
-          <motion.div
-            className="absolute top-10 left-10 w-20 h-20 bg-white opacity-10 rounded-full"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.1, 0.2, 0.1]
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }}
-          />
-          <motion.div
-            className="absolute bottom-20 right-20 w-16 h-16 bg-white opacity-10 rounded-full"
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.1, 0.3, 0.1]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }}
-          />
-
-          <motion.div
-            className="flex gap-4 flex-col"
-            initial={{y: 50, opacity: 0}}
-            animate={{y: 0, opacity: 1}}
-            transition={{duration: 0.8, delay: 0.2}}
-          >
-            <h1 className="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-regular">
-              <span className="text-white">{t('hero.title.prefix')}</span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
-                &nbsp;
-                {titles.map((title, index) => (
-                  <motion.span
-                    key={index}
-                    className="absolute font-semibold text-white"
-                    initial={{opacity: 0, y: '-100'}}
-                    transition={{type: 'spring', stiffness: 50}}
-                    animate={
-                      titleNumber === index
-                        ? {
-                            y: 0,
-                            opacity: 1
-                          }
-                        : {
-                            y: titleNumber > index ? -150 : 150,
-                            opacity: 0
-                          }
-                    }
-                  >
-                    {title}
-                  </motion.span>
-                ))}
-              </span>
-            </h1>
-
-            <motion.p
-              className="text-lg md:text-xl leading-relaxed tracking-tight text-white/90 max-w-3xl text-center"
-              initial={{y: 30, opacity: 0}}
-              animate={{y: 0, opacity: 1}}
-              transition={{duration: 0.8, delay: 0.4}}
-            >
-              {t('hero.description')}
-            </motion.p>
-          </motion.div>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => window.open('https://forms.gle/yKSR7oey5Ju8d75j6', '_blank', 'noopener,noreferrer')}
-            className="bg-white text-[#C61E1E] hover:bg-gray-100 border-white hover:border-gray-100"
-          >
-              Bize Katıl
-     
-          </Button>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+type Value = {title: string; description: string};
+type Team = {title: string; description: string; tasks: string[]};
 
 export default function TeamPageClient() {
+  const t = useTranslations('team');
+  const values = t.raw('values.items') as Value[];
+  const teams = t.raw('teams.items') as Team[];
+
   return (
-    <div className="bg-[#C61E1E] min-h-screen text-white">
-      <Navbar />
-      <AnimatedHero />
-      <Feature />
+    <main className="min-h-screen bg-stone-100 text-ink-950">
+      <div className="bg-maroon-950">
+        <Navbar tone="dark" />
+        <section className="text-white">
+          <div className="mx-auto max-w-[90rem] px-4 pb-16 pt-14 md:px-6 md:pb-24 md:pt-20">
+            <h1 className="font-serif text-[clamp(3rem,7.5vw,7rem)] font-normal leading-[0.96] tracking-[-0.03em]">
+              {t('hero.title')}
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/75 md:text-xl">
+              {t('hero.description')}
+            </p>
+            <Pill href={APPLY_URL} external variant="light" className="mt-10">
+              {t('hero.cta')}
+            </Pill>
+          </div>
+        </section>
+      </div>
+
+      <section>
+        <div className="mx-auto max-w-[90rem] px-4 pb-8 pt-20 md:px-6 md:pt-28">
+          <div className="grid gap-x-6 gap-y-4 md:grid-cols-12">
+            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,4rem)] font-normal leading-[1.05] tracking-[-0.015em] md:col-span-5">
+              {t('values.title')}
+            </h2>
+            <p className="max-w-md text-lg leading-relaxed text-ink-700 md:col-span-7 md:self-end">
+              {t('values.intro')}
+            </p>
+          </div>
+          <ul className="mt-12 md:mt-16">
+            {values.map((item) => (
+              <li
+                key={item.title}
+                className="grid items-baseline gap-x-6 gap-y-2 border-b border-ink-950/30 py-7 first:border-t md:grid-cols-12 md:py-9"
+              >
+                <span className="font-serif text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.1] tracking-[-0.01em] md:col-span-5">
+                  {item.title}
+                </span>
+                <span className="max-w-md text-lg leading-relaxed text-ink-700 md:col-span-7">
+                  {item.description}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-[90rem] px-4 py-20 md:px-6 md:py-28">
+          <div className="grid gap-x-6 gap-y-4 md:grid-cols-12">
+            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,4rem)] font-normal leading-[1.05] tracking-[-0.015em] md:col-span-5">
+              {t('teams.title')}
+            </h2>
+            <p className="max-w-md text-lg leading-relaxed text-ink-700 md:col-span-7 md:self-end">
+              {t('teams.intro')}
+            </p>
+          </div>
+          <ul className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2">
+            {teams.map((team) => (
+              <li key={team.title} className="flex flex-col justify-between gap-10 bg-stone-100 p-6 md:p-10">
+                <div>
+                  <h3 className="font-serif text-[clamp(2rem,3.2vw,3rem)] font-normal leading-[1.05] tracking-[-0.01em]">
+                    {team.title}
+                  </h3>
+                  <p className="mt-4 max-w-lg text-lg leading-relaxed text-ink-700">{team.description}</p>
+                  <ul className="mt-6 border-t border-ink-950/15">
+                    {team.tasks.map((task) => (
+                      <li key={task} className="border-b border-ink-950/15 py-3 text-ink-950">
+                        {task}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <a
+                  href={APPLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="self-start text-sm font-medium underline underline-offset-4 hover:text-cardinal-700"
+                >
+                  {t('teams.apply')}
+                  <span className="sr-only">: {team.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-cardinal-700 text-white">
+        <div className="mx-auto max-w-[90rem] px-4 py-20 md:px-6 md:py-28">
+          <p className="max-w-4xl font-serif text-[clamp(1.75rem,3.4vw,3.1rem)] font-normal leading-[1.18] tracking-[-0.01em]">
+            {t('closing.text')}
+          </p>
+          <Pill href={APPLY_URL} external variant="light" className="mt-10">
+            {t('closing.cta')}
+          </Pill>
+        </div>
+      </section>
+
       <Footer />
-    </div>
+    </main>
   );
 }

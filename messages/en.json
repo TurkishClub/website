@@ -230,35 +230,77 @@
   },
   "team": {
     "hero": {
-      "title": {
-        "prefix": "At Turkish Club"
-      },
-      "animate": {
-        "code": "Code",
-        "blog": "Write Blog",
-        "design": "Design"
-      },
-      "description": "Help us build the strongest Turkish community in Munich. Join our team and make a meaningful impact while developing your skills and connecting with amazing people."
+      "title": "Join the team.",
+      "description": "We're growing Munich's Turkish community together. Write code, create content, run events, and meet new people while you build your skills.",
+      "cta": "Apply"
     },
-    "positions": {
-      "subtitle": "Job openings",
-      "title": "Open Positions",
-      "description": "We are always looking for talented individuals to join our team. Below are some of the roles we are currently hiring for."
+    "values": {
+      "title": "Our values",
+      "intro": "Four things that keep us together and shape how we work.",
+      "items": [
+        {
+          "title": "Attitude first",
+          "description": "When someone joins, we look at character and attitude before anything else."
+        },
+        {
+          "title": "Ownership and trust",
+          "description": "We want reliable teammates who take ownership of their work."
+        },
+        {
+          "title": "Take the first step",
+          "description": "We want people who take the initiative to bring a project they care about to life."
+        },
+        {
+          "title": "Aim for better",
+          "description": "We look for people who want to improve themselves and their work, and who welcome feedback and collaboration."
+        }
+      ]
     },
-    "search": {
-      "placeholder": "Search positions..."
+    "teams": {
+      "title": "Our teams",
+      "intro": "Each team runs its own work. Apply to the one that fits you.",
+      "apply": "Apply",
+      "items": [
+        {
+          "title": "Software",
+          "description": "We build and maintain the website and our digital tools.",
+          "tasks": [
+            "Website development",
+            "Content infrastructure"
+          ]
+        },
+        {
+          "title": "Content",
+          "description": "We write the articles, guides and blog posts that connect the community.",
+          "tasks": [
+            "Blog writing and editing",
+            "Topic research",
+            "Content planning"
+          ]
+        },
+        {
+          "title": "Social media and design",
+          "description": "We run our online presence and make the visuals for the brand.",
+          "tasks": [
+            "Graphic design and brand identity",
+            "Social media management",
+            "Video and photo editing"
+          ]
+        },
+        {
+          "title": "Events",
+          "description": "We organise meetups, cultural celebrations and community events.",
+          "tasks": [
+            "Event planning and coordination",
+            "Venues and logistics",
+            "Community meetups and networking"
+          ]
+        }
+      ]
     },
-    "filter": {
-      "button": "Filter",
-      "title": "Filter Positions",
-      "clearAll": "Clear all",
-      "department": "Department",
-      "jobType": "Job Type",
-      "location": "Location"
-    },
-    "results": {
-      "showing": "Showing {filtered} of {total} positions",
-      "noResults": "No positions found matching your criteria."
+    "closing": {
+      "text": "Not sure which team fits you? Fill in the form and we'll work it out together.",
+      "cta": "Application form"
     }
   },
   "blog": {
