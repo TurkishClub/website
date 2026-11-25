@@ -365,89 +365,52 @@
     "form": {
       "label": "Application",
       "title": "Tell us about you.",
-      "intro": "Fields marked with an asterisk are required.",
       "sections": {
         "about": "About you",
         "study": "Your studies",
         "club": "Why the club"
       },
-      "name": {
-        "label": "Full name *",
-        "placeholder": "Your name",
-        "tooShort": "Name must be at least 2 characters.",
-        "tooLong": "Name must not be longer than 80 characters."
+      "fields": {
+        "name": "Full name",
+        "email": "Email address",
+        "university": "University (e.g. TUM, LMU)",
+        "degree": "Degree level (e.g. Bachelor’s, Master’s)",
+        "program": "Degree programme (e.g. Computer Science)",
+        "semester": "Semester (e.g. 3)",
+        "teams": "Which teams would you like to join?",
+        "otherTeam": "Which other team?",
+        "contribution": "What would you like to do on your chosen team?",
+        "contributionPlural": "What would you like to do on your chosen teams?",
+        "motivation": "Why do you want to join Turkish Club and what do you expect?",
+        "availability": "How many hours can you contribute per week?",
+        "cv": "CV"
       },
-      "email": {
-        "label": "Email *",
-        "placeholder": "your.email@example.com",
-        "invalid": "Please enter a valid email address."
-      },
-      "phone": {
-        "label": "Phone (optional)",
-        "placeholder": "+49 ...",
-        "invalid": "Please enter a valid phone number."
-      },
-      "university": {
-        "label": "University *",
-        "placeholder": "Select your university",
-        "required": "Please select your university.",
+      "teams": {
+        "media": "Social media",
+        "software": "Software",
+        "content": "Content",
+        "events": "Events",
         "other": "Other"
       },
-      "program": {
-        "label": "Degree programme *",
-        "placeholder": "e.g. Computer Science, M.Sc.",
-        "tooShort": "Please enter your degree programme.",
-        "tooLong": "Must not be longer than 100 characters."
-      },
-      "semester": {
-        "label": "Semester",
-        "placeholder": "e.g. 3"
-      },
-      "interests": {
-        "label": "What would you like to be part of?",
-        "hint": "Pick as many as you like."
-      },
-      "motivation": {
-        "label": "Why do you want to join? *",
-        "placeholder": "Tell us what brings you to the club and what you hope to get out of it.",
-        "tooShort": "Please write at least 30 characters.",
-        "tooLong": "Please keep it under 1000 characters."
-      },
-      "source": {
-        "label": "How did you hear about us?",
-        "placeholder": "Instagram, a friend, an event ..."
+      "teamsHint": "Select one or more teams.",
+      "cvHint": "Upload one PDF, up to 5 MB.",
+      "errors": {
+        "field": "Please complete this field.",
+        "email": "Please enter a valid email address.",
+        "cvRequired": "Please upload your CV.",
+        "cvTooLarge": "Your CV must be 5 MB or less.",
+        "cvInvalid": "Please select a valid PDF file.",
+        "invalidFields": "Please check your answers and try again.",
+        "rateLimited": "Too many attempts. Please try again in a minute.",
+        "inProgress": "Your application is still being processed. Please try again shortly.",
+        "error": "We couldn’t confirm your application. Your answers are still here. Please try again."
       },
       "consent": {
-        "label": "I agree that Turkish Club München may store my details to process this application and contact me. *",
-        "required": "Please confirm to continue."
+        "label": "I agree that Turkish Club München may store my details to process this application and contact me. *"
       },
       "submit": "Send application",
       "submitting": "Sending ...",
-      "success": "Thank you! Your application is in. We will be in touch soon.",
-      "rateLimited": "Too many attempts. Please try again later.",
-      "error": "Something went wrong. Please try again."
-    },
-    "options": {
-      "universities": [
-        "LMU Munich",
-        "TU Munich",
-        "Munich University of Applied Sciences (HM)",
-        "Another university",
-        "Not a student (yet)"
-      ],
-      "interests": {
-        "events": "Events and gatherings",
-        "community": "Community and welcome",
-        "media": "Social media and content",
-        "design": "Design",
-        "tech": "Website and tech",
-        "partnerships": "Partnerships and sponsors"
-      }
-    },
-    "aside": {
-      "label": "Questions?",
-      "text": "Not sure yet? Come to an event first or write to us, we are happy to help.",
-      "cta": "Contact us"
+      "success": "Thank you! Your application is in. We will be in touch soon."
     }
   }
 }

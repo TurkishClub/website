@@ -360,89 +360,52 @@
     "form": {
       "label": "Bewerbung",
       "title": "Erzähl uns von dir.",
-      "intro": "Mit * markierte Felder sind Pflichtfelder.",
       "sections": {
         "about": "Über dich",
         "study": "Dein Studium",
         "club": "Warum der Club"
       },
-      "name": {
-        "label": "Vollständiger Name *",
-        "placeholder": "Dein Name",
-        "tooShort": "Der Name muss mindestens 2 Zeichen lang sein.",
-        "tooLong": "Der Name darf nicht länger als 80 Zeichen sein."
+      "fields": {
+        "name": "Vor- und Nachname",
+        "email": "E-Mail-Adresse",
+        "university": "Hochschule (z. B. TUM, LMU)",
+        "degree": "Abschlussart (z. B. Bachelor, Master)",
+        "program": "Studiengang (z. B. Informatik)",
+        "semester": "Semester (z. B. 3)",
+        "teams": "In welchen Teams möchtest du mitmachen?",
+        "otherTeam": "Welches andere Team?",
+        "contribution": "Was würdest du in deinem Wunschteam gerne machen?",
+        "contributionPlural": "Was würdest du in deinen Wunschteams gerne machen?",
+        "motivation": "Warum möchtest du dem Turkish Club beitreten und was erwartest du?",
+        "availability": "Wie viele Stunden pro Woche kannst du einbringen?",
+        "cv": "Lebenslauf"
       },
-      "email": {
-        "label": "E-Mail *",
-        "placeholder": "deine.email@beispiel.com",
-        "invalid": "Bitte gib eine gültige E-Mail-Adresse ein."
+      "teams": {
+        "media": "Social Media",
+        "software": "Software",
+        "content": "Content",
+        "events": "Veranstaltungen",
+        "other": "Sonstiges"
       },
-      "phone": {
-        "label": "Telefon (optional)",
-        "placeholder": "+49 ...",
-        "invalid": "Bitte gib eine gültige Telefonnummer ein."
-      },
-      "university": {
-        "label": "Universität *",
-        "placeholder": "Universität auswählen",
-        "required": "Bitte wähle deine Universität aus.",
-        "other": "Andere"
-      },
-      "program": {
-        "label": "Studiengang *",
-        "placeholder": "z. B. Informatik, M.Sc.",
-        "tooShort": "Bitte gib deinen Studiengang an.",
-        "tooLong": "Darf nicht länger als 100 Zeichen sein."
-      },
-      "semester": {
-        "label": "Semester",
-        "placeholder": "z. B. 3"
-      },
-      "interests": {
-        "label": "Wobei möchtest du mitmachen?",
-        "hint": "Wähle so viele aus, wie du möchtest."
-      },
-      "motivation": {
-        "label": "Warum möchtest du mitmachen? *",
-        "placeholder": "Erzähl uns, was dich zum Club bringt und was du dir davon erhoffst.",
-        "tooShort": "Bitte schreibe mindestens 30 Zeichen.",
-        "tooLong": "Bitte fasse dich auf unter 1000 Zeichen."
-      },
-      "source": {
-        "label": "Wie hast du von uns erfahren?",
-        "placeholder": "Instagram, Freunde, ein Event ..."
+      "teamsHint": "Wähle ein oder mehrere Teams aus.",
+      "cvHint": "Lade eine PDF-Datei mit maximal 5 MB hoch.",
+      "errors": {
+        "field": "Bitte fülle dieses Feld aus.",
+        "email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+        "cvRequired": "Bitte lade deinen Lebenslauf hoch.",
+        "cvTooLarge": "Dein Lebenslauf darf höchstens 5 MB groß sein.",
+        "cvInvalid": "Bitte wähle eine gültige PDF-Datei aus.",
+        "invalidFields": "Bitte überprüfe deine Angaben und versuche es erneut.",
+        "rateLimited": "Zu viele Versuche. Bitte versuche es in einer Minute erneut.",
+        "inProgress": "Deine Bewerbung wird noch verarbeitet. Bitte versuche es gleich noch einmal.",
+        "error": "Wir konnten deine Bewerbung nicht bestätigen. Deine Angaben sind noch da. Bitte versuche es erneut."
       },
       "consent": {
-        "label": "Ich bin einverstanden, dass der Turkish Club München meine Angaben zur Bearbeitung dieser Bewerbung speichert und mich kontaktiert. *",
-        "required": "Bitte bestätige, um fortzufahren."
+        "label": "Ich bin einverstanden, dass der Turkish Club München meine Angaben zur Bearbeitung dieser Bewerbung speichert und mich kontaktiert. *"
       },
       "submit": "Bewerbung senden",
       "submitting": "Wird gesendet ...",
-      "success": "Danke! Deine Bewerbung ist angekommen. Wir melden uns bald.",
-      "rateLimited": "Zu viele Versuche. Bitte versuche es später erneut.",
-      "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
-    },
-    "options": {
-      "universities": [
-        "LMU München",
-        "TU München",
-        "Hochschule München (HM)",
-        "Andere Universität",
-        "Noch nicht Student:in"
-      ],
-      "interests": {
-        "events": "Events und Treffen",
-        "community": "Community und Willkommen",
-        "media": "Social Media und Content",
-        "design": "Design",
-        "tech": "Website und Technik",
-        "partnerships": "Partnerschaften und Sponsoren"
-      }
-    },
-    "aside": {
-      "label": "Fragen?",
-      "text": "Noch unsicher? Komm erst zu einem Event oder schreib uns, wir helfen gerne.",
-      "cta": "Kontakt aufnehmen"
+      "success": "Danke! Deine Bewerbung ist angekommen. Wir melden uns bald."
     }
   }
 }

@@ -13,7 +13,14 @@
     "logs": {
       "enabled": true
     }
-  }
+  },
+  "ratelimits": [
+    {
+      "name": "APPLICATION_RATE_LIMITER",
+      "namespace_id": "72001",
+      "simple": { "limit": 6, "period": 60 }
+    }
+  ]
 
 
 

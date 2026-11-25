@@ -365,89 +365,52 @@
     "form": {
       "label": "Başvuru",
       "title": "Bize kendinden bahset.",
-      "intro": "Yıldızlı alanlar zorunludur.",
       "sections": {
         "about": "Senin hakkında",
         "study": "Eğitimin",
         "club": "Neden kulüp"
       },
-      "name": {
-        "label": "Ad soyad *",
-        "placeholder": "Adın",
-        "tooShort": "İsim en az 2 karakter olmalıdır.",
-        "tooLong": "İsim 80 karakterden uzun olamaz."
+      "fields": {
+        "name": "Ad ve soyad",
+        "email": "E-posta adresi",
+        "university": "Üniversite (ör. TUM, LMU)",
+        "degree": "Derece (ör. lisans, yüksek lisans)",
+        "program": "Bölüm (ör. bilgisayar mühendisliği)",
+        "semester": "Dönem (ör. 3)",
+        "teams": "Hangi ekiplere katılmak istiyorsun?",
+        "otherTeam": "Başka hangi ekibe katılmak istiyorsun?",
+        "contribution": "Seçtiğin ekibe katılırsan ne yapmak isterdin?",
+        "contributionPlural": "Seçtiğin ekiplere katılırsan ne yapmak isterdin?",
+        "motivation": "Neden Turkish Club’a katılmak istiyorsun ve beklentilerin neler?",
+        "availability": "Haftada kaç saat ayırabilirsin?",
+        "cv": "Özgeçmiş"
       },
-      "email": {
-        "label": "E-posta *",
-        "placeholder": "ornek@email.com",
-        "invalid": "Lütfen geçerli bir e-posta adresi gir."
-      },
-      "phone": {
-        "label": "Telefon (opsiyonel)",
-        "placeholder": "+49 ...",
-        "invalid": "Lütfen geçerli bir telefon numarası gir."
-      },
-      "university": {
-        "label": "Üniversite *",
-        "placeholder": "Üniversiteni seç",
-        "required": "Lütfen üniversiteni seç.",
+      "teams": {
+        "media": "Sosyal Medya",
+        "software": "Yazılım",
+        "content": "İçerik",
+        "events": "Etkinlik",
         "other": "Diğer"
       },
-      "program": {
-        "label": "Bölüm *",
-        "placeholder": "örn. Bilgisayar Bilimleri, M.Sc.",
-        "tooShort": "Lütfen bölümünü gir.",
-        "tooLong": "100 karakterden uzun olamaz."
-      },
-      "semester": {
-        "label": "Dönem",
-        "placeholder": "örn. 3"
-      },
-      "interests": {
-        "label": "Hangi alanlarda yer almak istersin?",
-        "hint": "İstediğin kadarını seç."
-      },
-      "motivation": {
-        "label": "Neden katılmak istiyorsun? *",
-        "placeholder": "Seni kulübe neyin getirdiğini ve ne beklediğini anlat.",
-        "tooShort": "Lütfen en az 30 karakter yaz.",
-        "tooLong": "Lütfen 1000 karakterin altında tut."
-      },
-      "source": {
-        "label": "Bizi nereden duydun?",
-        "placeholder": "Instagram, bir arkadaş, bir etkinlik ..."
+      "teamsHint": "Bir veya birden fazla ekip seç.",
+      "cvHint": "En fazla 5 MB boyutunda bir PDF yükle.",
+      "errors": {
+        "field": "Lütfen bu alanı doldur.",
+        "email": "Lütfen geçerli bir e-posta adresi gir.",
+        "cvRequired": "Lütfen özgeçmişini yükle.",
+        "cvTooLarge": "Özgeçmişin en fazla 5 MB olabilir.",
+        "cvInvalid": "Lütfen geçerli bir PDF dosyası seç.",
+        "invalidFields": "Lütfen yanıtlarını kontrol edip tekrar dene.",
+        "rateLimited": "Çok fazla deneme yaptın. Lütfen bir dakika sonra tekrar dene.",
+        "inProgress": "Başvurun hâlâ işleniyor. Lütfen biraz sonra tekrar dene.",
+        "error": "Başvurunu doğrulayamadık. Yanıtların hâlâ burada. Lütfen tekrar dene."
       },
       "consent": {
-        "label": "Turkish Club München’in bu başvuruyu işlemek ve benimle iletişime geçmek için bilgilerimi saklamasını kabul ediyorum. *",
-        "required": "Devam etmek için lütfen onayla."
+        "label": "Turkish Club München’in bu başvuruyu işlemek ve benimle iletişime geçmek için bilgilerimi saklamasını kabul ediyorum. *"
       },
       "submit": "Başvuruyu gönder",
       "submitting": "Gönderiliyor ...",
-      "success": "Teşekkürler! Başvurun bize ulaştı. Yakında dönüş yapacağız.",
-      "rateLimited": "Çok fazla deneme. Lütfen daha sonra tekrar dene.",
-      "error": "Bir şeyler ters gitti. Lütfen tekrar dene."
-    },
-    "options": {
-      "universities": [
-        "LMU München",
-        "TU München",
-        "Hochschule München (HM)",
-        "Diğer üniversite",
-        "Henüz öğrenci değilim"
-      ],
-      "interests": {
-        "events": "Etkinlikler ve buluşmalar",
-        "community": "Topluluk ve karşılama",
-        "media": "Sosyal medya ve içerik",
-        "design": "Tasarım",
-        "tech": "Web sitesi ve teknoloji",
-        "partnerships": "Ortaklıklar ve sponsorlar"
-      }
-    },
-    "aside": {
-      "label": "Sorun mu var?",
-      "text": "Henüz emin değil misin? Önce bir etkinliğe gel ya da bize yaz, yardımcı olmaktan memnun oluruz.",
-      "cta": "Bize ulaş"
+      "success": "Teşekkürler! Başvurun bize ulaştı. Yakında dönüş yapacağız."
     }
   }
 }
