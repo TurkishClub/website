@@ -48,32 +48,35 @@ export function BlogSearch() {
     replace(`${pathname}?${params.toString()}`);
   };
 
+  const fieldInput =
+    'h-auto rounded-none border-0 border-b border-ink-950/30 bg-transparent px-0 shadow-none focus-visible:border-cardinal-700 focus-visible:ring-0';
+
   return (
-    <div className="flex flex-col sm:flex-row gap-6 w-full max-w-2xl">
-      <div className="relative flex-1">
-        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+    <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="relative flex-1 md:max-w-3xl">
+        <Search aria-hidden className="absolute left-0 top-1/2 h-6 w-6 -translate-y-1/2 text-ink-500" />
         <Input
+          aria-label="Blog yazılarında ara"
           placeholder="Blog yazılarında ara..."
-          className="pl-12 pr-4 py-3 w-full text-base border-gray-300 focus:border-[#C61E1E] focus:ring-[#C61E1E] rounded-lg"
+          className={`${fieldInput} py-4 pl-10 font-serif text-[clamp(1.4rem,2.4vw,2rem)] placeholder:text-ink-500/60 md:text-[clamp(1.4rem,2.4vw,2rem)]`}
           onChange={(e) => handleSearch(e.target.value)}
           defaultValue={searchParams.get('query')?.toString()}
         />
       </div>
 
-      <Select
-        value={searchParams.get('sort')?.toString() || 'newest'}
-        onValueChange={handleSort}
-      >
-        <SelectTrigger className="w-full sm:w-56 py-3 text-base border-gray-300 focus:border-[#C61E1E] focus:ring-[#C61E1E] rounded-lg">
-          <SelectValue placeholder="Sırala" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="newest">En Yeni</SelectItem>
-          <SelectItem value="oldest">En Eski</SelectItem>
-          <SelectItem value="popular">Popüler</SelectItem>
-          <SelectItem value="alphabetical">A-Z</SelectItem>
-        </SelectContent>
-      </Select>
+      <div className="flex items-center gap-3">
+        <span className="text-sm text-ink-700">Sıralama</span>
+        <Select value={searchParams.get('sort')?.toString() || 'newest'} onValueChange={handleSort}>
+          <SelectTrigger className="h-auto w-48 rounded-full border-ink-950/20 bg-transparent px-4 py-2.5 text-sm font-medium shadow-none">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className="rounded-2xl border-0 bg-white p-1 shadow-[0_24px_60px_-20px_rgb(20_17_17/0.35)]">
+            <SelectItem value="newest">En yeni</SelectItem>
+            <SelectItem value="oldest">En eski</SelectItem>
+            <SelectItem value="alphabetical">A-Z</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
     </div>
   );
 }

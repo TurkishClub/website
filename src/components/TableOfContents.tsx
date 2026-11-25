@@ -83,9 +83,9 @@ export function TableOfContents() {
 
   return (
     <div className="hidden xl:block w-full">
-      <div className="bg-white rounded-lg shadow-lg p-4 border border-gray-200">
+      <div className="border-t border-ink-950/30 pt-5">
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4 text-sm">
+          <h3 className="mb-3 text-sm font-medium text-ink-500">
             İçindekiler
           </h3>
           <nav className="space-y-0.5">
@@ -94,18 +94,18 @@ export function TableOfContents() {
                 variant="ghost"
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block text-left w-full text-sm py-2 px-3 rounded transition-colors hover:scale-105 ${
+                className={`block h-auto w-full whitespace-normal rounded-none border-l-2 px-3 py-1.5 text-left text-sm font-normal transition-colors hover:bg-transparent ${
                   activeId === item.id
-                    ? 'text-[#C61E1E] bg-red-50 font-medium border-l-2 border-[#C61E1E]'
-                    : 'text-gray-600 hover:text-[#C61E1E] hover:bg-gray-100'
+                    ? 'border-cardinal-700 text-cardinal-700'
+                    : 'border-transparent text-ink-700 hover:text-ink-950'
                 }`}
               >
-                <span className="block truncate">{item.title}</span>
+                <span className="block">{item.title}</span>
               </Button>
             ))}
           </nav>
         </div>
-        <div className="flex justify-start mt-4 text-black">
+        <div className="mt-6 flex justify-start text-ink-950">
           <ShareButton variant="outline" />
         </div>
       </div>

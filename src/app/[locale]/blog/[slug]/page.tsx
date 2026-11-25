@@ -3,10 +3,9 @@ import {POST_QUERY} from '@/sanity/lib/queries';
 import {ADJACENT_POSTS_QUERY} from '@/sanity/lib/queries';
 import {PortableText} from '@portabletext/react';
 import {urlFor} from '@/sanity/lib/image';
-import Link from 'next/link';
+import {Link} from '@/i18n/navigation';
 import Image from 'next/image';
 import {notFound} from 'next/navigation';
-import {ArrowLeft, Calendar, Clock} from 'lucide-react';
 import {BlogSidebar} from '@/components/blog/BlogSidebar';
 import {TableOfContents} from '@/components/TableOfContents';
 import Navbar from '@/components/Navbar';
@@ -63,12 +62,12 @@ const portableTextComponents = {
             alt={value.alt || 'Blog image'}
             width={Math.round(width)}
             height={Math.round(height)}
-            className="rounded-xl shadow-lg w-full h-auto"
+            className="h-auto w-full"
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 800px"
             priority={false}
           />
           {value.alt && (
-            <figcaption className="text-sm text-gray-600 mt-3 text-center italic">
+            <figcaption className="mt-3 text-sm text-ink-500">
               {value.alt}
             </figcaption>
           )}
@@ -79,7 +78,7 @@ const portableTextComponents = {
   block: {
     // Style different heading levels with IDs for TOC
     h1: ({children}: any) => (
-      <h1 className="text-5xl font-bold mt-20 mb-10 text-gray-900 border-b border-gray-200 pb-6">
+      <h1 className="mb-8 mt-16 font-serif text-[clamp(2.25rem,4vw,3.25rem)] font-normal leading-[1.1] tracking-[-0.015em] text-ink-950">
         {children}
       </h1>
     ),
@@ -113,29 +112,29 @@ const portableTextComponents = {
       return (
         <h2
           id={id}
-          className="text-2xl font-semibold mt-12 mb-6 text-gray-800 scroll-mt-8"
+          className="mb-5 mt-14 scroll-mt-8 font-serif text-[clamp(1.75rem,3vw,2.25rem)] font-normal leading-[1.15] tracking-[-0.01em] text-ink-950"
         >
           {children}
         </h2>
       );
     },
     h3: ({children}: any) => (
-      <h3 className="text-xl font-medium mt-8 mb-4 text-gray-700">
+      <h3 className="mb-4 mt-10 font-serif text-2xl font-normal text-ink-950">
         {children}
       </h3>
     ),
     h4: ({children}: any) => (
-      <h4 className="text-lg font-medium mt-6 mb-3 text-gray-700">
+      <h4 className="mb-3 mt-8 text-lg font-semibold text-ink-950">
         {children}
       </h4>
     ),
     // Style normal paragraphs - smaller font size
     normal: ({children}: any) => (
-      <p className="mb-6 text-gray-700 leading-relaxed text-lg">{children}</p>
+      <p className="mb-6 text-lg leading-[1.75] text-ink-700">{children}</p>
     ),
     // Style blockquotes
     blockquote: ({children}: any) => (
-      <blockquote className="border-l-4 border-[#C61E1E] bg-red-50 pl-6 pr-4 py-4 italic my-8 text-gray-700 rounded-r-lg text-lg">
+      <blockquote className="my-10 border-l-2 border-cardinal-700 pl-6 font-serif text-2xl leading-snug text-ink-950">
         {children}
       </blockquote>
     )
@@ -143,41 +142,41 @@ const portableTextComponents = {
   // Style lists
   list: {
     bullet: ({children}: any) => (
-      <ul className="list-disc ml-6 mb-6 space-y-2 text-gray-700 text-lg">
+      <ul className="mb-6 ml-6 list-disc space-y-2 text-lg text-ink-700 marker:text-cardinal-700">
         {children}
       </ul>
     ),
     number: ({children}: any) => (
-      <ol className="list-decimal ml-6 mb-6 space-y-2 text-gray-700 text-lg">
+      <ol className="mb-6 ml-6 list-decimal space-y-2 text-lg text-ink-700 marker:text-cardinal-700">
         {children}
       </ol>
     )
   },
   // Style list items
   listItem: {
-    bullet: ({children}: any) => <li className="leading-loose">{children}</li>,
-    number: ({children}: any) => <li className="leading-loose">{children}</li>
+    bullet: ({children}: any) => <li className="leading-relaxed">{children}</li>,
+    number: ({children}: any) => <li className="leading-relaxed">{children}</li>
   },
   // Style marks (bold, italic, etc.)
   marks: {
     strong: ({children}: any) => (
-      <strong className="font-semibold text-gray-900">{children}</strong>
+      <strong className="font-semibold text-ink-950">{children}</strong>
     ),
     em: ({children}: any) => (
-      <em className="italic text-gray-800">{children}</em>
+      <em className="italic">{children}</em>
     ),
     underline: ({children}: any) => (
       <u className="underline decoration-2 underline-offset-2">{children}</u>
     ),
     code: ({children}: any) => (
-      <code className="bg-gray-100 text-[#C61E1E] px-2 py-1 rounded text-base font-mono border">
+      <code className="rounded bg-stone-200 px-1.5 py-0.5 font-mono text-base text-ink-950">
         {children}
       </code>
     ),
     link: ({children, value}: any) => (
       <a
         href={value?.href}
-        className="text-[#C61E1E] hover:text-red-700 underline decoration-2 underline-offset-4"
+        className="text-cardinal-700 underline decoration-1 underline-offset-4 hover:text-cardinal-800"
         target={value?.blank ? '_blank' : '_self'}
         rel={value?.blank ? 'noopener noreferrer' : undefined}
       >
@@ -192,13 +191,12 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
 
   // Fetch the specific post using your existing query
   const post: BlogPost = await client.fetch(POST_QUERY, { slug: params.slug });
-  const { previousPost, nextPost } = await client.fetch(ADJACENT_POSTS_QUERY, {
-    date: post.publishedAt,
-  });
-  console.log("Prev:", previousPost, "Next:", nextPost);
   if (!post) {
     notFound();
   }
+  const { previousPost, nextPost } = await client.fetch(ADJACENT_POSTS_QUERY, {
+    date: post.publishedAt,
+  });
 
   // Format date
   const formatDate = (dateString: string) => {
@@ -239,135 +237,64 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
 
   return (
     <BlogPostClient post={processedPost} readTime={readTime}>
-      <div
-        className="min-h-screen bg-[#C61E1E] text-white"
-        style={{scrollBehavior: 'smooth'}}
-      >
-        <Navbar />
-
-        {/* Hero Section */}
-        <div className="bg-[#C61E1E] text-white">
-          <div className="container mx-auto px-4 py-24">
-            {/* Back Button */}
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-12 group"
-            >
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-lg">Blog&apos;a Dön</span>
-            </Link>
-
-            {/* Article Header */}
-            <div className="max-w-6xl mx-auto">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+      <main className="min-h-screen bg-stone-50 text-ink-950">
+        <div className="bg-maroon-950">
+          <Navbar tone="dark" />
+          <section className="text-white">
+            <div className="mx-auto max-w-[90rem] px-4 pb-14 pt-10 md:px-6 md:pb-20 md:pt-14">
+              <Link href="/blog" className="text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline">
+                ← Blog&apos;a dön
+              </Link>
+              <h1 className="mt-10 max-w-5xl font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.025em]">
                 {post.title}
               </h1>
-
               {post.excerpt && (
-                <p className="text-2xl text-white/90 mb-12 leading-relaxed max-w-4xl">
-                  {post.excerpt}
-                </p>
+                <p className="mt-6 max-w-3xl text-xl leading-relaxed text-white/75">{post.excerpt}</p>
               )}
-
-              {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-8 text-white/80 text-lg">
-                {post.publishedAt && (
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5" />
-                    <span>{formatDate(post.publishedAt)}</span>
-                  </div>
-                )}
-
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5" />
-                  <span>{readTime} dakika okuma</span>
-                </div>
-              </div>
+              <p className="mt-8 text-sm text-white/60">
+                {[post.publishedAt && formatDate(post.publishedAt), `${readTime} dk okuma`].filter(Boolean).join(' · ')}
+              </p>
             </div>
-          </div>
+          </section>
         </div>
 
-        {/* Article Content */}
-        <article className="bg-white">
-          {/* Featured Image */}
-          {post.image ? (
-            <div className="relative mt-16 mb-16">
-              <div className="max-w-6xl mx-auto px-4">
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                  <Image
-                    src={urlFor(post.image).width(1200).height(675).url()}
-                    alt={post.image.alt || post.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                    priority
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                  />
-                </div>
+        <article>
+          {post.image && (
+            <div className="mx-auto max-w-6xl px-4 pt-12 md:px-6 md:pt-16">
+              <div className="relative aspect-video overflow-hidden bg-stone-200">
+                <Image
+                  src={urlFor(post.image).width(1200).height(675).url()}
+                  alt={post.image.alt || post.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  priority
+                />
               </div>
             </div>
-          ) : (
-            <div className="h-20" />
           )}
 
-          {/* Article Body with TOC */}
-          <div className="max-w-7xl mx-auto px-4 pb-24">
-            {/* Desktop Layout */}
-            <div className="hidden xl:flex gap-8 items-start">
-              {/* Table of Contents - Left Sidebar */}
-              <div className="w-64 sticky top-8">
-                <TableOfContents />
-              </div>
-
-              {/* Main Content */}
-              <div className="flex-1 max-w-4xl">
-                <div className="prose prose-lg max-w-none">
-                  <PortableText
-                    value={post.body || []}
-                    components={portableTextComponents}
-                  />
+          <div className="mx-auto max-w-[90rem] px-4 pb-24 pt-12 md:px-6 md:pb-32 md:pt-16">
+            <div className="xl:grid xl:grid-cols-[14rem_minmax(0,48rem)_14rem] xl:justify-center xl:gap-12">
+              <aside className="hidden xl:block">
+                <div className="sticky top-8">
+                  <TableOfContents />
+                </div>
+              </aside>
+              <div>
+                <PortableText value={post.body || []} components={portableTextComponents} />
+                <div className="mt-20">
+                  <BlogSidebar post={processedPost} prevPost={previousPost || null} nextPost={nextPost || null} />
                 </div>
               </div>
-            </div>
-
-            {/* Mobile/Tablet Layout */}
-            <div className="xl:hidden">
-              <div className="prose prose-lg max-w-none">
-                <PortableText
-                  value={post.body || []}
-                  components={portableTextComponents}
-                />
-              </div>
-            </div>
-
-            {/* Sidebar - Below Content */}
-            <div className="hidden xl:flex gap-8 items-start mt-20">
-              <div className="w-64 flex-shrink-0">
-                {/* Empty space to align with TOC */}
-              </div>
-              <div className="flex-1 max-w-4xl">
-                <BlogSidebar
-                    post={processedPost}
-                    prevPost={previousPost || null}
-                    nextPost={nextPost || null}
-                  />
-              </div>
-            </div>
-
-            {/* Mobile/Tablet Sidebar */}
-            <div className="xl:hidden mt-20">
-                <BlogSidebar
-                  post={processedPost}
-                  prevPost={previousPost || null}
-                  nextPost={nextPost || null}
-                />
+              {/* Mirrors the contents column so the text stays centred. */}
+              <div aria-hidden className="hidden xl:block" />
             </div>
           </div>
         </article>
 
         <Footer />
-      </div>
+      </main>
     </BlogPostClient>
   );
 }

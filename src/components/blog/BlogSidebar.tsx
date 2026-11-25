@@ -1,100 +1,72 @@
 'use client';
 
-import { User } from 'lucide-react';
-import Image from 'next/image';
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
+import {Link} from '@/i18n/navigation';
+import {pillClass} from '@/components/home/Pill';
 
 interface BlogSidebarProps {
   post: {
     title: string;
-    slug: string | { current: string };
-    categories?: Array<{
-      title: string;
-      slug: string;
-    }>;
-    author?: {
-      name: string;
-      imageUrl?: string; // Pre-processed image URL
-    };
+    slug: string | {current: string};
+    categories?: Array<{title: string; slug: string}>;
+    author?: {name: string; imageUrl?: string};
   };
-  prevPost?: { title: string; slug: string } | null;
-  nextPost?: { title: string; slug: string } | null;
+  prevPost?: {title: string; slug: string} | null;
+  nextPost?: {title: string; slug: string} | null;
 }
 
-export function BlogSidebar({ post, prevPost, nextPost }: BlogSidebarProps) {
-  typeof post.slug === 'string' ? post.slug : post.slug?.current || '';
-  const params = useParams();
+/** Categories, author and links to the neighbouring posts. */
+export function BlogSidebar({post, prevPost, nextPost}: BlogSidebarProps) {
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Categories */}
+    <div className="border-t border-ink-950/30 pt-8">
+      <dl className="grid gap-6 sm:grid-cols-2">
         {post.categories && post.categories.length > 0 && (
-          <div className="bg-gray-50 rounded-xl p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Kategoriler</h3>
-            <div className="flex flex-wrap gap-2">
+          <div>
+            <dt className="text-sm text-ink-500">Kategoriler</dt>
+            <dd className="mt-2 flex flex-wrap gap-2">
               {post.categories.map((category) => (
-                <span
-                  key={category.slug}
-                  className="bg-[#C61E1E] text-white px-3 py-1 rounded-full text-sm"
-                >
+                <span key={category.slug} className="rounded-full border border-ink-950/20 px-3 py-1 text-sm">
                   {category.title}
                 </span>
               ))}
-            </div>
+            </dd>
           </div>
         )}
-
-        {/* Author Info */}
         {post.author && (
-          <div className="bg-gray-50 rounded-xl p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Yazar</h3>
-            <div className="flex items-center gap-3">
-              {post.author.imageUrl ? (
-                <div className="relative w-12 h-12 rounded-full overflow-hidden">
-                  <Image
-                    src={post.author.imageUrl}
-                    alt={post.author.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="w-12 h-12 bg-[#C61E1E] rounded-full flex items-center justify-center">
-                  <User className="w-6 h-6 text-white" />
-                </div>
-              )}
-              <div>
-                <p className="font-medium text-gray-900">{post.author.name}</p>
-              </div>
-            </div>
+          <div>
+            <dt className="text-sm text-ink-500">Yazar</dt>
+            <dd className="mt-2 font-serif text-xl">{post.author.name}</dd>
           </div>
         )}
-      </div>
+      </dl>
 
-      {/* Navigation buttons */}
       {(prevPost || nextPost) && (
-        <div className="flex justify-between mt-8">
+        <nav aria-label="Diğer yazılar" className="mt-12 grid gap-4 sm:grid-cols-2">
           {prevPost ? (
-            <Link
-              href={`/${params.locale}/blog/${prevPost.slug}`}   // ✅ include locale and /blog
-              className="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              ← {prevPost.title}
+            <Link href={`/blog/${prevPost.slug}`} className="group block bg-white p-6">
+              <span className="text-sm text-ink-500">← Önceki yazı</span>
+              <span className="mt-2 block font-serif text-xl leading-snug transition-colors group-hover:text-cardinal-700">
+                {prevPost.title}
+              </span>
             </Link>
           ) : (
             <div />
           )}
           {nextPost && (
-            <Link
-              href={`/${params.locale}/blog/${nextPost.slug}`}   // ✅ same here
-              className="bg-[#C61E1E] text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
-            >
-              {nextPost.title} →
+            <Link href={`/blog/${nextPost.slug}`} className="group block bg-white p-6 sm:text-right">
+              <span className="text-sm text-ink-500">Sonraki yazı →</span>
+              <span className="mt-2 block font-serif text-xl leading-snug transition-colors group-hover:text-cardinal-700">
+                {nextPost.title}
+              </span>
             </Link>
           )}
-        </div>
+        </nav>
       )}
+
+      <div className="mt-12">
+        <Link href="/blog" className={pillClass('outline')}>
+          Tüm yazılar
+        </Link>
+      </div>
     </div>
   );
 }
